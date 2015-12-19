@@ -197,18 +197,18 @@
 		D6DE70DC1C2592A300C066DE /* GanHuo */ = {
 			isa = PBXGroup;
 			children = (
-				D6DE70DD1C2592A300C066DE /* Assets.xcassets */,
-				D6DE70DE1C2592A300C066DE /* Main.storyboard */,
 				D6DE70E01C2592A300C066DE /* Controller */,
-				D6DE70ED1C2592A300C066DE /* Extension */,
-				D6DE70F51C2592A300C066DE /* Info.plist */,
+				D6DE710D1C2592A300C066DE /* View */,
 				D6DE70F61C2592A300C066DE /* Model */,
+				D6DE71011C2592A300C066DE /* Util */,
+				D6DE70ED1C2592A300C066DE /* Extension */,
+				D6DE70FE1C2592A300C066DE /* ThirdParty */,
 				D6DE70FA1C2592A300C066DE /* Other */,
 				D6DE70FD1C2592A300C066DE /* Resource */,
-				D6DE70FE1C2592A300C066DE /* ThirdParty */,
-				D6DE71011C2592A300C066DE /* Util */,
-				D6DE710D1C2592A300C066DE /* View */,
 				D6DE71251C2592A300C066DE /* WKCC.xcdatamodeld */,
+				D6DE70DD1C2592A300C066DE /* Assets.xcassets */,
+				D6DE70DE1C2592A300C066DE /* Main.storyboard */,
+				D6DE70F51C2592A300C066DE /* Info.plist */,
 			);
 			name = GanHuo;
 			sourceTree = "<group>";
@@ -219,10 +219,10 @@
 				D6DE70E11C2592A300C066DE /* TPCBroswerViewController.swift */,
 				D6DE70E21C2592A300C066DE /* TPCDetailViewController.swift */,
 				D6DE70E31C2592A300C066DE /* TPCNavigationController.swift */,
-				D6DE70E41C2592A300C066DE /* TPCSettingSubController */,
 				D6DE70EA1C2592A300C066DE /* TPCSettingViewController.swift */,
 				D6DE70EB1C2592A300C066DE /* TPCTechnicalViewController.swift */,
 				D6DE70EC1C2592A300C066DE /* TPCViewController.swift */,
+				D6DE70E41C2592A300C066DE /* TPCSettingSubController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
