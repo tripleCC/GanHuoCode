@@ -14,8 +14,6 @@ let TPCScreenWidth = UIScreen.mainScreen().bounds.width
 let TPCScreenHeight = UIScreen.mainScreen().bounds.height
 let TPCRefreshControlOriginHeight: CGFloat = 60.0
 
-let TPCAppID = "1064034435"
-
 let TPCGankIOURLString = "http://gank.io/"
 
 let TPCTechnicalReloadDataNotification = "TPCTechnicalReloadDataNotification"

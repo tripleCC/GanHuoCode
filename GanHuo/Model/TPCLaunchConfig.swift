@@ -11,11 +11,22 @@ import SwiftyJSON
 
 struct TPCLaunchConfig {
     var venus: Bool?
-    var version: String?
+    var versionInfo: TPCVersionInfo?
     
     init (dict: JSON) {
         debugPrint(dict)
         venus = dict["venus"].boolValue
+        versionInfo = TPCVersionInfo(dict: dict["versionInfo"])
+    }
+}
+
+struct TPCVersionInfo {
+    var version: String?
+    var updateInfo: String?
+    
+    init (dict: JSON) {
+        debugPrint(dict)
         version = dict["version"].stringValue
+        updateInfo = dict["updateInfo"].stringValue
     }
 }

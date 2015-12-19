@@ -12,7 +12,7 @@ import Alamofire
 
 
 public enum TPCConfigType: String {
-    static let TPCWKCCNBaseURLString = "https://raw.githubusercontent.com/tripleCC/WKCC/master/configuration/"
+    static let TPCWKCCNBaseURLString = "https://raw.githubusercontent.com/tripleCC/GanHuo/master/configuration/"
     case AboutMe = "AboutMe"
     case LaunchConfig = "LaunchConfig"
     
@@ -107,6 +107,7 @@ class TPCNetworkUtil {
     }
     
     class func loadConfigByType(type: TPCConfigType, completion: (response: JSON) -> ()) {
+        debugPrint(type.path())
         Alamofire.request(.GET, type.path())
                  .response(completionHandler: { (request, response, data, ErrorType) -> Void in
                     if let data = data {

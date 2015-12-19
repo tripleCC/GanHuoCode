@@ -197,8 +197,7 @@ class TPCSettingViewController: TPCViewController {
 typealias TPCSettingFunction = TPCSettingViewController
 extension TPCSettingFunction {
     private func giveAFavorableReception() {
-        let url = NSURL(string: "itms-apps://itunes.apple.com/app/id\(TPCAppID)")
-        UIApplication.sharedApplication().openURL(url!)
+        TPCVersionUtil.openUpdateLink()
     }
     
     private func giveAFeedBack() {

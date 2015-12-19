@@ -90,10 +90,30 @@ class TPCTechnicalViewController: TPCViewController {
             self.setupNav()
             self.registerObserverForApplicationDidEnterBackground()
             self.registerReloadTableView()
+            self.launchConfig(launchConfig)
         }
 //        UIFont.showAllFonts()
 //        UIFont.createAllTypeIcon()
     }
+    
+    private func launchConfig(launchConfig: TPCLaunchConfig?) {
+        if let launchConfig = launchConfig {
+//                self.showUpdateView()
+            debugPrint(launchConfig.versionInfo?.version, launchConfig.versionInfo?.updateInfo)
+            TPCVersionUtil.versionInfo = launchConfig.versionInfo
+        } else {
+            TPCNetworkUtil.loadLaunchConfig({ (launchConfig) -> () in
+//                    self.showUpdateView()
+            debugPrint(launchConfig.versionInfo?.version, launchConfig.versionInfo?.updateInfo)
+                TPCVersionUtil.versionInfo = launchConfig.versionInfo
+                
+            })
+        }
+    }
+    
+//    private func showUpdateView() {
+//        
+//    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
