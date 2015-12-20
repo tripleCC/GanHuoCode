@@ -129,7 +129,7 @@ class TPCSettingViewController: TPCViewController {
         contents.append(sectionThree)
     }
     private func setupFourSection() {
-        let diskSize = String(format: "%.2f", Double(SDImageCache.sharedImageCache().getSize()) / 1024.0 / 1024.0)
+        let diskSize = String(format: "%.2f", Double(SDImageCache.sharedImageCache().getSize()) / 1000.0 / 1000.0)
         let sectionFour = [TPCSetItem(title: CLEAR_CACHE, detailTitle: "\(diskSize)M", action: { [unowned self] (indexPath) -> () in
             self.clearCache(indexPath)
             }, accessoryType: .None)]
