@@ -49,11 +49,17 @@ public enum TPCTechnicalType {
 }
 
 typealias TPCTechnicalDictionary = [String : [TPCTechnicalObject]]
+
 class TPCNetworkUtil {
-    class func loadTechnicalByYear(year: Int, month: Int, day: Int, completion:((TPCTechnicalDictionary, [String]) -> ())?) {
-        Alamofire.request(Method.GET, TPCTechnicalType.Day(year, month, day).path())
+    static let shareInstance = TPCNetworkUtil()
+    var requests = [Request]()
+    func loadTechnicalByYear(year: Int, month: Int, day: Int, completion:((TPCTechnicalDictionary, [String]) -> ())?) {
+        TPCNetworkUtil.shareInstance
+        Alamofire.request(.GET, TPCTechnicalType.Day(year, month, day).path())
                  .response(completionHandler: { (request, response, data, ErrorType) -> Void in
-                    dispatch_async(dispatch_get_global_queue(0, 0), { () -> Void in
+                    // 移除已经下载好的请求
+//                    dispatchGlobal() { self.removeRequest(request) }
+                    dispatchGlobal({ () -> () in
                         // 这里有时候会出现顺序错位情况，但是如果定死单个子线程，解析速度会变慢
                         // 后面再优化
                         if let data = data {
@@ -86,27 +92,45 @@ class TPCNetworkUtil {
                                     TPCConfiguration.allCategories = categoryArray
                                 }
                             }
-                            dispatch_sync(dispatch_get_main_queue(), { () -> Void in
-                                completion?(technicalDict, categoryArray)
-                            })
+                            dispatchMain() { completion?(technicalDict, categoryArray) }
                         }
+                        
                     })
         })
     }
     
-    class func loadAbountMe(completion: (aboutMe: TPCAboutMe) -> ()) {
+    func cancelAllRequests() {
+        for request in requests {
+            debugPrint(request.request?.URL?.absoluteString)
+            request.cancel()
+        }
+        requests.removeAll()
+    }
+    
+    func removeRequest(request: NSURLRequest?) {
+        if let request = request {
+            for i in 0..<requests.count {
+                if requests[i].request == request {
+                    requests.removeAtIndex(i)
+                    break
+                }
+            }
+        }
+    }
+    
+    func loadAbountMe(completion: (aboutMe: TPCAboutMe) -> ()) {
         loadConfigByType(.AboutMe) { JSON in
             completion(aboutMe: TPCAboutMe(dict: JSON))
         }
     }
     
-    class func loadLaunchConfig(completion: (launchConfig: TPCLaunchConfig) -> ()) {
+    func loadLaunchConfig(completion: (launchConfig: TPCLaunchConfig) -> ()) {
         loadConfigByType(.LaunchConfig) { JSON in
             completion(launchConfig: TPCLaunchConfig(dict: JSON))
         }
     }
     
-    class func loadConfigByType(type: TPCConfigType, completion: (response: JSON) -> ()) {
+    func loadConfigByType(type: TPCConfigType, completion: (response: JSON) -> ()) {
         debugPrint(type.path())
         Alamofire.request(.GET, type.path())
                  .response(completionHandler: { (request, response, data, ErrorType) -> Void in

@@ -42,7 +42,7 @@ class TPCVenusUtil {
     static func loadVenusFlagFromServer(completion: (launchConfig: TPCLaunchConfig) -> ()) {
 //        NSDate.dayIntervalFromYear(2016, month: 1, day: 10) >= 0
         // 从网络上获取
-        TPCNetworkUtil.loadLaunchConfig { (launchConfig) -> () in
+        TPCNetworkUtil.shareInstance.loadLaunchConfig { (launchConfig) -> () in
             completion(launchConfig: launchConfig)
         }
     }

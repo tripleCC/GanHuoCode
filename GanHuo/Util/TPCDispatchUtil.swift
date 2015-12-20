@@ -14,3 +14,19 @@ func dispatchSeconds(second: NSTimeInterval, action: () -> ()) {
         action()
     }
 }
+
+func dispatchGlobal(action: () -> ()) {
+    dispatch_async(dispatch_get_global_queue(0, 0), { () -> Void in
+        action()
+    })
+}
+
+func dispatchMain(action: () -> ()) {
+    if NSThread.isMainThread() {
+        action()
+    } else {
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            action()
+        }        
+    }
+}

@@ -84,12 +84,12 @@ class TPCTechnicalViewController: TPCViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         TPCLaunchScreenView.showLaunchAniamtion()
+        self.setupNav()
+        self.registerObserverForApplicationDidEnterBackground()
+        self.registerReloadTableView()
         TPCVenusUtil.setInitialize { (launchConfig) -> () in
             (self.year, self.month, self.day) = TPCVenusUtil.startTime
             self.loadNewData()
-            self.setupNav()
-            self.registerObserverForApplicationDidEnterBackground()
-            self.registerReloadTableView()
             self.launchConfig(launchConfig)
         }
 //        UIFont.showAllFonts()
@@ -102,7 +102,7 @@ class TPCTechnicalViewController: TPCViewController {
             debugPrint(launchConfig.versionInfo?.version, launchConfig.versionInfo?.updateInfo)
             TPCVersionUtil.versionInfo = launchConfig.versionInfo
         } else {
-            TPCNetworkUtil.loadLaunchConfig({ (launchConfig) -> () in
+            TPCNetworkUtil.shareInstance.loadLaunchConfig({ (launchConfig) -> () in
 //                    self.showUpdateView()
             debugPrint(launchConfig.versionInfo?.version, launchConfig.versionInfo?.updateInfo)
                 TPCVersionUtil.versionInfo = launchConfig.versionInfo
@@ -158,7 +158,7 @@ class TPCTechnicalViewController: TPCViewController {
             return
         }
         
-        TPCNetworkUtil.loadTechnicalByYear(year, month: month, day: day) { (technicalDict, categories) -> () in
+        TPCNetworkUtil.shareInstance.loadTechnicalByYear(year, month: month, day: day) { (technicalDict, categories) -> () in
 //            debugPrint("TPCVenusUtil.venusFlag=\(TPCVenusUtil.venusFlag)")
             if TPCVenusUtil.venusFlag || !TPCVenusUtil.compareWithYear(self.year, month: self.month, day: self.day) {
                 if categories.count > 0 {

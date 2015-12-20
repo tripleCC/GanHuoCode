@@ -16,7 +16,7 @@ class TPCTechnicalCell: UITableViewCell {
                 beautyImageView.alpha = CGFloat(TPCConfiguration.imageAlpha)
                 beautyImageView.sd_setImageWithURL(NSURL(string: technical.url!))
             }
-            dispatch_async(dispatch_get_global_queue(0, 0)) { () -> Void in
+            dispatchGlobal { 
                 var descString = "  "
                 for category in TPCConfiguration.allCategories {
                     if let technicals = self.technicalDict[category] {
@@ -51,11 +51,11 @@ class TPCTechnicalCell: UITableViewCell {
                     }
                 }
                 descString = descString.substringToIndex(descString.endIndex.advancedBy(-3))
-                dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                dispatchMain() {
                     self.describeLabel.text = descString
                     self.describeLabel.subviews.first?.alpha = CGFloat(TPCConfiguration.imageAlpha)
                     self.describeLabel.layoutIfNeeded()
-                })
+                }
             }
         }
     }
