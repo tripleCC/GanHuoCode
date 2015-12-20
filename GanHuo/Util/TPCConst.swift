@@ -17,3 +17,5 @@ let TPCRefreshControlOriginHeight: CGFloat = 60.0
 let TPCGankIOURLString = "http://gank.io/"
 
 let TPCTechnicalReloadDataNotification = "TPCTechnicalReloadDataNotification"
+
+let TPCCurrentVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String

@@ -23,10 +23,11 @@ struct TPCLaunchConfig {
 struct TPCVersionInfo {
     var version: String?
     var updateInfo: String?
-    
+    var newFunction: String?
     init (dict: JSON) {
         debugPrint(dict)
         version = dict["version"].stringValue
         updateInfo = dict["updateInfo"].stringValue
+        newFunction = dict["newFunction"].stringValue
     }
 }

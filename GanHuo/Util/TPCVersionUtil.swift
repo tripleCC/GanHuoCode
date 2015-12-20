@@ -14,7 +14,7 @@ let TPCNextVersionKey = "TPCNextVersion"
 class TPCVersionUtil {
     static var versionInfo: TPCVersionInfo? {
         didSet {
-            let curVesion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
+            let curVesion = TPCCurrentVersion
             shouldUpdate = versionInfo?.version != curVesion
             let nextVersion = TPCStorageUtil.objectForKey(TPCNextVersionKey) as? String
             debugPrint(curVesion, nextVersion, versionInfo?.version)

@@ -11,6 +11,7 @@ import SDWebImage
 
 private let GIVE_A_FAVORABLE_RECEPTION = "给幹貨好评"
 private let GIVE_A_FEEDBACK = "给幹貨反馈"
+private let NEW_VERSION = "最新版本"
 private let LOAD_DATA_EACH_TIME = "每次加载数目"
 private let CATEGORY_DISPLAY_AT_HOME = "主页显示类目"
 private let CONTENT_RULES_AT_HOME = "显示类目内容"
@@ -106,9 +107,14 @@ class TPCSettingViewController: TPCViewController {
         contents.append(sectionTwo)
     }
     private func setupThreeSection() {
-        let sectionThree = [TPCSetItem(title: ABOUT_ME, action: { [unowned self] (indexPath) -> () in
+        var sectionThree = [TPCSetItem(title: ABOUT_ME, action: { [unowned self] (indexPath) -> () in
                 self.aboutMe(indexPath)
             })]
+        if TPCVenusUtil.venusFlag {
+            sectionThree.append(TPCSetItem(title: NEW_VERSION, detailTitle: TPCVersionUtil.versionInfo?.version ?? TPCCurrentVersion, action: { [unowned self] (indexPath) -> () in
+                self.setNewVersion()
+                }))            
+        }
         contents.append(sectionThree)
     }
     private func setupFourSection() {
@@ -197,12 +203,25 @@ class TPCSettingViewController: TPCViewController {
 typealias TPCSettingFunction = TPCSettingViewController
 extension TPCSettingFunction {
     private func giveAFavorableReception() {
+        TPCVersionUtil.shouldUpdate = false
         TPCVersionUtil.openUpdateLink()
     }
     
     private func giveAFeedBack() {
         let mail = "triplec.linux@gmail.com"
         UIApplication.sharedApplication().openURL(NSURL(string: "mailto://\(mail)")!)
+    }
+    
+    private func setNewVersion() {
+        if TPCCurrentVersion < TPCVersionUtil.versionInfo?.version {
+            let ac = UIAlertController(title: "发现新版本", message: TPCVersionUtil.versionInfo?.newFunction, preferredStyle: .Alert)
+            ac.addAction(UIAlertAction(title: "现在去吃", style: .Default, handler: { (action) -> Void in
+                TPCVersionUtil.shouldUpdate = false
+                TPCVersionUtil.openUpdateLink()
+            }))
+            ac.addAction(UIAlertAction(title: "稍后再说", style: .Cancel, handler: nil))
+            presentViewController(ac, animated: true, completion: nil)
+        }
     }
     
     private func setLoadDataNumberOnce(indexPath: NSIndexPath) {
@@ -260,7 +279,7 @@ extension TPCSettingViewController: UITableViewDelegate {
 
 extension TPCSettingViewController: UIScrollViewDelegate {
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let modelY: CGFloat = 0
+        let modelY: CGFloat = 70
         if scrollView.contentOffset.y > modelY {
             UIApplication.sharedApplication().keyWindow?.addSubview(mirrorView)
             mirrorView.transform = CGAffineTransformIdentity
@@ -274,9 +293,10 @@ extension TPCSettingViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        let modelY: CGFloat = 0
-        if scrollView.contentOffset.y >= -20 {
-            var alpha = abs(scrollView.contentOffset.y + 20) / (modelY + 10)
+        let modelY: CGFloat = 70
+        if scrollView.contentOffset.y >= 50 {
+            var alpha = abs(scrollView.contentOffset.y - 50) / (modelY - 50)
+            debugPrint(alpha)
             alpha = min(alpha, 1)
             tipLabel.alpha = alpha
             tipLabel.text = "继续下拉返回首页"
