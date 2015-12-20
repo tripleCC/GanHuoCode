@@ -39,6 +39,7 @@ class TPCSetItem {
 class TPCSettingViewController: TPCViewController {
     let reuseIdentifier = "settingCell"
     var contents = [[TPCSetItem]]()
+    var aboutMe: TPCAboutMe?
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
@@ -75,6 +76,16 @@ class TPCSettingViewController: TPCViewController {
         super.viewDidLoad()
         setupNav()
         setupContent()
+        
+        // 后期TPCLaunchConfig中存储更新标志，比如版本是否更新，关于我是否更新（可以是一个Int），并保存TPCLaunchConfig，每次下载时进行比较，如果不相等，就下载对应的数据，比如AboutMe从2->3，就下载TPCAboutMe数据，然后存入本地。
+        // 这样每次下载的数据只有TPCLaunchConfig中的标志位，不费流量，并且本地缓存更加容易
+//        TPCNetworkUtil.loadAbountMe { (aboutMe) -> () in
+//            if aboutMe.detail == nil {
+//                aboutMe.detail =
+//            } else {
+//                
+//            }
+//        }
     }
     
     private func setupContent() {
