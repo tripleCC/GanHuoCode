@@ -13,19 +13,69 @@ class TPCShareView: UIView {
     var desc: String = ""
     var image: UIImage?
     var mediaURL: NSURL?
+    
+    @IBOutlet weak var containerView: UIView! {
+        didSet {
+            doAppearAnimation(containerView)
+        }
+    }
+    
     @IBOutlet weak var sinaContainerView: UIView! {
         didSet {
             sinaContainerView.userInteractionEnabled = true
             let tap = UITapGestureRecognizer(target: self, action: "sinaContainerViewOnClicked")
             sinaContainerView.addGestureRecognizer(tap)
-            doAppearAnimation(sinaContainerView)
         }
     }
-    @IBOutlet weak var nameText: UILabel! {
+    
+    @IBOutlet weak var qqContainerView: UIView! {
         didSet {
-            nameText.font = TPCConfiguration.themeSFont
-            nameText.textColor = UIColor.grayColor()
+            qqContainerView.userInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target: self, action: "qqContainerViewOnClicked")
+            qqContainerView.addGestureRecognizer(tap)
         }
+    }
+    
+    @IBOutlet weak var qqZoneContainerView: UIView! {
+        didSet {
+            qqZoneContainerView.userInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target: self, action: "qqZoneContainerViewOnClicked")
+            qqZoneContainerView.addGestureRecognizer(tap)
+        }
+    }
+    
+    @IBOutlet weak var wxContainerView: UIView! {
+        didSet {
+            wxContainerView.userInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target: self, action: "wxContainerViewOnClicked")
+            wxContainerView.addGestureRecognizer(tap)
+        }
+    }
+    
+    @IBOutlet var nameLabels: [UILabel]! {
+        didSet {
+            if let nameLabels = nameLabels {
+                for nameText in nameLabels {
+                    nameText.font = TPCConfiguration.themeSFont
+                    nameText.textColor = UIColor.grayColor()
+                }
+            }
+        }
+    }
+    
+    func qqContainerViewOnClicked() {
+        TPCShareManager.shareInstance.shareQQWithTitle(title, desc: desc, image: image, mediaURL: mediaURL)
+        maskViewOnClicked()
+    }
+    
+    func qqZoneContainerViewOnClicked() {
+        TPCShareManager.shareInstance.shareQQZoneWithTitle(title, desc: desc, image: image, mediaURL: mediaURL)
+        maskViewOnClicked()
+    }
+    
+    func wxContainerViewOnClicked() {
+        TPCShareManager.shareInstance.shareWXWithTitle(title, desc: desc, image: image, mediaURL: mediaURL)
+        maskViewOnClicked()
     }
     
     func sinaContainerViewOnClicked() {

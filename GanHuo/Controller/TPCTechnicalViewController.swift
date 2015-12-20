@@ -131,6 +131,9 @@ class TPCTechnicalViewController: TPCViewController {
     }
     
     func set() {
+        TPCShareManager.shareInstance.shareQQWithTitle("啊哈哈哈哈", desc: "啦啦啦啦")
+//        TPCShareManager.shareInstance.shareWXWithTitle("adfasdfa", desc: "adsaffds")
+        
         tableView.refreshControl.endRefreshing()
         performSegueWithIdentifier("TechnicalVc2SettingVc", sender: nil)
         TPCUMManager.event(.TechnicalSet)

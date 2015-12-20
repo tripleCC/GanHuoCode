@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MonkeyKing
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         TPCConfiguration.setInitialize()
         TPCUMManager.start()
+        TPCVersionUtil.registerLocalNotification()
         return true
     }
 
@@ -26,8 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        debugPrint( TPCVersionUtil.shouldUpdate, TPCVersionUtil.hadShowed)
-        if TPCVersionUtil.shouldUpdate && !TPCVersionUtil.hadShowed {
+        debugPrint( TPCVersionUtil.shouldUpdate, TPCVersionUtil.hadShowed, TPCShareManager.shareInstance.shareing)
+        // 共享时，不发送更新通知
+        if TPCVersionUtil.shouldUpdate && !TPCVersionUtil.hadShowed && !TPCShareManager.shareInstance.shareing {
             TPCVersionUtil.showUpdateMessage()
         }
     }
@@ -43,6 +46,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         debugPrint("打开AppStore")
         TPCVersionUtil.openUpdateLink()
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        if MonkeyKing.handleOpenURL(url) {
+            debugPrint(url)
+            return true
+        }
+        
+        return false
     }
     
     func applicationWillTerminate(application: UIApplication) {

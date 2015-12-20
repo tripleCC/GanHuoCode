@@ -7,56 +7,206 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TPCShareView" customModule="WKCC" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TPCShareView" customModule="GanHuo" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="387" height="484"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eKc-YA-mK2">
-                    <rect key="frame" x="143" y="192" width="100" height="100"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o0A-83-eNx">
+                    <rect key="frame" x="113" y="162" width="160" height="160"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新浪微博" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8c6-kJ-fg1">
-                            <rect key="frame" x="10" y="50" width="80" height="30"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YUG-3w-WT9">
+                            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q7c-c8-UMK">
+                                    <rect key="frame" x="0.0" y="0.0" width="160" height="80"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hX2-KD-H5l" userLabel="wxContainerView">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weixin" translatesAutoresizingMaskIntoConstraints="NO" id="6ck-JS-Gj4">
+                                                    <rect key="frame" x="25" y="15" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="596-sW-7cC"/>
+                                                        <constraint firstAttribute="height" constant="30" id="WYD-D0-KME"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信好友" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4k-q9-5sJ">
+                                                    <rect key="frame" x="0.0" y="40" width="80" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="3Nn-c7-iFL"/>
+                                                        <constraint firstAttribute="width" constant="80" id="X8W-Rl-67e"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="a4k-q9-5sJ" firstAttribute="centerX" secondItem="hX2-KD-H5l" secondAttribute="centerX" id="ARp-JU-mW5"/>
+                                                <constraint firstItem="a4k-q9-5sJ" firstAttribute="top" secondItem="hX2-KD-H5l" secondAttribute="centerY" id="ITA-AJ-AaW"/>
+                                                <constraint firstAttribute="height" constant="80" id="M9b-rY-4hZ"/>
+                                                <constraint firstAttribute="width" constant="80" id="RxZ-yQ-AoX"/>
+                                                <constraint firstItem="6ck-JS-Gj4" firstAttribute="centerY" secondItem="hX2-KD-H5l" secondAttribute="centerY" constant="-10" id="Xv7-JW-Rha"/>
+                                                <constraint firstItem="6ck-JS-Gj4" firstAttribute="centerX" secondItem="hX2-KD-H5l" secondAttribute="centerX" id="wX2-HT-Yvd"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sav-Vs-7MV" userLabel="qqZoneContainerView">
+                                            <rect key="frame" x="80" y="0.0" width="80" height="80"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qqkongjian" translatesAutoresizingMaskIntoConstraints="NO" id="9Tf-cX-htq">
+                                                    <rect key="frame" x="25" y="15" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="4pY-43-Two"/>
+                                                        <constraint firstAttribute="height" constant="30" id="me4-fU-KzZ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QQ空间" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Im-mh-En1">
+                                                    <rect key="frame" x="0.0" y="40" width="80" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="RCt-hL-sYa"/>
+                                                        <constraint firstAttribute="width" constant="80" id="aMq-F4-tOd"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="6Im-mh-En1" firstAttribute="centerX" secondItem="Sav-Vs-7MV" secondAttribute="centerX" id="185-On-lVi"/>
+                                                <constraint firstAttribute="width" constant="80" id="CrX-vt-LmK"/>
+                                                <constraint firstItem="9Tf-cX-htq" firstAttribute="centerX" secondItem="Sav-Vs-7MV" secondAttribute="centerX" id="Q26-rs-UG1"/>
+                                                <constraint firstItem="6Im-mh-En1" firstAttribute="top" secondItem="Sav-Vs-7MV" secondAttribute="centerY" id="WAc-VP-Ibr"/>
+                                                <constraint firstAttribute="height" constant="80" id="cVB-yb-slX"/>
+                                                <constraint firstItem="9Tf-cX-htq" firstAttribute="centerY" secondItem="Sav-Vs-7MV" secondAttribute="centerY" constant="-10" id="lDb-qc-P2u"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pv3-94-JNT">
+                                    <rect key="frame" x="0.0" y="80" width="160" height="80"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MC5-Ww-f5l" userLabel="qqContainerView">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qq" translatesAutoresizingMaskIntoConstraints="NO" id="D18-Qj-1Yv">
+                                                    <rect key="frame" x="25" y="15" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="bbb-O0-TY6"/>
+                                                        <constraint firstAttribute="width" constant="30" id="pFd-qy-MeU"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QQ好友" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AiZ-yc-glP">
+                                                    <rect key="frame" x="0.0" y="40" width="80" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="oN0-Rf-GAl"/>
+                                                        <constraint firstAttribute="height" constant="30" id="vCs-sf-q3J"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="D18-Qj-1Yv" firstAttribute="centerX" secondItem="MC5-Ww-f5l" secondAttribute="centerX" id="Iw3-dO-0bw"/>
+                                                <constraint firstAttribute="width" constant="80" id="KBI-TP-VFd"/>
+                                                <constraint firstItem="AiZ-yc-glP" firstAttribute="centerX" secondItem="MC5-Ww-f5l" secondAttribute="centerX" id="b3b-zZ-Z8e"/>
+                                                <constraint firstItem="D18-Qj-1Yv" firstAttribute="centerY" secondItem="MC5-Ww-f5l" secondAttribute="centerY" constant="-10" id="jo6-yV-tIZ"/>
+                                                <constraint firstAttribute="height" constant="80" id="kR3-cV-gQz"/>
+                                                <constraint firstItem="AiZ-yc-glP" firstAttribute="top" secondItem="MC5-Ww-f5l" secondAttribute="centerY" id="pev-1T-UuS"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eKc-YA-mK2" userLabel="sinaContainerView">
+                                            <rect key="frame" x="80" y="0.0" width="80" height="80"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weibo" translatesAutoresizingMaskIntoConstraints="NO" id="e0O-D2-aD1">
+                                                    <rect key="frame" x="25" y="15" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="7Dy-W0-c48"/>
+                                                        <constraint firstAttribute="width" constant="30" id="l1z-dY-iqg"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新浪微博" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8c6-kJ-fg1">
+                                                    <rect key="frame" x="0.0" y="40" width="80" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Zvz-ag-WDK"/>
+                                                        <constraint firstAttribute="width" constant="80" id="b2V-JF-Ylp"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="e0O-D2-aD1" firstAttribute="centerY" secondItem="eKc-YA-mK2" secondAttribute="centerY" constant="-10" id="0qy-P4-QSV"/>
+                                                <constraint firstAttribute="width" constant="80" id="B7R-Bj-cTb"/>
+                                                <constraint firstItem="8c6-kJ-fg1" firstAttribute="top" secondItem="eKc-YA-mK2" secondAttribute="centerY" id="Cde-IL-VQF"/>
+                                                <constraint firstItem="e0O-D2-aD1" firstAttribute="centerX" secondItem="eKc-YA-mK2" secondAttribute="centerX" id="PBg-lk-xIz"/>
+                                                <constraint firstAttribute="height" constant="80" id="eBg-w6-6Za"/>
+                                                <constraint firstItem="8c6-kJ-fg1" firstAttribute="centerX" secondItem="eKc-YA-mK2" secondAttribute="centerX" id="sg7-Hs-sTE"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LiB-wF-Isx" userLabel="seperatorH">
+                            <rect key="frame" x="79.5" y="0.0" width="1" height="160"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="0.5" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="Zvz-ag-WDK"/>
-                                <constraint firstAttribute="width" constant="80" id="b2V-JF-Ylp"/>
+                                <constraint firstAttribute="width" constant="1" id="SpY-cS-EHt"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5n-w7-Az4" userLabel="seperatorV">
+                            <rect key="frame" x="0.0" y="79.5" width="160" height="1"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="0.4956450591216216" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="SYG-HS-4QL"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="100" id="B7R-Bj-cTb"/>
-                        <constraint firstItem="8c6-kJ-fg1" firstAttribute="top" secondItem="eKc-YA-mK2" secondAttribute="centerY" id="Cde-IL-VQF"/>
-                        <constraint firstAttribute="height" constant="100" id="eBg-w6-6Za"/>
-                        <constraint firstItem="8c6-kJ-fg1" firstAttribute="centerX" secondItem="eKc-YA-mK2" secondAttribute="centerX" id="sg7-Hs-sTE"/>
+                        <constraint firstItem="YUG-3w-WT9" firstAttribute="centerX" secondItem="o0A-83-eNx" secondAttribute="centerX" id="7gB-aQ-Cvf"/>
+                        <constraint firstAttribute="bottom" secondItem="LiB-wF-Isx" secondAttribute="bottom" id="9Ap-52-Uho"/>
+                        <constraint firstAttribute="height" constant="160" id="DYe-Ae-Z9I"/>
+                        <constraint firstItem="LiB-wF-Isx" firstAttribute="top" secondItem="o0A-83-eNx" secondAttribute="top" id="RKC-6C-Qgh"/>
+                        <constraint firstItem="YUG-3w-WT9" firstAttribute="centerY" secondItem="o0A-83-eNx" secondAttribute="centerY" id="WMx-Fg-QVB"/>
+                        <constraint firstItem="b5n-w7-Az4" firstAttribute="leading" secondItem="o0A-83-eNx" secondAttribute="leading" id="Yu4-bu-no2"/>
+                        <constraint firstAttribute="width" constant="160" id="akf-A8-CXO"/>
+                        <constraint firstItem="b5n-w7-Az4" firstAttribute="centerY" secondItem="o0A-83-eNx" secondAttribute="centerY" id="iU2-n7-BRG"/>
+                        <constraint firstAttribute="trailing" secondItem="b5n-w7-Az4" secondAttribute="trailing" id="lFT-QZ-IzB"/>
+                        <constraint firstItem="LiB-wF-Isx" firstAttribute="centerX" secondItem="o0A-83-eNx" secondAttribute="centerX" id="pgt-lH-2Oa"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weibo" translatesAutoresizingMaskIntoConstraints="NO" id="e0O-D2-aD1">
-                    <rect key="frame" x="173" y="212" width="40" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="7Dy-W0-c48"/>
-                        <constraint firstAttribute="width" constant="40" id="l1z-dY-iqg"/>
-                    </constraints>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.70278188344594594" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="e0O-D2-aD1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8Kr-UN-HjX"/>
-                <constraint firstItem="eKc-YA-mK2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CrZ-pF-e4X"/>
-                <constraint firstItem="e0O-D2-aD1" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="10" id="nWh-dU-fGS"/>
-                <constraint firstItem="eKc-YA-mK2" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="zER-5p-rVd"/>
+                <constraint firstItem="o0A-83-eNx" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fvB-Oe-PQ6"/>
+                <constraint firstItem="o0A-83-eNx" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rsQ-KK-StU"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="nameText" destination="8c6-kJ-fg1" id="g9y-c6-uO2"/>
-                <outlet property="sinaContainerView" destination="eKc-YA-mK2" id="0H6-XQ-T6w"/>
+                <outlet property="containerView" destination="o0A-83-eNx" id="r99-We-GzT"/>
+                <outlet property="qqContainerView" destination="MC5-Ww-f5l" id="5MP-j5-0gM"/>
+                <outlet property="qqZoneContainerView" destination="Sav-Vs-7MV" id="RnO-96-6XN"/>
+                <outlet property="sinaContainerView" destination="eKc-YA-mK2" id="9R9-8M-sCR"/>
+                <outlet property="wxContainerView" destination="hX2-KD-H5l" id="9xT-q3-abE"/>
+                <outletCollection property="nameLabels" destination="AiZ-yc-glP" collectionClass="NSMutableArray" id="1JR-pe-Z4G"/>
+                <outletCollection property="nameLabels" destination="8c6-kJ-fg1" collectionClass="NSMutableArray" id="Lwo-og-FOg"/>
+                <outletCollection property="nameLabels" destination="a4k-q9-5sJ" collectionClass="NSMutableArray" id="hmz-n5-5vx"/>
+                <outletCollection property="nameLabels" destination="6Im-mh-En1" collectionClass="NSMutableArray" id="K3r-BY-PbE"/>
             </connections>
             <point key="canvasLocation" x="137.5" y="447"/>
         </view>
     </objects>
     <resources>
-        <image name="weibo" width="100" height="100"/>
+        <image name="qq" width="64" height="64"/>
+        <image name="qqkongjian" width="64" height="64"/>
+        <image name="weibo" width="64" height="64"/>
+        <image name="weixin" width="64" height="64"/>
     </resources>
 </document>

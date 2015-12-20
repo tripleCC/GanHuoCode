@@ -41,11 +41,15 @@ class TPCVersionUtil {
             TPCStorageUtil.setBool(hadShowed, forKey: TPCVersionNotificationHadShowedKey)
         }
     }
+    
+    static func registerLocalNotification() {
+        let setting = UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(setting)
+    }
+    
     static func showUpdateMessage() {
         guard !hadShowed else { return }
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            let setting = UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: nil)
-            UIApplication.sharedApplication().registerUserNotificationSettings(setting)
             let n = UILocalNotification()
             n.fireDate = NSDate(timeIntervalSinceNow:3)
             n.timeZone = NSTimeZone.defaultTimeZone()
