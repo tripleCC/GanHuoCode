@@ -18,7 +18,8 @@ class TPCVersionUtil {
             shouldUpdate = versionInfo?.version != curVesion
             let nextVersion = TPCStorageUtil.objectForKey(TPCNextVersionKey) as? String
             debugPrint(curVesion, nextVersion, versionInfo?.version)
-            if versionInfo?.version != curVesion {
+            // 
+            if versionInfo?.version != curVesion && versionInfo?.version != nil {
                 shouldUpdate = true
                 // 每个版本更新，都通知一次
                 if nextVersion != versionInfo?.version {
