@@ -10,23 +10,47 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
-
-public enum TPCConfigType: String {
-    static let TPCWKCCNBaseURLString = "https://raw.githubusercontent.com/tripleCC/GanHuo/master/configuration/"
-    case AboutMe = "AboutMe"
-    case LaunchConfig = "LaunchConfig"
+public enum TPCGanHuoType {
+    static let TPCGanHuoBaseURLString = "https://raw.githubusercontent.com/tripleCC/GanHuo/master/"
     
-    func path() -> String {
-        var pathComponent = String()
-        switch self {
-        case .AboutMe:
-            pathComponent = "AboutMe.json"
-        case .LaunchConfig:
-            pathComponent = "LaunchConfig.json"
+    public enum ImageTypeSubtype {
+        static let ImageTypeSubtypeURLString = "images/"
+        case VenusImage(Int)
+        case SelfImage(Int, Int, Int)
+        
+        func path() -> String {
+            var pathComponent = String()
+            switch self {
+            case let .VenusImage(dayInterval):
+                pathComponent = "VenusImages/\(dayInterval).png"
+            case let .SelfImage(year, month, day):
+                pathComponent = "SelfImages/\(year)\(month)\(day).png"
+            }
+            return TPCGanHuoType.TPCGanHuoBaseURLString + ImageTypeSubtype.ImageTypeSubtypeURLString + pathComponent
         }
-        return TPCConfigType.TPCWKCCNBaseURLString + pathComponent
     }
+    case ImageType(ImageTypeSubtype)
+    
+    public enum ConfigTypeSubtype: String {
+        static let ConfigTypeSubtypeURLString = "configuration/"
+        case AboutMe = "AboutMe"
+        case LaunchConfig = "LaunchConfig"
+        
+        func path() -> String {
+            var pathComponent = String()
+            switch self {
+            case .AboutMe:
+                pathComponent = "AboutMe.json"
+            case .LaunchConfig:
+                pathComponent = "LaunchConfig.json"
+            }
+            return TPCGanHuoType.TPCGanHuoBaseURLString + ConfigTypeSubtype.ConfigTypeSubtypeURLString + pathComponent
+        }
+    }
+    case ConfigType(ConfigTypeSubtype)
 }
+
+
 
 public enum TPCTechnicalType {
     static let TPCGankBaseURLString = "http://gank.avosapps.com/api"
@@ -79,9 +103,14 @@ class TPCNetworkUtil {
                                             if let dict = json.dictionary {
                                                 var technical = TPCTechnicalObject(dict: dict)
                                                 technical.desc = TPCTextParser.shareTextParser.parseOriginString(technical.desc!)
+//                                                if TPCVenusUtil.venusFlag {
+//                                                    technical.url = 
+//                                                }
+                                                // 这里对图片url进行替换
                                                 technicalArray.append(technical)
                                             }
                                         }
+                                        // 这里对item进行判断，安卓过滤
                                         technicalDict[item.stringValue] = technicalArray
                                     }
                                 }
@@ -119,20 +148,20 @@ class TPCNetworkUtil {
     }
     
     func loadAbountMe(completion: (aboutMe: TPCAboutMe) -> ()) {
-        loadConfigByType(.AboutMe) { JSON in
-            completion(aboutMe: TPCAboutMe(dict: JSON))
+        loadGanHuoByPath(TPCGanHuoType.ConfigTypeSubtype.AboutMe.path()) { (response) -> () in
+            completion(aboutMe: TPCAboutMe(dict: response))
         }
     }
     
     func loadLaunchConfig(completion: (launchConfig: TPCLaunchConfig) -> ()) {
-        loadConfigByType(.LaunchConfig) { JSON in
-            completion(launchConfig: TPCLaunchConfig(dict: JSON))
+        loadGanHuoByPath(TPCGanHuoType.ConfigTypeSubtype.LaunchConfig.path()) { (response) -> () in
+            completion(launchConfig: TPCLaunchConfig(dict: response))
         }
     }
     
-    func loadConfigByType(type: TPCConfigType, completion: (response: JSON) -> ()) {
-        debugPrint(type.path())
-        Alamofire.request(.GET, type.path())
+    func loadGanHuoByPath(path: String, completion: (response: JSON) -> ()) {
+        debugPrint(path)
+        Alamofire.request(.GET, path)
                  .response(completionHandler: { (request, response, data, ErrorType) -> Void in
                     if let data = data {
                         completion(response: JSON(data: data))
