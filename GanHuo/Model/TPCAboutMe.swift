@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-struct TPCAboutMe {
+public struct TPCAboutMe {
     var detail: String?
     var links: [TPCLink]?
     
@@ -20,7 +20,7 @@ struct TPCAboutMe {
     }
 }
 
-struct TPCLink {
+public struct TPCLink {
     var title: String?
     var url: String?
     

@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-struct TPCTechnicalObject {
+public struct TPCTechnicalObject {
     var who: String?
     var publishedAt: String?
     var desc: String?

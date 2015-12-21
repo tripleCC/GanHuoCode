@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-struct TPCLaunchConfig {
+public struct TPCLaunchConfig {
     var venus: Bool?
     var versionInfo: TPCVersionInfo?
     
@@ -20,7 +20,7 @@ struct TPCLaunchConfig {
     }
 }
 
-struct TPCVersionInfo {
+public struct TPCVersionInfo {
     var version: String?
     var updateInfo: String?
     var newFunction: String?

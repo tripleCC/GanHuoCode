@@ -9,7 +9,6 @@
 import UIKit
 import SwiftyJSON
 
-
 class TPCTechnicalViewController: TPCViewController {
     let reuseIdentifier = "TPCTechnicalCell"
     @IBOutlet weak var tableView: TPCTableView! {
@@ -23,12 +22,6 @@ class TPCTechnicalViewController: TPCViewController {
     }
     private var technocals = [TPCTechnicalDictionary]()
     private var categoriesArray = [[String]]()
-    private var (year, month, day) = NSDate.currentTime()
-    private var loadDataCount = 0
-    private var loadEmptyCount = 0
-    lazy private var dayInterval: NSTimeInterval = {
-       return TPCVenusUtil.dayInterval
-    }()
     
     private var loadingMore = false
     private var loadingNew = false
@@ -57,8 +50,6 @@ class TPCTechnicalViewController: TPCViewController {
         }
     }
     private var lastScrollViewOffsetY: CGFloat = TPCConfiguration.technicalOriginScrollViewContentOffsetY
-    private var technocalsTemp = [TPCTechnicalDictionary]()
-    private var categoriesArrayTemp = [[String]]()
     var canLoadMoreData: Bool {
         get {
             return !self.tableView.refreshing() && !self.loadingMore && !self.loadingNew
@@ -84,11 +75,10 @@ class TPCTechnicalViewController: TPCViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         TPCLaunchScreenView.showLaunchAniamtion()
-        self.setupNav()
-        self.registerObserverForApplicationDidEnterBackground()
-        self.registerReloadTableView()
+        setupNav()
+        registerObserverForApplicationDidEnterBackground()
+        registerReloadTableView()
         TPCVenusUtil.setInitialize { (launchConfig) -> () in
-            (self.year, self.month, self.day) = TPCVenusUtil.startTime
             self.loadNewData()
             self.launchConfig(launchConfig)
         }
@@ -115,10 +105,6 @@ class TPCTechnicalViewController: TPCViewController {
 //        
 //    }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     deinit {
         removeObserver()
     }
@@ -144,93 +130,48 @@ class TPCTechnicalViewController: TPCViewController {
         }
     }
     
-    private func loadData(allLoadedAppend: Bool = false, completion: (() -> ())? = nil) {
-        guard !TPCConfiguration.checkBelowStartTime(year, month: month, day: day) else {
-            self.loadNoMoreData = true
-            self.loadingNew = false
-            self.loadingMore = false
-            self.reloadTableView()
-            self.resetCounter()
-            if self.tableView.refreshing() {
-                self.tableView.endRefreshing()
-            }
-            debugPrint("低于起始时间")
-            return
-        }
-        
-        TPCNetworkUtil.shareInstance.loadTechnicalByYear(year, month: month, day: day) { (technicalDict, categories) -> () in
-//            debugPrint("TPCVenusUtil.venusFlag=\(TPCVenusUtil.venusFlag)")
-            if TPCVenusUtil.venusFlag || !TPCVenusUtil.compareWithYear(self.year, month: self.month, day: self.day) {
-                if categories.count > 0 {
-                    debugPrint(__FUNCTION__, self.year, self.month, self.day)
-                    // 这里考虑后面把数据源河网络独立出来，可以删掉
-//                    if (!self.tableView.decelerating) {
-//                        self.reloadTableView()
-//                    }
-                    if !allLoadedAppend {
-                        self.technocals.append(technicalDict)
-                        self.categoriesArray.append(categories)
-                    } else {
-                        self.technocalsTemp.append(technicalDict)
-                        self.categoriesArrayTemp.append(categories)
-                    }
-                    guard ++self.loadDataCount != TPCConfiguration.loadDataCountOnce else {
-                        self.resetCounter()
-                        completion?()
-                        return
-                    }
-                } else {
-                    guard ++self.loadEmptyCount < TPCConfiguration.loadDataCountOnce * 2 else {
-                        self.resetCounter()
-                        completion?()
-                        debugPrint("下载为空超过最大次数")
-                        return
-                    }
-                }
-            }
-
-            (self.year, self.month, self.day) = NSDate.timeSinceNowByDayInterval(-(++self.dayInterval))
-            self.loadData(allLoadedAppend, completion: completion)
-        }
-    }
-    
     private func loadNewData() {
         loadNoMoreData = false
         loadingNew = true
-        (year, month, day) = TPCVenusUtil.startTime
-        dayInterval = TPCVenusUtil.dayInterval
-        resetCounter()
         tableView.beginRefreshViewAnimation()
-        debugPrint("开始加载")
-        loadData(true) { () -> () in
-            self.technocals.removeAll()
-            self.categoriesArray.removeAll()
-            self.technocals.appendContentsOf(self.technocalsTemp)
-            self.categoriesArray.appendContentsOf(self.categoriesArrayTemp)
-            self.technocalsTemp.removeAll()
-            self.categoriesArrayTemp.removeAll()
+        TPCNetworkUtil.shareInstance.loadNewData({ (technocals, categoriesArray) -> () in
+            self.technocals = technocals
+            self.categoriesArray = categoriesArray
             self.tableView.endRefreshing()
             self.loadingNew = false
             // 延迟0.5s，防抖动
             dispatchSeconds(0.5) { self.reloadTableView() }
+            }) { (type) -> () in
+                debugPrint(type.rawValue)
         }
     }
     
     private func loadMoreData() {
         guard canLoadMoreData else { return }
         loadingMore = true
-        (year, month, day) = NSDate.timeSinceNowByDayInterval(-(++self.dayInterval))
-        loadData() {
+        func loadMoreDataAction(technocals: [TPCTechnicalDictionary], _ categoriesArray:[[String]]) {
+            self.technocals = technocals
+            self.categoriesArray = categoriesArray
             self.loadingMore = false
             self.reloadTableView()
         }
+        TPCNetworkUtil.shareInstance.loadMoreData({ (technocals, categoriesArray) -> () in
+            loadMoreDataAction(technocals, categoriesArray)
+            }) { (type, technocals, categoriesArray) -> () in
+                loadMoreDataAction(technocals, categoriesArray)
+                if type == TPCFailureType.BelowStartTime {
+                    self.loadNoMoreData = true
+                    self.loadingNew = false
+                    self.loadingMore = false
+                    self.reloadTableView()
+                    if self.tableView.refreshing() {
+                        self.tableView.endRefreshing()
+                    }
+                }
+                debugPrint(type.rawValue)
+        }
     }
-    
-    private func resetCounter() {
-        loadEmptyCount = 0
-        loadDataCount = 0
-    }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "TechnicalVc2DetailVc" {
             if let detailVc = segue.destinationViewController as? TPCDetailViewController {
