@@ -165,6 +165,7 @@ public class TPCNetworkUtil {
         }
     }
 }
+
 extension TPCNetworkUtil {
     public func loadTechnicalByYear(year: Int, month: Int, day: Int, completion:((TPCTechnicalDictionary, [String]) -> ())?) {
         TPCNetworkUtil.shareInstance
@@ -173,8 +174,7 @@ extension TPCNetworkUtil {
                 // 移除已经下载好的请求
                 //                    dispatchGlobal() { self.removeRequest(request) }
                 dispatchGlobal({ () -> () in
-                    // 这里有时候会出现顺序错位情况，但是如果定死单个子线程，解析速度会变慢
-                    // 后面再优化
+                    // 这里有时候会出现顺序错位情况，但是如果定死单个子线程，解析速度会变慢, 后面再优化
                     if let data = data {
                         let categories = JSON(data: data)["category"].arrayValue
                         var categoryArray = [String]()
@@ -186,20 +186,21 @@ extension TPCNetworkUtil {
                             
                             let results = JSON(data: data)["results"].dictionaryValue
                             for item in categories {
+                                // 这里对item进行判断，安卓过滤
+                                guard TPCVenusUtil.venusFlag || item.stringValue != "Android" else { continue }
                                 if let itemArray = results[item.stringValue]?.arrayValue {
                                     var technicalArray = [TPCTechnicalObject]()
                                     for json in itemArray {
                                         if let dict = json.dictionary {
                                             var technical = TPCTechnicalObject(dict: dict)
                                             technical.desc = TPCTextParser.shareTextParser.parseOriginString(technical.desc!)
-                                            //                                                if TPCVenusUtil.venusFlag {
-                                            //                                                    technical.url =
-                                            //                                                }
-                                            // 这里对图片url进行替换
+                                            if !TPCVenusUtil.venusFlag {
+                                                // 这里到时候GitHub上面接口修改了之后，要获取图片最大张数，然后用最大张数减去时间差
+                                                technical.url = TPCGanHuoType.ImageTypeSubtype.VenusImage(Int(self.dayInterval)).path()
+                                            }
                                             technicalArray.append(technical)
                                         }
                                     }
-                                    // 这里对item进行判断，安卓过滤
                                     technicalDict[item.stringValue] = technicalArray
                                 }
                             }
