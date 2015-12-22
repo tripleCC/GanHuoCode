@@ -26,9 +26,9 @@ public enum TPCGanHuoType {
             var pathComponent = String()
             switch self {
             case let .VenusImage(dayInterval):
-                pathComponent = "VenusImages/\(dayInterval).png"
+                pathComponent = "venusImages/\(dayInterval).png"
             case let .SelfImage(year, month, day):
-                pathComponent = "SelfImages/\(year)\(month)\(day).png"
+                pathComponent = "selfImages/\(year)\(month)\(day).png"
             }
             return TPCGanHuoType.TPCGanHuoBaseURLString + ImageTypeSubtype.ImageTypeSubtypeURLString + pathComponent
         }
