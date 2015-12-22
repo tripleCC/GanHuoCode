@@ -42,8 +42,10 @@ class TPCImageView: UIView {
                     })
                 }
                 }) { (image, error, cacheType, imageURL) -> Void in
-                    self.adjustImageViewFrameByImage(image)
-                    self.progressView.alpha = 0
+                    if error == nil {
+                        self.adjustImageViewFrameByImage(image)
+                        self.progressView.alpha = 0
+                    }
             }
         }
     }

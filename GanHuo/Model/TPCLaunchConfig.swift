@@ -9,22 +9,24 @@
 import Foundation
 import SwiftyJSON
 
-public struct TPCLaunchConfig {
+public struct TPCLaunchConfig: TPCGanHuo {
+    public typealias RawType = JSON
     var venus: Bool?
     var versionInfo: TPCVersionInfo?
     
-    init (dict: JSON) {
+    public init (dict: JSON) {
         debugPrint(dict)
         venus = dict["venus"].boolValue
         versionInfo = TPCVersionInfo(dict: dict["versionInfo"])
     }
 }
 
-public struct TPCVersionInfo {
+public struct TPCVersionInfo: TPCGanHuo {
+    public typealias RawType = JSON    
     var version: String?
     var updateInfo: String?
     var newFunction: String?
-    init (dict: JSON) {
+    public init (dict: JSON) {
         debugPrint(dict)
         version = dict["version"].stringValue
         updateInfo = dict["updateInfo"].stringValue

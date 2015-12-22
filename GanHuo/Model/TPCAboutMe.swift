@@ -9,22 +9,24 @@
 import Foundation
 import SwiftyJSON
 
-public struct TPCAboutMe {
+public struct TPCAboutMe: TPCGanHuo {
+    public typealias RawType = JSON
     var detail: String?
     var links: [TPCLink]?
     
-    init (dict: JSON) {
+    public init (dict: JSON) {
         debugPrint(dict)
         detail = dict["detail"].stringValue
         links = TPCLink.links(linksArray: dict["links"].arrayValue)
     }
 }
 
-public struct TPCLink {
+public struct TPCLink: TPCGanHuo {
+    public typealias RawType = JSON    
     var title: String?
     var url: String?
     
-    init (dict: JSON) {
+    public init (dict: JSON) {
         title = dict["title"].stringValue
         url = dict["url"].stringValue
     }

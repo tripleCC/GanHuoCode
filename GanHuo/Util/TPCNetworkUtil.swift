@@ -10,15 +10,19 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
+public protocol TPCGanHuoAPI {
+    func path() -> String
+}
+
 public enum TPCGanHuoType {
     static let TPCGanHuoBaseURLString = "https://raw.githubusercontent.com/tripleCC/GanHuo/master/"
     
-    public enum ImageTypeSubtype {
+    public enum ImageTypeSubtype: TPCGanHuoAPI {
         static let ImageTypeSubtypeURLString = "images/"
         case VenusImage(Int)
         case SelfImage(Int, Int, Int)
         
-        func path() -> String {
+        public func path() -> String {
             var pathComponent = String()
             switch self {
             case let .VenusImage(dayInterval):
@@ -31,12 +35,12 @@ public enum TPCGanHuoType {
     }
     case ImageType(ImageTypeSubtype)
     
-    public enum ConfigTypeSubtype: String {
+    public enum ConfigTypeSubtype: String, TPCGanHuoAPI {
         static let ConfigTypeSubtypeURLString = "configuration/"
         case AboutMe = "AboutMe"
         case LaunchConfig = "LaunchConfig"
         
-        func path() -> String {
+        public func path() -> String {
             var pathComponent = String()
             switch self {
             case .AboutMe:
@@ -52,7 +56,7 @@ public enum TPCGanHuoType {
 
 
 
-public enum TPCTechnicalType {
+public enum TPCTechnicalType: TPCGanHuoAPI {
     static let TPCGankBaseURLString = "http://gank.avosapps.com/api"
     case Data(String, Int, Int)
     case Day(Int, Int, Int)
@@ -238,20 +242,20 @@ extension TPCNetworkUtil {
     }
     
     public func loadAbountMe(completion: (aboutMe: TPCAboutMe) -> ()) {
-        loadGanHuoByPath(TPCGanHuoType.ConfigTypeSubtype.AboutMe.path()) { (response) -> () in
+        loadGanHuoByPath(TPCGanHuoType.ConfigTypeSubtype.AboutMe) { (response) -> () in
             completion(aboutMe: TPCAboutMe(dict: response))
         }
     }
     
     public func loadLaunchConfig(completion: (launchConfig: TPCLaunchConfig) -> ()) {
-        loadGanHuoByPath(TPCGanHuoType.ConfigTypeSubtype.LaunchConfig.path()) { (response) -> () in
+        loadGanHuoByPath(TPCGanHuoType.ConfigTypeSubtype.LaunchConfig) { (response) -> () in
             completion(launchConfig: TPCLaunchConfig(dict: response))
         }
     }
     
-    public func loadGanHuoByPath(path: String, completion: (response: JSON) -> ()) {
+    public func loadGanHuoByPath<T: TPCGanHuoAPI>(path: T, completion: (response: JSON) -> ()) {
         debugPrint(path)
-        Alamofire.request(.GET, path)
+        Alamofire.request(.GET, path.path())
             .response(completionHandler: { (request, response, data, ErrorType) -> Void in
                 if let data = data {
                     completion(response: JSON(data: data))

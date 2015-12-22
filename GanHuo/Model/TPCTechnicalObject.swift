@@ -9,7 +9,13 @@
 import Foundation
 import SwiftyJSON
 
-public struct TPCTechnicalObject {
+public protocol TPCGanHuo {
+    typealias RawType
+    init (dict: RawType)
+}
+
+public struct TPCTechnicalObject: TPCGanHuo {
+    public typealias RawType = [String : JSON]
     var who: String?
     var publishedAt: String?
     var desc: String?
@@ -20,7 +26,7 @@ public struct TPCTechnicalObject {
     var createdAt: String?
     var updatedAt: String?
     
-    init (dict: [String : JSON]) {
+    public init (dict: RawType) {
         updatedAt = dict["updatedAt"]?.string
         who = dict["who"]?.string
         publishedAt = dict["publishedAt"]?.string
