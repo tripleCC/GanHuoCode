@@ -17,7 +17,7 @@ public struct TPCAboutMe: TPCGanHuo {
     public init (dict: JSON) {
         debugPrint(dict)
         detail = dict["detail"].stringValue
-        links = TPCLink.links(linksArray: dict["links"].arrayValue)
+        links = dict["links"].arrayValue.map{ json in TPCLink(dict: json) }
     }
 }
 
@@ -29,16 +29,5 @@ public struct TPCLink: TPCGanHuo {
     public init (dict: JSON) {
         title = dict["title"].stringValue
         url = dict["url"].stringValue
-    }
-    
-    static func links(linksArray array: [JSON]?) -> [TPCLink] {
-        var linkTemp = [TPCLink]()
-        if let array = array {
-            for linkJSON in array {
-                let link = TPCLink(dict: linkJSON)
-                linkTemp.append(link)
-            }
-        }
-        return linkTemp
     }
 }

@@ -198,7 +198,7 @@ extension TPCNetworkUtil {
                             let results = JSON(data: data)["results"].dictionaryValue
                             for item in categories {
                                 // 这里对item进行判断，安卓过滤
-                                guard TPCVenusUtil.venusFlag || item.stringValue != "Android" else { continue }
+                                guard TPCVenusUtil.venusFlag || !TPCVenusUtil.filterCategories.contains(item.stringValue) else { continue }
                                 if let itemArray = results[item.stringValue]?.arrayValue {
                                     var technicalArray = [TPCTechnicalObject]()
                                     for json in itemArray {
