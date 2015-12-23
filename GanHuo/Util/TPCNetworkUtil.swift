@@ -85,6 +85,7 @@ public typealias TPCTechnicalDictionary = [String : [TPCTechnicalObject]]
 
 public class TPCNetworkUtil {
     static let shareInstance = TPCNetworkUtil()
+    private var alamofire: Alamofire.Manager!
     private var requests = [Request]()
     private var loadEmptyCount = 0
     private var loadDataCount = 0
@@ -96,6 +97,12 @@ public class TPCNetworkUtil {
     lazy private var dayInterval: NSTimeInterval = {
         return TPCVenusUtil.dayInterval
     }()
+    
+    init() {
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configuration.timeoutIntervalForResource = 2
+        alamofire = Alamofire.Manager(configuration: configuration)
+    }
     
     public func loadData(allLoadedAppend: Bool = false, success: (() -> ())?, failure: ((TPCFailureType) -> ())?) {
         guard !TPCConfiguration.checkBelowStartTime(year, month: month, day: day) else {
@@ -173,7 +180,7 @@ public class TPCNetworkUtil {
 extension TPCNetworkUtil {
     public func loadTechnicalByYear(year: Int, month: Int, day: Int, completion:((TPCTechnicalDictionary, [String]) -> ())?) {
         TPCNetworkUtil.shareInstance
-        Alamofire.request(.GET, TPCTechnicalType.Day(year, month, day).path())
+        alamofire.request(.GET, TPCTechnicalType.Day(year, month, day).path())
             .response(completionHandler: { (request, response, data, ErrorType) -> Void in
                 // 移除已经下载好的请求
                 //                    dispatchGlobal() { self.removeRequest(request) }
@@ -255,7 +262,7 @@ extension TPCNetworkUtil {
     
     public func loadGanHuoByPath<T: TPCGanHuoAPI>(path: T, completion: (response: JSON) -> ()) {
         debugPrint(path)
-        Alamofire.request(.GET, path.path())
+        alamofire.request(.GET, path.path())
             .response(completionHandler: { (request, response, data, ErrorType) -> Void in
                 if let data = data {
                     completion(response: JSON(data: data))
