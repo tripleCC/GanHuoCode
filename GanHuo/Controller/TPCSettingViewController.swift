@@ -89,24 +89,24 @@ class TPCSettingViewController: TPCViewController {
     }
     
     private func setupContent() {
-        setupOneSection()
-        setupTwoSection()
-        setupThreeSection()
-        setupFourSection()
+        contents = [sectionOne, sectionTwo, sectionThree, sectionFour]
+        if !TPCVenusUtil.venusFlag {
+            // 把过滤类型弄到TPCVenusUtil去，改成enum
+            contents = contents.map{ $0.filter{ $0.title != GIVE_A_FAVORABLE_RECEPTION && $0.title != NEW_VERSION} }
+        }
         view.addSubview(tipLabel)
     }
     
-    private func setupOneSection() {
-        let sectionOne = [TPCSetItem(title: GIVE_A_FAVORABLE_RECEPTION, action: { [unowned self] (setItem) -> () in
+    private var sectionOne: [TPCSetItem] {
+        return [TPCSetItem(title: GIVE_A_FAVORABLE_RECEPTION, action: { [unowned self] (setItem) -> () in
             self.giveAFavorableReception()
             }), TPCSetItem(title: GIVE_A_FEEDBACK, action: { [unowned self] (setItem) -> () in
                 self.giveAFeedBack()
                 })]
-        guard TPCVenusUtil.venusFlag else { return }
-        contents.append(sectionOne)
     }
-    private func setupTwoSection() {
-        let sectionTwo = [TPCSetItem(title: LOAD_DATA_EACH_TIME, detailTitle: TPCStorageUtil.fetchLoadDataNumberOnce(),action: { [unowned self] (indexPath) -> () in
+    
+    private var sectionTwo: [TPCSetItem] {
+        return [TPCSetItem(title: LOAD_DATA_EACH_TIME, detailTitle: TPCStorageUtil.fetchLoadDataNumberOnce(),action: { [unowned self] (indexPath) -> () in
             self.setLoadDataNumberOnce(indexPath)
             }), TPCSetItem(title: CATEGORY_DISPLAY_AT_HOME, detailTitle: TPCStorageUtil.fetchSelectedShowCategory(), action: { [unowned self] (indexPath) -> () in
                 self.setCategoryDisplayAtHome(indexPath)
@@ -115,25 +115,21 @@ class TPCSettingViewController: TPCViewController {
                     }), TPCSetItem(title: PICTURE_TRANSPARENCY, detailTitle: String(format: "%.02f", TPCConfiguration.imageAlpha), action: { [unowned self] (indexPath) -> () in
                         self.setPictureTransparency(indexPath)
                         })]
-        contents.append(sectionTwo)
     }
-    private func setupThreeSection() {
-        var sectionThree = [TPCSetItem(title: ABOUT_ME, action: { [unowned self] (indexPath) -> () in
-                self.aboutMe(indexPath)
-            })]
-        if TPCVenusUtil.venusFlag {
-            sectionThree.append(TPCSetItem(title: NEW_VERSION, detailTitle: TPCVersionUtil.versionInfo?.version ?? TPCCurrentVersion, action: { [unowned self] (indexPath) -> () in
+    
+    private var sectionThree: [TPCSetItem] {
+        return [TPCSetItem(title: ABOUT_ME, action: { [unowned self] (indexPath) -> () in
+            self.aboutMe(indexPath)
+            }), TPCSetItem(title: NEW_VERSION, detailTitle: TPCVersionUtil.versionInfo?.version ?? TPCCurrentVersion, action: { [unowned self] (indexPath) -> () in
                 self.setNewVersion()
-                }))            
-        }
-        contents.append(sectionThree)
+                })]
     }
-    private func setupFourSection() {
+    
+    private var sectionFour: [TPCSetItem] {
         let diskSize = String(format: "%.2f", Double(SDImageCache.sharedImageCache().getSize()) / 1000.0 / 1000.0)
-        let sectionFour = [TPCSetItem(title: CLEAR_CACHE, detailTitle: "\(diskSize)M", action: { [unowned self] (indexPath) -> () in
+        return [TPCSetItem(title: CLEAR_CACHE, detailTitle: "\(diskSize)M", action: { [unowned self] (indexPath) -> () in
             self.clearCache(indexPath)
             }, accessoryType: .None)]
-        contents.append(sectionFour)
     }
     
     private func setupNav() {
