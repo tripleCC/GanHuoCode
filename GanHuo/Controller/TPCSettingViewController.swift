@@ -181,10 +181,7 @@ class TPCSettingViewController: TPCViewController {
                 if let settingSubVc = segue.destinationViewController as? TPCShowContentController {
                     settingSubVc.selectedRows = TPCConfiguration.contentRules
                     settingSubVc.callAction = { (items: [TPCRuleType]) in
-                        var ruleString = [String]()
-                        for rule in items {
-                            ruleString.append(rule.rawValue)
-                        }
+                        let ruleString = items.map{ $0.rawValue }
                         TPCConfiguration.contentRules = items
                         self.contents[indexPath.section][indexPath.row].detailTitle = self.getRuleStringWithItems(ruleString)
                         TPCStorageUtil.saveContentRules(ruleString)
