@@ -409,13 +409,6 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGS-oi-lhI">
                                                         <rect key="frame" x="0.0" y="243" width="600" height="276.5"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFJ-gT-7bl">
-                                                                <rect key="frame" x="93" y="57" width="60" height="0.5"/>
-                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="0.5" id="uBU-vo-PFW"/>
-                                                                </constraints>
-                                                            </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="友情链接:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZu-gn-Bzl">
                                                                 <rect key="frame" x="20" y="10" width="73" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -430,33 +423,46 @@
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="0.5" id="O05-nx-UQt"/>
                                                                 </constraints>
                                                             </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cr8-S8-5Jy">
-                                                                <rect key="frame" x="93" y="35" width="60" height="30"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWQ-Ug-JdJ" customClass="TPCLinkButton" customModule="GanHuo" customModuleProvider="target">
+                                                                <rect key="frame" x="93" y="55" width="106" height="30"/>
+                                                                <state key="normal" title="项目Github地址"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="项目Github地址"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2x-QP-02w" customClass="TPCLinkButton" customModule="GanHuo" customModuleProvider="target">
+                                                                <rect key="frame" x="93" y="30" width="60" height="30"/>
                                                                 <state key="normal" title="我的简书"/>
-                                                                <connections>
-                                                                    <action selector="gotoJianshu" destination="31Q-UC-PTF" eventType="touchUpInside" id="md3-WI-Ca2"/>
-                                                                </connections>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="我的简书"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQ6-N6-fd5" customClass="TPCLinkButton" customModule="GanHuo" customModuleProvider="target">
+                                                                <rect key="frame" x="93" y="80" width="120" height="30"/>
+                                                                <state key="normal" title="代码家的个人博客"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="代码家的个人博客"/>
+                                                                </userDefinedRuntimeAttributes>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="hZu-gn-Bzl" firstAttribute="leading" secondItem="KGS-oi-lhI" secondAttribute="leading" constant="20" id="Eu8-Tm-2f5"/>
                                                             <constraint firstItem="yUm-EM-mnh" firstAttribute="leading" secondItem="KGS-oi-lhI" secondAttribute="leading" id="GxC-xG-DSU"/>
-                                                            <constraint firstItem="cr8-S8-5Jy" firstAttribute="top" secondItem="hZu-gn-Bzl" secondAttribute="bottom" constant="5" id="JyZ-VV-Qde"/>
-                                                            <constraint firstItem="gFJ-gT-7bl" firstAttribute="bottom" secondItem="cr8-S8-5Jy" secondAttribute="bottom" constant="-7" id="T5V-Uj-eCu"/>
-                                                            <constraint firstItem="cr8-S8-5Jy" firstAttribute="centerX" secondItem="KGS-oi-lhI" secondAttribute="centerX" id="WlK-bY-rU9"/>
+                                                            <constraint firstItem="gWQ-Ug-JdJ" firstAttribute="leading" secondItem="p2x-QP-02w" secondAttribute="leading" id="OmF-pA-yua"/>
+                                                            <constraint firstItem="gWQ-Ug-JdJ" firstAttribute="leading" secondItem="p2x-QP-02w" secondAttribute="trailing" id="SYr-5B-PiR"/>
                                                             <constraint firstAttribute="trailing" secondItem="yUm-EM-mnh" secondAttribute="trailing" id="WnQ-iA-GbD"/>
-                                                            <constraint firstItem="gFJ-gT-7bl" firstAttribute="leading" secondItem="cr8-S8-5Jy" secondAttribute="leading" id="Yov-MY-Px0"/>
+                                                            <constraint firstItem="p2x-QP-02w" firstAttribute="leading" secondItem="hZu-gn-Bzl" secondAttribute="trailing" id="Ypl-Tv-b4t"/>
                                                             <constraint firstItem="yUm-EM-mnh" firstAttribute="top" secondItem="KGS-oi-lhI" secondAttribute="top" id="aF9-ei-BYR"/>
-                                                            <constraint firstItem="gFJ-gT-7bl" firstAttribute="trailing" secondItem="cr8-S8-5Jy" secondAttribute="trailing" id="e1f-AU-wva"/>
+                                                            <constraint firstItem="fQ6-N6-fd5" firstAttribute="top" secondItem="gWQ-Ug-JdJ" secondAttribute="bottom" constant="-5" id="dmO-TI-s4T"/>
+                                                            <constraint firstItem="fQ6-N6-fd5" firstAttribute="leading" secondItem="gWQ-Ug-JdJ" secondAttribute="leading" id="fEB-9P-b3Q"/>
                                                             <constraint firstItem="hZu-gn-Bzl" firstAttribute="top" secondItem="KGS-oi-lhI" secondAttribute="top" constant="10" id="gEu-Wd-9UB"/>
-                                                            <constraint firstItem="yUm-EM-mnh" firstAttribute="top" secondItem="cr8-S8-5Jy" secondAttribute="bottom" constant="0.5" id="tsh-0N-0Ul"/>
-                                                            <constraint firstItem="cr8-S8-5Jy" firstAttribute="leading" secondItem="hZu-gn-Bzl" secondAttribute="trailing" id="yot-vS-MnV"/>
+                                                            <constraint firstItem="gWQ-Ug-JdJ" firstAttribute="top" secondItem="p2x-QP-02w" secondAttribute="bottom" constant="-5" id="lVR-7V-Y7a"/>
+                                                            <constraint firstItem="p2x-QP-02w" firstAttribute="top" secondItem="hZu-gn-Bzl" secondAttribute="bottom" id="ufI-AM-fnc"/>
                                                         </constraints>
                                                         <variation key="default">
                                                             <mask key="constraints">
-                                                                <exclude reference="tsh-0N-0Ul"/>
-                                                                <exclude reference="WlK-bY-rU9"/>
+                                                                <exclude reference="SYr-5B-PiR"/>
                                                             </mask>
                                                         </variation>
                                                     </view>
@@ -566,9 +572,11 @@
                         <outlet property="authorLabel" destination="LMc-GF-hLr" id="1M6-FF-WpK"/>
                         <outlet property="contentLabel" destination="Ekc-92-nbz" id="gfT-9y-wY8"/>
                         <outlet property="iconImageView" destination="X3M-Aj-Ejv" id="rhX-AJ-I7i"/>
-                        <outlet property="jianshuButton" destination="cr8-S8-5Jy" id="hu8-28-QuW"/>
                         <outlet property="otherLinksLabel" destination="hZu-gn-Bzl" id="Dp6-tn-Si0"/>
                         <outlet property="versionLabel" destination="d9f-su-aGd" id="bgp-0b-wT1"/>
+                        <outletCollection property="linkButtons" destination="p2x-QP-02w" collectionClass="NSMutableArray" id="sF9-WY-7ci"/>
+                        <outletCollection property="linkButtons" destination="gWQ-Ug-JdJ" collectionClass="NSMutableArray" id="w8f-PW-mxj"/>
+                        <outletCollection property="linkButtons" destination="fQ6-N6-fd5" collectionClass="NSMutableArray" id="Xbo-BF-9xY"/>
                         <segue destination="MmX-q2-JDQ" kind="show" identifier="AboutMeVc2BrowserVc" id="tTK-QK-Lhl"/>
                     </connections>
                 </viewController>

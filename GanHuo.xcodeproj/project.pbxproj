@@ -70,6 +70,8 @@
 		D6DE71641C259BD400C066DE /* TPCUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71631C259BD400C066DE /* TPCUpdateView.swift */; };
 		D6DE71661C259BE800C066DE /* TPCUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DE71651C259BE800C066DE /* TPCUpdateView.xib */; };
 		D6DE71681C259EE900C066DE /* TPCVersionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71671C259EE900C066DE /* TPCVersionUtil.swift */; };
+		D6E504D31C2C1D9C00838446 /* AboutMe.json in Resources */ = {isa = PBXBuildFile; fileRef = D6E504D21C2C1D9C00838446 /* AboutMe.json */; };
+		D6E504D51C2C205D00838446 /* TPCLinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E504D41C2C205D00838446 /* TPCLinkButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +144,8 @@
 		D6DE71631C259BD400C066DE /* TPCUpdateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCUpdateView.swift; sourceTree = "<group>"; };
 		D6DE71651C259BE800C066DE /* TPCUpdateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCUpdateView.xib; sourceTree = "<group>"; };
 		D6DE71671C259EE900C066DE /* TPCVersionUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCVersionUtil.swift; sourceTree = "<group>"; };
+		D6E504D21C2C1D9C00838446 /* AboutMe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AboutMe.json; sourceTree = "<group>"; };
+		D6E504D41C2C205D00838446 /* TPCLinkButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCLinkButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +284,7 @@
 		D6DE70FD1C2592A300C066DE /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				D6E504D21C2C1D9C00838446 /* AboutMe.json */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -315,7 +320,6 @@
 		D6DE710D1C2592A300C066DE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D6DE710E1C2592A300C066DE /* CommonView */,
 				D6DE711C1C2592A300C066DE /* TPCDetailHeaderView.swift */,
 				D6DE711D1C2592A300C066DE /* TPCDetailViewCell.swift */,
 				D6DE711F1C2592A300C066DE /* TPCNoMoreDataFooterView.swift */,
@@ -324,6 +328,7 @@
 				D6DE71221C2592A300C066DE /* TPCSettingSubCell.swift */,
 				D6DE71231C2592A300C066DE /* TPCTableView.swift */,
 				D6DE71241C2592A300C066DE /* TPCTechnicalCell.swift */,
+				D6DE710E1C2592A300C066DE /* CommonView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -347,6 +352,7 @@
 				D6DE711B1C2592A300C066DE /* TPCWebView.swift */,
 				D6DE71631C259BD400C066DE /* TPCUpdateView.swift */,
 				D6DE71651C259BE800C066DE /* TPCUpdateView.xib */,
+				D6E504D41C2C205D00838446 /* TPCLinkButton.swift */,
 			);
 			path = CommonView;
 			sourceTree = "<group>";
@@ -418,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6DE71661C259BE800C066DE /* TPCUpdateView.xib in Resources */,
+				D6E504D31C2C1D9C00838446 /* AboutMe.json in Resources */,
 				D6DE71271C2592A300C066DE /* Assets.xcassets in Resources */,
 				D6DE715D1C2592A300C066DE /* TPCNoMoreDataFooterView.xib in Resources */,
 				D6DE71501C2592A300C066DE /* TPCLaunchScreenView.xib in Resources */,
@@ -521,6 +528,7 @@
 				D6DE71591C2592A300C066DE /* TPCDetailHeaderView.swift in Sources */,
 				D6DE71581C2592A300C066DE /* TPCWebView.swift in Sources */,
 				D6DE715F1C2592A300C066DE /* TPCSettingSubCell.swift in Sources */,
+				D6E504D51C2C205D00838446 /* TPCLinkButton.swift in Sources */,
 				D6DE71481C2592A300C066DE /* TPCStorageUtil.swift in Sources */,
 				D6DE715E1C2592A300C066DE /* TPCSettingCell.swift in Sources */,
 				D6DE71391C2592A300C066DE /* UIFont+Extension.swift in Sources */,

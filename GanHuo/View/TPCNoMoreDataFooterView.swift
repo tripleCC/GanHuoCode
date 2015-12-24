@@ -47,7 +47,9 @@ class TPCNoMoreDataFooterView: UIView {
 
     @IBAction func gotoWeb(sender: AnyObject) {
         debugPrint("去网页干货")
-        gotoWebAction?()
+        if TPCVenusUtil.venusFlag {
+            gotoWebAction?()
+        }
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

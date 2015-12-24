@@ -142,6 +142,7 @@ class TPCTechnicalViewController: TPCViewController {
             // 延迟0.5s，防抖动
             dispatchSeconds(0.5) { self.reloadTableView() }
             }) { (type) -> () in
+                self.loadingNew = false
                 debugPrint(type.rawValue)
         }
     }

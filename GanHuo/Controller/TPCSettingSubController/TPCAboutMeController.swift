@@ -7,9 +7,17 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class TPCAboutMeController: TPCViewController {
-
+    var aboutMe: TPCAboutMe? {
+        didSet {
+            if aboutMe?.links?.count == 0 {
+                aboutMe = TPCAboutMe(dict: JSON(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("AboutMe", ofType: "json")!)!))
+            }
+        }
+    }
+    
     @IBOutlet weak var iconImageView: UIImageView! {
         didSet {
             iconImageView.layer.cornerRadius = 5
@@ -38,13 +46,6 @@ class TPCAboutMeController: TPCViewController {
         }
     }
     
-    @IBOutlet weak var jianshuButton: UIButton! {
-        didSet {
-            jianshuButton.titleLabel?.font = UIFont(name: TPCConfiguration.themeSFontName, size: TPCConfiguration.themeCellBFontSize)
-            jianshuButton.setTitleColor(TPCConfiguration.themeTextColor, forState: .Normal)
-        }
-    }
-    
     @IBOutlet weak var otherLinksLabel: UILabel! {
         didSet {
             otherLinksLabel.font = UIFont(name: TPCConfiguration.themeSFontName, size: TPCConfiguration.themeCellBFontSize)
@@ -52,21 +53,43 @@ class TPCAboutMeController: TPCViewController {
         }
     }
     
-    @IBAction func gotoJianshu() {
-        performSegueWithIdentifier("AboutMeVc2BrowserVc", sender: nil)
+    @IBOutlet var linkButtons: [TPCLinkButton]! {
+        didSet {
+            linkButtons.forEach{ $0.addTarget(self, action: "gotoLinks:", forControlEvents: .TouchDown) }
+        }
+    }
+    
+    func gotoLinks(sender: TPCLinkButton) {
+        performSegueWithIdentifier("AboutMeVc2BrowserVc", sender: sender.title)
         TPCUMManager.event(.AboutMeJianShu)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "AboutMeVc2BrowserVc" {
-            if let descVc = segue.destinationViewController as? TPCBroswerViewController {
-                descVc.URLString = "http://www.jianshu.com/users/97e39e95c2cc/latest_articles"
+            if let descVc = segue.destinationViewController as? TPCBroswerViewController,
+                let title = sender as? String {
+                    for link in aboutMe!.links! {
+                        if link.title == title {
+                            descVc.URLString = link.url
+                            break
+                        }
+                    }
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupContents()
+    }
     
+    private func setupContents() {
+        contentLabel.text = aboutMe?.detail
+//        
+//        for link in aboutMe!.links! {
+//            let linkButton = TPCLinkButton(title: link.title!, link: link.url!)
+//            scrollView.addSubview(linkButton)
+//            linkButtons.append(linkButton)
+//        }
     }
 }

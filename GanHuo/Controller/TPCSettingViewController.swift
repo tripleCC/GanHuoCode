@@ -9,26 +9,29 @@
 import UIKit
 import SDWebImage
 
-private let GIVE_A_FAVORABLE_RECEPTION = "给幹貨好评"
-private let GIVE_A_FEEDBACK = "给幹貨反馈"
-private let NEW_VERSION = "最新版本"
-private let LOAD_DATA_EACH_TIME = "每次加载数目"
-private let CATEGORY_DISPLAY_AT_HOME = "主页显示类目"
-private let CONTENT_RULES_AT_HOME = "显示类目内容"
-private let PICTURE_TRANSPARENCY = "图片透明度"
-private let ABOUT_ME = "关于我"
-private let CLEAR_CACHE = "清除缓存"
+public enum TPCSetItemType: String {
+    case FavorableReception = "给幹貨好评"
+    case Feedback = "给幹貨反馈"
+    case NewVersion = "最新版本"
+    case LoadDataEachTime = "每次加载数目"
+    case DisplayCategory = "主页显示类目"
+    case ContentRules = "显示类目内容"
+    case PictureAlpha = "图片透明度"
+    case AboutMe = "关于我"
+    case ClearCache = "清除缓存"
+}
 
 typealias SetAction = ((indexPath: NSIndexPath) -> ())
 
 class TPCSetItem {
     var title: String!
     var action: SetAction?
+    var aboutMe: TPCAboutMe?
     var accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
     var textAlignment = NSTextAlignment.Left
     var detailTitle: String?
-    init(title: String!, detailTitle: String? = nil, action:SetAction? = nil, accessoryType: UITableViewCellAccessoryType = .DisclosureIndicator, textAlignment: NSTextAlignment = .Left) {
-        self.title = title
+    init(title: TPCSetItemType!, detailTitle: String? = nil, action:SetAction? = nil, accessoryType: UITableViewCellAccessoryType = .DisclosureIndicator, textAlignment: NSTextAlignment = .Left) {
+        self.title = title.rawValue
         self.action = action
         self.accessoryType = accessoryType
         self.textAlignment = textAlignment
@@ -76,58 +79,57 @@ class TPCSettingViewController: TPCViewController {
         super.viewDidLoad()
         setupNav()
         setupContent()
-        
+        loadAboutMe()
+    }
+    
+    private func loadAboutMe() {
         // 后期TPCLaunchConfig中存储更新标志，比如版本是否更新，关于我是否更新（可以是一个Int），并保存TPCLaunchConfig，每次下载时进行比较，如果不相等，就下载对应的数据，比如AboutMe从2->3，就下载TPCAboutMe数据，然后存入本地。
         // 这样每次下载的数据只有TPCLaunchConfig中的标志位，不费流量，并且本地缓存更加容易
-//        TPCNetworkUtil.shareInstance.loadAbountMe { (aboutMe) -> () in
-//            if aboutMe.detail == nil {
-//                aboutMe.detail =
-//            } else {
-//                
-//            }
-//        }
+        TPCNetworkUtil.shareInstance.loadAbountMe { (aboutMe) -> () in
+            self.aboutMe = aboutMe
+        }
     }
     
     private func setupContent() {
         contents = [sectionOne, sectionTwo, sectionThree, sectionFour]
         if !TPCVenusUtil.venusFlag {
             // 把过滤类型弄到TPCVenusUtil去，改成enum
-            contents = contents.map{ $0.filter{ $0.title != GIVE_A_FAVORABLE_RECEPTION && $0.title != NEW_VERSION} }
+            contents = contents.map{ $0.filter{ !TPCVenusUtil.filterSetItems.contains($0.title) } }
         }
         view.addSubview(tipLabel)
     }
     
     private var sectionOne: [TPCSetItem] {
-        return [TPCSetItem(title: GIVE_A_FAVORABLE_RECEPTION, action: { [unowned self] (setItem) -> () in
+        return [TPCSetItem(title: .FavorableReception, action: { [unowned self] (setItem) -> () in
             self.giveAFavorableReception()
-            }), TPCSetItem(title: GIVE_A_FEEDBACK, action: { [unowned self] (setItem) -> () in
+            }), TPCSetItem(title: .Feedback, action: { [unowned self] (setItem) -> () in
                 self.giveAFeedBack()
                 })]
     }
     
     private var sectionTwo: [TPCSetItem] {
-        return [TPCSetItem(title: LOAD_DATA_EACH_TIME, detailTitle: TPCStorageUtil.fetchLoadDataNumberOnce(),action: { [unowned self] (indexPath) -> () in
+        return [TPCSetItem(title: .LoadDataEachTime, detailTitle: TPCStorageUtil.fetchLoadDataNumberOnce(),action: { [unowned self] (indexPath) -> () in
             self.setLoadDataNumberOnce(indexPath)
-            }), TPCSetItem(title: CATEGORY_DISPLAY_AT_HOME, detailTitle: TPCStorageUtil.fetchSelectedShowCategory(), action: { [unowned self] (indexPath) -> () in
+            }), TPCSetItem(title: .DisplayCategory, detailTitle: TPCStorageUtil.fetchSelectedShowCategory(), action: { [unowned self] (indexPath) -> () in
                 self.setCategoryDisplayAtHome(indexPath)
-                }), TPCSetItem(title: CONTENT_RULES_AT_HOME, detailTitle: getRuleStringWithItems(TPCStorageUtil.fetchRawContentRules()), action: { [unowned self] (indexPath) -> () in
+                }), TPCSetItem(title: .ContentRules, detailTitle: getRuleStringWithItems(TPCStorageUtil.fetchRawContentRules()), action: { [unowned self] (indexPath) -> () in
                     self.setContentRulesAtHome(indexPath)
-                    }), TPCSetItem(title: PICTURE_TRANSPARENCY, detailTitle: String(format: "%.02f", TPCConfiguration.imageAlpha), action: { [unowned self] (indexPath) -> () in
+                    }), TPCSetItem(title: .PictureAlpha, detailTitle: String(format: "%.02f", TPCConfiguration.imageAlpha), action: { [unowned self] (indexPath) -> () in
                         self.setPictureTransparency(indexPath)
                         })]
     }
     
     private var sectionThree: [TPCSetItem] {
-        return [TPCSetItem(title: ABOUT_ME, action: { [unowned self] (indexPath) -> () in
+        return [TPCSetItem(title: .AboutMe, action: { [unowned self] (indexPath) -> () in
             self.aboutMe(indexPath)
-            }), TPCSetItem(title: NEW_VERSION, detailTitle: TPCVersionUtil.versionInfo?.version ?? TPCCurrentVersion, action: { [unowned self] (indexPath) -> () in
+            }), TPCSetItem(title: .NewVersion, detailTitle: TPCVersionUtil.versionInfo?.version ?? TPCCurrentVersion, action: { [unowned self] (indexPath) -> () in
                 self.setNewVersion()
                 })]
     }
     
     private var sectionFour: [TPCSetItem] {
         let diskSize = String(format: "%.2f", Double(SDImageCache.sharedImageCache().getSize()) / 1000.0 / 1000.0)
-        return [TPCSetItem(title: CLEAR_CACHE, detailTitle: "\(diskSize)M", action: { [unowned self] (indexPath) -> () in
+        return [TPCSetItem(title: .ClearCache, detailTitle: "\(diskSize)M", action: { [unowned self] (indexPath) -> () in
             self.clearCache(indexPath)
             }, accessoryType: .None)]
     }
@@ -198,6 +200,10 @@ class TPCSettingViewController: TPCViewController {
                         self.tableView.reloadData()
                         TPCUMManager.event(TPCUMEvent.ImageAlphaAlpha, attributes: ["imageAlpha" : "imageAlpha"], counter: Int(item *  1000))
                     }
+                }
+            } else if segue.identifier == "SettingVc2AboutMeVc" {
+                if let settingSubVc = segue.destinationViewController as? TPCAboutMeController {
+                    settingSubVc.aboutMe = aboutMe
                 }
             }
         }

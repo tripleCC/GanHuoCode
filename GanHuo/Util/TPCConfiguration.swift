@@ -50,7 +50,7 @@ struct TPCConfiguration {
     static var allRules: [TPCRuleType] = [TPCRuleType.One, TPCRuleType.Two, TPCRuleType.Three, TPCRuleType.Four]
     
     static var technicalCellShowTextLineMax = 5
-    static var loadDataCountOnce = 10
+    static var loadDataCountOnce = 5
     static var selectedShowCategory = "iOS"
     static var allCategories = ["iOS", "Android", "App", "瞎推荐", "前端", "福利", "休息视频", "拓展资源"]
     static var contentRules: [TPCRuleType] = [TPCRuleType.Two, TPCRuleType.Three]

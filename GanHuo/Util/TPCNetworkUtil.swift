@@ -94,13 +94,13 @@ public class TPCNetworkUtil {
     private var categoriesArrayTemp = [[String]]()
     private var technocals = [TPCTechnicalDictionary]()
     private var categoriesArray = [[String]]()
-    lazy private var dayInterval: NSTimeInterval = {
-        return TPCVenusUtil.dayInterval
-    }()
+    private var dayInterval: NSTimeInterval = 0
+    private var venusInterval = 0
     
     init() {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        configuration.timeoutIntervalForResource = 2
+        configuration.timeoutIntervalForResource = 3
+        configuration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
         alamofire = Alamofire.Manager(configuration: configuration)
     }
     
@@ -111,27 +111,25 @@ public class TPCNetworkUtil {
             return
         }
         TPCNetworkUtil.shareInstance.loadTechnicalByYear(year, month: month, day: day) { (technicalDict, categories) -> () in
-            if TPCVenusUtil.venusFlag || !TPCVenusUtil.compareWithYear(self.year, month: self.month, day: self.day) {
-                if categories.count > 0 {
-                    debugPrint(__FUNCTION__, self.year, self.month, self.day)
-                    if !allLoadedAppend {
-                        self.technocals.append(technicalDict)
-                        self.categoriesArray.append(categories)
-                    } else {
-                        self.technocalsTemp.append(technicalDict)
-                        self.categoriesArrayTemp.append(categories)
-                    }
-                    guard ++self.loadDataCount != TPCConfiguration.loadDataCountOnce else {
-                        self.resetCounter()
-                        success?()
-                        return
-                    }
+            debugPrint(__FUNCTION__, self.year, self.month, self.day)
+            if categories.count > 0 {
+                if !allLoadedAppend {
+                    self.technocals.append(technicalDict)
+                    self.categoriesArray.append(categories)
                 } else {
-                    guard ++self.loadEmptyCount < TPCConfiguration.loadDataCountOnce * 2 else {
-                        self.resetCounter()
-                        failure?(.BeyondMaxFailTime)
-                        return
-                    }
+                    self.technocalsTemp.append(technicalDict)
+                    self.categoriesArrayTemp.append(categories)
+                }
+                guard ++self.loadDataCount != TPCConfiguration.loadDataCountOnce else {
+                    self.resetCounter()
+                    success?()
+                    return
+                }
+            } else {
+                guard ++self.loadEmptyCount < TPCConfiguration.loadDataCountOnce * 2 else {
+                    self.resetCounter()
+                    failure?(.BeyondMaxFailTime)
+                    return
                 }
             }
             (self.year, self.month, self.day) = NSDate.timeSinceNowByDayInterval(-(++self.dayInterval))
@@ -146,8 +144,9 @@ public class TPCNetworkUtil {
     
     public typealias LoadDataParameter = ([TPCTechnicalDictionary], [[String]])
     public func loadNewData(success: (([TPCTechnicalDictionary], [[String]]) -> ())?, failure: ((TPCFailureType) -> ())?) {
-        (year, month, day) = TPCVenusUtil.startTime
-        dayInterval = TPCVenusUtil.dayInterval
+        venusInterval = 0
+        dayInterval = 0
+        (year, month, day) = NSDate.currentTime()
         resetCounter()
         debugPrint("开始加载")
         func loadNewAction() {
@@ -187,42 +186,41 @@ extension TPCNetworkUtil {
                 dispatchGlobal({ () -> () in
                     // 这里有时候会出现顺序错位情况，但是如果定死单个子线程，解析速度会变慢, 后面再优化
                     if let data = data {
-                        let categories = JSON(data: data)["category"].arrayValue
-                        var categoryArray = [String]()
+                        var categories = JSON(data: data)["category"].arrayValue.map{ $0.stringValue }
                         var technicalDict = [String : [TPCTechnicalObject]]()
                         if categories.count > 0 {
-                            for category in categories {
-                                categoryArray.append(category.stringValue)
-                            }
-                            
                             let results = JSON(data: data)["results"].dictionaryValue
                             for item in categories {
                                 // 这里对item进行判断，安卓过滤
-                                guard TPCVenusUtil.venusFlag || !TPCVenusUtil.filterCategories.contains(item.stringValue) else { continue }
-                                if let itemArray = results[item.stringValue]?.arrayValue {
+                                guard TPCVenusUtil.venusFlag || !TPCVenusUtil.filterCategories.contains(item) else {
+                                    categories.removeAtIndex(categories.indexOf(item)!)
+                                    continue
+                                }
+                                if let itemArray = results[item]?.arrayValue {
                                     var technicalArray = [TPCTechnicalObject]()
                                     for json in itemArray {
                                         if let dict = json.dictionary {
                                             var technical = TPCTechnicalObject(dict: dict)
                                             technical.desc = TPCTextParser.shareTextParser.parseOriginString(technical.desc!)
-                                            if !TPCVenusUtil.venusFlag {
+                                            if !TPCVenusUtil.venusFlag && technical.type == "福利" {
                                                 // 这里到时候GitHub上面接口修改了之后，要获取图片最大张数，然后用最大张数减去时间差
-                                                technical.url = TPCGanHuoType.ImageTypeSubtype.VenusImage(Int(self.dayInterval)).path()
+                                                technical.url = TPCGanHuoType.ImageTypeSubtype.VenusImage(Int(self.venusInterval)).path()
                                             }
                                             technicalArray.append(technical)
                                         }
                                     }
-                                    technicalDict[item.stringValue] = technicalArray
+                                    technicalDict[item] = technicalArray
                                 }
                             }
+                            self.venusInterval++
                         }
-                        if categoryArray.count > TPCConfiguration.allCategories.count && TPCVenusUtil.venusFlag {
-                            if categoryArray.count > TPCStorageUtil.fetchAllCategories().count {
-                                TPCStorageUtil.saveAllCategories(categoryArray)
-                                TPCConfiguration.allCategories = categoryArray
+                        if categories.count > TPCConfiguration.allCategories.count && TPCVenusUtil.venusFlag {
+                            if categories.count > TPCStorageUtil.fetchAllCategories().count {
+                                TPCStorageUtil.saveAllCategories(categories)
+                                TPCConfiguration.allCategories = categories
                             }
                         }
-                        dispatchMain() { completion?(technicalDict, categoryArray) }
+                        dispatchMain() { completion?(technicalDict, categories) }
                     }
                     
                 })
@@ -241,10 +239,7 @@ extension TPCNetworkUtil {
     }
     
     public func cancelAllRequests() {
-        for request in requests {
-            debugPrint(request.request?.URL?.absoluteString)
-            request.cancel()
-        }
+        requests.forEach{ $0.cancel() }
         requests.removeAll()
     }
     
@@ -259,9 +254,9 @@ extension TPCNetworkUtil {
             completion(launchConfig: TPCLaunchConfig(dict: response))
         }
     }
-    
+
     public func loadGanHuoByPath<T: TPCGanHuoAPI>(path: T, completion: (response: JSON) -> ()) {
-        debugPrint(path)
+        debugPrint(path.path())
         alamofire.request(.GET, path.path())
             .response(completionHandler: { (request, response, data, ErrorType) -> Void in
                 if let data = data {
