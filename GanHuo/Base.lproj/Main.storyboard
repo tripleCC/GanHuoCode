@@ -401,13 +401,13 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hU3-3M-XFm" userLabel="containerView">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="433"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AG9-o1-qtN" userLabel="subContainerView">
-                                                <rect key="frame" x="0.0" y="80" width="600" height="520"/>
+                                                <rect key="frame" x="0.0" y="80" width="600" height="353"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGS-oi-lhI">
-                                                        <rect key="frame" x="0.0" y="243" width="600" height="276.5"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGS-oi-lhI" userLabel="linksView">
+                                                        <rect key="frame" x="0.0" y="243" width="600" height="110"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="友情链接:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZu-gn-Bzl">
                                                                 <rect key="frame" x="20" y="10" width="73" height="20.5"/>
@@ -457,6 +457,7 @@
                                                             <constraint firstItem="fQ6-N6-fd5" firstAttribute="top" secondItem="gWQ-Ug-JdJ" secondAttribute="bottom" constant="-5" id="dmO-TI-s4T"/>
                                                             <constraint firstItem="fQ6-N6-fd5" firstAttribute="leading" secondItem="gWQ-Ug-JdJ" secondAttribute="leading" id="fEB-9P-b3Q"/>
                                                             <constraint firstItem="hZu-gn-Bzl" firstAttribute="top" secondItem="KGS-oi-lhI" secondAttribute="top" constant="10" id="gEu-Wd-9UB"/>
+                                                            <constraint firstAttribute="bottom" secondItem="fQ6-N6-fd5" secondAttribute="bottom" id="jkX-pN-w6g"/>
                                                             <constraint firstItem="gWQ-Ug-JdJ" firstAttribute="top" secondItem="p2x-QP-02w" secondAttribute="bottom" constant="-5" id="lVR-7V-Y7a"/>
                                                             <constraint firstItem="p2x-QP-02w" firstAttribute="top" secondItem="hZu-gn-Bzl" secondAttribute="bottom" id="ufI-AM-fnc"/>
                                                         </constraints>
@@ -478,8 +479,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="KGS-oi-lhI" secondAttribute="trailing" id="2iT-3d-fPK"/>
+                                                    <constraint firstAttribute="bottom" secondItem="KGS-oi-lhI" secondAttribute="bottom" id="6aa-78-wOo"/>
                                                     <constraint firstItem="KGS-oi-lhI" firstAttribute="top" secondItem="Ekc-92-nbz" secondAttribute="bottom" constant="10" id="BWD-CR-2rR"/>
                                                     <constraint firstAttribute="bottom" secondItem="KGS-oi-lhI" secondAttribute="bottom" id="GLD-sq-S2H"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ekc-92-nbz" secondAttribute="trailing" constant="20" id="RAa-3g-mnc"/>
@@ -487,8 +490,13 @@
                                                     <constraint firstItem="Ekc-92-nbz" firstAttribute="top" secondItem="AG9-o1-qtN" secondAttribute="top" constant="10" id="aka-Yu-ye4"/>
                                                     <constraint firstItem="Ekc-92-nbz" firstAttribute="leading" secondItem="AG9-o1-qtN" secondAttribute="leading" constant="20" id="kc7-6b-b0V"/>
                                                 </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="GLD-sq-S2H"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8H-Sk-Vyg">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8H-Sk-Vyg" userLabel="headerView">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ganhuo" translatesAutoresizingMaskIntoConstraints="NO" id="X3M-Aj-Ejv">
@@ -548,6 +556,11 @@
                                             <constraint firstItem="AG9-o1-qtN" firstAttribute="leading" secondItem="hU3-3M-XFm" secondAttribute="leading" id="sMf-Bi-LJF"/>
                                             <constraint firstItem="P8H-Sk-Vyg" firstAttribute="top" secondItem="hU3-3M-XFm" secondAttribute="top" id="wa7-kY-8Qq"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="EsI-kk-dFv"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -557,16 +570,34 @@
                                     <constraint firstAttribute="bottom" secondItem="hU3-3M-XFm" secondAttribute="bottom" id="sfg-Ce-UZb"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Otn-df-loP" userLabel="refrenceView">
+                                <rect key="frame" x="0.0" y="128" width="10" height="433"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="10" id="0rd-nf-HNn"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Otn-df-loP" firstAttribute="top" secondItem="P8H-Sk-Vyg" secondAttribute="top" id="5v3-5b-wbP"/>
+                            <constraint firstItem="Otn-df-loP" firstAttribute="bottom" secondItem="AG9-o1-qtN" secondAttribute="bottom" id="DO8-Hn-I8x"/>
+                            <constraint firstItem="hU3-3M-XFm" firstAttribute="height" secondItem="Otn-df-loP" secondAttribute="height" id="Gd4-3A-XT0"/>
                             <constraint firstItem="hU3-3M-XFm" firstAttribute="width" secondItem="05g-pm-bK5" secondAttribute="width" id="JOO-RF-F4O"/>
                             <constraint firstItem="hU3-3M-XFm" firstAttribute="height" secondItem="05g-pm-bK5" secondAttribute="height" id="Utm-in-TaS"/>
                             <constraint firstItem="6Fy-KE-gyU" firstAttribute="leading" secondItem="05g-pm-bK5" secondAttribute="leading" id="bfX-hR-16H"/>
+                            <constraint firstItem="Otn-df-loP" firstAttribute="top" secondItem="P8H-Sk-Vyg" secondAttribute="top" id="hNo-Ml-pYA"/>
                             <constraint firstItem="6Fy-KE-gyU" firstAttribute="top" secondItem="Dwf-zD-UWu" secondAttribute="bottom" id="sNU-Pm-Udg"/>
                             <constraint firstItem="LXq-Hl-c7G" firstAttribute="top" secondItem="6Fy-KE-gyU" secondAttribute="bottom" id="tYJ-ds-yFV"/>
                             <constraint firstAttribute="trailing" secondItem="6Fy-KE-gyU" secondAttribute="trailing" id="y4X-l9-GCV"/>
+                            <constraint firstItem="Otn-df-loP" firstAttribute="leading" secondItem="05g-pm-bK5" secondAttribute="leading" id="z2c-Fg-eKQ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Utm-in-TaS"/>
+                                <exclude reference="5v3-5b-wbP"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="authorLabel" destination="LMc-GF-hLr" id="1M6-FF-WpK"/>
