@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		12E92B8827A2329C2999802B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */; };
+		D69797E61C2FBCA500A53CD2 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69797E51C2FBCA500A53CD2 /* UIViewController+Extension.swift */; };
 		D6DE71271C2592A300C066DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6DE70DD1C2592A300C066DE /* Assets.xcassets */; };
 		D6DE71281C2592A300C066DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6DE70DE1C2592A300C066DE /* Main.storyboard */; };
 		D6DE71291C2592A300C066DE /* TPCBroswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70E11C2592A300C066DE /* TPCBroswerViewController.swift */; };
@@ -78,6 +79,7 @@
 		72EE590290576ABFA38A5059 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA83A096E1133C661EE95446 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D69797E51C2FBCA500A53CD2 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		D6DE6FB91C25904C00C066DE /* GanHuo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GanHuo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6DE70DD1C2592A300C066DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6DE70DF1C2592A300C066DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				D6DE70F21C2592A300C066DE /* UIButton+Extension.swift */,
 				D6DE70F31C2592A300C066DE /* UIFont+Extension.swift */,
 				D6DE70F41C2592A300C066DE /* UIImage+Extension.swift */,
+				D69797E51C2FBCA500A53CD2 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				D6DE71381C2592A300C066DE /* UIButton+Extension.swift in Sources */,
 				D6DE715B1C2592A300C066DE /* TPCLaunchScreenView.swift in Sources */,
 				D6DE713C1C2592A300C066DE /* TPCAboutMe.swift in Sources */,
+				D69797E61C2FBCA500A53CD2 /* UIViewController+Extension.swift in Sources */,
 				D6DE712E1C2592A300C066DE /* TPCLoadDataCountController.swift in Sources */,
 				D6DE71311C2592A300C066DE /* TPCSettingViewController.swift in Sources */,
 				D6DE71371C2592A300C066DE /* UIBarButtonItem+Extension.swift in Sources */,
