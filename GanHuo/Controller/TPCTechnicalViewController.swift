@@ -74,7 +74,6 @@ class TPCTechnicalViewController: TPCViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupIcloud()
         TPCLaunchScreenView.showLaunchAniamtion()
         setupNav()
         registerObserverForApplicationDidEnterBackground()
@@ -85,18 +84,6 @@ class TPCTechnicalViewController: TPCViewController {
         }
 //        UIFont.showAllFonts()
 //        UIFont.createAllTypeIcon()
-    }
-    
-    private func setupIcloud() {
-        let s = NSUbiquitousKeyValueStore.defaultStore()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "storeDidChange:", name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: s)
-        NSUbiquitousKeyValueStore.defaultStore().synchronize()
-//        NSUbiquitousKeyValueStore.defaultStore().setString("哈哈哈", forKey: "hehhe")
-//        NSUbiquitousKeyValueStore.defaultStore().synchronize()
-    }
-    
-    func storeDidChange(notification: NSNotification) {
-        debugPrint(__FUNCTION__, notification.object, notification.userInfo)
     }
     
     private func launchConfig(launchConfig: TPCLaunchConfig?) {

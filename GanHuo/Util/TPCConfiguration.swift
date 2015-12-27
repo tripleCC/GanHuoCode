@@ -67,6 +67,29 @@ extension TPCConfiguration {
         TPCConfiguration.show()
     }
     
+    static func dictionaryWithConfiguration() -> [String : AnyObject] {
+        return [TPCLoadDataNumberOnceKey : TPCConfiguration.loadDataCountOnce ,
+            TPCCategoryDisplayAtHomeKey : TPCConfiguration.selectedShowCategory,
+            TPCSetContentRulesAtHomeKey : TPCStorageUtil.fetchRawContentRules(),
+            TPCSetPictureTransparencyKey : TPCConfiguration.imageAlpha]
+    }
+    
+    static func setConfigurationWithCloudDictionary(dictionary: [String : AnyObject]) {
+        if let d = dictionary[TPCLoadDataNumberOnceKey] as? Int {
+            TPCStorageUtil.saveLoadDataNumberOnce("\(d)个妹子")
+        }
+        if let d = dictionary[TPCCategoryDisplayAtHomeKey] as? String {
+            TPCStorageUtil.saveSelectedShowCategory(d)
+        }
+        if let d = dictionary[TPCSetContentRulesAtHomeKey] as? [String] {
+            TPCStorageUtil.saveContentRules(d)
+        }
+        if let d = dictionary[TPCSetPictureTransparencyKey] as? Float {
+            TPCStorageUtil.saveImageAlpha(d)
+        }
+        setInitialize()
+    }
+    
     static func show() {
         debugPrint("loadDataCountOnce", TPCConfiguration.loadDataCountOnce)
         debugPrint("selectedShowCategory", TPCConfiguration.selectedShowCategory)
@@ -94,5 +117,103 @@ extension TPCConfiguration {
                 }
             }
         }
+    }
+}
+
+let TPCLoadDataNumberOnceKey = "TPCLoadDataNumberOnce"
+let TPCCategoryDisplayAtHomeKey = "TPCCategoryDisplayAtHome"
+let TPCAllCategoriesKey = "TPCAllCategories"
+let TPCSetContentRulesAtHomeKey = "TPCSetContentRulesAtHome"
+let TPCSetPictureTransparencyKey = "TPCSetPictureTransparency"
+extension TPCStorageUtil {
+    static func saveLoadDataNumberOnce(number: String) {
+        setObject(number, forKey: TPCLoadDataNumberOnceKey)
+        saveCloudConfiguration()
+    }
+    static func fetchLoadDataNumberOnce() -> String {
+        let number = objectForKey(TPCLoadDataNumberOnceKey)
+        if let numberTemp = number as? String {
+            return numberTemp
+        }
+        return "\(TPCConfiguration.loadDataCountOnce)个妹子"
+    }
+    
+    static func saveSelectedShowCategory(category: String) {
+        setObject(category, forKey: TPCCategoryDisplayAtHomeKey)
+        saveCloudConfiguration()
+    }
+    
+    static func fetchSelectedShowCategory() -> String {
+        let category = objectForKey(TPCCategoryDisplayAtHomeKey)
+        if let categoryTemp = category as? String {
+            return categoryTemp
+        }
+        return TPCConfiguration.selectedShowCategory
+    }
+    
+    static func saveAllCategories(categories: [String]) {
+        setObject(categories, forKey: TPCAllCategoriesKey)
+    }
+    
+    static func fetchAllCategories() -> [String] {
+        let categories = objectForKey(TPCCategoryDisplayAtHomeKey)
+        let defaultCategories = TPCConfiguration.allCategories
+        if let categoriesTemp = categories as? [String] {
+            if categoriesTemp.count < defaultCategories.count {
+                return defaultCategories
+            }
+            return categoriesTemp
+        }
+        return defaultCategories
+    }
+    
+    static func saveContentRules(rules: [String]) {
+        setObject(rules, forKey: TPCSetContentRulesAtHomeKey)
+        saveCloudConfiguration()
+    }
+    
+    static func fetchRawContentRules() -> [String] {
+        let rules = objectForKey(TPCSetContentRulesAtHomeKey)
+        if let rulesTemp = rules as? [String] {
+            return rulesTemp
+        }
+        return [TPCRuleType.Two.rawValue, TPCRuleType.Three.rawValue]
+    }
+    
+    static func fetchContentRules() -> [TPCRuleType] {
+        let ruleStrings = objectForKey(TPCSetContentRulesAtHomeKey)
+        var ruleArray = [TPCRuleType]()
+        if let rulesTemp = ruleStrings as? [String] {
+            for rule in rulesTemp {
+                switch rule {
+                case TPCRuleType.One.rawValue:
+                    ruleArray.append(TPCRuleType.One)
+                case TPCRuleType.Two.rawValue:
+                    ruleArray.append(TPCRuleType.Two)
+                case TPCRuleType.Three.rawValue:
+                    ruleArray.append(TPCRuleType.Three)
+                case TPCRuleType.Four.rawValue:
+                    ruleArray.append(TPCRuleType.Four)
+                default:
+                    break
+                }
+            }
+            return ruleArray
+        }
+        return [TPCRuleType.Two, TPCRuleType.Three]
+    }
+    
+    static func saveImageAlpha(var imageAlpha: Float) {
+        imageAlpha = imageAlpha == 0 ? -1 : imageAlpha
+        setFloat(imageAlpha, forKey: TPCSetPictureTransparencyKey)
+        saveCloudConfiguration()
+    }
+    
+    static func fetchImageAlpha() -> Float {
+        var imageAlpha = floatForKey(TPCSetPictureTransparencyKey)
+        imageAlpha = imageAlpha == 0 ? 1 : imageAlpha
+        imageAlpha = imageAlpha == -1 ? 0 : imageAlpha
+        
+        return imageAlpha
     }
 }

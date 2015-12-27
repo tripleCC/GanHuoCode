@@ -162,9 +162,9 @@ class TPCSettingViewController: TPCViewController {
                     settingSubVc.selectedRow = TPCStorageUtil.fetchLoadDataNumberOnce()
                     settingSubVc.callAction = { (item: String) in
                         self.contents[indexPath.section][indexPath.row].detailTitle = item
-                        self.tableView.reloadData()
-                        TPCStorageUtil.saveLoadDataNumberOnce(item)
                         TPCConfiguration.loadDataCountOnce = item.getLoadDataNumber()
+                        TPCStorageUtil.saveLoadDataNumberOnce(item)
+                        self.tableView.reloadData()
                         TPCUMManager.event(TPCUMEvent.LoadDataCountCount, attributes: ["loadDataCountOnce" : item])
                     }
                 }
@@ -173,9 +173,9 @@ class TPCSettingViewController: TPCViewController {
                     settingSubVc.selectedRow = TPCStorageUtil.fetchSelectedShowCategory()
                     settingSubVc.callAction = { (item: String) in
                         self.contents[indexPath.section][indexPath.row].detailTitle = item
-                        self.tableView.reloadData()
-                        TPCStorageUtil.saveSelectedShowCategory(item)
                         TPCConfiguration.selectedShowCategory = item
+                        TPCStorageUtil.saveSelectedShowCategory(item)
+                        self.tableView.reloadData()
                         TPCUMManager.event(TPCUMEvent.ShowCategoryCategory, attributes: ["showCategory" : item])
                     }
                 }
