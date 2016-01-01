@@ -143,10 +143,7 @@ class TPCSettingViewController: TPCViewController {
     }
     
     private func getRuleStringWithItems(items: [String]) -> String {
-        var descString = String()
-        for item in items {
-            descString += "\(item)+"
-        }
+        var descString = items.map{ "\($0)+" }.reduce("", combine: +)
         if descString.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) != 0 {
             descString = descString.substringToIndex(descString.endIndex.advancedBy(-1))
         }

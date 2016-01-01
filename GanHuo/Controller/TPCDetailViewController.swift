@@ -13,7 +13,11 @@ class TPCDetailViewController: TPCViewController {
     let reuseIdentifier = "TPCDetailCell"
     let reuseHeaderIdentifier = "TPCDetailHeader"
     var technicalDict: TPCTechnicalDictionary?
-    var categories: [String]?
+    var categories: [String]? {
+        didSet {
+            categories = categories?.sort{ $0 < $1 }
+        }
+    }
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.backgroundColor = UIColor.clearColor()
@@ -41,15 +45,9 @@ class TPCDetailViewController: TPCViewController {
         setupNav()
         view.insertSubview(headerImageView, belowSubview: tableView)
         debugPrint(technicalDict)
-        
-        if let technicals = technicalDict?["福利"] {
-            if technicals.count > 1 {
-                for technical in technicals {
-                    debugPrint("\(technical.url)")
-                }
-            }
+        if let technicals = technicalDict?["福利"] where technicals.count > 1 {
+            technicals.forEach{ debugPrint("\($0.url)") }
         }
-
         if let technical = technicalDict?["福利"]?.first {
             headerImageView.sd_setImageWithURL(NSURL(string: technical.url!))
         }
@@ -63,17 +61,13 @@ class TPCDetailViewController: TPCViewController {
     }
     
     private func showAllImages() {
-        var imageURLStrings = [String]()
         if let technicals = technicalDict?["福利"] {
-            for technical in technicals {
-                imageURLStrings.append(technical.url!)
-            }
             let pageScrollView = TPCPageScrollView(frame: view.bounds)
             pageScrollView.backgroundColor = UIColor.blackColor()
             pageScrollView.viewDisappearAction = { [unowned self] in
                 self.prepareForPageDisappear()
             }
-            pageScrollView.imageURLStrings = imageURLStrings
+            pageScrollView.imageURLStrings = technicals.flatMap{ $0.url }
             pageScrollView.alpha = 0
             UIApplication.sharedApplication().keyWindow?.addSubview(pageScrollView)
             UIView.animateWithDuration(0.5) { () -> Void in
@@ -110,15 +104,16 @@ class TPCDetailViewController: TPCViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "DetailVc2BrowserVc" {
             if let broswerVc = segue.destinationViewController as? TPCBroswerViewController {
-                if let row = sender?.row, let section = sender?.section {
-                    if let category = categories?[section] {
+                if let row = sender?.row,
+                    let section = sender?.section,
+                    let category = categories?[section] {
                         broswerVc.technical = technicalDict?[category]?[row]
                     }
                 }
             }
         }
     }
-}
+
 
 extension TPCDetailViewController: UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

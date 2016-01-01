@@ -198,16 +198,14 @@ extension TPCNetworkUtil {
                                 }
                                 if let itemArray = results[item]?.arrayValue {
                                     var technicalArray = [TPCTechnicalObject]()
-                                    for json in itemArray {
-                                        if let dict = json.dictionary {
-                                            var technical = TPCTechnicalObject(dict: dict)
-                                            technical.desc = TPCTextParser.shareTextParser.parseOriginString(technical.desc!)
-                                            if !TPCVenusUtil.venusFlag && technical.type == "福利" {
-                                                // 这里到时候GitHub上面接口修改了之后，要获取图片最大张数，然后用最大张数减去时间差
-                                                technical.url = TPCGanHuoType.ImageTypeSubtype.VenusImage(Int(self.venusInterval)).path()
-                                            }
-                                            technicalArray.append(technical)
+                                    for json in itemArray where json.dictionary != nil {
+                                        var technical = TPCTechnicalObject(dict: json.dictionaryValue)
+                                        technical.desc = TPCTextParser.shareTextParser.parseOriginString(technical.desc!)
+                                        if !TPCVenusUtil.venusFlag && technical.type == "福利" {
+                                            // 这里到时候GitHub上面接口修改了之后，要获取图片最大张数，然后用最大张数减去时间差
+                                            technical.url = TPCGanHuoType.ImageTypeSubtype.VenusImage(Int(self.venusInterval)).path()
                                         }
+                                        technicalArray.append(technical)
                                     }
                                     technicalDict[item] = technicalArray
                                 }
