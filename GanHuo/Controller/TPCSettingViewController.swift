@@ -143,11 +143,7 @@ class TPCSettingViewController: TPCViewController {
     }
     
     private func getRuleStringWithItems(items: [String]) -> String {
-        var descString = items.map{ "\($0)+" }.reduce("", combine: +)
-        if descString.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) != 0 {
-            descString = descString.substringToIndex(descString.endIndex.advancedBy(-1))
-        }
-        return descString
+        return items.map{ String($0) }.joinWithSeparator("+")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
