@@ -3,7 +3,7 @@
 数据来自代码家的干货网站：[http://gank.io](http://gank.io)<br>
 如果想要安卓客户端，请点：[Meizhi](https://github.com/drakeet/Meizhi)<br>
 TODO：
-  - SDWebImage－》Kingfisher<br>  (*****)
+  - SDWebImage－》Kingfisher  (*****)
   - Support 8.0+  (*****)
   - UI TEST  (****)
   - etc<br>
