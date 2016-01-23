@@ -8,10 +8,16 @@
 TODO：
 
   - SDWebImage－》Kingfisher  (*****)
-  - Support 8.0+  (*****)
   - UI TEST  (****)
   - etc<br>
   
+DISCARD:
+
+  - ~~Support 8.0+~~
+ 
+DONE:
+
+
 App切图：<br>
 ![](Images/2016-01-08 23_33_15.gif)
 ![](Images/2016-01-08 23_33_55.gif)
