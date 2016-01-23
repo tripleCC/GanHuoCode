@@ -128,9 +128,13 @@ class TPCSettingViewController: TPCViewController {
     }
     
     private var sectionFour: [TPCSetItem] {
-        let diskSize = String(format: "%.2f", Double(SDImageCache.sharedImageCache().getSize()) / 1000.0 / 1000.0)
-        return [TPCSetItem(title: .ClearCache, detailTitle: "\(diskSize)M", action: { [unowned self] (indexPath) -> () in
+        let imageSize = Double(SDImageCache.sharedImageCache().getSize()) / 1000.0 / 1000.0
+        let fileSize = Double(TPCStorageUtil.shareInstance.sizeOfFileAtPath(TPCStorageUtil.shareInstance.directForTechnicalDictionary)) / 1000.0 / 1000.0
+        print(fileSize)
+        let totalSizeString = String(format: "%.2f", imageSize + fileSize)
+        return [TPCSetItem(title: .ClearCache, detailTitle: "\(totalSizeString)M", action: { [unowned self] (indexPath) -> () in
             self.clearCache(indexPath)
+            TPCStorageUtil.shareInstance.clearFileCache()
             }, accessoryType: .None)]
     }
     

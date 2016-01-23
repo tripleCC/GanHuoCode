@@ -9,6 +9,29 @@
 import Foundation
 
 class TPCStorageUtil {
+    let fileManager = NSFileManager.defaultManager()
+    static let shareInstance = TPCStorageUtil()
+    
+    func removeFileAtPath(path: String) {
+        do {
+            try fileManager.removeItemAtPath(path)
+        } catch { }
+    }
+    
+    func sizeOfFileAtPath(path: String) -> UInt64 {
+        var fileSize : UInt64 = 0
+        let fileEnumerator = fileManager.enumeratorAtPath(path)
+        if let fileEnumerator = fileEnumerator {
+            for fileName in fileEnumerator {
+                let filePath = path + "/\(fileName)"
+                if let attr = try? NSFileManager.defaultManager().attributesOfItemAtPath(filePath) as NSDictionary {
+                    fileSize += attr.fileSize();
+                }
+            }
+        }
+        return fileSize
+    }
+    
     static func setObject(value: AnyObject?, forKey defaultName: String) {
         NSUserDefaults.standardUserDefaults().setObject(value, forKey: defaultName)
     }
