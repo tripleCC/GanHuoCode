@@ -8,7 +8,13 @@
 
 import UIKit
 
-class TPCTableView: UITableView {
+class TPCTableView: UITableView, TPCRefreshable {
+    var refreshControl: UIRefreshControl!
+    var refreshingView: TPCActivityIndicator! {
+        return customView.subviews.first as! TPCRefreshView
+    }
+    var customView: UIView!
+    
     override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
         if let last = visibleCells.last {
             let rowsIndex = numberOfRowsInSection(0) - 1
@@ -21,10 +27,6 @@ class TPCTableView: UITableView {
         }
         return super.hitTest(point, withEvent: event)
     }
-    
-    var refreshControl: UIRefreshControl!
-    
-    var customView: UIView!
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -44,28 +46,5 @@ class TPCTableView: UITableView {
         customView.frame = refreshControl.bounds
         refreshControl.addSubview(customView)
     }
-    
-    func beginRefreshing() {
-        refreshControl.beginRefreshing()
-    }
-    
-    func refreshing() -> Bool {
-        return refreshControl.refreshing
-    }
-    
-    func beginRefreshViewAnimation() {
-        let refreshingView = customView.subviews.first as! TPCRefreshView
-        refreshingView.addAnimation()
-    }
-    
-    func endRefreshing() {
-//        let refreshingView = customView.subviews.first as! TPCRefreshView
-//        refreshingView.removeAnimation()
-        refreshControl.endRefreshing()
-    }
-    
-    func adjustRefreshViewWithScale(scale: CGFloat) {
-        let refreshingView = customView.subviews.first as! TPCRefreshView
-        refreshingView.prepareForAnimationWithScale(scale)
-    }
 }
+

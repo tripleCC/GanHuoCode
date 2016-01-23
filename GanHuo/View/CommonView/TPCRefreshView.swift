@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TPCRefreshView: UIView {
+class TPCRefreshView: UIView, TPCActivityIndicator {
     
     var circleLayers = [CALayer]()
     
@@ -17,6 +17,13 @@ class TPCRefreshView: UIView {
         addLayersWithSize(frame.size, tintColor: UIColor.lightGrayColor())
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        addLayersWithSize(frame.size, tintColor: UIColor.lightGrayColor())
+    }
+}
+
+extension TPCActivityIndicator where Self : TPCRefreshView {
     func addLayersWithSize(size: CGSize, tintColor: UIColor) {
         let oX = (size.width - size.width) / 2.0;
         let oY = (size.height - size.height) / 2.0;
@@ -44,8 +51,8 @@ class TPCRefreshView: UIView {
             transformAnimation.beginTime = beginTime - (1.0 * Double(circleLayers.indexOf(circle)!))
             transformAnimation.keyTimes = [0.0, 0.5, 1.0]
             transformAnimation.timingFunctions = [CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut),
-            CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut),
-            CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)]
+                CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut),
+                CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseInEaseOut)]
             transformAnimation.values = [NSValue(CATransform3D: CATransform3DMakeScale(0.0, 0.0, 0.0)),
                 NSValue(CATransform3D: CATransform3DMakeScale(1.0, 1.0, 0.0)),
                 NSValue(CATransform3D: CATransform3DMakeScale(0.0, 0.0, 0.0))
@@ -72,10 +79,5 @@ class TPCRefreshView: UIView {
         UIView.animateWithDuration(0.2) { () -> Void in
             self.transform = CGAffineTransformMakeScale(0, 0)
         }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        addLayersWithSize(frame.size, tintColor: UIColor.lightGrayColor())
     }
 }

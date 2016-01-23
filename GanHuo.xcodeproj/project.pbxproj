@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		12E92B8827A2329C2999802B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */; };
+		D66C25BF1C53A13200E7D6A6 /* TPCRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C25BE1C53A13200E7D6A6 /* TPCRefreshable.swift */; };
+		D66C25C11C53A31600E7D6A6 /* TPCActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C25C01C53A31600E7D6A6 /* TPCActivityIndicator.swift */; };
 		D69797E61C2FBCA500A53CD2 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69797E51C2FBCA500A53CD2 /* UIViewController+Extension.swift */; };
 		D6DE71271C2592A300C066DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6DE70DD1C2592A300C066DE /* Assets.xcassets */; };
 		D6DE71281C2592A300C066DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6DE70DE1C2592A300C066DE /* Main.storyboard */; };
@@ -79,6 +81,8 @@
 		72EE590290576ABFA38A5059 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA83A096E1133C661EE95446 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D66C25BE1C53A13200E7D6A6 /* TPCRefreshable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCRefreshable.swift; sourceTree = "<group>"; };
+		D66C25C01C53A31600E7D6A6 /* TPCActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCActivityIndicator.swift; sourceTree = "<group>"; };
 		D67B75E71C2FD11C0081D470 /* GanHuo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GanHuo.entitlements; sourceTree = "<group>"; };
 		D69797E51C2FBCA500A53CD2 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		D6DE6FB91C25904C00C066DE /* GanHuo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GanHuo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +184,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D66C25BD1C53A10E00E7D6A6 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				D66C25BE1C53A13200E7D6A6 /* TPCRefreshable.swift */,
+				D66C25C01C53A31600E7D6A6 /* TPCActivityIndicator.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		D6DE6FB01C25904C00C066DE = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +231,7 @@
 				D6DE70FE1C2592A300C066DE /* ThirdParty */,
 				D6DE70FA1C2592A300C066DE /* Other */,
 				D6DE70FD1C2592A300C066DE /* Resource */,
+				D66C25BD1C53A10E00E7D6A6 /* Protocol */,
 				D6DE70DD1C2592A300C066DE /* Assets.xcassets */,
 				D6DE70DE1C2592A300C066DE /* Main.storyboard */,
 				D6DE70F51C2592A300C066DE /* Info.plist */,
@@ -521,6 +535,7 @@
 				D6DE714E1C2592A300C066DE /* TPCGradientView.swift in Sources */,
 				D6DE715C1C2592A300C066DE /* TPCNoMoreDataFooterView.swift in Sources */,
 				D6DE71551C2592A300C066DE /* TPCShareView.swift in Sources */,
+				D66C25C11C53A31600E7D6A6 /* TPCActivityIndicator.swift in Sources */,
 				D6DE714F1C2592A300C066DE /* TPCImageView.swift in Sources */,
 				D6DE71381C2592A300C066DE /* UIButton+Extension.swift in Sources */,
 				D6DE715B1C2592A300C066DE /* TPCLaunchScreenView.swift in Sources */,
@@ -533,6 +548,7 @@
 				D6DE712B1C2592A300C066DE /* TPCNavigationController.swift in Sources */,
 				D6DE713D1C2592A300C066DE /* TPCLaunchConfig.swift in Sources */,
 				D6DE71441C2592A300C066DE /* TPCDispatchUtil.swift in Sources */,
+				D66C25BF1C53A13200E7D6A6 /* TPCRefreshable.swift in Sources */,
 				D6DE71601C2592A300C066DE /* TPCTableView.swift in Sources */,
 				D6DE71401C2592A300C066DE /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				D6DE71591C2592A300C066DE /* TPCDetailHeaderView.swift in Sources */,
