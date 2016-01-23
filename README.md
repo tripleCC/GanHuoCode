@@ -9,6 +9,7 @@ TODO：
 
   - SDWebImage－》Kingfisher  (*****)
   - UI TEST  (****)
+  - Cache (***)
   - etc<br>
   
 DISCARD:
