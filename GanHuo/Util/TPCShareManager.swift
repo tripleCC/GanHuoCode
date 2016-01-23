@@ -25,11 +25,9 @@ class TPCShareManager {
     var accessTokenQQ: String?
     var shareing: Bool = false
     static let shareInstance = TPCShareManager()
-    init () {
+    
+    func registerSinaAccount() {
         let accountWeiBo = MonkeyKing.Account.Weibo(appID: SINAAPPKEY, appKey: SINASECRET, redirectURL: REDIRECTURL)
-        let accountQQ = MonkeyKing.Account.QQ(appID: QQAPPID)
-        let accountWX = MonkeyKing.Account.WeChat(appID: WXAPPID, appKey: WXSECRET)
-        
         MonkeyKing.registerAccount(accountWeiBo)
         if !accountWeiBo.isAppInstalled {
             MonkeyKing.OAuth(accountWeiBo, completionHandler: { (dictionary, response, error) -> Void in
@@ -40,7 +38,10 @@ class TPCShareManager {
                 print("dictionary \(dictionary) error \(error)")
             })
         }
-        
+    }
+    
+    func registerQQAccount() {
+        let accountQQ = MonkeyKing.Account.QQ(appID: QQAPPID)
         MonkeyKing.registerAccount(accountQQ)
         if !accountQQ.isAppInstalled {
             MonkeyKing.OAuth(accountQQ, completionHandler: { (dictionary, response, error) -> Void in
@@ -51,7 +52,10 @@ class TPCShareManager {
                 print("dictionary \(dictionary) error \(error)")
             })
         }
-        
+    }
+    
+    func registerWXAccount() {
+        let accountWX = MonkeyKing.Account.WeChat(appID: WXAPPID, appKey: WXSECRET)
         MonkeyKing.registerAccount(accountWX)
         if !accountWX.isAppInstalled {
             MonkeyKing.OAuth(accountWX, completionHandler: { (dictionary, response, error) -> Void in
@@ -65,6 +69,7 @@ class TPCShareManager {
     }
     
     func shareSinaWithTitle(title: String, desc: String, image: UIImage? = nil, mediaURL: NSURL? = nil) {
+        registerSinaAccount()
         shareing = true
         let lMediaURL: MonkeyKing.Media?
         if image == nil && mediaURL == nil {
@@ -90,6 +95,7 @@ class TPCShareManager {
     }
     
     func shareQQWithTitle(title: String, desc: String, image: UIImage? = nil, mediaURL: NSURL? = nil) {
+        registerQQAccount()
         shareing = true
         let lMediaURL: MonkeyKing.Media?
         if image == nil && mediaURL == nil {
@@ -109,6 +115,7 @@ class TPCShareManager {
     }
     
     func shareQQZoneWithTitle(title: String, desc: String, image: UIImage? = nil, mediaURL: NSURL? = nil) {
+        registerQQAccount()
         shareing = true
         let lMediaURL: MonkeyKing.Media?
         if image == nil && mediaURL == nil {
@@ -128,6 +135,7 @@ class TPCShareManager {
     }
     
     func shareWXWithTitle(title: String, desc: String, image: UIImage? = nil, mediaURL: NSURL? = nil) {
+        registerWXAccount()
         shareing = true
         let lMediaURL: MonkeyKing.Media?
         if image == nil && mediaURL == nil {
