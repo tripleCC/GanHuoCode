@@ -68,7 +68,7 @@ class TPCShareManager {
         }
     }
     
-    func shareSinaWithTitle(title: String, desc: String, image: UIImage? = nil, mediaURL: NSURL? = nil) {
+    func shareSinaWithTitle(title: String?, desc: String?, image: UIImage? = nil, mediaURL: NSURL? = nil) {
         registerSinaAccount()
         shareing = true
         let lMediaURL: MonkeyKing.Media?
@@ -94,7 +94,7 @@ class TPCShareManager {
         }
     }
     
-    func shareQQWithTitle(title: String, desc: String, image: UIImage? = nil, mediaURL: NSURL? = nil) {
+    func shareQQWithTitle(title: String?, desc: String?, image: UIImage? = nil, mediaURL: NSURL? = nil) {
         registerQQAccount()
         shareing = true
         let lMediaURL: MonkeyKing.Media?
@@ -114,7 +114,7 @@ class TPCShareManager {
         }
     }
     
-    func shareQQZoneWithTitle(title: String, desc: String, image: UIImage? = nil, mediaURL: NSURL? = nil) {
+    func shareQQZoneWithTitle(title: String?, desc: String?, image: UIImage? = nil, mediaURL: NSURL? = nil) {
         registerQQAccount()
         shareing = true
         let lMediaURL: MonkeyKing.Media?
@@ -134,23 +134,38 @@ class TPCShareManager {
         }
     }
     
-    func shareWXWithTitle(title: String, desc: String, image: UIImage? = nil, mediaURL: NSURL? = nil) {
+    func shareWXWithTitle(title: String?, desc: String? = nil, image: UIImage? = nil, mediaURL: NSURL? = nil) {
         registerWXAccount()
         shareing = true
         let lMediaURL: MonkeyKing.Media?
-        if image == nil && mediaURL == nil {
+        let shareImage = image?.getShareImage()
+        if shareImage == nil && mediaURL == nil {
             lMediaURL = nil
-        } else if image != nil && mediaURL == nil {
-            lMediaURL = MonkeyKing.Media.Image(image!)
+        } else if shareImage != nil && mediaURL == nil {
+            lMediaURL = MonkeyKing.Media.Image(shareImage!)
         } else {
             lMediaURL = MonkeyKing.Media.URL(mediaURL!)
         }
-        
-        debugPrint(title, desc, image)
-        let message = MonkeyKing.Message.WeChat(.Session(info: (title: title, description: desc, thumbnail: image, media: lMediaURL)))
+        let message = MonkeyKing.Message.WeChat(.Session(info: (title: title, description: desc, thumbnail: shareImage, media: lMediaURL)))
         MonkeyKing.shareMessage(message) { success in
             self.shareing = false
             print("success: \(success)")
         }
+    }
+}
+
+extension UIImage {
+    //Share we chat fail when image is too big
+    func getShareImage() -> UIImage {
+        let maxSize = CGSize(width: 400, height: 400)
+        let xScale = maxSize.width / self.size.width;
+        let yScale = maxSize.height / self.size.height;
+        let minScale = min(xScale, yScale);
+        
+        UIGraphicsBeginImageContextWithOptions(self.size, true, minScale)
+        self.drawAtPoint(CGPointZero)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
     }
 }

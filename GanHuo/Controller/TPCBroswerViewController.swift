@@ -82,7 +82,7 @@ class TPCBroswerViewController: TPCViewController {
                 if let urlString = self.webView.URL?.absoluteString {
                     shareText += urlString
                 }
-                TPCShareView.showWithTitle("干货", desc: shareText)
+                TPCShareView.showWithTitle(self.technical?.desc, desc: self.technical?.desc, mediaURL: self.webView.URL)
             }
         }
     }

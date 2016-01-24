@@ -9,8 +9,8 @@
 import UIKit
 
 class TPCShareView: UIView {
-    var title: String = ""
-    var desc: String = ""
+    var title: String?
+    var desc: String?
     var image: UIImage?
     var mediaURL: NSURL?
     
@@ -102,7 +102,7 @@ class TPCShareView: UIView {
         return NSBundle.mainBundle().loadNibNamed("TPCShareView", owner: nil, options: nil)[0] as! TPCShareView
     }
     
-    class func showWithTitle(title: String = "", desc: String = "", image: UIImage? = nil, mediaURL: NSURL? = nil) {
+    class func showWithTitle(title: String?, desc: String? = nil, image: UIImage? = nil, mediaURL: NSURL? = nil) {
         let shareView = TPCShareView.shareView()
         let tap = UITapGestureRecognizer(target: shareView, action: "maskViewOnClicked")
         shareView.addGestureRecognizer(tap)
