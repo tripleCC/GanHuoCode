@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		12E92B8827A2329C2999802B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */; };
 		D667F9F11C53B19D0059F372 /* TPCArchivable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F01C53B19D0059F372 /* TPCArchivable.swift */; };
+		D667F9F51C54B4F10059F372 /* TPCFavotiteTechnical.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F41C54B4F10059F372 /* TPCFavotiteTechnical.swift */; };
 		D66C25BF1C53A13200E7D6A6 /* TPCRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C25BE1C53A13200E7D6A6 /* TPCRefreshable.swift */; };
 		D66C25C11C53A31600E7D6A6 /* TPCActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C25C01C53A31600E7D6A6 /* TPCActivityIndicator.swift */; };
 		D69797E61C2FBCA500A53CD2 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69797E51C2FBCA500A53CD2 /* UIViewController+Extension.swift */; };
@@ -83,6 +84,7 @@
 		7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA83A096E1133C661EE95446 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D667F9F01C53B19D0059F372 /* TPCArchivable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCArchivable.swift; sourceTree = "<group>"; };
+		D667F9F41C54B4F10059F372 /* TPCFavotiteTechnical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCFavotiteTechnical.swift; sourceTree = "<group>"; };
 		D66C25BE1C53A13200E7D6A6 /* TPCRefreshable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCRefreshable.swift; sourceTree = "<group>"; };
 		D66C25C01C53A31600E7D6A6 /* TPCActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCActivityIndicator.swift; sourceTree = "<group>"; };
 		D67B75E71C2FD11C0081D470 /* GanHuo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GanHuo.entitlements; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				D6DE70F71C2592A300C066DE /* TPCAboutMe.swift */,
 				D6DE70F81C2592A300C066DE /* TPCLaunchConfig.swift */,
 				D6DE70F91C2592A300C066DE /* TPCTechnicalObject.swift */,
+				D667F9F41C54B4F10059F372 /* TPCFavotiteTechnical.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				D6DE71551C2592A300C066DE /* TPCShareView.swift in Sources */,
 				D66C25C11C53A31600E7D6A6 /* TPCActivityIndicator.swift in Sources */,
 				D6DE714F1C2592A300C066DE /* TPCImageView.swift in Sources */,
+				D667F9F51C54B4F10059F372 /* TPCFavotiteTechnical.swift in Sources */,
 				D6DE71381C2592A300C066DE /* UIButton+Extension.swift in Sources */,
 				D6DE715B1C2592A300C066DE /* TPCLaunchScreenView.swift in Sources */,
 				D6DE713C1C2592A300C066DE /* TPCAboutMe.swift in Sources */,

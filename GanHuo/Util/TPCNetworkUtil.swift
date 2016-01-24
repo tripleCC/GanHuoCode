@@ -279,23 +279,4 @@ extension TPCNetworkUtil {
     }
 }
 
-extension TPCStorageUtil {
-    var directForTechnicalDictionary: String {
-        return NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).first! + "/TPCFileCache/"
-    }
-    
-    func pathForTechnicalDictionaryByTime(time: (year: Int, month: Int, day: Int)) -> String {
-        let directPath = directForTechnicalDictionary
-        if !TPCStorageUtil.shareInstance.fileManager.fileExistsAtPath(directPath) {
-            do {
-                try TPCStorageUtil.shareInstance.fileManager.createDirectoryAtPath(directPath, withIntermediateDirectories: true, attributes: nil)
-            } catch { }
-        }
-        return directPath + "\(time.year)" + String(format: "%02d", time.month) + String(format: "%02d", time.day) + ".plist"
-    }
-    
-    func clearFileCache() {
-        removeFileAtPath(directForTechnicalDictionary)
-    }
-}
 

@@ -13,7 +13,6 @@ public protocol TPCArchivable {
     init?(unarchive: NSDictionary?)
 }
 
-
 public func unarchiveObjectWithFile<T: TPCArchivable>(path: String) -> T? {
     return T(unarchive: NSKeyedUnarchiver.unarchiveObjectWithFile(path) as? NSDictionary)
 }

@@ -75,6 +75,26 @@ extension TPCTechnicalObject: TPCArchivable{
     }
 }
 
+extension TPCStorageUtil {
+    var directoryForTechnicalDictionary: String {
+        return NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).first! + "/TPCFileCache/"
+    }
+    
+    func pathForTechnicalDictionaryByTime(time: (year: Int, month: Int, day: Int)) -> String {
+        let directPath = directoryForTechnicalDictionary
+        if !TPCStorageUtil.shareInstance.fileManager.fileExistsAtPath(directPath) {
+            do {
+                try TPCStorageUtil.shareInstance.fileManager.createDirectoryAtPath(directPath, withIntermediateDirectories: true, attributes: nil)
+            } catch { }
+        }
+        return directPath + "\(time.year)" + String(format: "%02d", time.month) + String(format: "%02d", time.day) + ".plist"
+    }
+    
+    func clearFileCache() {
+        removeFileAtPath(directoryForTechnicalDictionary)
+    }
+}
+
 public func archiveTechnicalDictionary(dictionary: [String : [TPCTechnicalObject]], toFile path: String) {
     let encodedLists = Array(dictionary).map{ [$0 : $1.map{ $0.archive() }] }
     NSKeyedArchiver.archiveRootObject(encodedLists, toFile: path)

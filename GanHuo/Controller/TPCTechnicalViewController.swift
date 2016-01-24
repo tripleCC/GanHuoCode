@@ -114,6 +114,10 @@ class TPCTechnicalViewController: TPCViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "设置", action: { [unowned self] (enable) -> () in
             self.set()
         })
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "收藏", action: { [unowned self] (enable) -> () in
+//            self.set()
+            })
     }
     
     func set() {
