@@ -9,7 +9,6 @@ TODO：
 
   - SDWebImage－》Kingfisher  (*****)
   - UI TEST  (****)
-  - Cache (***)
   - etc<br>
   
 DISCARD:
@@ -18,6 +17,7 @@ DISCARD:
  
 DONE:
 
+  - Cache (***)
 
 App切图：<br>
 ![](Images/2016-01-08 23_33_15.gif)
