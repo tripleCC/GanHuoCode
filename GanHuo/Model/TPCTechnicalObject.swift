@@ -89,10 +89,6 @@ extension TPCStorageUtil {
         }
         return directPath + "\(time.year)" + String(format: "%02d", time.month) + String(format: "%02d", time.day) + ".plist"
     }
-    
-    func clearFileCache() {
-        removeFileAtPath(directoryForTechnicalDictionary)
-    }
 }
 
 public func archiveTechnicalDictionary(dictionary: [String : [TPCTechnicalObject]], toFile path: String) {

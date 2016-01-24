@@ -18,6 +18,11 @@ class TPCStorageUtil {
         } catch { }
     }
     
+    func clearFileCache() {
+        removeFileAtPath(pathForNoDataDays)
+        removeFileAtPath(directoryForTechnicalDictionary)
+    }
+    
     func sizeOfFileAtPath(path: String) -> UInt64 {
         var fileSize : UInt64 = 0
         let fileEnumerator = fileManager.enumeratorAtPath(path)

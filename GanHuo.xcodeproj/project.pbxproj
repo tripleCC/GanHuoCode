@@ -10,6 +10,7 @@
 		12E92B8827A2329C2999802B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */; };
 		D667F9F11C53B19D0059F372 /* TPCArchivable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F01C53B19D0059F372 /* TPCArchivable.swift */; };
 		D667F9F51C54B4F10059F372 /* TPCFavotiteTechnical.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F41C54B4F10059F372 /* TPCFavotiteTechnical.swift */; };
+		D667F9F91C5518920059F372 /* NSCalender+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F81C5518920059F372 /* NSCalender+Extension.swift */; };
 		D66C25BF1C53A13200E7D6A6 /* TPCRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C25BE1C53A13200E7D6A6 /* TPCRefreshable.swift */; };
 		D66C25C11C53A31600E7D6A6 /* TPCActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C25C01C53A31600E7D6A6 /* TPCActivityIndicator.swift */; };
 		D69797E61C2FBCA500A53CD2 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69797E51C2FBCA500A53CD2 /* UIViewController+Extension.swift */; };
@@ -85,6 +86,7 @@
 		CA83A096E1133C661EE95446 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D667F9F01C53B19D0059F372 /* TPCArchivable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCArchivable.swift; sourceTree = "<group>"; };
 		D667F9F41C54B4F10059F372 /* TPCFavotiteTechnical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCFavotiteTechnical.swift; sourceTree = "<group>"; };
+		D667F9F81C5518920059F372 /* NSCalender+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalender+Extension.swift"; sourceTree = "<group>"; };
 		D66C25BE1C53A13200E7D6A6 /* TPCRefreshable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCRefreshable.swift; sourceTree = "<group>"; };
 		D66C25C01C53A31600E7D6A6 /* TPCActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCActivityIndicator.swift; sourceTree = "<group>"; };
 		D67B75E71C2FD11C0081D470 /* GanHuo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GanHuo.entitlements; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				D6DE70F31C2592A300C066DE /* UIFont+Extension.swift */,
 				D6DE70F41C2592A300C066DE /* UIImage+Extension.swift */,
 				D69797E51C2FBCA500A53CD2 /* UIViewController+Extension.swift */,
+				D667F9F81C5518920059F372 /* NSCalender+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				D6DE71601C2592A300C066DE /* TPCTableView.swift in Sources */,
 				D6DE71401C2592A300C066DE /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				D6DE71591C2592A300C066DE /* TPCDetailHeaderView.swift in Sources */,
+				D667F9F91C5518920059F372 /* NSCalender+Extension.swift in Sources */,
 				D6DE71581C2592A300C066DE /* TPCWebView.swift in Sources */,
 				D6DE715F1C2592A300C066DE /* TPCSettingSubCell.swift in Sources */,
 				D6E504D51C2C205D00838446 /* TPCLinkButton.swift in Sources */,

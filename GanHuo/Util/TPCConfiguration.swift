@@ -48,7 +48,7 @@ struct TPCConfiguration {
     static let refreshingViewHW: CGFloat = 40.0
     
     static var allRules: [TPCRuleType] = [TPCRuleType.One, TPCRuleType.Two, TPCRuleType.Three, TPCRuleType.Four]
-    
+    static let loadDataMaxFailCount = 20
     static var technicalCellShowTextLineMax = 5
     static var loadDataCountOnce = 5
     static var selectedShowCategory = "iOS"

@@ -37,7 +37,7 @@ class TPCVenusUtil {
     static func setInitialize(completion: (launchConfig: TPCLaunchConfig?) -> ()) {
         venusFlag = fetchVenusFlag()
         guard !venusFlag else { return completion(launchConfig: nil) }
-        debugPrint("获取venus配置")
+        debugPrint("Get venus configuration")
         loadVenusFlagFromServer() { (launchConfig) ->() in
             if let venusFlag = launchConfig.venus {
                 saveVenusFlag(venusFlag)
