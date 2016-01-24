@@ -23,13 +23,12 @@ class TPCVenusUtil {
     }
     
     static func fetchVenusFlag() -> Bool {
-        // 如果是true，就不从网络获取，如果是false，就从网络获取
-        // 这样就能保证已经为true的用户可以浏览全部，而审核人员从网络获取已经设置为false的标志位
+        // Get it from disk if it is true. Otherwise get it from network
         return TPCStorageUtil.boolForKey(TPCVenusKey)
     }
     
     static func loadVenusFlagFromServer(completion: (launchConfig: TPCLaunchConfig) -> ()) {
-        // 从网络上获取
+        // Get from network
         TPCNetworkUtil.shareInstance.loadLaunchConfig { (launchConfig) -> () in
             completion(launchConfig: launchConfig)
         }
@@ -40,13 +39,17 @@ class TPCVenusUtil {
         guard !venusFlag else { return completion(launchConfig: nil) }
         debugPrint("获取venus配置")
         loadVenusFlagFromServer() { (launchConfig) ->() in
-            venusFlag = launchConfig.venus!
-            saveVenusFlag(launchConfig.venus!)
-            if !launchConfig.venus! {
-                debugPrint("Close venus model")
-                TPCConfiguration.allRules.removeAtIndex(TPCConfiguration.allRules.indexOf(TPCRuleType.One)!)
-                TPCConfiguration.allCategories = TPCConfiguration.allCategories.filter{ !filterCategories.contains($0) }
-                TPCConfiguration.loadDataCountOnce = 5
+            if let venusFlag = launchConfig.venus {
+                saveVenusFlag(venusFlag)
+                if !venusFlag {
+                    debugPrint("Close venus model")
+                    TPCConfiguration.allRules.removeAtIndex(TPCConfiguration.allRules.indexOf(TPCRuleType.One)!)
+                    TPCConfiguration.allCategories = TPCConfiguration.allCategories.filter{ !filterCategories.contains($0) }
+                    TPCConfiguration.loadDataCountOnce = 5
+                } else {
+                    // Clear github image url cache when get true venusFlag at first time
+                    TPCStorageUtil.shareInstance.clearFileCache()
+                }
             }
             completion(launchConfig: launchConfig)
         }
