@@ -9,6 +9,7 @@ TODO：
 
   - SDWebImage－》Kingfisher  (*****)
   - UI TEST  (****)
+  - Favorites (***)
   - etc<br>
   
 DISCARD:
