@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SDWebImage
 
 let TPCVenusKey = "TPCVenus"
 let venusURL = ""
@@ -49,6 +50,7 @@ class TPCVenusUtil {
                 } else {
                     // Clear github image url cache when get true venusFlag at first time
                     TPCStorageUtil.shareInstance.clearFileCache()
+                    SDImageCache.sharedImageCache().clearDisk()
                 }
             }
             completion(launchConfig: launchConfig)
