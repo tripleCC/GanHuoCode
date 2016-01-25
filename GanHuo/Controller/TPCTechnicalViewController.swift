@@ -240,25 +240,23 @@ extension TPCTechnicalViewController: UITableViewDelegate {
 }
 
 extension TPCTechnicalViewController {
-    private func loadDataByContentOffsetY(contentOffsetY: CGFloat) {
-//        debugPrint(loading, contentOffsetY, contentOffsetReference)
-        if contentOffsetY > contentOffsetReference {
-            loadMoreData()
-        }
-    }
-    
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if canLoadNewData {
             loadNewData()
         }
         // 到顶部时不进行刷新
         if scrollView.contentOffset.y > 0 {
+            if scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.contentInset.top - scrollView.contentInset.bottom * 2 - noMoreDataFooterView.bounds.height {
+                loadMoreData()
+            }
             reloadTableView()
         }
     }
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        loadDataByContentOffsetY(targetContentOffset.memory.y)
+        if targetContentOffset.memory.y > contentOffsetReference {
+            loadMoreData()
+        }
         adjustBarPositionByVelocity(velocity.y, contentOffsetY: targetContentOffset.memory.y)
         
         if tableView.refreshing() {
