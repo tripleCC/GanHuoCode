@@ -41,6 +41,7 @@ class TPCVenusUtil {
         debugPrint("Get venus configuration")
         loadVenusFlagFromServer() { (launchConfig) ->() in
             if let venusFlag = launchConfig.venus {
+                self.venusFlag = venusFlag
                 saveVenusFlag(venusFlag)
                 if !venusFlag {
                     debugPrint("Close venus model")
