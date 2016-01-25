@@ -15,4 +15,8 @@ extension NSCalendar {
         return calender.dateWithEra(calender.component(.Era, fromDate: NSDate()), year: time.year, month: time.month, day: time.day + 1, hour: 0, minute: 0, second: 0, nanosecond: 0)
     }
     
+    func weekdayWithDate(date: NSDate) -> Int {
+        let calender = NSCalendar.currentCalendar()
+        return  calender.component(.Weekday, fromDate: date)
+    }
 }

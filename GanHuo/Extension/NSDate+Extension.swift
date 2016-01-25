@@ -10,6 +10,12 @@ import Foundation
 
 let oneDay: NSTimeInterval = 60 * 60 * 24
 extension NSDate {
+    var isWeekend: Bool {
+        let weekday = (NSCalendar.currentCalendar().weekdayWithDate(self) + 7) % 8
+        debugPrint(weekday)
+        return weekday == 0 || weekday == 1
+    }
+    
     public class func currentTime() -> (Int, Int, Int) {
         return NSDate.timeSinceNowByDayInterval(0)
     }

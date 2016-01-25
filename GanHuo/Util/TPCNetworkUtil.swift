@@ -96,7 +96,7 @@ public class TPCNetworkUtil {
     private var categoriesArray = [[String]]()
     private var dayInterval: NSTimeInterval = 0
     private var venusInterval = 0
-    private var noDataDays = TPCStorageUtil.shareInstance.fetchNoDataDays()
+//    var noDataDays = TPCStorageUtil.shareInstance.fetchNoDataDays()
     
     init() {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -130,8 +130,8 @@ public class TPCNetworkUtil {
                 debugPrint("load unsuccessfully", self.year, self.month, self.day)
                 guard ++self.loadEmptyCount < TPCConfiguration.loadDataMaxFailCount else {
                     self.resetCounter()
-                    TPCStorageUtil.shareInstance.clearNoDateDaysCache()
-                    self.noDataDays.removeAll()
+//                    TPCStorageUtil.shareInstance.clearNoDateDaysCache()
+//                    self.noDataDays.removeAll()
                     failure?(.BeyondMaxFailTime)
                     return
                 }
@@ -183,7 +183,8 @@ public class TPCNetworkUtil {
 extension TPCNetworkUtil {
     public func loadTechnicalByYear(year: Int, month: Int, day: Int, completion:((TPCTechnicalDictionary, [String]) -> ())?) {
         if let date = NSCalendar.currentCalendar().dateWithTime((year, month, day)) {
-            guard !noDataDays.contains(date) else {
+            guard !date.isWeekend /*|| !noDataDays.contains(date)*/ else {
+                debugPrint(date)
                 completion?(TPCTechnicalDictionary(), [String]())
                 return
             }
@@ -246,10 +247,10 @@ extension TPCNetworkUtil {
                                 let path = TPCStorageUtil.shareInstance.pathForTechnicalDictionaryByTime((year, month, day))
                                 archiveTechnicalDictionary(technicalDict, toFile: path)
                             } else {
-                                if let date = NSCalendar.currentCalendar().dateWithTime((year, month, day)) {
-                                    self.noDataDays.append(date)
-                                    TPCStorageUtil.shareInstance.saveNoDataDays(self.noDataDays)
-                                }
+//                                if let date = NSCalendar.currentCalendar().dateWithTime((year, month, day)) {
+//                                    self.noDataDays.append(date)
+//                                    TPCStorageUtil.shareInstance.saveNoDataDays(self.noDataDays)
+//                                }
                             }
                         }
                         

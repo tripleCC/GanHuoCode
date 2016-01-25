@@ -48,9 +48,11 @@ class TPCVenusUtil {
                     TPCConfiguration.allCategories = TPCConfiguration.allCategories.filter{ !filterCategories.contains($0) }
                     TPCConfiguration.loadDataCountOnce = 5
                 } else {
+                    debugPrint("Open venus model")
                     // Clear github image url cache when get true venusFlag at first time
                     TPCStorageUtil.shareInstance.clearFileCache()
                     SDImageCache.sharedImageCache().clearDisk()
+                    SDImageCache.sharedImageCache().clearMemory()
                 }
             }
             completion(launchConfig: launchConfig)

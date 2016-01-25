@@ -19,7 +19,8 @@ class TPCStorageUtil {
     }
     
     func clearFileCache() {
-        removeFileAtPath(pathForNoDataDays)
+//        TPCNetworkUtil.shareInstance.noDataDays.removeAll()
+//        removeFileAtPath(pathForNoDataDays)
         removeFileAtPath(directoryForTechnicalDictionary)
     }
     
