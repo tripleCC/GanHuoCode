@@ -226,7 +226,7 @@ extension TPCNetworkUtil {
                                         var technical = TPCTechnicalObject(dict: json.dictionaryValue)
                                         technical.desc = TPCTextParser.shareTextParser.parseOriginString(technical.desc!)
                                         if !TPCVenusUtil.venusFlag && technical.type == "福利" {
-                                            technical.url = TPCGanHuoType.ImageTypeSubtype.VenusImage(Int(self.venusInterval)).path()
+                                            technical.url = TPCGanHuoType.ImageTypeSubtype.VenusImage(Int(300 - self.venusInterval)).path()
                                         }
                                         technicalArray.append(technical)
                                     }
