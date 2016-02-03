@@ -1,7 +1,7 @@
 platform :ios,8.0
 pod 'Alamofire'
 pod 'SwiftyJSON'
-pod 'SDWebImage'
+pod 'Kingfisher'
 pod 'DACircularProgress'
 pod "PKHUD"
 pod 'MonkeyKing', '0.7'
