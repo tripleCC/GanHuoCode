@@ -9,10 +9,21 @@
 import Foundation
 import CoreData
 
-class CoreDataManager {
-    private static let instance = CoreDataManager()
+protocol TPCCoreDataHelper: TPCGanHuo {
+    static var entityName: String { get }
+    init(context: NSManagedObjectContext, dict: RawType)
+}
+
+extension TPCCoreDataHelper where Self : NSManagedObject {
+    static var entityName: String {
+        return String(self)
+    }
+}
+
+class TPCCoreDataManager {
+    private static let instance = TPCCoreDataManager()
     
-    class var shareCoreDataManager: CoreDataManager {
+    class var shareInstance: TPCCoreDataManager {
         return instance
     }
     

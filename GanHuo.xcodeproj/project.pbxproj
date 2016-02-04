@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		12E92B8827A2329C2999802B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */; };
 		D667F9F11C53B19D0059F372 /* TPCArchivable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F01C53B19D0059F372 /* TPCArchivable.swift */; };
-		D667F9F51C54B4F10059F372 /* TPCFavotiteTechnical.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F41C54B4F10059F372 /* TPCFavotiteTechnical.swift */; };
 		D667F9F91C5518920059F372 /* NSCalender+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F81C5518920059F372 /* NSCalender+Extension.swift */; };
 		D66C25BF1C53A13200E7D6A6 /* TPCRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C25BE1C53A13200E7D6A6 /* TPCRefreshable.swift */; };
 		D66C25C11C53A31600E7D6A6 /* TPCActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C25C01C53A31600E7D6A6 /* TPCActivityIndicator.swift */; };
@@ -36,10 +35,9 @@
 		D6DE713A1C2592A300C066DE /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70F41C2592A300C066DE /* UIImage+Extension.swift */; };
 		D6DE713C1C2592A300C066DE /* TPCAboutMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70F71C2592A300C066DE /* TPCAboutMe.swift */; };
 		D6DE713D1C2592A300C066DE /* TPCLaunchConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70F81C2592A300C066DE /* TPCLaunchConfig.swift */; };
-		D6DE713E1C2592A300C066DE /* TPCTechnicalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70F91C2592A300C066DE /* TPCTechnicalObject.swift */; };
 		D6DE713F1C2592A300C066DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70FB1C2592A300C066DE /* AppDelegate.swift */; };
 		D6DE71401C2592A300C066DE /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71001C2592A300C066DE /* UINavigationController+FDFullscreenPopGesture.m */; };
-		D6DE71411C2592A300C066DE /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71021C2592A300C066DE /* CoreDataManager.swift */; };
+		D6DE71411C2592A300C066DE /* TPCCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71021C2592A300C066DE /* TPCCoreDataManager.swift */; };
 		D6DE71421C2592A300C066DE /* TPCConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71031C2592A300C066DE /* TPCConfiguration.swift */; };
 		D6DE71431C2592A300C066DE /* TPCConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71041C2592A300C066DE /* TPCConst.swift */; };
 		D6DE71441C2592A300C066DE /* TPCDispatchUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71051C2592A300C066DE /* TPCDispatchUtil.swift */; };
@@ -78,6 +76,8 @@
 		D6DE71681C259EE900C066DE /* TPCVersionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71671C259EE900C066DE /* TPCVersionUtil.swift */; };
 		D6E504D31C2C1D9C00838446 /* AboutMe.json in Resources */ = {isa = PBXBuildFile; fileRef = D6E504D21C2C1D9C00838446 /* AboutMe.json */; };
 		D6E504D51C2C205D00838446 /* TPCLinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E504D41C2C205D00838446 /* TPCLinkButton.swift */; };
+		D6FBFF251C62F87D0011F7B6 /* TPCTechnicalObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FBFF231C62F87D0011F7B6 /* TPCTechnicalObject+CoreDataProperties.swift */; };
+		D6FBFF261C62F87D0011F7B6 /* TPCTechnicalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FBFF241C62F87D0011F7B6 /* TPCTechnicalObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,7 +85,6 @@
 		7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA83A096E1133C661EE95446 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D667F9F01C53B19D0059F372 /* TPCArchivable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCArchivable.swift; sourceTree = "<group>"; };
-		D667F9F41C54B4F10059F372 /* TPCFavotiteTechnical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCFavotiteTechnical.swift; sourceTree = "<group>"; };
 		D667F9F81C5518920059F372 /* NSCalender+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalender+Extension.swift"; sourceTree = "<group>"; };
 		D66C25BE1C53A13200E7D6A6 /* TPCRefreshable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCRefreshable.swift; sourceTree = "<group>"; };
 		D66C25C01C53A31600E7D6A6 /* TPCActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCActivityIndicator.swift; sourceTree = "<group>"; };
@@ -115,12 +114,11 @@
 		D6DE70F51C2592A300C066DE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6DE70F71C2592A300C066DE /* TPCAboutMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCAboutMe.swift; sourceTree = "<group>"; };
 		D6DE70F81C2592A300C066DE /* TPCLaunchConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCLaunchConfig.swift; sourceTree = "<group>"; };
-		D6DE70F91C2592A300C066DE /* TPCTechnicalObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCTechnicalObject.swift; sourceTree = "<group>"; };
 		D6DE70FB1C2592A300C066DE /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6DE70FC1C2592A300C066DE /* WKCCSwift-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WKCCSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		D6DE70FF1C2592A300C066DE /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		D6DE71001C2592A300C066DE /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
-		D6DE71021C2592A300C066DE /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		D6DE71021C2592A300C066DE /* TPCCoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCoreDataManager.swift; sourceTree = "<group>"; };
 		D6DE71031C2592A300C066DE /* TPCConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCConfiguration.swift; sourceTree = "<group>"; };
 		D6DE71041C2592A300C066DE /* TPCConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCConst.swift; sourceTree = "<group>"; };
 		D6DE71051C2592A300C066DE /* TPCDispatchUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCDispatchUtil.swift; sourceTree = "<group>"; };
@@ -159,6 +157,8 @@
 		D6DE71671C259EE900C066DE /* TPCVersionUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCVersionUtil.swift; sourceTree = "<group>"; };
 		D6E504D21C2C1D9C00838446 /* AboutMe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AboutMe.json; sourceTree = "<group>"; };
 		D6E504D41C2C205D00838446 /* TPCLinkButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCLinkButton.swift; sourceTree = "<group>"; };
+		D6FBFF231C62F87D0011F7B6 /* TPCTechnicalObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TPCTechnicalObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D6FBFF241C62F87D0011F7B6 /* TPCTechnicalObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCTechnicalObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,10 +291,10 @@
 		D6DE70F61C2592A300C066DE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D6FBFF231C62F87D0011F7B6 /* TPCTechnicalObject+CoreDataProperties.swift */,
+				D6FBFF241C62F87D0011F7B6 /* TPCTechnicalObject.swift */,
 				D6DE70F71C2592A300C066DE /* TPCAboutMe.swift */,
 				D6DE70F81C2592A300C066DE /* TPCLaunchConfig.swift */,
-				D6DE70F91C2592A300C066DE /* TPCTechnicalObject.swift */,
-				D667F9F41C54B4F10059F372 /* TPCFavotiteTechnical.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -329,7 +329,7 @@
 		D6DE71011C2592A300C066DE /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				D6DE71021C2592A300C066DE /* CoreDataManager.swift */,
+				D6DE71021C2592A300C066DE /* TPCCoreDataManager.swift */,
 				D6DE71031C2592A300C066DE /* TPCConfiguration.swift */,
 				D6DE71041C2592A300C066DE /* TPCConst.swift */,
 				D6DE71051C2592A300C066DE /* TPCDispatchUtil.swift */,
@@ -521,6 +521,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6FBFF261C62F87D0011F7B6 /* TPCTechnicalObject.swift in Sources */,
 				D6DE713F1C2592A300C066DE /* AppDelegate.swift in Sources */,
 				D6DE714C1C2592A300C066DE /* TPCApplicationTitleView.swift in Sources */,
 				D6DE71431C2592A300C066DE /* TPCConst.swift in Sources */,
@@ -533,9 +534,10 @@
 				D6DE71291C2592A300C066DE /* TPCBroswerViewController.swift in Sources */,
 				D6DE71571C2592A300C066DE /* TPCSystemButton.swift in Sources */,
 				D6DE713A1C2592A300C066DE /* UIImage+Extension.swift in Sources */,
+				D6FBFF251C62F87D0011F7B6 /* TPCTechnicalObject+CoreDataProperties.swift in Sources */,
 				D6DE71491C2592A300C066DE /* TPCTextParser.swift in Sources */,
 				D6DE71331C2592A300C066DE /* TPCViewController.swift in Sources */,
-				D6DE71411C2592A300C066DE /* CoreDataManager.swift in Sources */,
+				D6DE71411C2592A300C066DE /* TPCCoreDataManager.swift in Sources */,
 				D6DE71461C2592A300C066DE /* TPCPhotoUtil.swift in Sources */,
 				D6DE714B1C2592A300C066DE /* TPCVenusUtil.swift in Sources */,
 				D6DE71611C2592A300C066DE /* TPCTechnicalCell.swift in Sources */,
@@ -547,7 +549,6 @@
 				D6DE71551C2592A300C066DE /* TPCShareView.swift in Sources */,
 				D66C25C11C53A31600E7D6A6 /* TPCActivityIndicator.swift in Sources */,
 				D6DE714F1C2592A300C066DE /* TPCImageView.swift in Sources */,
-				D667F9F51C54B4F10059F372 /* TPCFavotiteTechnical.swift in Sources */,
 				D6DE71381C2592A300C066DE /* UIButton+Extension.swift in Sources */,
 				D6DE715B1C2592A300C066DE /* TPCLaunchScreenView.swift in Sources */,
 				D6DE713C1C2592A300C066DE /* TPCAboutMe.swift in Sources */,
@@ -555,7 +556,6 @@
 				D6DE712E1C2592A300C066DE /* TPCLoadDataCountController.swift in Sources */,
 				D6DE71311C2592A300C066DE /* TPCSettingViewController.swift in Sources */,
 				D6DE71371C2592A300C066DE /* UIBarButtonItem+Extension.swift in Sources */,
-				D6DE713E1C2592A300C066DE /* TPCTechnicalObject.swift in Sources */,
 				D6DE712B1C2592A300C066DE /* TPCNavigationController.swift in Sources */,
 				D6DE713D1C2592A300C066DE /* TPCLaunchConfig.swift in Sources */,
 				D6DE71441C2592A300C066DE /* TPCDispatchUtil.swift in Sources */,
