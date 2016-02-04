@@ -123,7 +123,7 @@ class TPCPageScrollView: UIView {
         let shareButton = TPCSystemButton(frame: CGRect(x: backButtonX, y: backButtonY, width: buttonWH, height: buttonWH))
         shareButton.title = "分享"
         shareButton.animationCompletion = { [unowned self] (inout enable: Bool) in
-            TPCShareView.showWithTitle(nil, image: self.currentImageView.image)
+            TPCShareView.showWithTitle(nil, desc: "干货", image: self.currentImageView.image)
         }
         addSubview(shareButton)
     }
