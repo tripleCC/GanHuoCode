@@ -19,9 +19,7 @@ class TPCStorageUtil {
     }
     
     func clearFileCache() {
-//        TPCNetworkUtil.shareInstance.noDataDays.removeAll()
-//        removeFileAtPath(pathForNoDataDays)
-        removeFileAtPath(directoryForTechnicalDictionary)
+        removeFileAtPath(TPCCoreDataManager.shareInstance.coreDataDirectory.absoluteString)
     }
     
     func sizeOfFileAtPath(path: String) -> UInt64 {
