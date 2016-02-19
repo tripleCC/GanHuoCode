@@ -7,7 +7,6 @@
 
 TODO：
 
-  - SDWebImage－》Kingfisher  (***** waiting version 2.0.0)
   - CoreData+icloud (***)
   - Favorites (***)
   - UI TEST  (**)
@@ -19,6 +18,7 @@ DISCARD:
  
 DONE:
 
+  - SDWebImage－》Kingfisher  (***** waiting version 2.0.0)
   - Cache (*** archive)
 
 App切图：<br>
