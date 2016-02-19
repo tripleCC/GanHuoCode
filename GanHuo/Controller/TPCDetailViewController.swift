@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
 
 class TPCDetailViewController: TPCViewController {
     let reuseIdentifier = "TPCDetailCell"
@@ -49,7 +49,7 @@ class TPCDetailViewController: TPCViewController {
             technicals.forEach{ debugPrint("\($0.url)") }
         }
         if let technical = technicalDict?["福利"]?.first {
-            headerImageView.sd_setImageWithURL(NSURL(string: technical.url!))
+            headerImageView.kf_setImageWithURL(NSURL(string: technical.url!)!)
         }
     }
     
