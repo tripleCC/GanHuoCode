@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
 
 public enum TPCSetItemType: String {
     case FavorableReception = "给幹貨好评"
@@ -128,15 +128,21 @@ class TPCSettingViewController: TPCViewController {
     }
     
     private var sectionFour: [TPCSetItem] {
-        let imageSize = Double(SDImageCache.sharedImageCache().getSize()) / 1000.0 / 1000.0
-        let fileSize = Double(TPCStorageUtil.shareInstance.sizeOfFileAtPath(TPCStorageUtil.shareInstance.directoryForTechnicalDictionary)/* + TPCStorageUtil.shareInstance.sizeOfFileAtPath(TPCStorageUtil.shareInstance.pathForNoDataDays)*/) / 1000.0 / 1000.0
-
-        print(fileSize)
-        let totalSizeString = String(format: "%.2f", imageSize + fileSize)
-        return [TPCSetItem(title: .ClearCache, detailTitle: "\(totalSizeString)M", action: { [unowned self] (indexPath) -> () in
+        let sections = [TPCSetItem(title: .ClearCache, action: { [unowned self] (indexPath) -> () in
             self.clearCache(indexPath)
             TPCStorageUtil.shareInstance.clearFileCache()
             }, accessoryType: .None)]
+        
+        KingfisherManager.sharedManager.cache.calculateDiskCacheSizeWithCompletionHandler { (size) -> () in
+            let imageSize = Double(size) / 1000.0 / 1000.0
+            let fileSize = Double(TPCStorageUtil.shareInstance.sizeOfFileAtPath(TPCStorageUtil.shareInstance.directoryForTechnicalDictionary)/* + TPCStorageUtil.shareInstance.sizeOfFileAtPath(TPCStorageUtil.shareInstance.pathForNoDataDays)*/) / 1000.0 / 1000.0
+            
+            print(fileSize)
+            let cacheSizeString = String(format: "%.2fM", imageSize + fileSize)
+            sections.first!.detailTitle = cacheSizeString
+            self.tableView.reloadData()
+        }
+        return sections
     }
     
     private func setupNav() {
@@ -254,7 +260,7 @@ extension TPCSettingFunction {
     
     private func clearCache(indexPath: NSIndexPath) {
         let item = contents[indexPath.section][indexPath.row]
-        SDImageCache.sharedImageCache().clearDiskOnCompletion{ () -> Void in
+        KingfisherManager.sharedManager.cache.clearDiskCacheWithCompletionHandler { () -> () in
             item.detailTitle = "0.00M"
             self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         }

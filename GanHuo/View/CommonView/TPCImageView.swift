@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
 import DACircularProgress
 
 class TPCImageView: UIView {
@@ -27,21 +27,22 @@ class TPCImageView: UIView {
         didSet {
             guard imageURLString != oldValue else { return }
             resetSubviews()
-            imageView.sd_setImageWithURL(NSURL(string: imageURLString), placeholderImage: UIImage(), options: SDWebImageOptions.RetryFailed, progress: { (receivedSize, expectedSize) -> Void in
-                guard CGFloat(receivedSize) / CGFloat(expectedSize) > 0.009 else {
+            imageView.kf_setImageWithURL(NSURL(string: imageURLString)!, placeholderImage: UIImage(), optionsInfo: [.Transition(ImageTransition.Fade(1))], progressBlock: { (receivedSize, totalSize) -> () in
+                guard CGFloat(receivedSize) / CGFloat(totalSize) > 0.009 else {
                     self.progressView.progressLabel.text = "0.00"
                     self.progressView.progress = 0
                     return
                 }
                 
-                self.progressView.setProgress(CGFloat(receivedSize) / CGFloat(expectedSize), animated: true)
+                self.progressView.setProgress(CGFloat(receivedSize) / CGFloat(totalSize), animated: true)
                 self.progressView.progressLabel.text = String(format:"%.2f", self.progressView.progress)
-                if receivedSize / expectedSize >= 1 {
+                if receivedSize / totalSize >= 1 {
                     UIView.animateWithDuration(0.1, animations: { () -> Void in
                         self.progressView.alpha = 0
                     })
                 }
-                }) { (image, error, cacheType, imageURL) -> Void in
+
+                }) { (image, error, cacheType, imageURL) -> () in
                     if error == nil {
                         self.adjustImageViewFrameByImage(image)
                         self.progressView.alpha = 0

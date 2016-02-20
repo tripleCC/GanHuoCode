@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SDWebImage
+import Kingfisher
 
 let TPCVenusKey = "TPCVenus"
 let venusURL = ""
@@ -52,8 +52,8 @@ class TPCVenusUtil {
                     debugPrint("Open venus model")
                     // Clear github image url cache when get true venusFlag at first time
                     TPCStorageUtil.shareInstance.clearFileCache()
-                    SDImageCache.sharedImageCache().clearDisk()
-                    SDImageCache.sharedImageCache().clearMemory()
+                    KingfisherManager.sharedManager.cache.clearDiskCache()
+                    KingfisherManager.sharedManager.cache.clearMemoryCache()
                 }
             }
             completion(launchConfig: launchConfig)

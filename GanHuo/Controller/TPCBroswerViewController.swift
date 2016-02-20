@@ -119,7 +119,9 @@ class TPCBroswerViewController: TPCViewController {
     }
     
     func openBySafari() {
-        UIApplication.sharedApplication().openURL(webView.URL!)
+        if let url = NSURL(string: URLString ?? "") {
+            UIApplication.sharedApplication().openURL(url)
+        }
     }
     
     deinit {

@@ -7,14 +7,14 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
 
 class TPCTechnicalCell: UITableViewCell {
     var technicalDict: [String : [TPCTechnicalObject]]! {
         didSet {
             if let technical = technicalDict["福利"]?.first {
                 beautyImageView.alpha = CGFloat(TPCConfiguration.imageAlpha)
-                beautyImageView.sd_setImageWithURL(NSURL(string: technical.url!))
+                beautyImageView.kf_setImageWithURL(NSURL(string: technical.url!)!, placeholderImage: UIImage(), optionsInfo: [.Transition(.Fade(1))])
             }
             dispatchGlobal { 
                 var descString = "  "
