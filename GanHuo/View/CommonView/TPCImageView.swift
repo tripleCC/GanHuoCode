@@ -27,7 +27,7 @@ class TPCImageView: UIView {
         didSet {
             guard imageURLString != oldValue else { return }
             resetSubviews()
-            imageView.kf_setImageWithURL(NSURL(string: imageURLString)!, placeholderImage: UIImage(), optionsInfo: [.Transition(ImageTransition.Fade(1))], progressBlock: { (receivedSize, totalSize) -> () in
+            imageView.kf_setImageWithURL(NSURL(string: imageURLString)!, placeholderImage: UIImage(), optionsInfo: [.Transition(.Fade(0.5))], progressBlock: { (receivedSize, totalSize) -> () in
                 guard CGFloat(receivedSize) / CGFloat(totalSize) > 0.009 else {
                     self.progressView.progressLabel.text = "0.00"
                     self.progressView.progress = 0

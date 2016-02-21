@@ -246,7 +246,9 @@ extension TPCTechnicalViewController {
         }
         // 到顶部时不进行刷新
         if scrollView.contentOffset.y > 0 {
-            if scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.contentInset.top - scrollView.contentInset.bottom * 2 - noMoreDataFooterView.bounds.height {
+            let expectedOffsetY = tableView.contentOffset.y + UIScreen.mainScreen().bounds.height - noMoreDataFooterView.bounds.height - TPCConfiguration.technicalTableViewTopBottomMargin
+            print(expectedOffsetY, scrollView.contentSize.height)
+            if scrollView.contentSize.height >= expectedOffsetY {
                 loadMoreData()
             }
             reloadTableView()
@@ -272,7 +274,6 @@ extension TPCTechnicalViewController {
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-//        debugPrint(__FUNCTION__, scrollView.contentOffset.y)
         if scrollView.contentOffset.y < TPCConfiguration.technicalOriginScrollViewContentOffsetY {
             let scale = (abs(scrollView.contentOffset.y - TPCConfiguration.technicalOriginScrollViewContentOffsetY)) / TPCRefreshControlOriginHeight
             tableView.adjustRefreshViewWithScale(scale)
