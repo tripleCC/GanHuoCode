@@ -189,16 +189,18 @@ extension TPCNetworkUtil {
                 return
             }
         }
-        let path = TPCStorageUtil.shareInstance.pathForTechnicalDictionaryByTime((year, month, day))
-        if TPCStorageUtil.shareInstance.fileManager.fileExistsAtPath(path) {
-            dispatchGlobal {
-                let technicalDict:[String : [TPCTechnicalObject]] =  unarchiveTechnicalDictionaryWithFile(path)!
-                let categories = Array(technicalDict).map{ $0.0 }
-                dispatchMain() { completion?(technicalDict, categories) }
-            }
-        } else {
+        
+        // todo
+//        let path = TPCStorageUtil.shareInstance.pathForTechnicalDictionaryByTime((year, month, day))
+//        if TPCStorageUtil.shareInstance.fileManager.fileExistsAtPath(path) {
+//            dispatchGlobal {
+//                let technicalDict:[String : [TPCTechnicalObject]] =  unarchiveTechnicalDictionaryWithFile(path)!
+//                let categories = Array(technicalDict).map{ $0.0 }
+//                dispatchMain() { completion?(technicalDict, categories) }
+//            }
+//        } else {
             loadTechnicalFromNetWorkByYear(year, month: month, day: day, completion: completion)
-        }
+//        }
     }
     
     private func loadTechnicalFromNetWorkByYear(year: Int, month: Int, day: Int, completion:((TPCTechnicalDictionary, [String]) -> ())?) {
@@ -223,11 +225,13 @@ extension TPCNetworkUtil {
                                 if let itemArray = results[item]?.arrayValue {
                                     var technicalArray = [TPCTechnicalObject]()
                                     for json in itemArray where json.dictionary != nil {
-                                        var technical = TPCTechnicalObject(dict: json.dictionaryValue)
+                                        // todo
+                                        let technical = TPCTechnicalObject(dict: json.dictionaryValue)
                                         technical.desc = TPCTextParser.shareTextParser.parseOriginString(technical.desc!)
                                         if !TPCVenusUtil.venusFlag && technical.type == "福利" {
                                             technical.url = TPCGanHuoType.ImageTypeSubtype.VenusImage(Int(300 - self.venusInterval)).path()
                                         }
+                                        technical.save()
                                         technicalArray.append(technical)
                                     }
                                     technicalDict[item] = technicalArray
@@ -244,8 +248,9 @@ extension TPCNetworkUtil {
                         dispatchGlobal {
                             // Do some cache operation
                             if categories.count > 0 {
-                                let path = TPCStorageUtil.shareInstance.pathForTechnicalDictionaryByTime((year, month, day))
-                                archiveTechnicalDictionary(technicalDict, toFile: path)
+                                // todo
+//                                let path = TPCStorageUtil.shareInstance.pathForTechnicalDictionaryByTime((year, month, day))
+//                                archiveTechnicalDictionary(technicalDict, toFile: path)
                             } else {
 //                                if let date = NSCalendar.currentCalendar().dateWithTime((year, month, day)) {
 //                                    self.noDataDays.append(date)

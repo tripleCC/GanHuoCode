@@ -12,8 +12,11 @@ import CoreData
 protocol TPCCoreDataHelper {
     typealias RawType
     static var entityName: String { get }
+    var request: NSFetchRequest { get }
     init(context: NSManagedObjectContext, dict: RawType)
     func initializeWithRawType(dict: RawType)
+    func save()
+    func fetch() -> [Self]
 }
 
 extension TPCCoreDataHelper where Self : NSManagedObject {
@@ -23,6 +26,15 @@ extension TPCCoreDataHelper where Self : NSManagedObject {
     
     func save() {
         TPCCoreDataManager.shareInstance.saveContext()
+    }
+    
+    func fetch() -> [Self] {
+        do {
+            let result = try TPCCoreDataManager.shareInstance.managedObjectContext.executeFetchRequest(request)
+            return result as! [Self]
+        } catch {
+            return []
+        }
     }
 }
 
@@ -41,8 +53,7 @@ class TPCCoreDataManager {
     
     lazy var coreDataDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.triplec.WKCC" in the application's documents Application Support directory.
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask)
-        return urls.first!.URLByAppendingPathComponent("CoreDataCache", isDirectory: true)
+        return NSFileManager.defaultManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask).first!
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -80,6 +91,7 @@ class TPCCoreDataManager {
         let coordinator = self.persistentStoreCoordinator
         var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
+        managedObjectContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         return managedObjectContext
     }()
     
