@@ -189,18 +189,19 @@ extension TPCNetworkUtil {
                 return
             }
         }
-        
-        // todo
-//        let path = TPCStorageUtil.shareInstance.pathForTechnicalDictionaryByTime((year, month, day))
-//        if TPCStorageUtil.shareInstance.fileManager.fileExistsAtPath(path) {
-//            dispatchGlobal {
-//                let technicalDict:[String : [TPCTechnicalObject]] =  unarchiveTechnicalDictionaryWithFile(path)!
-//                let categories = Array(technicalDict).map{ $0.0 }
-//                dispatchMain() { completion?(technicalDict, categories) }
-//            }
-//        } else {
+        let technicals = TPCTechnicalObject.fetchByTime((year, month, day))
+        if technicals.count > 0 {
+            var technicalDict = [String : [TPCTechnicalObject]]()
+            Set(technicals.map() { $0.type } .flatMap() { $0 }).forEach() {
+                technicalDict[$0] = [TPCTechnicalObject]()
+            }
+            for case let technical in technicals where technical.type != nil {
+                technicalDict[technical.type!]?.append(technical)
+            }
+            dispatchMain() { completion?(technicalDict, technicalDict.map() { $0.0 }) }
+        } else {
             loadTechnicalFromNetWorkByYear(year, month: month, day: day, completion: completion)
-//        }
+        }
     }
     
     private func loadTechnicalFromNetWorkByYear(year: Int, month: Int, day: Int, completion:((TPCTechnicalDictionary, [String]) -> ())?) {

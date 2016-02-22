@@ -76,7 +76,7 @@
 		D6DE71681C259EE900C066DE /* TPCVersionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71671C259EE900C066DE /* TPCVersionUtil.swift */; };
 		D6E504D31C2C1D9C00838446 /* AboutMe.json in Resources */ = {isa = PBXBuildFile; fileRef = D6E504D21C2C1D9C00838446 /* AboutMe.json */; };
 		D6E504D51C2C205D00838446 /* TPCLinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E504D41C2C205D00838446 /* TPCLinkButton.swift */; };
-		D6FBFF251C62F87D0011F7B6 /* TPCTechnicalObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FBFF231C62F87D0011F7B6 /* TPCTechnicalObject+CoreDataProperties.swift */; };
+		D6FB48CF1C7B457600C3DB63 /* TPCTechnicalObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB48CE1C7B457600C3DB63 /* TPCTechnicalObject+CoreDataProperties.swift */; };
 		D6FBFF261C62F87D0011F7B6 /* TPCTechnicalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FBFF241C62F87D0011F7B6 /* TPCTechnicalObject.swift */; };
 /* End PBXBuildFile section */
 
@@ -157,7 +157,7 @@
 		D6DE71671C259EE900C066DE /* TPCVersionUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCVersionUtil.swift; sourceTree = "<group>"; };
 		D6E504D21C2C1D9C00838446 /* AboutMe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AboutMe.json; sourceTree = "<group>"; };
 		D6E504D41C2C205D00838446 /* TPCLinkButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCLinkButton.swift; sourceTree = "<group>"; };
-		D6FBFF231C62F87D0011F7B6 /* TPCTechnicalObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TPCTechnicalObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D6FB48CE1C7B457600C3DB63 /* TPCTechnicalObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TPCTechnicalObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D6FBFF241C62F87D0011F7B6 /* TPCTechnicalObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCTechnicalObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -291,7 +291,7 @@
 		D6DE70F61C2592A300C066DE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D6FBFF231C62F87D0011F7B6 /* TPCTechnicalObject+CoreDataProperties.swift */,
+				D6FB48CE1C7B457600C3DB63 /* TPCTechnicalObject+CoreDataProperties.swift */,
 				D6FBFF241C62F87D0011F7B6 /* TPCTechnicalObject.swift */,
 				D6DE70F71C2592A300C066DE /* TPCAboutMe.swift */,
 				D6DE70F81C2592A300C066DE /* TPCLaunchConfig.swift */,
@@ -533,7 +533,6 @@
 				D6DE71291C2592A300C066DE /* TPCBroswerViewController.swift in Sources */,
 				D6DE71571C2592A300C066DE /* TPCSystemButton.swift in Sources */,
 				D6DE713A1C2592A300C066DE /* UIImage+Extension.swift in Sources */,
-				D6FBFF251C62F87D0011F7B6 /* TPCTechnicalObject+CoreDataProperties.swift in Sources */,
 				D6DE71491C2592A300C066DE /* TPCTextParser.swift in Sources */,
 				D6DE71331C2592A300C066DE /* TPCViewController.swift in Sources */,
 				D6DE71411C2592A300C066DE /* TPCCoreDataManager.swift in Sources */,
@@ -579,6 +578,7 @@
 				D6DE71681C259EE900C066DE /* TPCVersionUtil.swift in Sources */,
 				D6DE714A1C2592A300C066DE /* TPCUMManager.swift in Sources */,
 				D6DE71341C2592A300C066DE /* CALayer+Extension.swift in Sources */,
+				D6FB48CF1C7B457600C3DB63 /* TPCTechnicalObject+CoreDataProperties.swift in Sources */,
 				D6DE71471C2592A300C066DE /* TPCShareManager.swift in Sources */,
 				D6DE71451C2592A300C066DE /* TPCNetworkUtil.swift in Sources */,
 				D6DE71351C2592A300C066DE /* NSDate+Extension.swift in Sources */,

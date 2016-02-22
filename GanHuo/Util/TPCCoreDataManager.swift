@@ -12,11 +12,11 @@ import CoreData
 protocol TPCCoreDataHelper {
     typealias RawType
     static var entityName: String { get }
-    var request: NSFetchRequest { get }
+    static var request: NSFetchRequest { get }
     init(context: NSManagedObjectContext, dict: RawType)
     func initializeWithRawType(dict: RawType)
     func save()
-    func fetch() -> [Self]
+    static func fetch() -> [Self]
 }
 
 extension TPCCoreDataHelper where Self : NSManagedObject {
@@ -28,7 +28,7 @@ extension TPCCoreDataHelper where Self : NSManagedObject {
         TPCCoreDataManager.shareInstance.saveContext()
     }
     
-    func fetch() -> [Self] {
+    static func fetch() -> [Self] {
         do {
             let result = try TPCCoreDataManager.shareInstance.managedObjectContext.executeFetchRequest(request)
             return result as! [Self]

@@ -13,11 +13,16 @@ import SwiftyJSON
 @objc(TPCTechnicalObject)
 public final class TPCTechnicalObject: NSManagedObject ,TPCCoreDataHelper {
     public typealias RawType = [String : JSON]
-    var queryTimeString: String!
+    static var queryTimeString: String!
     init(context: NSManagedObjectContext, dict: RawType) {
         let entity = NSEntityDescription.entityForName(TPCTechnicalObject.entityName, inManagedObjectContext: context)!
         super.init(entity: entity, insertIntoManagedObjectContext: context)
         initializeWithRawType(dict)
+    }
+    
+    @objc
+    private override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
     
     convenience init(dict: RawType) {
@@ -38,7 +43,7 @@ public final class TPCTechnicalObject: NSManagedObject ,TPCCoreDataHelper {
 }
 
 extension TPCCoreDataHelper where Self : TPCTechnicalObject {
-    var request: NSFetchRequest {
+    static var request: NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: TPCTechnicalObject.entityName)
         fetchRequest.fetchBatchSize = 20
         fetchRequest.fetchLimit = 50
@@ -46,9 +51,12 @@ extension TPCCoreDataHelper where Self : TPCTechnicalObject {
         fetchRequest.predicate = predicate
         return fetchRequest
     }
-    func fetchByTime(time: (year: NSTimeInterval, month: NSTimeInterval, day: NSTimeInterval)) -> [TPCTechnicalObject] {
-        queryTimeString = String(format: "%4ld-%2ld-%2ld", time.year, time.month, time.day)
+    static func fetchByTime(time: (year: Int, month: Int, day: Int)) -> [TPCTechnicalObject] {
+        queryTimeString = String(format: "%04ld-%02ld-%02ld", time.year, time.month, time.day)
         return fetch()
     }
+}
+
+extension NSManagedObject {
     
 }
