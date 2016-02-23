@@ -38,6 +38,7 @@ extension TPCCoreDataHelper where Self : NSManagedObject {
     }
 }
 
+let TPCSqliteFileName = "WKCC.sqlite"
 class TPCCoreDataManager {
     private static let instance = TPCCoreDataManager()
     
@@ -46,7 +47,7 @@ class TPCCoreDataManager {
     }
     
     var storeURL: NSURL {
-        return self.coreDataDirectory.URLByAppendingPathComponent("WKCC.sqlite")
+        return self.coreDataDirectory.URLByAppendingPathComponent(TPCSqliteFileName)
     }
     
     // MARK: - Core Data stack

@@ -135,12 +135,13 @@ class TPCSettingViewController: TPCViewController {
         
         KingfisherManager.sharedManager.cache.calculateDiskCacheSizeWithCompletionHandler { (size) -> () in
             let imageSize = Double(size) / 1000.0 / 1000.0
+            let fileSize = Double(TPCStorageUtil.shareInstance.sizeOfFileAtPath(TPCCoreDataManager.shareInstance.coreDataDirectory.absoluteString) { $0.containsString(TPCSqliteFileName) }) / 1000.0 / 1000.0
             // todo
 //            let fileSize = Double(TPCStorageUtil.shareInstance.sizeOfFileAtPath(TPCStorageUtil.shareInstance.directoryForTechnicalDictionary)/* + TPCStorageUtil.shareInstance.sizeOfFileAtPath(TPCStorageUtil.shareInstance.pathForNoDataDays)*/) / 1000.0 / 1000.0
             
-//            print(fileSize)
-//            let cacheSizeString = String(format: "%.2fM", imageSize + fileSize)
-//            sections.first!.detailTitle = cacheSizeString
+            print(fileSize)
+            let cacheSizeString = String(format: "%.2fM", imageSize + fileSize)
+            sections.first!.detailTitle = cacheSizeString
             self.tableView.reloadData()
         }
         return sections

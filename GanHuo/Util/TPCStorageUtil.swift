@@ -22,14 +22,16 @@ class TPCStorageUtil {
         removeFileAtPath(TPCCoreDataManager.shareInstance.coreDataDirectory.absoluteString)
     }
     
-    func sizeOfFileAtPath(path: String) -> UInt64 {
+    func sizeOfFileAtPath(path: String, predicateClosure predicate: ((fileName: String) -> Bool)? = nil) -> UInt64 {
         var fileSize : UInt64 = 0
         let fileEnumerator = fileManager.enumeratorAtPath(path)
         if let fileEnumerator = fileEnumerator {
             for fileName in fileEnumerator {
-                let filePath = path + "/\(fileName)"
-                if let attr = try? NSFileManager.defaultManager().attributesOfItemAtPath(filePath) as NSDictionary {
-                    fileSize += attr.fileSize();
+                if predicate == nil || predicate!(fileName: fileName as! String) {
+                    let filePath = path + "/\(fileName)"
+                    if let attr = try? NSFileManager.defaultManager().attributesOfItemAtPath(filePath) as NSDictionary {
+                        fileSize += attr.fileSize();
+                    }
                 }
             }
         }

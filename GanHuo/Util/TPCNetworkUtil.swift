@@ -226,7 +226,6 @@ extension TPCNetworkUtil {
                                 if let itemArray = results[item]?.arrayValue {
                                     var technicalArray = [TPCTechnicalObject]()
                                     for json in itemArray where json.dictionary != nil {
-                                        // todo
                                         let technical = TPCTechnicalObject(dict: json.dictionaryValue)
                                         technical.desc = TPCTextParser.shareTextParser.parseOriginString(technical.desc!)
                                         if !TPCVenusUtil.venusFlag && technical.type == "福利" {
