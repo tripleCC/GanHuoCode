@@ -12,14 +12,35 @@ class TPCStorageUtil {
     let fileManager = NSFileManager.defaultManager()
     static let shareInstance = TPCStorageUtil()
     
-    func removeFileAtPath(path: String) {
-        do {
-            try fileManager.removeItemAtPath(path)
-        } catch { }
+    func removeFileAtPath(path: String ,predicateClosure predicate: ((fileName: String) -> Bool)? = nil) {
+        let fileEnumerator = fileManager.enumeratorAtPath(path)
+        if let fileEnumerator = fileEnumerator {
+            for fileName in fileEnumerator {
+                if predicate == nil || predicate!(fileName: fileName as! String) {
+                    let filePath = path + "/\(fileName)"
+                    do {
+                        try fileManager.removeItemAtPath(filePath)
+                    } catch { }
+                }
+            }
+        }
     }
     
-    func clearFileCache() {
-        removeFileAtPath(TPCCoreDataManager.shareInstance.coreDataDirectory.absoluteString)
+    // unuse
+    func clearFileCache(completion: (() -> ())? = nil) {
+        func clearFile() {
+            removeFileAtPath(TPCCoreDataManager.shareInstance.coreDataDirectory.path!) { $0.containsString(TPCSqliteFileName) }
+        }
+        if completion == nil {
+            clearFile()
+        } else {
+            dispatchGlobal({ () -> () in
+                clearFile()
+                dispatchMain({ () -> () in
+                    completion!()
+                })
+            })
+        }
     }
     
     func sizeOfFileAtPath(path: String, predicateClosure predicate: ((fileName: String) -> Bool)? = nil) -> UInt64 {

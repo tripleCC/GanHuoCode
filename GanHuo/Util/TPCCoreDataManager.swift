@@ -38,16 +38,29 @@ extension TPCCoreDataHelper where Self : NSManagedObject {
     }
 }
 
-let TPCSqliteFileName = "WKCC.sqlite"
+let TPCSqliteFileName = "WKCC"
 class TPCCoreDataManager {
     private static let instance = TPCCoreDataManager()
+    
+    func clearCoreDataCache() {
+        managedObjectModel.entities.map() { $0.name }.flatMap() { $0 }.forEach() {
+            debugPrint($0)
+            let fetchRequest = NSFetchRequest(entityName: $0)
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            do {
+                try persistentStoreCoordinator.executeRequest(deleteRequest, withContext: managedObjectContext)
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+    }
     
     class var shareInstance: TPCCoreDataManager {
         return instance
     }
     
     var storeURL: NSURL {
-        return self.coreDataDirectory.URLByAppendingPathComponent(TPCSqliteFileName)
+        return self.coreDataDirectory.URLByAppendingPathComponent(TPCSqliteFileName + ".sqlite")
     }
     
     // MARK: - Core Data stack
