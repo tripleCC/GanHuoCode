@@ -27,15 +27,16 @@ public struct TPCTechnicalObject: TPCGanHuo {
     var updatedAt: String!
     
     public init (dict: RawType) {
-        updatedAt = dict["updatedAt"]?.stringValue
-        who = dict["who"]?.stringValue
-        publishedAt = dict["publishedAt"]?.stringValue
-        objectId = dict["objectId"]?.stringValue
-        used = dict["used"]?.numberValue
-        type = dict["type"]?.stringValue
-        createdAt = dict["createdAt"]?.stringValue
-        desc = dict["desc"]?.stringValue
-        url = dict["url"]?.stringValue
+        updatedAt = dict["updatedAt"]?.stringValue ?? ""
+        who = dict["who"]?.stringValue ?? ""
+        publishedAt = dict["publishedAt"]?.stringValue ?? ""
+        objectId = dict["objectId"]?.stringValue ?? ""
+        used = dict["used"]?.numberValue ?? NSNumber()
+        type = dict["type"]?.stringValue ?? ""
+        createdAt = dict["createdAt"]?.stringValue ?? ""
+        desc = dict["desc"]?.stringValue ?? ""
+        url = dict["url"]?.stringValue ?? ""
+
     }
     
     public init () {
