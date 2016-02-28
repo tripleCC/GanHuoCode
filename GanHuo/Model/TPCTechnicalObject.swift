@@ -20,7 +20,16 @@ public final class TPCTechnicalObject: NSManagedObject ,TPCCoreDataHelper {
         initializeWithRawType(dict)
     }
     
-    public init (dict: RawType) {
+    @objc
+    private override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
+    
+    convenience init(dict: RawType) {
+        self.init(context: TPCCoreDataManager.shareInstance.managedObjectContext, dict: dict)
+    }
+    
+    func initializeWithRawType(dict: RawType) {
         updatedAt = dict["updatedAt"]?.stringValue ?? ""
         who = dict["who"]?.stringValue ?? ""
         publishedAt = dict["publishedAt"]?.stringValue ?? ""
@@ -30,7 +39,6 @@ public final class TPCTechnicalObject: NSManagedObject ,TPCCoreDataHelper {
         createdAt = dict["createdAt"]?.stringValue ?? ""
         desc = dict["desc"]?.stringValue ?? ""
         url = dict["url"]?.stringValue ?? ""
-
     }
 }
 
@@ -50,4 +58,10 @@ extension TPCCoreDataHelper where Self : TPCTechnicalObject {
 
 extension NSManagedObject {
     
+}
+
+infix operator !? { }
+func !?<T: StringLiteralConvertible> (wrapped: T?, @autoclosure failureText: ()->String) -> T {
+        assert(wrapped != nil, failureText)
+        return wrapped ?? ""
 }
