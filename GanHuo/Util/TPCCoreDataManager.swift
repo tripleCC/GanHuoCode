@@ -15,17 +15,12 @@ protocol TPCCoreDataHelper {
     static var request: NSFetchRequest { get }
     init(context: NSManagedObjectContext, dict: RawType)
     func initializeWithRawType(dict: RawType)
-    func save()
     static func fetch() -> [Self]
 }
 
 extension TPCCoreDataHelper where Self : NSManagedObject {
     static var entityName: String {
         return String(self)
-    }
-    
-    func save() {
-        TPCCoreDataManager.shareInstance.saveContext()
     }
     
     static func fetch() -> [Self] {
@@ -67,7 +62,7 @@ class TPCCoreDataManager {
     
     lazy var coreDataDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.triplec.WKCC" in the application's documents Application Support directory.
-        return NSFileManager.defaultManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask).first!
+        return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {

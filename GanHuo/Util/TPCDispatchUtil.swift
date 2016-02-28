@@ -25,7 +25,7 @@ func dispatchMain(action: () -> ()) {
     if NSThread.isMainThread() {
         action()
     } else {
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+        dispatch_sync(dispatch_get_main_queue()) { () -> Void in
             action()
         }        
     }
