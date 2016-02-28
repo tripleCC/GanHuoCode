@@ -10,6 +10,7 @@ import UIKit
 
 let TPCStatusBarHeight: CGFloat = 20.0
 let TPCNavigationBarHeight: CGFloat = 44.0
+let TPCTabBarHeight: CGFloat = 49.0 - 1.0
 let TPCScreenWidth = UIScreen.mainScreen().bounds.width
 let TPCScreenHeight = UIScreen.mainScreen().bounds.height
 let TPCRefreshControlOriginHeight: CGFloat = 60.0

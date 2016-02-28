@@ -24,6 +24,16 @@ class TPCViewController: UIViewController {
             self.navigationBarBackgroundView.frame = CGRect(x: 0, y: navigationBarBackgroundViewY, width: newValue!.width, height: TPCNavigationBarHeight + TPCStatusBarHeight)
         }
     }
+    
+    var tabBarFrame: CGRect? {
+        get {
+            return self.tabBarController?.tabBar.frame
+        }
+        set {
+            self.tabBarController?.tabBar.frame = newValue!
+        }
+    }
+    
     var navigationBarType: TPCNavigationBarType = .GradientView {
         didSet {
             switch navigationBarType {
@@ -39,7 +49,6 @@ class TPCViewController: UIViewController {
     
     private var bottomLine: CALayer!
     private var bottomView: TPCGradientView!
-    
     
     lazy var navigationBarBackgroundView: UIView = {
         let navigationBarBackgroundView = UIView(frame: CGRect(x: 0, y: 0, width: TPCScreenWidth, height: TPCNavigationBarHeight + TPCStatusBarHeight))
@@ -90,26 +99,33 @@ class TPCViewController: UIViewController {
     
     func adjustBarPositionByVelocity(velocity: CGFloat, contentOffsetY: CGFloat, animated: Bool = true) {
         guard let _ = view.window else { return }
-        var descY = navigationBarFrame!.origin.y
+        var descNavY = navigationBarFrame!.origin.y
+        var descTabY = tabBarFrame!.origin.y
         if velocity > 1.0 {
 //            debugPrint("隐藏")
-            descY = -TPCNavigationBarHeight
+            descNavY = -TPCNavigationBarHeight
+            descTabY = TPCScreenHeight
         } else if velocity < -1.0 {
 //            debugPrint("显示")
-            descY = TPCStatusBarHeight
+            descNavY = TPCStatusBarHeight
+            descTabY = TPCScreenHeight - TPCTabBarHeight
         } else {
             if contentOffsetY <= TPCNavigationBarHeight * 2 + TPCStatusBarHeight {
 //                debugPrint("显示")
-                descY = TPCStatusBarHeight
+                descNavY = TPCStatusBarHeight
             }
         }
-        if descY != navigationBarFrame!.origin.y {
+        let adjustAction = { () -> Void in
+            self.navigationBarFrame!.origin.y = descNavY
+            if TPCConfiguration.hideTabBarInHomePageWhenScroll {
+                self.tabBarFrame?.origin.y = descTabY
+            }
+        }
+        if descNavY != navigationBarFrame!.origin.y {
             if animated {
-                UIView.animateWithDuration(0.3, animations: { () -> Void in
-                    self.navigationBarFrame!.origin.y = descY
-                })
+                UIView.animateWithDuration(0.3, animations: adjustAction)
             } else {
-                self.navigationBarFrame!.origin.y = descY
+                adjustAction()
             }
         }
     }

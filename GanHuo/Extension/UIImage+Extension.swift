@@ -17,4 +17,13 @@ extension UIImage {
         UIGraphicsEndImageContext()
     }
     
+    convenience init(color: UIColor) {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        CGContextSetFillColorWithColor(context, color.CGColor)
+        CGContextFillRect(context, rect)
+        self.init(CGImage: UIGraphicsGetImageFromCurrentImageContext().CGImage!)
+        UIGraphicsEndImageContext()
+    }
 }

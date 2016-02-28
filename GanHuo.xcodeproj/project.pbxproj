@@ -13,19 +13,50 @@
 		D66C25BF1C53A13200E7D6A6 /* TPCRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C25BE1C53A13200E7D6A6 /* TPCRefreshable.swift */; };
 		D66C25C11C53A31600E7D6A6 /* TPCActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C25C01C53A31600E7D6A6 /* TPCActivityIndicator.swift */; };
 		D69797E61C2FBCA500A53CD2 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69797E51C2FBCA500A53CD2 /* UIViewController+Extension.swift */; };
+		D6D8BF4C1C82D26F00CCA370 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6D8BF4A1C82D26F00CCA370 /* Main.storyboard */; };
+		D6D8BF861C82EB6600CCA370 /* TPCNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF781C82EB6600CCA370 /* TPCNavigationController.swift */; };
+		D6D8BF871C82EB6600CCA370 /* TPCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF791C82EB6600CCA370 /* TPCViewController.swift */; };
+		D6D8BF881C82EB6600CCA370 /* TPCBroswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF7B1C82EB6600CCA370 /* TPCBroswerViewController.swift */; };
+		D6D8BF891C82EB6600CCA370 /* TPCDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF7D1C82EB6600CCA370 /* TPCDetailViewController.swift */; };
+		D6D8BF8A1C82EB6600CCA370 /* TPCTechnicalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF7E1C82EB6600CCA370 /* TPCTechnicalViewController.swift */; };
+		D6D8BF8B1C82EB6600CCA370 /* TPCAboutMeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF801C82EB6600CCA370 /* TPCAboutMeController.swift */; };
+		D6D8BF8C1C82EB6600CCA370 /* TPCImageAlphaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF811C82EB6600CCA370 /* TPCImageAlphaController.swift */; };
+		D6D8BF8D1C82EB6600CCA370 /* TPCLoadDataCountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF821C82EB6600CCA370 /* TPCLoadDataCountController.swift */; };
+		D6D8BF8E1C82EB6600CCA370 /* TPCSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF831C82EB6600CCA370 /* TPCSettingViewController.swift */; };
+		D6D8BF8F1C82EB6600CCA370 /* TPCShowCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF841C82EB6600CCA370 /* TPCShowCategoryController.swift */; };
+		D6D8BF901C82EB6600CCA370 /* TPCShowContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF851C82EB6600CCA370 /* TPCShowContentController.swift */; };
+		D6D8BFAF1C82EB7000CCA370 /* TPCGradientLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF931C82EB7000CCA370 /* TPCGradientLabel.swift */; };
+		D6D8BFB01C82EB7000CCA370 /* TPCGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF941C82EB7000CCA370 /* TPCGradientView.swift */; };
+		D6D8BFB11C82EB7000CCA370 /* TPCImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF951C82EB7000CCA370 /* TPCImageView.swift */; };
+		D6D8BFB21C82EB7000CCA370 /* TPCLinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF961C82EB7000CCA370 /* TPCLinkButton.swift */; };
+		D6D8BFB31C82EB7000CCA370 /* TPCNoMoreDataFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF971C82EB7000CCA370 /* TPCNoMoreDataFooterView.swift */; };
+		D6D8BFB41C82EB7000CCA370 /* TPCNoMoreDataFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6D8BF981C82EB7000CCA370 /* TPCNoMoreDataFooterView.xib */; };
+		D6D8BFB51C82EB7000CCA370 /* TPCPageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF991C82EB7000CCA370 /* TPCPageScrollView.swift */; };
+		D6D8BFB61C82EB7000CCA370 /* TPCPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF9A1C82EB7000CCA370 /* TPCPopoverView.swift */; };
+		D6D8BFB71C82EB7000CCA370 /* TPCRefreshContentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6D8BF9B1C82EB7000CCA370 /* TPCRefreshContentsView.xib */; };
+		D6D8BFB81C82EB7000CCA370 /* TPCRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF9C1C82EB7000CCA370 /* TPCRefreshView.swift */; };
+		D6D8BFB91C82EB7000CCA370 /* TPCShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF9D1C82EB7000CCA370 /* TPCShareView.swift */; };
+		D6D8BFBA1C82EB7000CCA370 /* TPCShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6D8BF9E1C82EB7000CCA370 /* TPCShareView.xib */; };
+		D6D8BFBB1C82EB7000CCA370 /* TPCSystemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF9F1C82EB7000CCA370 /* TPCSystemButton.swift */; };
+		D6D8BFBC1C82EB7000CCA370 /* TPCTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFA01C82EB7000CCA370 /* TPCTableView.swift */; };
+		D6D8BFBD1C82EB7000CCA370 /* TPCUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFA11C82EB7000CCA370 /* TPCUpdateView.swift */; };
+		D6D8BFBE1C82EB7000CCA370 /* TPCUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6D8BFA21C82EB7000CCA370 /* TPCUpdateView.xib */; };
+		D6D8BFBF1C82EB7000CCA370 /* TPCWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFA31C82EB7000CCA370 /* TPCWebView.swift */; };
+		D6D8BFC01C82EB7000CCA370 /* TPCDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFA51C82EB7000CCA370 /* TPCDetailHeaderView.swift */; };
+		D6D8BFC11C82EB7000CCA370 /* TPCDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFA61C82EB7000CCA370 /* TPCDetailViewCell.swift */; };
+		D6D8BFC21C82EB7000CCA370 /* TPCTechnicalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFA71C82EB7000CCA370 /* TPCTechnicalCell.swift */; };
+		D6D8BFC31C82EB7000CCA370 /* TPCApplicationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFA91C82EB7000CCA370 /* TPCApplicationTitleView.swift */; };
+		D6D8BFC41C82EB7000CCA370 /* TPCLaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFAA1C82EB7000CCA370 /* TPCLaunchScreenView.swift */; };
+		D6D8BFC51C82EB7000CCA370 /* TPCLaunchScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6D8BFAB1C82EB7000CCA370 /* TPCLaunchScreenView.xib */; };
+		D6D8BFC61C82EB7000CCA370 /* TPCSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFAD1C82EB7000CCA370 /* TPCSettingCell.swift */; };
+		D6D8BFC71C82EB7000CCA370 /* TPCSettingSubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFAE1C82EB7000CCA370 /* TPCSettingSubCell.swift */; };
+		D6D8BFCD1C82EB7700CCA370 /* TPCAboutMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFC91C82EB7700CCA370 /* TPCAboutMe.swift */; };
+		D6D8BFCE1C82EB7700CCA370 /* TPCLaunchConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFCA1C82EB7700CCA370 /* TPCLaunchConfig.swift */; };
+		D6D8BFCF1C82EB7700CCA370 /* TPCTechnicalObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFCB1C82EB7700CCA370 /* TPCTechnicalObject+CoreDataProperties.swift */; };
+		D6D8BFD01C82EB7700CCA370 /* TPCTechnicalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFCC1C82EB7700CCA370 /* TPCTechnicalObject.swift */; };
+		D6D8BFD51C82ECB900CCA370 /* TPCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFD41C82ECB900CCA370 /* TPCTabBarController.swift */; };
 		D6DE71271C2592A300C066DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6DE70DD1C2592A300C066DE /* Assets.xcassets */; };
-		D6DE71281C2592A300C066DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6DE70DE1C2592A300C066DE /* Main.storyboard */; };
-		D6DE71291C2592A300C066DE /* TPCBroswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70E11C2592A300C066DE /* TPCBroswerViewController.swift */; };
-		D6DE712A1C2592A300C066DE /* TPCDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70E21C2592A300C066DE /* TPCDetailViewController.swift */; };
-		D6DE712B1C2592A300C066DE /* TPCNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70E31C2592A300C066DE /* TPCNavigationController.swift */; };
-		D6DE712C1C2592A300C066DE /* TPCAboutMeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70E51C2592A300C066DE /* TPCAboutMeController.swift */; };
-		D6DE712D1C2592A300C066DE /* TPCImageAlphaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70E61C2592A300C066DE /* TPCImageAlphaController.swift */; };
-		D6DE712E1C2592A300C066DE /* TPCLoadDataCountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70E71C2592A300C066DE /* TPCLoadDataCountController.swift */; };
-		D6DE712F1C2592A300C066DE /* TPCShowCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70E81C2592A300C066DE /* TPCShowCategoryController.swift */; };
-		D6DE71301C2592A300C066DE /* TPCShowContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70E91C2592A300C066DE /* TPCShowContentController.swift */; };
-		D6DE71311C2592A300C066DE /* TPCSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70EA1C2592A300C066DE /* TPCSettingViewController.swift */; };
-		D6DE71321C2592A300C066DE /* TPCTechnicalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70EB1C2592A300C066DE /* TPCTechnicalViewController.swift */; };
-		D6DE71331C2592A300C066DE /* TPCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70EC1C2592A300C066DE /* TPCViewController.swift */; };
+		D6DE71281C2592A300C066DE /* HomePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6DE70DE1C2592A300C066DE /* HomePage.storyboard */; };
 		D6DE71341C2592A300C066DE /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70EE1C2592A300C066DE /* CALayer+Extension.swift */; };
 		D6DE71351C2592A300C066DE /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70EF1C2592A300C066DE /* NSDate+Extension.swift */; };
 		D6DE71361C2592A300C066DE /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70F01C2592A300C066DE /* String+Extension.swift */; };
@@ -33,8 +64,6 @@
 		D6DE71381C2592A300C066DE /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70F21C2592A300C066DE /* UIButton+Extension.swift */; };
 		D6DE71391C2592A300C066DE /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70F31C2592A300C066DE /* UIFont+Extension.swift */; };
 		D6DE713A1C2592A300C066DE /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70F41C2592A300C066DE /* UIImage+Extension.swift */; };
-		D6DE713C1C2592A300C066DE /* TPCAboutMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70F71C2592A300C066DE /* TPCAboutMe.swift */; };
-		D6DE713D1C2592A300C066DE /* TPCLaunchConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70F81C2592A300C066DE /* TPCLaunchConfig.swift */; };
 		D6DE713F1C2592A300C066DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70FB1C2592A300C066DE /* AppDelegate.swift */; };
 		D6DE71401C2592A300C066DE /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71001C2592A300C066DE /* UINavigationController+FDFullscreenPopGesture.m */; };
 		D6DE71411C2592A300C066DE /* TPCCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71021C2592A300C066DE /* TPCCoreDataManager.swift */; };
@@ -48,36 +77,9 @@
 		D6DE71491C2592A300C066DE /* TPCTextParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE710A1C2592A300C066DE /* TPCTextParser.swift */; };
 		D6DE714A1C2592A300C066DE /* TPCUMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE710B1C2592A300C066DE /* TPCUMManager.swift */; };
 		D6DE714B1C2592A300C066DE /* TPCVenusUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE710C1C2592A300C066DE /* TPCVenusUtil.swift */; };
-		D6DE714C1C2592A300C066DE /* TPCApplicationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE710F1C2592A300C066DE /* TPCApplicationTitleView.swift */; };
-		D6DE714D1C2592A300C066DE /* TPCGradientLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71101C2592A300C066DE /* TPCGradientLabel.swift */; };
-		D6DE714E1C2592A300C066DE /* TPCGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71111C2592A300C066DE /* TPCGradientView.swift */; };
-		D6DE714F1C2592A300C066DE /* TPCImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71121C2592A300C066DE /* TPCImageView.swift */; };
-		D6DE71501C2592A300C066DE /* TPCLaunchScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DE71131C2592A300C066DE /* TPCLaunchScreenView.xib */; };
-		D6DE71511C2592A300C066DE /* TPCPageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71141C2592A300C066DE /* TPCPageScrollView.swift */; };
-		D6DE71521C2592A300C066DE /* TPCPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71151C2592A300C066DE /* TPCPopoverView.swift */; };
-		D6DE71531C2592A300C066DE /* TPCRefreshContentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DE71161C2592A300C066DE /* TPCRefreshContentsView.xib */; };
-		D6DE71541C2592A300C066DE /* TPCRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71171C2592A300C066DE /* TPCRefreshView.swift */; };
-		D6DE71551C2592A300C066DE /* TPCShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71181C2592A300C066DE /* TPCShareView.swift */; };
-		D6DE71561C2592A300C066DE /* TPCShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DE71191C2592A300C066DE /* TPCShareView.xib */; };
-		D6DE71571C2592A300C066DE /* TPCSystemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE711A1C2592A300C066DE /* TPCSystemButton.swift */; };
-		D6DE71581C2592A300C066DE /* TPCWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE711B1C2592A300C066DE /* TPCWebView.swift */; };
-		D6DE71591C2592A300C066DE /* TPCDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE711C1C2592A300C066DE /* TPCDetailHeaderView.swift */; };
-		D6DE715A1C2592A300C066DE /* TPCDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE711D1C2592A300C066DE /* TPCDetailViewCell.swift */; };
-		D6DE715B1C2592A300C066DE /* TPCLaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE711E1C2592A300C066DE /* TPCLaunchScreenView.swift */; };
-		D6DE715C1C2592A300C066DE /* TPCNoMoreDataFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE711F1C2592A300C066DE /* TPCNoMoreDataFooterView.swift */; };
-		D6DE715D1C2592A300C066DE /* TPCNoMoreDataFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DE71201C2592A300C066DE /* TPCNoMoreDataFooterView.xib */; };
-		D6DE715E1C2592A300C066DE /* TPCSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71211C2592A300C066DE /* TPCSettingCell.swift */; };
-		D6DE715F1C2592A300C066DE /* TPCSettingSubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71221C2592A300C066DE /* TPCSettingSubCell.swift */; };
-		D6DE71601C2592A300C066DE /* TPCTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71231C2592A300C066DE /* TPCTableView.swift */; };
-		D6DE71611C2592A300C066DE /* TPCTechnicalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71241C2592A300C066DE /* TPCTechnicalCell.swift */; };
 		D6DE71621C2592A300C066DE /* WKCC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71251C2592A300C066DE /* WKCC.xcdatamodeld */; };
-		D6DE71641C259BD400C066DE /* TPCUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71631C259BD400C066DE /* TPCUpdateView.swift */; };
-		D6DE71661C259BE800C066DE /* TPCUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DE71651C259BE800C066DE /* TPCUpdateView.xib */; };
 		D6DE71681C259EE900C066DE /* TPCVersionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71671C259EE900C066DE /* TPCVersionUtil.swift */; };
 		D6E504D31C2C1D9C00838446 /* AboutMe.json in Resources */ = {isa = PBXBuildFile; fileRef = D6E504D21C2C1D9C00838446 /* AboutMe.json */; };
-		D6E504D51C2C205D00838446 /* TPCLinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E504D41C2C205D00838446 /* TPCLinkButton.swift */; };
-		D6FB48CF1C7B457600C3DB63 /* TPCTechnicalObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB48CE1C7B457600C3DB63 /* TPCTechnicalObject+CoreDataProperties.swift */; };
-		D6FBFF261C62F87D0011F7B6 /* TPCTechnicalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FBFF241C62F87D0011F7B6 /* TPCTechnicalObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,20 +92,51 @@
 		D66C25C01C53A31600E7D6A6 /* TPCActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCActivityIndicator.swift; sourceTree = "<group>"; };
 		D67B75E71C2FD11C0081D470 /* GanHuo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GanHuo.entitlements; sourceTree = "<group>"; };
 		D69797E51C2FBCA500A53CD2 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		D6D8BF4B1C82D26F00CCA370 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D6D8BF781C82EB6600CCA370 /* TPCNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCNavigationController.swift; sourceTree = "<group>"; };
+		D6D8BF791C82EB6600CCA370 /* TPCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCViewController.swift; sourceTree = "<group>"; };
+		D6D8BF7B1C82EB6600CCA370 /* TPCBroswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCBroswerViewController.swift; sourceTree = "<group>"; };
+		D6D8BF7D1C82EB6600CCA370 /* TPCDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCDetailViewController.swift; sourceTree = "<group>"; };
+		D6D8BF7E1C82EB6600CCA370 /* TPCTechnicalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCTechnicalViewController.swift; sourceTree = "<group>"; };
+		D6D8BF801C82EB6600CCA370 /* TPCAboutMeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCAboutMeController.swift; sourceTree = "<group>"; };
+		D6D8BF811C82EB6600CCA370 /* TPCImageAlphaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCImageAlphaController.swift; sourceTree = "<group>"; };
+		D6D8BF821C82EB6600CCA370 /* TPCLoadDataCountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCLoadDataCountController.swift; sourceTree = "<group>"; };
+		D6D8BF831C82EB6600CCA370 /* TPCSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCSettingViewController.swift; sourceTree = "<group>"; };
+		D6D8BF841C82EB6600CCA370 /* TPCShowCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCShowCategoryController.swift; sourceTree = "<group>"; };
+		D6D8BF851C82EB6600CCA370 /* TPCShowContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCShowContentController.swift; sourceTree = "<group>"; };
+		D6D8BF931C82EB7000CCA370 /* TPCGradientLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCGradientLabel.swift; sourceTree = "<group>"; };
+		D6D8BF941C82EB7000CCA370 /* TPCGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCGradientView.swift; sourceTree = "<group>"; };
+		D6D8BF951C82EB7000CCA370 /* TPCImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCImageView.swift; sourceTree = "<group>"; };
+		D6D8BF961C82EB7000CCA370 /* TPCLinkButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCLinkButton.swift; sourceTree = "<group>"; };
+		D6D8BF971C82EB7000CCA370 /* TPCNoMoreDataFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCNoMoreDataFooterView.swift; sourceTree = "<group>"; };
+		D6D8BF981C82EB7000CCA370 /* TPCNoMoreDataFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCNoMoreDataFooterView.xib; sourceTree = "<group>"; };
+		D6D8BF991C82EB7000CCA370 /* TPCPageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCPageScrollView.swift; sourceTree = "<group>"; };
+		D6D8BF9A1C82EB7000CCA370 /* TPCPopoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCPopoverView.swift; sourceTree = "<group>"; };
+		D6D8BF9B1C82EB7000CCA370 /* TPCRefreshContentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCRefreshContentsView.xib; sourceTree = "<group>"; };
+		D6D8BF9C1C82EB7000CCA370 /* TPCRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCRefreshView.swift; sourceTree = "<group>"; };
+		D6D8BF9D1C82EB7000CCA370 /* TPCShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCShareView.swift; sourceTree = "<group>"; };
+		D6D8BF9E1C82EB7000CCA370 /* TPCShareView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCShareView.xib; sourceTree = "<group>"; };
+		D6D8BF9F1C82EB7000CCA370 /* TPCSystemButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCSystemButton.swift; sourceTree = "<group>"; };
+		D6D8BFA01C82EB7000CCA370 /* TPCTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCTableView.swift; sourceTree = "<group>"; };
+		D6D8BFA11C82EB7000CCA370 /* TPCUpdateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCUpdateView.swift; sourceTree = "<group>"; };
+		D6D8BFA21C82EB7000CCA370 /* TPCUpdateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCUpdateView.xib; sourceTree = "<group>"; };
+		D6D8BFA31C82EB7000CCA370 /* TPCWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCWebView.swift; sourceTree = "<group>"; };
+		D6D8BFA51C82EB7000CCA370 /* TPCDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCDetailHeaderView.swift; sourceTree = "<group>"; };
+		D6D8BFA61C82EB7000CCA370 /* TPCDetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCDetailViewCell.swift; sourceTree = "<group>"; };
+		D6D8BFA71C82EB7000CCA370 /* TPCTechnicalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCTechnicalCell.swift; sourceTree = "<group>"; };
+		D6D8BFA91C82EB7000CCA370 /* TPCApplicationTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCApplicationTitleView.swift; sourceTree = "<group>"; };
+		D6D8BFAA1C82EB7000CCA370 /* TPCLaunchScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCLaunchScreenView.swift; sourceTree = "<group>"; };
+		D6D8BFAB1C82EB7000CCA370 /* TPCLaunchScreenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCLaunchScreenView.xib; sourceTree = "<group>"; };
+		D6D8BFAD1C82EB7000CCA370 /* TPCSettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCSettingCell.swift; sourceTree = "<group>"; };
+		D6D8BFAE1C82EB7000CCA370 /* TPCSettingSubCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCSettingSubCell.swift; sourceTree = "<group>"; };
+		D6D8BFC91C82EB7700CCA370 /* TPCAboutMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCAboutMe.swift; sourceTree = "<group>"; };
+		D6D8BFCA1C82EB7700CCA370 /* TPCLaunchConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCLaunchConfig.swift; sourceTree = "<group>"; };
+		D6D8BFCB1C82EB7700CCA370 /* TPCTechnicalObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TPCTechnicalObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D6D8BFCC1C82EB7700CCA370 /* TPCTechnicalObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCTechnicalObject.swift; sourceTree = "<group>"; };
+		D6D8BFD41C82ECB900CCA370 /* TPCTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCTabBarController.swift; sourceTree = "<group>"; };
 		D6DE6FB91C25904C00C066DE /* GanHuo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GanHuo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6DE70DD1C2592A300C066DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D6DE70DF1C2592A300C066DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D6DE70E11C2592A300C066DE /* TPCBroswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCBroswerViewController.swift; sourceTree = "<group>"; };
-		D6DE70E21C2592A300C066DE /* TPCDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCDetailViewController.swift; sourceTree = "<group>"; };
-		D6DE70E31C2592A300C066DE /* TPCNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCNavigationController.swift; sourceTree = "<group>"; };
-		D6DE70E51C2592A300C066DE /* TPCAboutMeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCAboutMeController.swift; sourceTree = "<group>"; };
-		D6DE70E61C2592A300C066DE /* TPCImageAlphaController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCImageAlphaController.swift; sourceTree = "<group>"; };
-		D6DE70E71C2592A300C066DE /* TPCLoadDataCountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCLoadDataCountController.swift; sourceTree = "<group>"; };
-		D6DE70E81C2592A300C066DE /* TPCShowCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCShowCategoryController.swift; sourceTree = "<group>"; };
-		D6DE70E91C2592A300C066DE /* TPCShowContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCShowContentController.swift; sourceTree = "<group>"; };
-		D6DE70EA1C2592A300C066DE /* TPCSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCSettingViewController.swift; sourceTree = "<group>"; };
-		D6DE70EB1C2592A300C066DE /* TPCTechnicalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCTechnicalViewController.swift; sourceTree = "<group>"; };
-		D6DE70EC1C2592A300C066DE /* TPCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCViewController.swift; sourceTree = "<group>"; };
+		D6DE70DF1C2592A300C066DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HomePage.storyboard; sourceTree = "<group>"; };
 		D6DE70EE1C2592A300C066DE /* CALayer+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		D6DE70EF1C2592A300C066DE /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
 		D6DE70F01C2592A300C066DE /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -112,8 +145,6 @@
 		D6DE70F31C2592A300C066DE /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		D6DE70F41C2592A300C066DE /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		D6DE70F51C2592A300C066DE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D6DE70F71C2592A300C066DE /* TPCAboutMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCAboutMe.swift; sourceTree = "<group>"; };
-		D6DE70F81C2592A300C066DE /* TPCLaunchConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCLaunchConfig.swift; sourceTree = "<group>"; };
 		D6DE70FB1C2592A300C066DE /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6DE70FC1C2592A300C066DE /* WKCCSwift-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WKCCSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		D6DE70FF1C2592A300C066DE /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
@@ -129,36 +160,9 @@
 		D6DE710A1C2592A300C066DE /* TPCTextParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCTextParser.swift; sourceTree = "<group>"; };
 		D6DE710B1C2592A300C066DE /* TPCUMManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCUMManager.swift; sourceTree = "<group>"; };
 		D6DE710C1C2592A300C066DE /* TPCVenusUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCVenusUtil.swift; sourceTree = "<group>"; };
-		D6DE710F1C2592A300C066DE /* TPCApplicationTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCApplicationTitleView.swift; sourceTree = "<group>"; };
-		D6DE71101C2592A300C066DE /* TPCGradientLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCGradientLabel.swift; sourceTree = "<group>"; };
-		D6DE71111C2592A300C066DE /* TPCGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCGradientView.swift; sourceTree = "<group>"; };
-		D6DE71121C2592A300C066DE /* TPCImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCImageView.swift; sourceTree = "<group>"; };
-		D6DE71131C2592A300C066DE /* TPCLaunchScreenView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCLaunchScreenView.xib; sourceTree = "<group>"; };
-		D6DE71141C2592A300C066DE /* TPCPageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCPageScrollView.swift; sourceTree = "<group>"; };
-		D6DE71151C2592A300C066DE /* TPCPopoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCPopoverView.swift; sourceTree = "<group>"; };
-		D6DE71161C2592A300C066DE /* TPCRefreshContentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCRefreshContentsView.xib; sourceTree = "<group>"; };
-		D6DE71171C2592A300C066DE /* TPCRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCRefreshView.swift; sourceTree = "<group>"; };
-		D6DE71181C2592A300C066DE /* TPCShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCShareView.swift; sourceTree = "<group>"; };
-		D6DE71191C2592A300C066DE /* TPCShareView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCShareView.xib; sourceTree = "<group>"; };
-		D6DE711A1C2592A300C066DE /* TPCSystemButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCSystemButton.swift; sourceTree = "<group>"; };
-		D6DE711B1C2592A300C066DE /* TPCWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCWebView.swift; sourceTree = "<group>"; };
-		D6DE711C1C2592A300C066DE /* TPCDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCDetailHeaderView.swift; sourceTree = "<group>"; };
-		D6DE711D1C2592A300C066DE /* TPCDetailViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCDetailViewCell.swift; sourceTree = "<group>"; };
-		D6DE711E1C2592A300C066DE /* TPCLaunchScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TPCLaunchScreenView.swift; path = ../TPCLaunchScreenView.swift; sourceTree = "<group>"; };
-		D6DE711F1C2592A300C066DE /* TPCNoMoreDataFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCNoMoreDataFooterView.swift; sourceTree = "<group>"; };
-		D6DE71201C2592A300C066DE /* TPCNoMoreDataFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCNoMoreDataFooterView.xib; sourceTree = "<group>"; };
-		D6DE71211C2592A300C066DE /* TPCSettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCSettingCell.swift; sourceTree = "<group>"; };
-		D6DE71221C2592A300C066DE /* TPCSettingSubCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCSettingSubCell.swift; sourceTree = "<group>"; };
-		D6DE71231C2592A300C066DE /* TPCTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCTableView.swift; sourceTree = "<group>"; };
-		D6DE71241C2592A300C066DE /* TPCTechnicalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCTechnicalCell.swift; sourceTree = "<group>"; };
 		D6DE71261C2592A300C066DE /* WKCC.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WKCC.xcdatamodel; sourceTree = "<group>"; };
-		D6DE71631C259BD400C066DE /* TPCUpdateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCUpdateView.swift; sourceTree = "<group>"; };
-		D6DE71651C259BE800C066DE /* TPCUpdateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCUpdateView.xib; sourceTree = "<group>"; };
 		D6DE71671C259EE900C066DE /* TPCVersionUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCVersionUtil.swift; sourceTree = "<group>"; };
 		D6E504D21C2C1D9C00838446 /* AboutMe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AboutMe.json; sourceTree = "<group>"; };
-		D6E504D41C2C205D00838446 /* TPCLinkButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCLinkButton.swift; sourceTree = "<group>"; };
-		D6FB48CE1C7B457600C3DB63 /* TPCTechnicalObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TPCTechnicalObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		D6FBFF241C62F87D0011F7B6 /* TPCTechnicalObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCTechnicalObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +204,132 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		D6D8BF761C82EB6600CCA370 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D6D8BF771C82EB6600CCA370 /* Base */,
+				D6D8BF7A1C82EB6600CCA370 /* Browser */,
+				D6D8BF7C1C82EB6600CCA370 /* HomePage */,
+				D6D8BF7F1C82EB6600CCA370 /* Setting */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D6D8BF771C82EB6600CCA370 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				D6D8BF781C82EB6600CCA370 /* TPCNavigationController.swift */,
+				D6D8BF791C82EB6600CCA370 /* TPCViewController.swift */,
+				D6D8BFD41C82ECB900CCA370 /* TPCTabBarController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		D6D8BF7A1C82EB6600CCA370 /* Browser */ = {
+			isa = PBXGroup;
+			children = (
+				D6D8BF7B1C82EB6600CCA370 /* TPCBroswerViewController.swift */,
+			);
+			path = Browser;
+			sourceTree = "<group>";
+		};
+		D6D8BF7C1C82EB6600CCA370 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				D6D8BF7D1C82EB6600CCA370 /* TPCDetailViewController.swift */,
+				D6D8BF7E1C82EB6600CCA370 /* TPCTechnicalViewController.swift */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		D6D8BF7F1C82EB6600CCA370 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				D6D8BF801C82EB6600CCA370 /* TPCAboutMeController.swift */,
+				D6D8BF811C82EB6600CCA370 /* TPCImageAlphaController.swift */,
+				D6D8BF821C82EB6600CCA370 /* TPCLoadDataCountController.swift */,
+				D6D8BF831C82EB6600CCA370 /* TPCSettingViewController.swift */,
+				D6D8BF841C82EB6600CCA370 /* TPCShowCategoryController.swift */,
+				D6D8BF851C82EB6600CCA370 /* TPCShowContentController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		D6D8BF911C82EB7000CCA370 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D6D8BF921C82EB7000CCA370 /* Base */,
+				D6D8BFA41C82EB7000CCA370 /* HomePage */,
+				D6D8BFA81C82EB7000CCA370 /* Launch */,
+				D6D8BFAC1C82EB7000CCA370 /* Setting */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D6D8BF921C82EB7000CCA370 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				D6D8BF931C82EB7000CCA370 /* TPCGradientLabel.swift */,
+				D6D8BF941C82EB7000CCA370 /* TPCGradientView.swift */,
+				D6D8BF951C82EB7000CCA370 /* TPCImageView.swift */,
+				D6D8BF961C82EB7000CCA370 /* TPCLinkButton.swift */,
+				D6D8BF971C82EB7000CCA370 /* TPCNoMoreDataFooterView.swift */,
+				D6D8BF981C82EB7000CCA370 /* TPCNoMoreDataFooterView.xib */,
+				D6D8BF991C82EB7000CCA370 /* TPCPageScrollView.swift */,
+				D6D8BF9A1C82EB7000CCA370 /* TPCPopoverView.swift */,
+				D6D8BF9B1C82EB7000CCA370 /* TPCRefreshContentsView.xib */,
+				D6D8BF9C1C82EB7000CCA370 /* TPCRefreshView.swift */,
+				D6D8BF9D1C82EB7000CCA370 /* TPCShareView.swift */,
+				D6D8BF9E1C82EB7000CCA370 /* TPCShareView.xib */,
+				D6D8BF9F1C82EB7000CCA370 /* TPCSystemButton.swift */,
+				D6D8BFA01C82EB7000CCA370 /* TPCTableView.swift */,
+				D6D8BFA11C82EB7000CCA370 /* TPCUpdateView.swift */,
+				D6D8BFA21C82EB7000CCA370 /* TPCUpdateView.xib */,
+				D6D8BFA31C82EB7000CCA370 /* TPCWebView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		D6D8BFA41C82EB7000CCA370 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				D6D8BFA51C82EB7000CCA370 /* TPCDetailHeaderView.swift */,
+				D6D8BFA61C82EB7000CCA370 /* TPCDetailViewCell.swift */,
+				D6D8BFA71C82EB7000CCA370 /* TPCTechnicalCell.swift */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		D6D8BFA81C82EB7000CCA370 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				D6D8BFA91C82EB7000CCA370 /* TPCApplicationTitleView.swift */,
+				D6D8BFAA1C82EB7000CCA370 /* TPCLaunchScreenView.swift */,
+				D6D8BFAB1C82EB7000CCA370 /* TPCLaunchScreenView.xib */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		D6D8BFAC1C82EB7000CCA370 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				D6D8BFAD1C82EB7000CCA370 /* TPCSettingCell.swift */,
+				D6D8BFAE1C82EB7000CCA370 /* TPCSettingSubCell.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		D6D8BFC81C82EB7700CCA370 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D6D8BFC91C82EB7700CCA370 /* TPCAboutMe.swift */,
+				D6D8BFCA1C82EB7700CCA370 /* TPCLaunchConfig.swift */,
+				D6D8BFCB1C82EB7700CCA370 /* TPCTechnicalObject+CoreDataProperties.swift */,
+				D6D8BFCC1C82EB7700CCA370 /* TPCTechnicalObject.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D6DE6FB01C25904C00C066DE = {
 			isa = PBXGroup;
 			children = (
@@ -230,46 +360,21 @@
 		D6DE70DC1C2592A300C066DE /* GanHuo */ = {
 			isa = PBXGroup;
 			children = (
-				D6DE70E01C2592A300C066DE /* Controller */,
-				D6DE710D1C2592A300C066DE /* View */,
-				D6DE70F61C2592A300C066DE /* Model */,
+				D6D8BFC81C82EB7700CCA370 /* Models */,
+				D6D8BF911C82EB7000CCA370 /* Views */,
+				D6D8BF761C82EB6600CCA370 /* Controllers */,
 				D6DE71011C2592A300C066DE /* Util */,
 				D6DE70ED1C2592A300C066DE /* Extension */,
+				D66C25BD1C53A10E00E7D6A6 /* Protocol */,
 				D6DE70FE1C2592A300C066DE /* ThirdParty */,
 				D6DE70FA1C2592A300C066DE /* Other */,
 				D6DE70FD1C2592A300C066DE /* Resource */,
-				D66C25BD1C53A10E00E7D6A6 /* Protocol */,
 				D6DE70DD1C2592A300C066DE /* Assets.xcassets */,
-				D6DE70DE1C2592A300C066DE /* Main.storyboard */,
+				D6DE70DE1C2592A300C066DE /* HomePage.storyboard */,
+				D6D8BF4A1C82D26F00CCA370 /* Main.storyboard */,
 				D6DE70F51C2592A300C066DE /* Info.plist */,
 			);
 			name = GanHuo;
-			sourceTree = "<group>";
-		};
-		D6DE70E01C2592A300C066DE /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				D6DE70E11C2592A300C066DE /* TPCBroswerViewController.swift */,
-				D6DE70E21C2592A300C066DE /* TPCDetailViewController.swift */,
-				D6DE70E31C2592A300C066DE /* TPCNavigationController.swift */,
-				D6DE70EB1C2592A300C066DE /* TPCTechnicalViewController.swift */,
-				D6DE70EC1C2592A300C066DE /* TPCViewController.swift */,
-				D6DE70EA1C2592A300C066DE /* TPCSettingViewController.swift */,
-				D6DE70E41C2592A300C066DE /* TPCSettingSubController */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		D6DE70E41C2592A300C066DE /* TPCSettingSubController */ = {
-			isa = PBXGroup;
-			children = (
-				D6DE70E51C2592A300C066DE /* TPCAboutMeController.swift */,
-				D6DE70E61C2592A300C066DE /* TPCImageAlphaController.swift */,
-				D6DE70E71C2592A300C066DE /* TPCLoadDataCountController.swift */,
-				D6DE70E81C2592A300C066DE /* TPCShowCategoryController.swift */,
-				D6DE70E91C2592A300C066DE /* TPCShowContentController.swift */,
-			);
-			path = TPCSettingSubController;
 			sourceTree = "<group>";
 		};
 		D6DE70ED1C2592A300C066DE /* Extension */ = {
@@ -286,17 +391,6 @@
 				D667F9F81C5518920059F372 /* NSCalender+Extension.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		D6DE70F61C2592A300C066DE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				D6FB48CE1C7B457600C3DB63 /* TPCTechnicalObject+CoreDataProperties.swift */,
-				D6FBFF241C62F87D0011F7B6 /* TPCTechnicalObject.swift */,
-				D6DE70F71C2592A300C066DE /* TPCAboutMe.swift */,
-				D6DE70F81C2592A300C066DE /* TPCLaunchConfig.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		D6DE70FA1C2592A300C066DE /* Other */ = {
@@ -345,46 +439,6 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
-		D6DE710D1C2592A300C066DE /* View */ = {
-			isa = PBXGroup;
-			children = (
-				D6DE711C1C2592A300C066DE /* TPCDetailHeaderView.swift */,
-				D6DE711D1C2592A300C066DE /* TPCDetailViewCell.swift */,
-				D6DE711F1C2592A300C066DE /* TPCNoMoreDataFooterView.swift */,
-				D6DE71201C2592A300C066DE /* TPCNoMoreDataFooterView.xib */,
-				D6DE71211C2592A300C066DE /* TPCSettingCell.swift */,
-				D6DE71221C2592A300C066DE /* TPCSettingSubCell.swift */,
-				D6DE71231C2592A300C066DE /* TPCTableView.swift */,
-				D6DE71241C2592A300C066DE /* TPCTechnicalCell.swift */,
-				D6DE710E1C2592A300C066DE /* CommonView */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		D6DE710E1C2592A300C066DE /* CommonView */ = {
-			isa = PBXGroup;
-			children = (
-				D6DE710F1C2592A300C066DE /* TPCApplicationTitleView.swift */,
-				D6DE71101C2592A300C066DE /* TPCGradientLabel.swift */,
-				D6DE71111C2592A300C066DE /* TPCGradientView.swift */,
-				D6DE71121C2592A300C066DE /* TPCImageView.swift */,
-				D6DE711E1C2592A300C066DE /* TPCLaunchScreenView.swift */,
-				D6DE71131C2592A300C066DE /* TPCLaunchScreenView.xib */,
-				D6DE71141C2592A300C066DE /* TPCPageScrollView.swift */,
-				D6DE71151C2592A300C066DE /* TPCPopoverView.swift */,
-				D6DE71161C2592A300C066DE /* TPCRefreshContentsView.xib */,
-				D6DE71171C2592A300C066DE /* TPCRefreshView.swift */,
-				D6DE71181C2592A300C066DE /* TPCShareView.swift */,
-				D6DE71191C2592A300C066DE /* TPCShareView.xib */,
-				D6DE711A1C2592A300C066DE /* TPCSystemButton.swift */,
-				D6DE711B1C2592A300C066DE /* TPCWebView.swift */,
-				D6DE71631C259BD400C066DE /* TPCUpdateView.swift */,
-				D6DE71651C259BE800C066DE /* TPCUpdateView.xib */,
-				D6E504D41C2C205D00838446 /* TPCLinkButton.swift */,
-			);
-			path = CommonView;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -420,7 +474,6 @@
 				TargetAttributes = {
 					D6DE6FB81C25904C00C066DE = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 7DG5WQWWY9;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -455,14 +508,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6DE71661C259BE800C066DE /* TPCUpdateView.xib in Resources */,
 				D6E504D31C2C1D9C00838446 /* AboutMe.json in Resources */,
+				D6D8BFC51C82EB7000CCA370 /* TPCLaunchScreenView.xib in Resources */,
+				D6D8BFBA1C82EB7000CCA370 /* TPCShareView.xib in Resources */,
 				D6DE71271C2592A300C066DE /* Assets.xcassets in Resources */,
-				D6DE715D1C2592A300C066DE /* TPCNoMoreDataFooterView.xib in Resources */,
-				D6DE71501C2592A300C066DE /* TPCLaunchScreenView.xib in Resources */,
-				D6DE71281C2592A300C066DE /* Main.storyboard in Resources */,
-				D6DE71561C2592A300C066DE /* TPCShareView.xib in Resources */,
-				D6DE71531C2592A300C066DE /* TPCRefreshContentsView.xib in Resources */,
+				D6D8BFB71C82EB7000CCA370 /* TPCRefreshContentsView.xib in Resources */,
+				D6D8BFB41C82EB7000CCA370 /* TPCNoMoreDataFooterView.xib in Resources */,
+				D6DE71281C2592A300C066DE /* HomePage.storyboard in Resources */,
+				D6D8BF4C1C82D26F00CCA370 /* Main.storyboard in Resources */,
+				D6D8BFBE1C82EB7000CCA370 /* TPCUpdateView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,66 +575,67 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6FBFF261C62F87D0011F7B6 /* TPCTechnicalObject.swift in Sources */,
+				D6D8BFD01C82EB7700CCA370 /* TPCTechnicalObject.swift in Sources */,
+				D6D8BFB51C82EB7000CCA370 /* TPCPageScrollView.swift in Sources */,
+				D6D8BFC31C82EB7000CCA370 /* TPCApplicationTitleView.swift in Sources */,
 				D6DE713F1C2592A300C066DE /* AppDelegate.swift in Sources */,
-				D6DE714C1C2592A300C066DE /* TPCApplicationTitleView.swift in Sources */,
 				D6DE71431C2592A300C066DE /* TPCConst.swift in Sources */,
-				D6DE71301C2592A300C066DE /* TPCShowContentController.swift in Sources */,
-				D6DE71521C2592A300C066DE /* TPCPopoverView.swift in Sources */,
-				D6DE71641C259BD400C066DE /* TPCUpdateView.swift in Sources */,
 				D667F9F11C53B19D0059F372 /* TPCArchivable.swift in Sources */,
-				D6DE712F1C2592A300C066DE /* TPCShowCategoryController.swift in Sources */,
 				D6DE71421C2592A300C066DE /* TPCConfiguration.swift in Sources */,
-				D6DE71291C2592A300C066DE /* TPCBroswerViewController.swift in Sources */,
-				D6DE71571C2592A300C066DE /* TPCSystemButton.swift in Sources */,
+				D6D8BF8C1C82EB6600CCA370 /* TPCImageAlphaController.swift in Sources */,
+				D6D8BFC61C82EB7000CCA370 /* TPCSettingCell.swift in Sources */,
+				D6D8BFC01C82EB7000CCA370 /* TPCDetailHeaderView.swift in Sources */,
+				D6D8BF8E1C82EB6600CCA370 /* TPCSettingViewController.swift in Sources */,
+				D6D8BFC41C82EB7000CCA370 /* TPCLaunchScreenView.swift in Sources */,
 				D6DE713A1C2592A300C066DE /* UIImage+Extension.swift in Sources */,
+				D6D8BFCF1C82EB7700CCA370 /* TPCTechnicalObject+CoreDataProperties.swift in Sources */,
+				D6D8BFCE1C82EB7700CCA370 /* TPCLaunchConfig.swift in Sources */,
+				D6D8BFBB1C82EB7000CCA370 /* TPCSystemButton.swift in Sources */,
 				D6DE71491C2592A300C066DE /* TPCTextParser.swift in Sources */,
-				D6DE71331C2592A300C066DE /* TPCViewController.swift in Sources */,
+				D6D8BFBC1C82EB7000CCA370 /* TPCTableView.swift in Sources */,
+				D6D8BFB61C82EB7000CCA370 /* TPCPopoverView.swift in Sources */,
+				D6D8BFBF1C82EB7000CCA370 /* TPCWebView.swift in Sources */,
+				D6D8BF871C82EB6600CCA370 /* TPCViewController.swift in Sources */,
+				D6D8BFBD1C82EB7000CCA370 /* TPCUpdateView.swift in Sources */,
 				D6DE71411C2592A300C066DE /* TPCCoreDataManager.swift in Sources */,
+				D6D8BFB81C82EB7000CCA370 /* TPCRefreshView.swift in Sources */,
 				D6DE71461C2592A300C066DE /* TPCPhotoUtil.swift in Sources */,
 				D6DE714B1C2592A300C066DE /* TPCVenusUtil.swift in Sources */,
-				D6DE71611C2592A300C066DE /* TPCTechnicalCell.swift in Sources */,
-				D6DE712C1C2592A300C066DE /* TPCAboutMeController.swift in Sources */,
-				D6DE714D1C2592A300C066DE /* TPCGradientLabel.swift in Sources */,
-				D6DE71541C2592A300C066DE /* TPCRefreshView.swift in Sources */,
-				D6DE714E1C2592A300C066DE /* TPCGradientView.swift in Sources */,
-				D6DE715C1C2592A300C066DE /* TPCNoMoreDataFooterView.swift in Sources */,
-				D6DE71551C2592A300C066DE /* TPCShareView.swift in Sources */,
 				D66C25C11C53A31600E7D6A6 /* TPCActivityIndicator.swift in Sources */,
-				D6DE714F1C2592A300C066DE /* TPCImageView.swift in Sources */,
 				D6DE71381C2592A300C066DE /* UIButton+Extension.swift in Sources */,
-				D6DE715B1C2592A300C066DE /* TPCLaunchScreenView.swift in Sources */,
-				D6DE713C1C2592A300C066DE /* TPCAboutMe.swift in Sources */,
 				D69797E61C2FBCA500A53CD2 /* UIViewController+Extension.swift in Sources */,
-				D6DE712E1C2592A300C066DE /* TPCLoadDataCountController.swift in Sources */,
-				D6DE71311C2592A300C066DE /* TPCSettingViewController.swift in Sources */,
+				D6D8BFB91C82EB7000CCA370 /* TPCShareView.swift in Sources */,
 				D6DE71371C2592A300C066DE /* UIBarButtonItem+Extension.swift in Sources */,
-				D6DE712B1C2592A300C066DE /* TPCNavigationController.swift in Sources */,
-				D6DE713D1C2592A300C066DE /* TPCLaunchConfig.swift in Sources */,
+				D6D8BFB01C82EB7000CCA370 /* TPCGradientView.swift in Sources */,
 				D6DE71441C2592A300C066DE /* TPCDispatchUtil.swift in Sources */,
+				D6D8BFD51C82ECB900CCA370 /* TPCTabBarController.swift in Sources */,
+				D6D8BFCD1C82EB7700CCA370 /* TPCAboutMe.swift in Sources */,
 				D66C25BF1C53A13200E7D6A6 /* TPCRefreshable.swift in Sources */,
-				D6DE71601C2592A300C066DE /* TPCTableView.swift in Sources */,
+				D6D8BFB11C82EB7000CCA370 /* TPCImageView.swift in Sources */,
+				D6D8BF861C82EB6600CCA370 /* TPCNavigationController.swift in Sources */,
+				D6D8BFC71C82EB7000CCA370 /* TPCSettingSubCell.swift in Sources */,
 				D6DE71401C2592A300C066DE /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
-				D6DE71591C2592A300C066DE /* TPCDetailHeaderView.swift in Sources */,
+				D6D8BFC11C82EB7000CCA370 /* TPCDetailViewCell.swift in Sources */,
+				D6D8BFB31C82EB7000CCA370 /* TPCNoMoreDataFooterView.swift in Sources */,
+				D6D8BFC21C82EB7000CCA370 /* TPCTechnicalCell.swift in Sources */,
+				D6D8BF901C82EB6600CCA370 /* TPCShowContentController.swift in Sources */,
 				D667F9F91C5518920059F372 /* NSCalender+Extension.swift in Sources */,
-				D6DE71581C2592A300C066DE /* TPCWebView.swift in Sources */,
-				D6DE715F1C2592A300C066DE /* TPCSettingSubCell.swift in Sources */,
-				D6E504D51C2C205D00838446 /* TPCLinkButton.swift in Sources */,
 				D6DE71481C2592A300C066DE /* TPCStorageUtil.swift in Sources */,
-				D6DE715E1C2592A300C066DE /* TPCSettingCell.swift in Sources */,
 				D6DE71391C2592A300C066DE /* UIFont+Extension.swift in Sources */,
 				D6DE71361C2592A300C066DE /* String+Extension.swift in Sources */,
-				D6DE712A1C2592A300C066DE /* TPCDetailViewController.swift in Sources */,
-				D6DE715A1C2592A300C066DE /* TPCDetailViewCell.swift in Sources */,
-				D6DE71321C2592A300C066DE /* TPCTechnicalViewController.swift in Sources */,
-				D6DE712D1C2592A300C066DE /* TPCImageAlphaController.swift in Sources */,
 				D6DE71621C2592A300C066DE /* WKCC.xcdatamodeld in Sources */,
-				D6DE71511C2592A300C066DE /* TPCPageScrollView.swift in Sources */,
+				D6D8BFAF1C82EB7000CCA370 /* TPCGradientLabel.swift in Sources */,
 				D6DE71681C259EE900C066DE /* TPCVersionUtil.swift in Sources */,
+				D6D8BF8F1C82EB6600CCA370 /* TPCShowCategoryController.swift in Sources */,
+				D6D8BF8A1C82EB6600CCA370 /* TPCTechnicalViewController.swift in Sources */,
+				D6D8BF8B1C82EB6600CCA370 /* TPCAboutMeController.swift in Sources */,
+				D6D8BF8D1C82EB6600CCA370 /* TPCLoadDataCountController.swift in Sources */,
 				D6DE714A1C2592A300C066DE /* TPCUMManager.swift in Sources */,
+				D6D8BF891C82EB6600CCA370 /* TPCDetailViewController.swift in Sources */,
+				D6D8BF881C82EB6600CCA370 /* TPCBroswerViewController.swift in Sources */,
 				D6DE71341C2592A300C066DE /* CALayer+Extension.swift in Sources */,
-				D6FB48CF1C7B457600C3DB63 /* TPCTechnicalObject+CoreDataProperties.swift in Sources */,
 				D6DE71471C2592A300C066DE /* TPCShareManager.swift in Sources */,
+				D6D8BFB21C82EB7000CCA370 /* TPCLinkButton.swift in Sources */,
 				D6DE71451C2592A300C066DE /* TPCNetworkUtil.swift in Sources */,
 				D6DE71351C2592A300C066DE /* NSDate+Extension.swift in Sources */,
 			);
@@ -589,12 +644,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D6DE70DE1C2592A300C066DE /* Main.storyboard */ = {
+		D6D8BF4A1C82D26F00CCA370 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D6D8BF4B1C82D26F00CCA370 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D6DE70DE1C2592A300C066DE /* HomePage.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D6DE70DF1C2592A300C066DE /* Base */,
 			);
-			name = Main.storyboard;
+			name = HomePage.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -688,8 +751,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = GanHuo/GanHuo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ruiwang Song (7DG5WQWWY9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ruiwang Song (7DG5WQWWY9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/GanHuo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -708,8 +771,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = GanHuo/GanHuo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ruiwang Song (7DG5WQWWY9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ruiwang Song (7DG5WQWWY9)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/GanHuo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

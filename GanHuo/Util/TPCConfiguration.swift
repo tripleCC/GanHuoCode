@@ -55,6 +55,7 @@ struct TPCConfiguration {
     static var allCategories = ["iOS", "Android", "App", "瞎推荐", "前端", "福利", "休息视频", "拓展资源"]
     static var contentRules: [TPCRuleType] = [TPCRuleType.Two, TPCRuleType.Three]
     static var imageAlpha: Float = 1.0
+    static var hideTabBarInHomePageWhenScroll = false
 }
 
 extension TPCConfiguration {

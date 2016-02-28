@@ -85,6 +85,7 @@ public typealias TPCTechnicalDictionary = [String : [TPCTechnicalObject]]
 
 public class TPCNetworkUtil {
     static let shareInstance = TPCNetworkUtil()
+    public var belowStartTime = false
     private var alamofire: Alamofire.Manager!
     private var requests = [Request]()
     private var loadEmptyCount = 0
@@ -108,6 +109,7 @@ public class TPCNetworkUtil {
     public func loadData(allLoadedAppend: Bool = false, success: (() -> ())?, failure: ((TPCFailureType) -> ())?) {
         guard !TPCConfiguration.checkBelowStartTime(year, month: month, day: day) else {
             self.resetCounter()
+            self.belowStartTime = true
             failure?(.BelowStartTime)
             return
         }
