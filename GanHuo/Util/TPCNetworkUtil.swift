@@ -204,7 +204,7 @@ extension TPCNetworkUtil {
                 for case let technical in technicals where technical.type != nil {
                     technicalDict[technical.type!]?.append(technical)
                 }
-                dispatchMain() { completion?(technicalDict, technicalDict.map() { $0.0 }) }
+                dispatchAMain() { completion?(technicalDict, technicalDict.map() { $0.0 }) }
             })
         } else {
             loadTechnicalFromNetWorkByYear(year, month: month, day: day, completion: completion)
@@ -232,7 +232,7 @@ extension TPCNetworkUtil {
                                 }
                                 if let itemArray = results[item]?.arrayValue {
                                     var technicalArray = [TPCTechnicalObject]()
-                                    dispatchMain {
+                                    dispatchSMain {
                                         for json in itemArray where json.dictionary != nil {
                                                 let technical = TPCTechnicalObject(dict: json.dictionaryValue)
                                                 technical.desc = TPCTextParser.shareTextParser.parseOriginString(technical.desc!)
@@ -266,7 +266,7 @@ extension TPCNetworkUtil {
 //                                }
 //                            }
 //                        }
-                        dispatchMain() {
+                        dispatchAMain() {
                             completion?(technicalDict, categories) }
                     }
                     

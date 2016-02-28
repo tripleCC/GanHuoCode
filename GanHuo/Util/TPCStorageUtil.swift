@@ -36,7 +36,7 @@ class TPCStorageUtil {
         } else {
             dispatchGlobal({ () -> () in
                 clearFile()
-                dispatchMain({ () -> () in
+                dispatchSMain({ () -> () in
                     completion!()
                 })
             })

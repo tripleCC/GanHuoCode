@@ -51,7 +51,7 @@ class TPCTechnicalCell: UITableViewCell {
                     }
                 }
                 descString = descString.substringToIndex(descString.endIndex.advancedBy(-3))
-                dispatchMain() {
+                dispatchAMain() {
                     self.describeLabel.text = descString
                     self.describeLabel.subviews.first?.alpha = CGFloat(TPCConfiguration.imageAlpha)
                     self.describeLabel.layoutIfNeeded()

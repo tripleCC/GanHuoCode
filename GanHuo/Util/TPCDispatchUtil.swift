@@ -21,12 +21,22 @@ func dispatchGlobal(action: () -> ()) {
     })
 }
 
-func dispatchMain(action: () -> ()) {
+func dispatchSMain(action: () -> ()) {
     if NSThread.isMainThread() {
         action()
     } else {
         dispatch_sync(dispatch_get_main_queue()) { () -> Void in
             action()
         }        
+    }
+}
+
+func dispatchAMain(action: () -> ()) {
+    if NSThread.isMainThread() {
+        action()
+    } else {
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            action()
+        }
     }
 }
