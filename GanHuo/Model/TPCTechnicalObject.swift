@@ -45,7 +45,7 @@ public final class TPCTechnicalObject: NSManagedObject ,TPCCoreDataHelper {
 extension TPCCoreDataHelper where Self : TPCTechnicalObject {
     static var request: NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: TPCTechnicalObject.entityName)
-        fetchRequest.fetchLimit = 50
+        fetchRequest.fetchLimit = 1000
         fetchRequest.fetchBatchSize = 20;
         let predicate = NSPredicate(format: "publishedAt CONTAINS %@", queryTimeString)
         fetchRequest.predicate = predicate
