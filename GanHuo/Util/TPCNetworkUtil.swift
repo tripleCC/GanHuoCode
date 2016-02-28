@@ -111,6 +111,7 @@ public class TPCNetworkUtil {
             failure?(.BelowStartTime)
             return
         }
+        
         TPCNetworkUtil.shareInstance.loadTechnicalByYear(year, month: month, day: day) { (technicalDict, categories) -> () in
             if categories.count > 0 {
                 debugPrint("load successfully", self.year, self.month, self.day)
@@ -124,6 +125,7 @@ public class TPCNetworkUtil {
                 guard ++self.loadDataCount != TPCConfiguration.loadDataCountOnce else {
                     self.resetCounter()
                     success?()
+                    TPCCoreDataManager.shareInstance.saveContext()
                     return
                 }
             } else {
@@ -133,6 +135,7 @@ public class TPCNetworkUtil {
 //                    TPCStorageUtil.shareInstance.clearNoDateDaysCache()
 //                    self.noDataDays.removeAll()
                     failure?(.BeyondMaxFailTime)
+                    TPCCoreDataManager.shareInstance.saveContext()
                     return
                 }
             }
@@ -189,13 +192,20 @@ extension TPCNetworkUtil {
                 return
             }
         }
-        let path = TPCStorageUtil.shareInstance.pathForTechnicalDictionaryByTime((year, month, day))
-        if TPCStorageUtil.shareInstance.fileManager.fileExistsAtPath(path) {
-            dispatchGlobal {
-                let technicalDict:[String : [TPCTechnicalObject]] =  unarchiveTechnicalDictionaryWithFile(path)!
-                let categories = Array(technicalDict).map{ $0.0 }
-                dispatchMain() { completion?(technicalDict, categories) }
-            }
+        
+        // 业务原因，不然就可以一开始就根据加载的数目统一从coredata中一并加载出来，而不是频繁地和sqlite交互
+        let technicals = TPCTechnicalObject.fetchByTime((year, month, day))
+        if technicals.count > 0 {
+            dispatchGlobal({ () -> () in
+                var technicalDict = [String : [TPCTechnicalObject]]()
+                Set(technicals.map() { $0.type } .flatMap() { $0 }).forEach() {
+                    technicalDict[$0] = [TPCTechnicalObject]()
+                }
+                for case let technical in technicals where technical.type != nil {
+                    technicalDict[technical.type!]?.append(technical)
+                }
+                dispatchMain() { completion?(technicalDict, technicalDict.map() { $0.0 }) }
+            })
         } else {
             loadTechnicalFromNetWorkByYear(year, month: month, day: day, completion: completion)
         }
@@ -222,13 +232,15 @@ extension TPCNetworkUtil {
                                 }
                                 if let itemArray = results[item]?.arrayValue {
                                     var technicalArray = [TPCTechnicalObject]()
-                                    for json in itemArray where json.dictionary != nil {
-                                        var technical = TPCTechnicalObject(dict: json.dictionaryValue)
-                                        technical.desc = TPCTextParser.shareTextParser.parseOriginString(technical.desc!)
-                                        if !TPCVenusUtil.venusFlag && technical.type == "福利" {
-                                            technical.url = TPCGanHuoType.ImageTypeSubtype.VenusImage(Int(300 - self.venusInterval)).path()
+                                    dispatchMain {
+                                        for json in itemArray where json.dictionary != nil {
+                                                let technical = TPCTechnicalObject(dict: json.dictionaryValue)
+                                                technical.desc = TPCTextParser.shareTextParser.parseOriginString(technical.desc!)
+                                                if !TPCVenusUtil.venusFlag && technical.type == "福利" {
+                                                    technical.url = TPCGanHuoType.ImageTypeSubtype.VenusImage(Int(300 - self.venusInterval)).path()
+                                                }
+                                                technicalArray.append(technical)                                            
                                         }
-                                        technicalArray.append(technical)
                                     }
                                     technicalDict[item] = technicalArray
                                 }
@@ -241,20 +253,21 @@ extension TPCNetworkUtil {
                                 TPCConfiguration.allCategories = categories
                             }
                         }
-                        dispatchGlobal {
-                            // Do some cache operation
-                            if categories.count > 0 {
-                                let path = TPCStorageUtil.shareInstance.pathForTechnicalDictionaryByTime((year, month, day))
-                                archiveTechnicalDictionary(technicalDict, toFile: path)
-                            } else {
+//                        dispatchGlobal {
+//                            // Do some cache operation
+//                            if categories.count > 0 {
+//                                 todo
+//                                let path = TPCStorageUtil.shareInstance.pathForTechnicalDictionaryByTime((year, month, day))
+//                                archiveTechnicalDictionary(technicalDict, toFile: path)
+//                            } else {
 //                                if let date = NSCalendar.currentCalendar().dateWithTime((year, month, day)) {
 //                                    self.noDataDays.append(date)
 //                                    TPCStorageUtil.shareInstance.saveNoDataDays(self.noDataDays)
 //                                }
-                            }
-                        }
-                        
-                        dispatchMain() { completion?(technicalDict, categories) }
+//                            }
+//                        }
+                        dispatchMain() {
+                            completion?(technicalDict, categories) }
                     }
                     
                 })

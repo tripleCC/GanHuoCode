@@ -3,7 +3,7 @@ PODS:
   - DACircularProgress (2.3.1)
   - Kingfisher (2.0.3)
   - MonkeyKing (0.7)
-  - PKHUD (2.2.5)
+  - PKHUD (3.0.0)
   - SwiftyJSON (2.3.2)
   - UMengAnalytics-NO-IDFA (3.6.7)
 
@@ -21,7 +21,7 @@ SPEC CHECKSUMS:
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   Kingfisher: 44c1f1912f19371a67d701e67c96d6bb45ca1c8d
   MonkeyKing: 6b693e38951b1e4850a475b7ee194bd6f75a9f2b
-  PKHUD: 15d9db01fb008bb9247c6d785c585f587955b113
+  PKHUD: e1648a176717bcdf480ec4b91ff1f023f8abb8c4
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   UMengAnalytics-NO-IDFA: 6d02561a00579b2e37718f204eb81347df5d7b8b
 

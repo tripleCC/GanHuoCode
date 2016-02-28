@@ -129,14 +129,13 @@ class TPCSettingViewController: TPCViewController {
     
     private var sectionFour: [TPCSetItem] {
         let sections = [TPCSetItem(title: .ClearCache, action: { [unowned self] (indexPath) -> () in
+            TPCCoreDataManager.shareInstance.clearCoreDataCache()
             self.clearCache(indexPath)
-            TPCStorageUtil.shareInstance.clearFileCache()
             }, accessoryType: .None)]
         
         KingfisherManager.sharedManager.cache.calculateDiskCacheSizeWithCompletionHandler { (size) -> () in
             let imageSize = Double(size) / 1000.0 / 1000.0
-            let fileSize = Double(TPCStorageUtil.shareInstance.sizeOfFileAtPath(TPCStorageUtil.shareInstance.directoryForTechnicalDictionary)/* + TPCStorageUtil.shareInstance.sizeOfFileAtPath(TPCStorageUtil.shareInstance.pathForNoDataDays)*/) / 1000.0 / 1000.0
-            
+            let fileSize = Double(TPCStorageUtil.shareInstance.sizeOfFileAtPath(TPCCoreDataManager.shareInstance.coreDataDirectory.path!) { $0.containsString(TPCSqliteFileName) }) / 1000.0 / 1000.0
             print(fileSize)
             let cacheSizeString = String(format: "%.2fM", imageSize + fileSize)
             sections.first!.detailTitle = cacheSizeString

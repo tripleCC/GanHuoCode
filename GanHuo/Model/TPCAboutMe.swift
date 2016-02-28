@@ -9,6 +9,11 @@
 import Foundation
 import SwiftyJSON
 
+public protocol TPCGanHuo {
+    typealias RawType
+    init (dict: RawType)
+}
+
 public struct TPCAboutMe: TPCGanHuo {
     public typealias RawType = JSON
     var detail: String?
