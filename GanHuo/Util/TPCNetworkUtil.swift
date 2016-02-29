@@ -57,10 +57,12 @@ public enum TPCGanHuoType {
 
 
 public enum TPCTechnicalType: TPCGanHuoAPI {
-    static let TPCGankBaseURLString = "http://gank.avosapps.com/api"
+    static let TPCGankBaseURLString = "http://gank.io/api"
     case Data(String, Int, Int)
     case Day(Int, Int, Int)
     case Random(String, Int)
+    case AvailableDay
+    case Add2Gank
     
     public func path() -> String {
         var pathComponent = String()
@@ -71,6 +73,10 @@ public enum TPCTechnicalType: TPCGanHuoAPI {
             pathComponent = "/day/\(year)/\(month)/\(day)"
         case let .Random(type, count):
             pathComponent = "/data/\(type)/\(count)"
+        case .AvailableDay:
+            pathComponent = "/day/history"
+        case .Add2Gank:
+            pathComponent = "/add2gank"
         }
         return TPCTechnicalType.TPCGankBaseURLString + pathComponent
     }
@@ -186,6 +192,24 @@ public class TPCNetworkUtil {
 }
 
 extension TPCNetworkUtil {
+    private func removeRequest(request: NSURLRequest?) {
+        if let request = request {
+            for i in 0..<requests.count {
+                if requests[i].request == request {
+                    requests.removeAtIndex(i)
+                    break
+                }
+            }
+        }
+    }
+    
+    public func cancelAllRequests() {
+        requests.forEach{ $0.cancel() }
+        requests.removeAll()
+    }
+}
+
+extension TPCNetworkUtil {
     public func loadTechnicalByYear(year: Int, month: Int, day: Int, completion:((TPCTechnicalDictionary, [String]) -> ())?) {
         if let date = NSCalendar.currentCalendar().dateWithTime((year, month, day)) {
             guard !date.isWeekend /*|| !noDataDays.contains(date)*/ else {
@@ -276,21 +300,21 @@ extension TPCNetworkUtil {
             })
     }
     
-    private func removeRequest(request: NSURLRequest?) {
-        if let request = request {
-            for i in 0..<requests.count {
-                if requests[i].request == request {
-                    requests.removeAtIndex(i)
-                    break
-                }
-            }
+    public func loadAvailableDays(completion: (days: Array<String>) -> ()) {
+        alamofire.request(.GET, TPCTechnicalType.AvailableDay.path())
+                 .response { (request, respone, data, error) -> Void in
+                    if let data = data {
+                        let jsonArray = JSON(data: data).arrayValue
+                        completion(days: jsonArray.flatMap{ $0.stringValue })
+                    }
         }
     }
     
-    public func cancelAllRequests() {
-        requests.forEach{ $0.cancel() }
-        requests.removeAll()
-    }
+//    public func add2Gank
+}
+
+
+extension TPCNetworkUtil {
     
     public func loadAbountMe(completion: (aboutMe: TPCAboutMe) -> ()) {
         loadGanHuoByPath(TPCGanHuoType.ConfigTypeSubtype.AboutMe) { (response) -> () in
@@ -303,7 +327,7 @@ extension TPCNetworkUtil {
             completion(launchConfig: TPCLaunchConfig(dict: response))
         }
     }
-
+    
     public func loadGanHuoByPath<T: TPCGanHuoAPI>(path: T, completion: (response: JSON) -> ()) {
         debugPrint(path.path())
         alamofire.request(.GET, path.path())
@@ -316,7 +340,6 @@ extension TPCNetworkUtil {
             })
     }
 }
-
 
 extension TPCStorageUtil {
     var pathForNoDataDays: String {

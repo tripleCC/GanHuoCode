@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import CoreImage
 
 class TPCTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBar.translucent = false
         tabBar.backgroundImage = UIImage(color: UIColor.whiteColor())
         tabBar.shadowImage = UIImage()
     }
@@ -21,7 +23,6 @@ class TPCTabBarController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
