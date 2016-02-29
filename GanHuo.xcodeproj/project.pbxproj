@@ -55,6 +55,7 @@
 		D6D8BFCF1C82EB7700CCA370 /* TPCTechnicalObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFCB1C82EB7700CCA370 /* TPCTechnicalObject+CoreDataProperties.swift */; };
 		D6D8BFD01C82EB7700CCA370 /* TPCTechnicalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFCC1C82EB7700CCA370 /* TPCTechnicalObject.swift */; };
 		D6D8BFD51C82ECB900CCA370 /* TPCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFD41C82ECB900CCA370 /* TPCTabBarController.swift */; };
+		D6D8BFDE1C8347E600CCA370 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6D8BFDC1C8347E600CCA370 /* Category.storyboard */; };
 		D6DE71271C2592A300C066DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6DE70DD1C2592A300C066DE /* Assets.xcassets */; };
 		D6DE71281C2592A300C066DE /* HomePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6DE70DE1C2592A300C066DE /* HomePage.storyboard */; };
 		D6DE71341C2592A300C066DE /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70EE1C2592A300C066DE /* CALayer+Extension.swift */; };
@@ -134,6 +135,7 @@
 		D6D8BFCB1C82EB7700CCA370 /* TPCTechnicalObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TPCTechnicalObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D6D8BFCC1C82EB7700CCA370 /* TPCTechnicalObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCTechnicalObject.swift; sourceTree = "<group>"; };
 		D6D8BFD41C82ECB900CCA370 /* TPCTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCTabBarController.swift; sourceTree = "<group>"; };
+		D6D8BFDD1C8347E600CCA370 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Category.storyboard; sourceTree = "<group>"; };
 		D6DE6FB91C25904C00C066DE /* GanHuo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GanHuo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6DE70DD1C2592A300C066DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6DE70DF1C2592A300C066DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HomePage.storyboard; sourceTree = "<group>"; };
@@ -208,6 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				D6D8BF771C82EB6600CCA370 /* Base */,
+				D6D8BFD61C83468C00CCA370 /* Category */,
+				D6D8BFD91C8346D700CCA370 /* Profile */,
 				D6D8BF7A1C82EB6600CCA370 /* Browser */,
 				D6D8BF7C1C82EB6600CCA370 /* HomePage */,
 				D6D8BF7F1C82EB6600CCA370 /* Setting */,
@@ -259,6 +263,8 @@
 			isa = PBXGroup;
 			children = (
 				D6D8BF921C82EB7000CCA370 /* Base */,
+				D6D8BFD71C8346BB00CCA370 /* Category */,
+				D6D8BFD81C8346BB00CCA370 /* Profile */,
 				D6D8BFA41C82EB7000CCA370 /* HomePage */,
 				D6D8BFA81C82EB7000CCA370 /* Launch */,
 				D6D8BFAC1C82EB7000CCA370 /* Setting */,
@@ -330,6 +336,34 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		D6D8BFD61C83468C00CCA370 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		D6D8BFD71C8346BB00CCA370 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		D6D8BFD81C8346BB00CCA370 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D6D8BFD91C8346D700CCA370 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		D6DE6FB01C25904C00C066DE = {
 			isa = PBXGroup;
 			children = (
@@ -370,6 +404,7 @@
 				D6DE70FA1C2592A300C066DE /* Other */,
 				D6DE70FD1C2592A300C066DE /* Resource */,
 				D6DE70DD1C2592A300C066DE /* Assets.xcassets */,
+				D6D8BFDC1C8347E600CCA370 /* Category.storyboard */,
 				D6DE70DE1C2592A300C066DE /* HomePage.storyboard */,
 				D6D8BF4A1C82D26F00CCA370 /* Main.storyboard */,
 				D6DE70F51C2592A300C066DE /* Info.plist */,
@@ -508,6 +543,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6D8BFDE1C8347E600CCA370 /* Category.storyboard in Resources */,
 				D6E504D31C2C1D9C00838446 /* AboutMe.json in Resources */,
 				D6D8BFC51C82EB7000CCA370 /* TPCLaunchScreenView.xib in Resources */,
 				D6D8BFBA1C82EB7000CCA370 /* TPCShareView.xib in Resources */,
@@ -650,6 +686,14 @@
 				D6D8BF4B1C82D26F00CCA370 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D6D8BFDC1C8347E600CCA370 /* Category.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D6D8BFDD1C8347E600CCA370 /* Base */,
+			);
+			name = Category.storyboard;
 			sourceTree = "<group>";
 		};
 		D6DE70DE1C2592A300C066DE /* HomePage.storyboard */ = {
