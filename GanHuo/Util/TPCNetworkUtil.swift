@@ -211,13 +211,9 @@ extension TPCNetworkUtil {
 
 extension TPCNetworkUtil {
     public func loadTechnicalByYear(year: Int, month: Int, day: Int, completion:((TPCTechnicalDictionary, [String]) -> ())?) {
-        if let date = NSCalendar.currentCalendar().dateWithTime((year, month, day)) {
-            guard !date.isWeekend /*|| !noDataDays.contains(date)*/ else {
-                debugPrint(date)
-                completion?(TPCTechnicalDictionary(), [String]())
-                return
-            }
-        }
+
+        // 过滤时间
+        if !filterTime((year, month, day), completion: completion) { return }
         
         // 业务原因，不然就可以一开始就根据加载的数目统一从coredata中一并加载出来，而不是频繁地和sqlite交互
         let technicals = TPCTechnicalObject.fetchByTime((year, month, day))
@@ -235,6 +231,26 @@ extension TPCNetworkUtil {
         } else {
             loadTechnicalFromNetWorkByYear(year, month: month, day: day, completion: completion)
         }
+    }
+    
+    private func filterTime(time: (year: Int, month: Int, day: Int), completion:((TPCTechnicalDictionary, [String]) -> ())?) -> Bool {
+        if let availableDays = TPCConfiguration.availableDays {
+            let timeString = String(format: "%04d-%02d-%02d", time.year, time.month, time.day)
+            if !availableDays.contains(timeString) {
+                debugPrint(timeString)
+                completion?(TPCTechnicalDictionary(), [String]())
+                return false
+            }
+        } else {
+            if let date = NSCalendar.currentCalendar().dateWithTime((time.year, time.month, time.day)) {
+                guard !date.isWeekend /*|| !noDataDays.contains(date)*/ else {
+                    debugPrint(date)
+                    completion?(TPCTechnicalDictionary(), [String]())
+                    return false
+                }
+            }
+        }
+        return true
     }
     
     private func loadTechnicalFromNetWorkByYear(year: Int, month: Int, day: Int, completion:((TPCTechnicalDictionary, [String]) -> ())?) {
@@ -304,8 +320,9 @@ extension TPCNetworkUtil {
         alamofire.request(.GET, TPCTechnicalType.AvailableDay.path())
                  .response { (request, respone, data, error) -> Void in
                     if let data = data {
-                        let jsonArray = JSON(data: data).arrayValue
-                        completion(days: jsonArray.flatMap{ $0.stringValue })
+                        if let jsonDict = JSON(data: data).dictionaryValue["results"] {
+                            completion(days: jsonDict.arrayValue.flatMap{ $0.stringValue })
+                        }
                     }
         }
     }
@@ -323,9 +340,18 @@ extension TPCNetworkUtil {
     }
     
     public func loadLaunchConfig(completion: (launchConfig: TPCLaunchConfig) -> ()) {
-        loadGanHuoByPath(TPCGanHuoType.ConfigTypeSubtype.LaunchConfig) { (response) -> () in
-            completion(launchConfig: TPCLaunchConfig(dict: response))
-        }
+        alamofire.request(.GET, "http://192.168.1.106/test/LaunchConfig.json")
+            .response(completionHandler: { (request, response, data, ErrorType) -> Void in
+                print(data, response)
+                if let data = data {
+                    completion(launchConfig: TPCLaunchConfig(dict: JSON(data: data)))
+                } else {
+                    debugPrint(ErrorType.debugDescription)
+                }
+            })
+//        loadGanHuoByPath(TPCGanHuoType.ConfigTypeSubtype.LaunchConfig) { (response) -> () in
+//            completion(launchConfig: TPCLaunchConfig(dict: response))
+//        }
     }
     
     public func loadGanHuoByPath<T: TPCGanHuoAPI>(path: T, completion: (response: JSON) -> ()) {

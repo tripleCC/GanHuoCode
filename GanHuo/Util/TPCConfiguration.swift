@@ -56,6 +56,7 @@ struct TPCConfiguration {
     static var contentRules: [TPCRuleType] = [TPCRuleType.Two, TPCRuleType.Three]
     static var imageAlpha: Float = 1.0
     static var hideTabBarInHomePageWhenScroll = false
+    static var availableDays: [String]?
 }
 
 extension TPCConfiguration {
@@ -66,6 +67,9 @@ extension TPCConfiguration {
         let alpha = TPCStorageUtil.fetchImageAlpha()
         TPCConfiguration.imageAlpha = alpha  == 0 ? 1 : alpha
         TPCConfiguration.show()
+        TPCNetworkUtil.shareInstance.loadAvailableDays { (days) -> () in
+            availableDays = days
+        }
     }
     
     static func dictionaryWithConfiguration() -> [String : AnyObject] {
