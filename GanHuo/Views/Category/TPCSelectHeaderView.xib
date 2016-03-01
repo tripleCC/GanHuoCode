@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TPCSelectHeaderView" customModule="GanHuo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdI-y2-el8">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="tdI-y2-el8" secondAttribute="bottom" id="7Lm-a8-GpE"/>
+                <constraint firstItem="tdI-y2-el8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9fb-lK-C9x"/>
+                <constraint firstItem="tdI-y2-el8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="KoN-LP-9bo"/>
+                <constraint firstAttribute="trailing" secondItem="tdI-y2-el8" secondAttribute="trailing" id="scU-v4-nX8"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="scrollView" destination="tdI-y2-el8" id="FeO-Ap-1kU"/>
+            </connections>
+            <point key="canvasLocation" x="380" y="355"/>
+        </view>
+    </objects>
+</document>

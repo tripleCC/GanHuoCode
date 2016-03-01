@@ -61,12 +61,12 @@ struct TPCConfiguration {
 
 extension TPCConfiguration {
     static func setInitialize() {
-        TPCConfiguration.loadDataCountOnce = TPCStorageUtil.fetchLoadDataNumberOnce().getLoadDataNumber()
-        TPCConfiguration.selectedShowCategory = TPCStorageUtil.fetchSelectedShowCategory()
-        TPCConfiguration.contentRules = TPCStorageUtil.fetchContentRules()
+        loadDataCountOnce = TPCStorageUtil.fetchLoadDataNumberOnce().getLoadDataNumber()
+        selectedShowCategory = TPCStorageUtil.fetchSelectedShowCategory()
+        contentRules = TPCStorageUtil.fetchContentRules()
         let alpha = TPCStorageUtil.fetchImageAlpha()
-        TPCConfiguration.imageAlpha = alpha  == 0 ? 1 : alpha
-        TPCConfiguration.show()
+        imageAlpha = alpha  == 0 ? 1 : alpha
+        show()
         TPCNetworkUtil.shareInstance.loadAvailableDays { (days) -> () in
             availableDays = days
         }
