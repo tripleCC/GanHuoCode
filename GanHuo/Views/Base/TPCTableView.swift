@@ -28,6 +28,12 @@ class TPCTableView: UITableView, TPCRefreshable {
         return super.hitTest(point, withEvent: event)
     }
 
+    override init(frame: CGRect, style: UITableViewStyle) {
+        super.init(frame: frame, style: style)
+        setupSubviews()
+        contentInset = UIEdgeInsets(top: TPCConfiguration.technicalOriginScrollViewContentOffsetY, left: 0, bottom: 0, right: 0)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupSubviews()

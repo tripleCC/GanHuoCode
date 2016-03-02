@@ -33,7 +33,7 @@ public final class TPCTechnicalObject: NSManagedObject ,TPCCoreDataHelper {
         updatedAt = dict["updatedAt"]?.stringValue ?? ""
         who = dict["who"]?.stringValue ?? ""
         publishedAt = dict["publishedAt"]?.stringValue ?? ""
-        objectId = dict["objectId"]?.stringValue ?? ""
+        objectId = dict["_id"]?.stringValue ?? ""
         used = dict["used"]?.numberValue ?? NSNumber()
         type = dict["type"]?.stringValue ?? ""
         createdAt = dict["createdAt"]?.stringValue ?? ""

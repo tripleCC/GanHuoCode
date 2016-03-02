@@ -50,6 +50,16 @@
             </objects>
             <point key="canvasLocation" x="2289" y="-384"/>
         </scene>
+        <!--Category-->
+        <scene sceneID="oal-mJ-T8t">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Category" referencedIdentifier="Category" id="TLT-8d-VaV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="WsP-Bh-nTt"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AKe-2x-NTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2280.5" y="370"/>
+        </scene>
         <!--分类-->
         <scene sceneID="z4Q-Bo-aVb">
             <objects>
@@ -59,6 +69,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="TLT-8d-VaV" kind="relationship" relationship="rootViewController" id="dN2-ft-34c"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YH6-BG-tlO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
