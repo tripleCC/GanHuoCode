@@ -63,7 +63,7 @@
         <!--分类-->
         <scene sceneID="z4Q-Bo-aVb">
             <objects>
-                <navigationController id="v6A-sW-3mj" sceneMemberID="viewController">
+                <navigationController id="v6A-sW-3mj" customClass="TPCNavigationController" customModule="GanHuo" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="分类" id="Ry2-Su-4qy"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5PY-zG-KkF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

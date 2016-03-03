@@ -8,8 +8,8 @@
 
 import UIKit
 
-class TPCCategoryViewController: UIViewController {
-
+class TPCCategoryViewController: TPCViewController {
+    
     @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet weak var selectHeaderView: TPCSelectHeaderView! {
         didSet {
@@ -20,6 +20,7 @@ class TPCCategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupChildController()
+        navigationBarType = .Line
     }
 
     private func setupChildController() {
@@ -66,6 +67,7 @@ extension TPCCategoryViewController : UIScrollViewDelegate {
     private func loadControllerViewByIndex(index: Int) {
         let showingVc = childViewControllers[index] as! TPCSubCategoryViewController
         guard !showingVc.isViewLoaded() else { return }
+        showingVc.categoryTitle = selectHeaderView.selectedTitle
         showingVc.view.frame = CGRect(origin: CGPoint(x: CGFloat(index) * contentScrollView.frame.size.width, y: 0), size: contentScrollView.frame.size)
         contentScrollView.addSubview(showingVc.tableView)
     }

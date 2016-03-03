@@ -35,7 +35,7 @@ class TPCSubCategoryViewController: UIViewController {
     private func setupSubviews() {
         tableView = view as! TPCTableView
         tableView.delegate = self
-        tableView.dataSource = TPCCategoryDataSource(categoryTitle: categoryTitle)
+        tableView.dataSource = TPCCategoryDataSource(tableView: tableView, categoryTitle: categoryTitle)
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         tableView.rowHeight = TPCConfiguration.technicalCellHeight
         tableView.tableFooterView = noMoreDataFooterView

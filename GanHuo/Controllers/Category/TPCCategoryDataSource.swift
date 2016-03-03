@@ -9,8 +9,26 @@
 import UIKit
 
 class TPCCategoryDataSource: NSObject, UITableViewDataSource {
-    init(categoryTitle: String?) {
+    var technicals = [TPCTechnicalObject]()
+    weak var tableView: TPCTableView!
+    private var page = 1
+    private var categoryTitle: String?
+    init(tableView: TPCTableView, categoryTitle: String?) {
         super.init()
+        self.categoryTitle = categoryTitle
+        self.tableView = tableView
+        loadData()
+    }
+    
+    private func loadData() {
+        if categoryTitle == nil {
+            // random
+        } else {
+            TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: page, completion: { (technicals) -> () in
+                self.technicals.appendContentsOf(technicals)
+                self.tableView.reloadData()
+            })
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

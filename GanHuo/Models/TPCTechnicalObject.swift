@@ -47,12 +47,17 @@ extension TPCCoreDataHelper where Self : TPCTechnicalObject {
         let fetchRequest = NSFetchRequest(entityName: TPCTechnicalObject.entityName)
         fetchRequest.fetchLimit = 1000
         fetchRequest.fetchBatchSize = 20;
-        let predicate = NSPredicate(format: "publishedAt CONTAINS %@", queryTimeString)
+        let predicate = NSPredicate(format: queryTimeString)
         fetchRequest.predicate = predicate
+        print(predicate)
         return fetchRequest
     }
     static func fetchByTime(time: (year: Int, month: Int, day: Int)) -> [TPCTechnicalObject] {
-        queryTimeString = String(format: "%04ld-%02ld-%02ld", time.year, time.month, time.day)
+        queryTimeString = String(format: "publishedAt CONTAINS '%04ld-%02ld-%02ld'", time.year, time.month, time.day)
+        return fetch()
+    }
+    static func fetchById(id: String) -> [TPCTechnicalObject] {
+        queryTimeString = "objectId='\(id)'"
         return fetch()
     }
 }

@@ -20,6 +20,9 @@ class TPCSelectHeaderView: UIView {
             addButtonItems()
         }
     }
+    var selectedTitle: String? {
+        return disabledButton?.titleForState(.Normal)
+    }
     var contentSize: CGSize {
         return scrollView.contentSize
     }
@@ -81,7 +84,7 @@ class TPCSelectHeaderView: UIView {
             button.titleLabel?.textAlignment = .Center
             button.titleLabel?.font = TPCConfiguration.themeSFont
             button.setTitle(title, forState: .Normal)
-            button.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+            button.setTitleColor(UIColor.lightGrayColor().colorWithAlphaComponent(0.8), forState: .Normal)
             button.setTitleColor(UIColor.grayColor(), forState: .Disabled)
             button.addTarget(self, action: "titleButtonOnClicked:", forControlEvents: .TouchUpInside)
             button.backgroundColor = UIColor.clearColor()

@@ -210,6 +210,32 @@ extension TPCNetworkUtil {
 }
 
 extension TPCNetworkUtil {
+    public func loadTechnicalByType(type: String, count: Int = 15, page: Int, completion:([TPCTechnicalObject] -> ())) {
+        alamofire.request(.GET, TPCTechnicalType.Data(type, count, page).path())
+                 .response { (request, response, data, errorType) -> Void in
+                    if let data = data {
+                        var technicalArrayReal = [TPCTechnicalObject]()
+                        if let results = JSON(data: data).dictionaryValue["results"] {
+                            print(results)
+                            if case let technocalsArray = results.arrayValue where technocalsArray.count > 0 {
+                                technicalArrayReal = technocalsArray.flatMap {
+                                    if let objectId = $0.dictionaryValue["_id"]?.stringValue {
+                                        if case let results = TPCTechnicalObject.fetchById(objectId) where results.count > 0 {
+                                            return results.first
+                                        }
+                                    }
+                                    return TPCTechnicalObject(dict: $0.dictionaryValue)
+                                }
+                                TPCCoreDataManager.shareInstance.saveContext()
+                            }
+                            completion(technicalArrayReal)
+                        }
+                    }
+        }
+    }
+}
+
+extension TPCNetworkUtil {
     public func loadTechnicalByYear(year: Int, month: Int, day: Int, completion:((TPCTechnicalDictionary, [String]) -> ())?) {
 
         // 过滤时间
@@ -256,7 +282,7 @@ extension TPCNetworkUtil {
     private func loadTechnicalFromNetWorkByYear(year: Int, month: Int, day: Int, completion:((TPCTechnicalDictionary, [String]) -> ())?) {
         TPCNetworkUtil.shareInstance
         alamofire.request(.GET, TPCTechnicalType.Day(year, month, day).path())
-            .response(completionHandler: { (request, response, data, ErrorType) -> Void in
+            .response(completionHandler: { (request, response, data, errorType) -> Void in
                 // 移除已经下载好的请求
                 //                    dispatchGlobal() { self.removeRequest(request) }
                 dispatchGlobal({ () -> () in

@@ -67,7 +67,7 @@ class TPCViewController: UIViewController {
     private func setupNavigationBar() {
         bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0, y: navigationBarBackgroundView.bounds.height - 0.5, width: TPCScreenWidth, height: 0.5)
-        bottomLine.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.5).CGColor
+        bottomLine.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.2).CGColor
         navigationBarBackgroundView.layer.addSublayer(bottomLine)
         bottomLine.hidden = true
         
