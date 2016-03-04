@@ -49,7 +49,6 @@ extension TPCCoreDataHelper where Self : TPCTechnicalObject {
         fetchRequest.fetchBatchSize = 20;
         let predicate = NSPredicate(format: queryTimeString)
         fetchRequest.predicate = predicate
-        print(predicate)
         return fetchRequest
     }
     static func fetchByTime(time: (year: Int, month: Int, day: Int)) -> [TPCTechnicalObject] {
@@ -57,7 +56,7 @@ extension TPCCoreDataHelper where Self : TPCTechnicalObject {
         return fetch()
     }
     static func fetchById(id: String) -> [TPCTechnicalObject] {
-        queryTimeString = "objectId='\(id)'"
+        queryTimeString = "objectId == '\(id)'"
         return fetch()
     }
 }

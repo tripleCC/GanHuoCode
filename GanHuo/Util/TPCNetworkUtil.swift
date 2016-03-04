@@ -103,6 +103,8 @@ public class TPCNetworkUtil {
     private var categoriesArray = [[String]]()
     private var dayInterval: NSTimeInterval = 0
     private var venusInterval = 0
+    // 还是不能这样搞，还是得先从网络上获取，等没网的时候再从cache获取，不能只对当天抓取的数据大于0就断定有缓存（可能是分类界面给缓存的，实际上并没有给全）
+    private var loadCacheKey: Int = 0
 //    var noDataDays = TPCStorageUtil.shareInstance.fetchNoDataDays()
     
     init() {
@@ -243,7 +245,7 @@ extension TPCNetworkUtil {
         
         // 业务原因，不然就可以一开始就根据加载的数目统一从coredata中一并加载出来，而不是频繁地和sqlite交互
         let technicals = TPCTechnicalObject.fetchByTime((year, month, day))
-        if technicals.count > 0 {
+        if technicals.count > 0 && loadCacheKey == 0 {
             dispatchGlobal({ () -> () in
                 var technicalDict = [String : [TPCTechnicalObject]]()
                 Set(technicals.map() { $0.type } .flatMap() { $0 }).forEach() {
@@ -302,12 +304,21 @@ extension TPCNetworkUtil {
                                     var technicalArray = [TPCTechnicalObject]()
                                     dispatchSMain {
                                         for json in itemArray where json.dictionary != nil {
-                                                let technical = TPCTechnicalObject(dict: json.dictionaryValue)
-                                                technical.desc = TPCTextParser.shareTextParser.parseOriginString(technical.desc!)
-                                                if !TPCVenusUtil.venusFlag && technical.type == "福利" {
-                                                    technical.url = TPCGanHuoType.ImageTypeSubtype.VenusImage(Int(300 - self.venusInterval)).path()
+                                            // 这种先查后改的方式并不是最佳选择，应该用NSFetchedResultsController，存入coredata后，不需要手动缓存数据，直接在NSFetchedResultsController代理方法中获取，并且更新。这样unique约束就有用了，否则如果遇到一样的id，在save的时候，内存中的entity就会被置为fault
+                                            if let objectId = json.dictionaryValue["_id"]?.stringValue {
+                                                if case let results = TPCTechnicalObject.fetchById(objectId) where results.count > 0 {
+                                                    print("hadsearched:\(results.first), \(results.count)")
+                                                    technicalArray.append(results.first!)
+                                                } else {
+                                                    print("nocache\(json)")
+                                                    let technical = TPCTechnicalObject(dict: json.dictionaryValue)
+                                                    technical.desc = TPCTextParser.shareTextParser.parseOriginString(technical.desc!)
+                                                    if !TPCVenusUtil.venusFlag && technical.type == "福利" {
+                                                        technical.url = TPCGanHuoType.ImageTypeSubtype.VenusImage(Int(300 - self.venusInterval)).path()
+                                                    }
+                                                    technicalArray.append(technical)
                                                 }
-                                                technicalArray.append(technical)                                            
+                                            }
                                         }
                                     }
                                     technicalDict[item] = technicalArray
@@ -366,7 +377,7 @@ extension TPCNetworkUtil {
     }
     
     public func loadLaunchConfig(completion: (launchConfig: TPCLaunchConfig) -> ()) {
-        alamofire.request(.GET, "http://192.168.1.106/test/LaunchConfig.json")
+        alamofire.request(.GET, "http://192.168.1.105/test/LaunchConfig.json")
             .response(completionHandler: { (request, response, data, ErrorType) -> Void in
                 print(data, response)
                 if let data = data {

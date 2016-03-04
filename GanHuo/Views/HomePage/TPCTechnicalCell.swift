@@ -14,6 +14,9 @@ class TPCTechnicalCell: UITableViewCell {
         didSet {
             if let technical = technicalDict["福利"]?.first {
                 beautyImageView.alpha = CGFloat(TPCConfiguration.imageAlpha)
+                if technical.url == nil {
+                    print(technical)
+                }
                 beautyImageView.kf_setImageWithURL(NSURL(string: technical.url!)!, placeholderImage: UIImage(), optionsInfo: [.Transition(.Fade(0.5))])
             }
             dispatchGlobal { 

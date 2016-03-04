@@ -2,7 +2,7 @@
 //  TPCTechnicalObject+CoreDataProperties.swift
 //  
 //
-//  Created by tripleCC on 16/2/22.
+//  Created by tripleCC on 16/3/3.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
