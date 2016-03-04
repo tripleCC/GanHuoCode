@@ -9,7 +9,7 @@
 import UIKit
 
 class TPCCategoryDataSource: NSObject, UITableViewDataSource {
-    var technicals = [TPCTechnicalObject]()
+    var technicals = [GanHuoObject]()
     weak var tableView: TPCTableView!
     private var page = 1
     private var categoryTitle: String?

@@ -135,17 +135,13 @@ public class TPCNetworkUtil {
                 guard ++self.loadDataCount != TPCConfiguration.loadDataCountOnce else {
                     self.resetCounter()
                     success?()
-                    TPCCoreDataManager.shareInstance.saveContext()
                     return
                 }
             } else {
                 debugPrint("load unsuccessfully", self.year, self.month, self.day)
                 guard ++self.loadEmptyCount < TPCConfiguration.loadDataMaxFailCount else {
                     self.resetCounter()
-//                    TPCStorageUtil.shareInstance.clearNoDateDaysCache()
-//                    self.noDataDays.removeAll()
                     failure?(.BeyondMaxFailTime)
-                    TPCCoreDataManager.shareInstance.saveContext()
                     return
                 }
             }
@@ -211,22 +207,23 @@ extension TPCNetworkUtil {
     }
 }
 
-extension TPCNetworkUtil {
-    public func loadTechnicalByType(type: String, count: Int = 15, page: Int, completion:([TPCTechnicalObject] -> ())) {
+typealias TPCNetworkUtilLoadCategory = TPCNetworkUtil
+extension TPCNetworkUtilLoadCategory {
+    public func loadTechnicalByType(type: String, count: Int = 15, page: Int, completion:([GanHuoObject] -> ())) {
         alamofire.request(.GET, TPCTechnicalType.Data(type, count, page).path())
                  .response { (request, response, data, errorType) -> Void in
                     if let data = data {
-                        var technicalArrayReal = [TPCTechnicalObject]()
+                        var technicalArrayReal = [GanHuoObject]()
                         if let results = JSON(data: data).dictionaryValue["results"] {
                             print(results)
                             if case let technocalsArray = results.arrayValue where technocalsArray.count > 0 {
                                 technicalArrayReal = technocalsArray.flatMap {
                                     if let objectId = $0.dictionaryValue["_id"]?.stringValue {
-                                        if case let results = TPCTechnicalObject.fetchById(objectId) where results.count > 0 {
+                                        if case let results = GanHuoObject.fetchById(objectId) where results.count > 0 {
                                             return results.first
                                         }
                                     }
-                                    return TPCTechnicalObject(dict: $0.dictionaryValue)
+                                    return GanHuoObject(dict: $0.dictionaryValue)
                                 }
                                 TPCCoreDataManager.shareInstance.saveContext()
                             }
@@ -237,28 +234,27 @@ extension TPCNetworkUtil {
     }
 }
 
-extension TPCNetworkUtil {
+typealias TPCNetworkUtilLoadHomePage = TPCNetworkUtil
+extension TPCNetworkUtilLoadHomePage {
     public func loadTechnicalByYear(year: Int, month: Int, day: Int, completion:((TPCTechnicalDictionary, [String]) -> ())?) {
-
         // 过滤时间
         if !filterTime((year, month, day), completion: completion) { return }
         
-        // 业务原因，不然就可以一开始就根据加载的数目统一从coredata中一并加载出来，而不是频繁地和sqlite交互
-        let technicals = TPCTechnicalObject.fetchByTime((year, month, day))
-        if technicals.count > 0 && loadCacheKey == 0 {
-            dispatchGlobal({ () -> () in
-                var technicalDict = [String : [TPCTechnicalObject]]()
-                Set(technicals.map() { $0.type } .flatMap() { $0 }).forEach() {
-                    technicalDict[$0] = [TPCTechnicalObject]()
-                }
-                for case let technical in technicals where technical.type != nil {
-                    technicalDict[technical.type!]?.append(technical)
-                }
-                dispatchAMain() { completion?(technicalDict, technicalDict.map() { $0.0 }) }
-            })
-        } else {
+        if !loadFromCacheByTime((year, month, day), completion: completion) {
             loadTechnicalFromNetWorkByYear(year, month: month, day: day, completion: completion)
         }
+    }
+    
+    private func loadFromCacheByTime(time: (year: Int, month: Int, day: Int), completion:((TPCTechnicalDictionary, [String]) -> ())?) -> Bool {
+        let path = TPCStorageUtil.shareInstance.pathForTechnicalDictionaryByTime((time.year, time.month, time.day))
+        if TPCStorageUtil.shareInstance.fileManager.fileExistsAtPath(path) {
+            dispatchGlobal {
+                let technicalDict:[String : [TPCTechnicalObject]] =  unarchiveTechnicalDictionaryWithFile(path)!
+                let categories = Array(technicalDict).map{ $0.0 }
+                dispatchAMain() { completion?(technicalDict, categories) }
+            }
+        }
+        return TPCStorageUtil.shareInstance.fileManager.fileExistsAtPath(path)
     }
     
     private func filterTime(time: (year: Int, month: Int, day: Int), completion:((TPCTechnicalDictionary, [String]) -> ())?) -> Bool {
@@ -302,23 +298,15 @@ extension TPCNetworkUtil {
                                 }
                                 if let itemArray = results[item]?.arrayValue {
                                     var technicalArray = [TPCTechnicalObject]()
-                                    dispatchSMain {
+                                    for json in itemArray where json.dictionary != nil {
+                                        // 这种先查后改的方式并不是最佳选择，应该用NSFetchedResultsController，存入coredata后，不需要手动缓存数据，直接在NSFetchedResultsController代理方法中获取，并且更新。这样unique约束就有用了，否则如果遇到一样的id，在save的时候，内存中的entity就会被置为fault
                                         for json in itemArray where json.dictionary != nil {
-                                            // 这种先查后改的方式并不是最佳选择，应该用NSFetchedResultsController，存入coredata后，不需要手动缓存数据，直接在NSFetchedResultsController代理方法中获取，并且更新。这样unique约束就有用了，否则如果遇到一样的id，在save的时候，内存中的entity就会被置为fault
-                                            if let objectId = json.dictionaryValue["_id"]?.stringValue {
-                                                if case let results = TPCTechnicalObject.fetchById(objectId) where results.count > 0 {
-                                                    print("hadsearched:\(results.first), \(results.count)")
-                                                    technicalArray.append(results.first!)
-                                                } else {
-                                                    print("nocache\(json)")
-                                                    let technical = TPCTechnicalObject(dict: json.dictionaryValue)
-                                                    technical.desc = TPCTextParser.shareTextParser.parseOriginString(technical.desc!)
-                                                    if !TPCVenusUtil.venusFlag && technical.type == "福利" {
-                                                        technical.url = TPCGanHuoType.ImageTypeSubtype.VenusImage(Int(300 - self.venusInterval)).path()
-                                                    }
-                                                    technicalArray.append(technical)
-                                                }
+                                            var technical = TPCTechnicalObject(dict: json.dictionaryValue)
+                                            technical.desc = TPCTextParser.shareTextParser.parseOriginString(technical.desc!)
+                                            if !TPCVenusUtil.venusFlag && technical.type == "福利" {
+                                                technical.url = TPCGanHuoType.ImageTypeSubtype.VenusImage(Int(300 - self.venusInterval)).path()
                                             }
+                                            technicalArray.append(technical)
                                         }
                                     }
                                     technicalDict[item] = technicalArray
@@ -332,19 +320,13 @@ extension TPCNetworkUtil {
                                 TPCConfiguration.allCategories = categories
                             }
                         }
-//                        dispatchGlobal {
-//                            // Do some cache operation
-//                            if categories.count > 0 {
-//                                 todo
-//                                let path = TPCStorageUtil.shareInstance.pathForTechnicalDictionaryByTime((year, month, day))
-//                                archiveTechnicalDictionary(technicalDict, toFile: path)
-//                            } else {
-//                                if let date = NSCalendar.currentCalendar().dateWithTime((year, month, day)) {
-//                                    self.noDataDays.append(date)
-//                                    TPCStorageUtil.shareInstance.saveNoDataDays(self.noDataDays)
-//                                }
-//                            }
-//                        }
+                        dispatchGlobal {
+                            // Do some cache operation
+                            if categories.count > 0 {
+                                let path = TPCStorageUtil.shareInstance.pathForTechnicalDictionaryByTime((year, month, day))
+                                archiveTechnicalDictionary(technicalDict, toFile: path)
+                            } 
+                        }
                         dispatchAMain() {
                             completion?(technicalDict, categories) }
                     }
@@ -367,8 +349,8 @@ extension TPCNetworkUtil {
 //    public func add2Gank
 }
 
-
-extension TPCNetworkUtil {
+typealias TPCNetworkUtilLoadAuthor = TPCNetworkUtil
+extension TPCNetworkUtilLoadAuthor {
     
     public func loadAbountMe(completion: (aboutMe: TPCAboutMe) -> ()) {
         loadGanHuoByPath(TPCGanHuoType.ConfigTypeSubtype.AboutMe) { (response) -> () in
@@ -404,26 +386,26 @@ extension TPCNetworkUtil {
     }
 }
 
-extension TPCStorageUtil {
-    var pathForNoDataDays: String {
-        return NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).first! + "/NoDataDays.plist"
-    }
-    
-    func saveNoDataDays(noDataDays: [NSDate]) {
-        noDataDays.writeToFile(pathForNoDataDays, atomically: true)
-    }
-    
-    func fetchNoDataDays() -> [NSDate] {
-        return NSArray(contentsOfFile: pathForNoDataDays) as? Array<NSDate> ?? Array<NSDate>()
-    }
-    
-    func clearNoDateDaysCache() {
-        removeFileAtPath(pathForNoDataDays)
-    }
-}
+//extension TPCStorageUtil {
+//    var pathForNoDataDays: String {
+//        return NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).first! + "/NoDataDays.plist"
+//    }
+//    
+//    func saveNoDataDays(noDataDays: [NSDate]) {
+//        noDataDays.writeToFile(pathForNoDataDays, atomically: true)
+//    }
+//    
+//    func fetchNoDataDays() -> [NSDate] {
+//        return NSArray(contentsOfFile: pathForNoDataDays) as? Array<NSDate> ?? Array<NSDate>()
+//    }
+//    
+//    func clearNoDateDaysCache() {
+//        removeFileAtPath(pathForNoDataDays)
+//    }
+//}
 
-extension Array where Element : AnyObject {
-    func writeToFile(path: String, atomically useAuxiliaryFile: Bool) -> Bool {
-        return NSArray(array: self).writeToFile(TPCStorageUtil.shareInstance.pathForNoDataDays, atomically: true)
-    }
-}
+//extension Array where Element : AnyObject {
+//    func writeToFile(path: String, atomically useAuxiliaryFile: Bool) -> Bool {
+//        return NSArray(array: self).writeToFile(TPCStorageUtil.shareInstance.pathForNoDataDays, atomically: true)
+//    }
+//}

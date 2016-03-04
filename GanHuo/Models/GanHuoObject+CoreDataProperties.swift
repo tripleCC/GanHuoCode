@@ -1,8 +1,8 @@
 //
-//  TPCTechnicalObject+CoreDataProperties.swift
+//  GanHuoObject+CoreDataProperties.swift
 //  
 //
-//  Created by tripleCC on 16/3/3.
+//  Created by tripleCC on 16/3/4.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -12,14 +12,13 @@
 import Foundation
 import CoreData
 
-extension TPCTechnicalObject {
+extension GanHuoObject {
 
     @NSManaged var createdAt: String?
     @NSManaged var desc: String?
     @NSManaged var objectId: String?
     @NSManaged var publishedAt: String?
     @NSManaged var type: String?
-    @NSManaged var updatedAt: String?
     @NSManaged var url: String?
     @NSManaged var used: NSNumber?
     @NSManaged var who: String?

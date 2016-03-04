@@ -1,36 +1,26 @@
 //
 //  TPCTechnicalObject.swift
-//  
+//  WKCC
 //
-//  Created by tripleCC on 16/2/21.
-//
+//  Created by tripleCC on 15/11/17.
+//  Copyright © 2015年 tripleCC. All rights reserved.
 //
 
 import Foundation
-import CoreData
 import SwiftyJSON
 
-@objc(TPCTechnicalObject)
-public final class TPCTechnicalObject: NSManagedObject ,TPCCoreDataHelper {
+public struct TPCTechnicalObject: TPCGanHuo {
     public typealias RawType = [String : JSON]
-    static var queryTimeString: String!
-    init(context: NSManagedObjectContext, dict: RawType) {
-        let entity = NSEntityDescription.entityForName(TPCTechnicalObject.entityName, inManagedObjectContext: context)!
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
-        initializeWithRawType(dict)
-    }
+    var who: String!
+    var publishedAt: String!
+    var desc: String!
+    var type: String!
+    var url: String!
+    var used: NSNumber!
+    var objectId: String!
+    var createdAt: String!
     
-    @objc
-    private override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
-    }
-    
-    convenience init(dict: RawType) {
-        self.init(context: TPCCoreDataManager.shareInstance.managedObjectContext, dict: dict)
-    }
-    
-    func initializeWithRawType(dict: RawType) {
-        updatedAt = dict["updatedAt"]?.stringValue ?? ""
+    public init (dict: RawType) {
         who = dict["who"]?.stringValue ?? ""
         publishedAt = dict["publishedAt"]?.stringValue ?? ""
         objectId = dict["_id"]?.stringValue ?? ""
@@ -39,34 +29,68 @@ public final class TPCTechnicalObject: NSManagedObject ,TPCCoreDataHelper {
         createdAt = dict["createdAt"]?.stringValue ?? ""
         desc = dict["desc"]?.stringValue ?? ""
         url = dict["url"]?.stringValue ?? ""
+        
     }
-}
-
-extension TPCCoreDataHelper where Self : TPCTechnicalObject {
-    static var request: NSFetchRequest {
-        let fetchRequest = NSFetchRequest(entityName: TPCTechnicalObject.entityName)
-        fetchRequest.fetchLimit = 1000
-        fetchRequest.fetchBatchSize = 20;
-        let predicate = NSPredicate(format: queryTimeString)
-        fetchRequest.predicate = predicate
-        return fetchRequest
-    }
-    static func fetchByTime(time: (year: Int, month: Int, day: Int)) -> [TPCTechnicalObject] {
-        queryTimeString = String(format: "publishedAt CONTAINS '%04ld-%02ld-%02ld'", time.year, time.month, time.day)
-        return fetch()
-    }
-    static func fetchById(id: String) -> [TPCTechnicalObject] {
-        queryTimeString = "objectId == '\(id)'"
-        return fetch()
-    }
-}
-
-extension NSManagedObject {
     
+    public init () {
+    }
 }
 
-infix operator !? { }
-func !?<T: StringLiteralConvertible> (wrapped: T?, @autoclosure failureText: ()->String) -> T {
-        assert(wrapped != nil, failureText)
-        return wrapped ?? ""
+extension TPCTechnicalObject: TPCArchivable{
+    public func archive() -> NSDictionary {
+        return ["who" : who, "publishedAt" : publishedAt, "desc" : desc, "type" : type,
+            "url" : url, "used" : used, "objectId" : objectId, "createdAt" : createdAt];
+    }
+    
+    public init?(unarchive: NSDictionary?) {
+        guard let values = unarchive else { return nil }
+        if let who = values["who"] as? String,
+            publishedAt = values["publishedAt"] as? String,
+            desc = values["desc"] as? String,
+            type = values["type"] as? String,
+            url = values["url"] as? String,
+            used = values["used"] as? NSNumber,
+            createdAt = values["createdAt"] as? String,
+            objectId = values["objectId"] as? String
+        {
+            self.who = who
+            self.publishedAt = publishedAt
+            self.desc = desc
+            self.type = type
+            self.url = url
+            self.used = used
+            self.createdAt = createdAt
+            self.objectId = objectId
+        } else {
+            return nil
+        }
+    }
+}
+
+extension TPCStorageUtil {
+    var directoryForTechnicalDictionary: String {
+        return NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).first! + "/TPCFileCache/"
+    }
+    
+    func pathForTechnicalDictionaryByTime(time: (year: Int, month: Int, day: Int)) -> String {
+        let directPath = directoryForTechnicalDictionary
+        if !TPCStorageUtil.shareInstance.fileManager.fileExistsAtPath(directPath) {
+            do {
+                try TPCStorageUtil.shareInstance.fileManager.createDirectoryAtPath(directPath, withIntermediateDirectories: true, attributes: nil)
+            } catch { }
+        }
+        return directPath + "\(time.year)" + String(format: "%02d", time.month) + String(format: "%02d", time.day) + ".plist"
+    }
+}
+
+public func archiveTechnicalDictionary(dictionary: [String : [TPCTechnicalObject]], toFile path: String) {
+    let encodedLists = Array(dictionary).map{ [$0 : $1.map{ $0.archive() }] }
+    NSKeyedArchiver.archiveRootObject(encodedLists, toFile: path)
+}
+
+public func unarchiveTechnicalDictionaryWithFile(path: String) -> [String : [TPCTechnicalObject]]? {
+    guard let decodedLists = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as? [[String : [NSDictionary]]] else { return nil }
+    var dictionary = [String : [TPCTechnicalObject]]()
+    decodedLists.forEach{ Array($0).forEach{ dictionary[$0] = $1.map{ TPCTechnicalObject(unarchive: $0) ?? TPCTechnicalObject() }} }
+    return dictionary
 }
