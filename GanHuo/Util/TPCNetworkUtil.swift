@@ -218,11 +218,11 @@ extension TPCNetworkUtilLoadCategory {
                             print(results)
                             if case let technocalsArray = results.arrayValue where technocalsArray.count > 0 {
                                 technicalArrayReal = technocalsArray.flatMap {
-                                    if let objectId = $0.dictionaryValue["_id"]?.stringValue {
-                                        if case let results = GanHuoObject.fetchById(objectId) where results.count > 0 {
-                                            return results.first
-                                        }
-                                    }
+//                                    if let objectId = $0.dictionaryValue["_id"]?.stringValue {
+//                                        if case let results = GanHuoObject.fetchById(objectId) where results.count > 0 {
+//                                            return results.first
+//                                        }
+//                                    }
                                     return GanHuoObject(dict: $0.dictionaryValue)
                                 }
                                 TPCCoreDataManager.shareInstance.saveContext()

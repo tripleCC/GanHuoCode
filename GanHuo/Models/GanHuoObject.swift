@@ -10,7 +10,8 @@ import Foundation
 import CoreData
 import SwiftyJSON
 
-@objc(GanHuoObject)
+//@objc(GanHuoObject) 
+/* http://stackoverflow.com/questions/25076276/unable-to-find-specific-subclass-of-nsmanagedobject */
 public final class GanHuoObject: NSManagedObject ,TPCCoreDataHelper {
     public typealias RawType = [String : JSON]
     static var queryTimeString: String!
