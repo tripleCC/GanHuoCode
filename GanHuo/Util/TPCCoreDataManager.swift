@@ -53,7 +53,6 @@ class TPCCoreDataManager {
     init() {
         NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextDidSaveNotification, object: nil, queue: nil) { (note) -> Void in
             let moc = self.managedObjectContext
-//            print(note)
             if case let object = note.object as! NSManagedObjectContext where object != moc {
                 moc.performBlock({ () -> Void in
                     moc.mergeChangesFromContextDidSaveNotification(note)

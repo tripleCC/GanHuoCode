@@ -209,7 +209,7 @@ extension TPCNetworkUtil {
 
 typealias TPCNetworkUtilLoadCategory = TPCNetworkUtil
 extension TPCNetworkUtilLoadCategory {
-    public func loadTechnicalByType(type: String, count: Int = 15, page: Int) {
+    public func loadTechnicalByType(type: String, count: Int = 15, page: Int, completion:(() -> ())) {
         alamofire.request(.GET, TPCTechnicalType.Data(type, count, page).path())
                  .response { (request, response, data, errorType) -> Void in
                     if let data = data {
@@ -224,6 +224,7 @@ extension TPCNetworkUtilLoadCategory {
                             }
                         }
                     }
+                    completion()
         }
     }
 }
@@ -292,16 +293,14 @@ extension TPCNetworkUtilLoadHomePage {
                                 }
                                 if let itemArray = results[item]?.arrayValue {
                                     var technicalArray = [TPCTechnicalObject]()
-                                    for json in itemArray where json.dictionary != nil {
                                         // 这种先查后改的方式并不是最佳选择，应该用NSFetchedResultsController，存入coredata后，不需要手动缓存数据，直接在NSFetchedResultsController代理方法中获取，并且更新。这样unique约束就有用了，否则如果遇到一样的id，在save的时候，内存中的entity就会被置为fault
-                                        for json in itemArray where json.dictionary != nil {
-                                            var technical = TPCTechnicalObject(dict: json.dictionaryValue)
-                                            technical.desc = TPCTextParser.shareTextParser.parseOriginString(technical.desc!)
-                                            if !TPCVenusUtil.venusFlag && technical.type == "福利" {
-                                                technical.url = TPCGanHuoType.ImageTypeSubtype.VenusImage(Int(300 - self.venusInterval)).path()
-                                            }
-                                            technicalArray.append(technical)
+                                    for json in itemArray where json.dictionary != nil {
+                                        var technical = TPCTechnicalObject(dict: json.dictionaryValue)
+                                        technical.desc = TPCTextParser.shareTextParser.parseOriginString(technical.desc!)
+                                        if !TPCVenusUtil.venusFlag && technical.type == "福利" {
+                                            technical.url = TPCGanHuoType.ImageTypeSubtype.VenusImage(Int(300 - self.venusInterval)).path()
                                         }
+                                        technicalArray.append(technical)
                                     }
                                     technicalDict[item] = technicalArray
                                 }
@@ -322,6 +321,7 @@ extension TPCNetworkUtilLoadHomePage {
                             } 
                         }
                         dispatchAMain() {
+                            print(technicalDict)
                             completion?(technicalDict, categories) }
                     }
                     

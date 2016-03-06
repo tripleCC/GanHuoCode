@@ -14,8 +14,7 @@ protocol TPCCategoryDataSourceDelegate: class {
 }
 
 class TPCCategoryDataSource: NSObject {
-//    var technicals = [GanHuoObject]()
-    var tableView: UITableView!
+    var tableView: TPCTableView!
     weak var delegate: TPCCategoryDataSourceDelegate?
     var fetchedResultController: NSFetchedResultsController! {
         didSet {
@@ -31,41 +30,29 @@ class TPCCategoryDataSource: NSObject {
     private var page = 1
     var categoryTitle: String?
     private var reuseIdentifier: String!
-    init(tableView: UITableView, reuseIdentifier: String, categoryTitle: String?) {
+    init(tableView: TPCTableView, reuseIdentifier: String) {
         super.init()
         self.reuseIdentifier = reuseIdentifier
         self.tableView = tableView
-        self.categoryTitle = categoryTitle
-        loadData()
-    }
-    
-    private func loadData() {
-        if categoryTitle == nil {
-            // random
-        } else {
-            TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: page)
-        }
     }
 }
 
 extension TPCCategoryDataSource: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        print("section:", fetchedResultController.sections)
         return fetchedResultController.sections?.count ?? 0
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let sections = fetchedResultController.sections else { return 0 }
-        print("numberOfObjects:" , sections[section].numberOfObjects)
         return sections[section].numberOfObjects
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let object = fetchedResultController.objectAtIndexPath(indexPath)
-        print("fetchedObject:", object)
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
         delegate?.renderCell(cell, withObject: object)
+        print(object.url)
         return cell
     }
 
@@ -84,11 +71,11 @@ extension TPCCategoryDataSource: NSFetchedResultsControllerDelegate {
             switch type {
             case .Insert:
                 if let newIndexPath = newIndexPath {
-                    tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+                    tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
                 }
             case .Delete:
                 if let indexPath = indexPath {
-                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
                 }
             case .Move:
                 if newIndexPath != nil && indexPath != nil {
@@ -96,7 +83,7 @@ extension TPCCategoryDataSource: NSFetchedResultsControllerDelegate {
                 }
             case .Update:
                 if let indexPath = indexPath {
-                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
                 }
         }
         
