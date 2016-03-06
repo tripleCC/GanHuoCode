@@ -29,7 +29,7 @@
                         </variation>
                     </label>
                 </subviews>
-                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="hBB-rM-sgz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ChN-pw-fAb"/>
                     <constraint firstItem="hBB-rM-sgz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Kd5-AN-CZd"/>

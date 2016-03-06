@@ -25,7 +25,7 @@ extension TPCCoreDataHelper where Self : NSManagedObject {
     
     static func fetch() -> [Self] {
         do {
-            let result = try TPCCoreDataManager.shareInstance.managedObjectContext.executeFetchRequest(request)
+            let result = try TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.executeFetchRequest(request)
             return result as! [Self]
         } catch {
             return []

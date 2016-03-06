@@ -12,7 +12,11 @@ import CoreData
 class TPCSubCategoryViewController: UIViewController {
     var tableView: TPCTableView!
     var dataSource: TPCCategoryDataSource!
-    var categoryTitle: String?
+    var categoryTitle: String? {
+        didSet {
+            categoryTitle = categoryTitle?.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        }
+    }
     var page = 1
     lazy var fetchRequestController: NSFetchedResultsController = {
         let request = NSFetchRequest(entityName: GanHuoObject.entityName)
@@ -26,7 +30,7 @@ class TPCSubCategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
-        tableView.backgroundColor = UIColor.randomColor()
+//        tableView.backgroundColor = UIColor.randomColor()
         loadNewData()
         
 //        let b = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 100))

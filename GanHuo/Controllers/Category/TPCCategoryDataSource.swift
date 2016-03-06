@@ -71,7 +71,7 @@ extension TPCCategoryDataSource: NSFetchedResultsControllerDelegate {
             switch type {
             case .Insert:
                 if let newIndexPath = newIndexPath {
-                    tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .None)
+                    tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
                 }
             case .Delete:
                 if let indexPath = indexPath {
