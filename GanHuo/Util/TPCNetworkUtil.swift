@@ -215,17 +215,16 @@ extension TPCNetworkUtilLoadCategory {
                     if let data = data {
                         var technicalArrayReal = [GanHuoObject]()
                         if let results = JSON(data: data).dictionaryValue["results"] {
-                            print(results)
                             if case let technocalsArray = results.arrayValue where technocalsArray.count > 0 {
-                                technicalArrayReal = technocalsArray.flatMap {
-//                                    if let objectId = $0.dictionaryValue["_id"]?.stringValue {
-//                                        if case let results = GanHuoObject.fetchById(objectId) where results.count > 0 {
-//                                            return results.first
-//                                        }
-//                                    }
-                                    return GanHuoObject(dict: $0.dictionaryValue)
+                                dispatchAMain{
+                                    TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock({ () -> Void in
+                                        technocalsArray.forEach {
+                                            GanHuoObject.insertObjectToContext(TPCCoreDataManager.shareInstance.backgroundManagedObjectContext, dict: $0.dictionaryValue)
+                                        }
+                                        TPCCoreDataManager.shareInstance.saveContext()
+                                    })
                                 }
-                                TPCCoreDataManager.shareInstance.saveContext()
+                                print(results)
                             }
                             completion(technicalArrayReal)
                         }
@@ -359,18 +358,18 @@ extension TPCNetworkUtilLoadAuthor {
     }
     
     public func loadLaunchConfig(completion: (launchConfig: TPCLaunchConfig) -> ()) {
-        alamofire.request(.GET, "http://192.168.1.105/test/LaunchConfig.json")
-            .response(completionHandler: { (request, response, data, ErrorType) -> Void in
-                print(data, response)
-                if let data = data {
-                    completion(launchConfig: TPCLaunchConfig(dict: JSON(data: data)))
-                } else {
-                    debugPrint(ErrorType.debugDescription)
-                }
-            })
-//        loadGanHuoByPath(TPCGanHuoType.ConfigTypeSubtype.LaunchConfig) { (response) -> () in
-//            completion(launchConfig: TPCLaunchConfig(dict: response))
-//        }
+//        alamofire.request(.GET, "http://192.168.1.105/test/LaunchConfig.json")
+//            .response(completionHandler: { (request, response, data, ErrorType) -> Void in
+//                print(data, response)
+//                if let data = data {
+//                    completion(launchConfig: TPCLaunchConfig(dict: JSON(data: data)))
+//                } else {
+//                    debugPrint(ErrorType.debugDescription)
+//                }
+//            })
+        loadGanHuoByPath(TPCGanHuoType.ConfigTypeSubtype.LaunchConfig) { (response) -> () in
+            completion(launchConfig: TPCLaunchConfig(dict: response))
+        }
     }
     
     public func loadGanHuoByPath<T: TPCGanHuoAPI>(path: T, completion: (response: JSON) -> ()) {

@@ -1,6 +1,6 @@
 //
 //  GanHuoObject.swift
-//  
+//
 //
 //  Created by tripleCC on 16/3/4.
 //
@@ -10,11 +10,11 @@ import Foundation
 import CoreData
 import SwiftyJSON
 
-//@objc(GanHuoObject) 
+//@objc(GanHuoObject)
 /* http://stackoverflow.com/questions/25076276/unable-to-find-specific-subclass-of-nsmanagedobject */
 public final class GanHuoObject: NSManagedObject ,TPCCoreDataHelper {
     public typealias RawType = [String : JSON]
-    static var queryTimeString: String!
+    static var queryTimeString = ""
     init(context: NSManagedObjectContext, dict: RawType) {
         let entity = NSEntityDescription.entityForName(GanHuoObject.entityName, inManagedObjectContext: context)!
         super.init(entity: entity, insertIntoManagedObjectContext: context)
@@ -24,6 +24,11 @@ public final class GanHuoObject: NSManagedObject ,TPCCoreDataHelper {
     @objc
     private override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
+    
+    static func insertObjectToContext(context: NSManagedObjectContext, dict: RawType) {
+        let ganhuo = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! GanHuoObject
+        ganhuo.initializeWithRawType(dict)
     }
     
     convenience init(dict: RawType) {
@@ -43,12 +48,17 @@ public final class GanHuoObject: NSManagedObject ,TPCCoreDataHelper {
 }
 
 extension TPCCoreDataHelper where Self : GanHuoObject {
+    
     static var request: NSFetchRequest {
-        let fetchRequest = NSFetchRequest(entityName: self.entityName)
+        let fetchRequest = NSFetchRequest(entityName: entityName)
         fetchRequest.fetchLimit = 1000
         fetchRequest.fetchBatchSize = 20;
-        let predicate = NSPredicate(format: queryTimeString)
-        fetchRequest.predicate = predicate
+        if queryTimeString.characters.count > 0 {
+            let predicate = NSPredicate(format: queryTimeString)
+            fetchRequest.predicate = predicate
+        }
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "publishedAt", ascending: false)]
+        print(fetchRequest)
         return fetchRequest
     }
     static func fetchByTime(time: (year: Int, month: Int, day: Int)) -> [Self] {
@@ -63,6 +73,6 @@ extension TPCCoreDataHelper where Self : GanHuoObject {
 
 infix operator !? { }
 func !?<T: StringLiteralConvertible> (wrapped: T?, @autoclosure failureText: ()->String) -> T {
-        assert(wrapped != nil, failureText)
-        return wrapped ?? ""
+    assert(wrapped != nil, failureText)
+    return wrapped ?? ""
 }

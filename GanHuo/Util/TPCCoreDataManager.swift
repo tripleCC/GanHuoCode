@@ -50,6 +50,18 @@ class TPCCoreDataManager {
         }
     }
     
+    init() {
+        NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextDidSaveNotification, object: nil, queue: nil) { (note) -> Void in
+            let moc = self.managedObjectContext
+//            print(note)
+            if case let object = note.object as! NSManagedObjectContext where object != moc {
+                moc.performBlock({ () -> Void in
+                    moc.mergeChangesFromContextDidSaveNotification(note)
+                })
+            }
+        }
+    }
+    
     class var shareInstance: TPCCoreDataManager {
         return instance
     }
@@ -95,6 +107,15 @@ class TPCCoreDataManager {
         return coordinator
     }()
     
+    lazy var backgroundManagedObjectContext: NSManagedObjectContext = {
+        let coordinator = self.persistentStoreCoordinator
+        var backgroundManagedObjectContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
+        backgroundManagedObjectContext.persistentStoreCoordinator = coordinator
+        backgroundManagedObjectContext.undoManager = nil
+        backgroundManagedObjectContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        return backgroundManagedObjectContext
+    }()
+    
     lazy var managedObjectContext: NSManagedObjectContext = {
         // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
         let coordinator = self.persistentStoreCoordinator
@@ -107,9 +128,9 @@ class TPCCoreDataManager {
     // MARK: - Core Data Saving support
     
     func saveContext () {
-        if managedObjectContext.hasChanges {
+        if backgroundManagedObjectContext.hasChanges {
             do {
-                try managedObjectContext.save()
+                try backgroundManagedObjectContext.save()
             } catch {
                 // Replace this implementation with code to handle the error appropriately.
                 // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.

@@ -2,7 +2,7 @@
 //  GanHuoObject+CoreDataProperties.swift
 //  
 //
-//  Created by tripleCC on 16/3/4.
+//  Created by tripleCC on 16/3/5.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu

@@ -7,16 +7,35 @@
 //
 
 import UIKit
+import CoreData
 
-class TPCCategoryDataSource: NSObject, UITableViewDataSource {
-    var technicals = [GanHuoObject]()
-    weak var tableView: TPCTableView!
+protocol TPCCategoryDataSourceDelegate: class {
+    func renderCell(cell: UITableViewCell, withObject object: AnyObject)
+}
+
+class TPCCategoryDataSource: NSObject {
+//    var technicals = [GanHuoObject]()
+    var tableView: UITableView!
+    weak var delegate: TPCCategoryDataSourceDelegate?
+    var fetchedResultController: NSFetchedResultsController! {
+        didSet {
+            fetchedResultController.delegate = self
+            do {
+                try fetchedResultController.performFetch()
+            } catch {
+                print(error)
+            }
+
+        }
+    }
     private var page = 1
-    private var categoryTitle: String?
-    init(tableView: TPCTableView, categoryTitle: String?) {
+    var categoryTitle: String?
+    private var reuseIdentifier: String!
+    init(tableView: UITableView, reuseIdentifier: String, categoryTitle: String?) {
         super.init()
-        self.categoryTitle = categoryTitle
+        self.reuseIdentifier = reuseIdentifier
         self.tableView = tableView
+        self.categoryTitle = categoryTitle
         loadData()
     }
     
@@ -25,17 +44,67 @@ class TPCCategoryDataSource: NSObject, UITableViewDataSource {
             // random
         } else {
             TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: page, completion: { (technicals) -> () in
-                self.technicals.appendContentsOf(technicals)
-                self.tableView.reloadData()
+//                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(5 * Double(NSEC_PER_SEC)))
+//                dispatch_after(delayTime, dispatch_get_main_queue()) {
+//                    print(GanHuoObject.fetch())
+//                }
             })
         }
     }
+}
+
+extension TPCCategoryDataSource: UITableViewDataSource {
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        print("section:", fetchedResultController.sections)
+        return fetchedResultController.sections?.count ?? 0
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        guard let sections = fetchedResultController.sections else { return 0 }
+        print("numberOfObjects:" , sections[section].numberOfObjects)
+        return sections[section].numberOfObjects
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let object = fetchedResultController.objectAtIndexPath(indexPath)
+        print("fetchedObject:", object)
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        delegate?.renderCell(cell, withObject: object)
+        return cell
+    }
+
+}
+
+extension TPCCategoryDataSource: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+            switch type {
+            case .Insert:
+                if let newIndexPath = newIndexPath {
+                    tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+                }
+            case .Delete:
+                if let indexPath = indexPath {
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                }
+            case .Move:
+                if newIndexPath != nil && indexPath != nil {
+                    tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
+                }
+            case .Update:
+                if let indexPath = indexPath {
+                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                }
+        }
+        
     }
 }
+
