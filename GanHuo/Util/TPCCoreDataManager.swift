@@ -54,7 +54,8 @@ class TPCCoreDataManager {
         NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextDidSaveNotification, object: nil, queue: nil) { (note) -> Void in
             let moc = self.managedObjectContext
             if case let object = note.object as! NSManagedObjectContext where object != moc {
-                moc.performBlock({ () -> Void in
+                // 这里对于插入的话还是用wait，不然可能先插入后面的，再插入前面的，造成tableView往回滚的现象
+                moc.performBlockAndWait({ () -> Void in
                     moc.mergeChangesFromContextDidSaveNotification(note)
                 })
             }

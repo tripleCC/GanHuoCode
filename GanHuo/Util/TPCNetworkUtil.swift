@@ -209,7 +209,7 @@ extension TPCNetworkUtil {
 
 typealias TPCNetworkUtilLoadCategory = TPCNetworkUtil
 extension TPCNetworkUtilLoadCategory {
-    public func loadTechnicalByType(type: String, count: Int = 15, page: Int, completion:(() -> ())) {
+    public func loadTechnicalByType(type: String, count: Int = TPCLoadGanHuoDataOnce, page: Int, completion:(() -> ())) {
         alamofire.request(.GET, TPCTechnicalType.Data(type, count, page).path())
                  .response { (request, response, data, errorType) -> Void in
                     if let data = data {
@@ -321,7 +321,6 @@ extension TPCNetworkUtilLoadHomePage {
                             } 
                         }
                         dispatchAMain() {
-                            print(technicalDict)
                             completion?(technicalDict, categories) }
                     }
                     

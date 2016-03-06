@@ -20,7 +20,7 @@ class TPCSubCategoryViewController: UIViewController {
     var page = 1
     lazy var fetchRequestController: NSFetchedResultsController = {
         let request = NSFetchRequest(entityName: GanHuoObject.entityName)
-        request.sortDescriptors = [NSSortDescriptor(key: "objectId", ascending: false)]
+        request.sortDescriptors = [NSSortDescriptor(key: "publishedAt", ascending: false)]
         let predicate = NSPredicate(format: "type = '\(self.navigationItem.title!)'")
         request.predicate = predicate
         let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: TPCCoreDataManager.shareInstance.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)

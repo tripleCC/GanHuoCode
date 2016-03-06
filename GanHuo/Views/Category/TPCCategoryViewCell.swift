@@ -11,7 +11,7 @@ import UIKit
 class TPCCategoryViewCell: UITableViewCell {
     var ganhuo: GanHuoObject! {
         didSet {
-            contentLabel.text = ganhuo.url
+            contentLabel.text = ganhuo.publishedAt
         }
     }
     @IBOutlet weak var contentLabel: UILabel! {

@@ -22,4 +22,4 @@ let TPCTechnicalReloadDataNotification = "TPCTechnicalReloadDataNotification"
 let TPCCurrentVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
 
 
-let TPCLoadGanHuoDataOnce: Int = 15
+let TPCLoadGanHuoDataOnce: Int = 10
