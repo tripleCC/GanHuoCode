@@ -31,13 +31,13 @@ class TPCTableView: UITableView, TPCRefreshable {
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
         setupSubviews()
-        contentInset = UIEdgeInsets(top: TPCConfiguration.technicalOriginScrollViewContentOffsetY, left: 0, bottom: 0, right: 0)
+//        contentInset = UIEdgeInsets(top: TPCConfiguration.technicalOriginScrollViewContentOffsetY, left: 0, bottom: 0, right: 0)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupSubviews()
-        contentInset = UIEdgeInsets(top: TPCConfiguration.technicalOriginScrollViewContentOffsetY, left: 0, bottom: 0, right: 0)
+//        contentInset = UIEdgeInsets(top: TPCConfiguration.technicalOriginScrollViewContentOffsetY, left: 0, bottom: 0, right: 0)
     }
     
     private func setupSubviews() {

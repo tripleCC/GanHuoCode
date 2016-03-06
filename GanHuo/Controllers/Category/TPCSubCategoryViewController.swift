@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class TPCSubCategoryViewController: UIViewController {
-    var tableView: UITableView!
+    var tableView: TPCTableView!
     var dataSource: TPCCategoryDataSource!
     var categoryTitle: String?
     lazy var fetchRequestController: NSFetchedResultsController = {
@@ -24,11 +24,11 @@ class TPCSubCategoryViewController: UIViewController {
         setupSubviews()
         tableView.backgroundColor = UIColor.randomColor()
         
-        let b = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
-        b.backgroundColor = UIColor.orangeColor()
-        b.setTitle("sadfhak", forState: .Normal)
-        b.addTarget(self, action: "add", forControlEvents: .TouchUpInside)
-        view.addSubview(b)
+//        let b = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
+//        b.backgroundColor = UIColor.orangeColor()
+//        b.setTitle("sadfhak", forState: .Normal)
+//        b.addTarget(self, action: "add", forControlEvents: .TouchUpInside)
+//        view.addSubview(b)
     }
     
     func add() {
@@ -44,7 +44,7 @@ class TPCSubCategoryViewController: UIViewController {
     }
     
     override func loadView() {
-        view = UITableView(frame: UIScreen.mainScreen().bounds, style: .Plain)
+        view = TPCTableView(frame: UIScreen.mainScreen().bounds, style: .Plain)
     }
     
     lazy var noMoreDataFooterView: TPCNoMoreDataFooterView = {
@@ -60,7 +60,7 @@ class TPCSubCategoryViewController: UIViewController {
 
     private func setupSubviews() {
         let reuseIdentifier = "GanHuoCategoryCell"
-        tableView = view as! UITableView
+        tableView = view as! TPCTableView
         tableView.registerNib(UINib(nibName: String(TPCCategoryViewCell.self), bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         tableView.delegate = self
         dataSource = TPCCategoryDataSource(tableView: tableView, reuseIdentifier: reuseIdentifier, categoryTitle: categoryTitle)
@@ -72,6 +72,10 @@ class TPCSubCategoryViewController: UIViewController {
         tableView.tableFooterView = noMoreDataFooterView
         tableView.estimatedRowHeight = UITableViewAutomaticDimension
         tableView.rowHeight = 100
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
 }
 
@@ -86,5 +90,30 @@ extension TPCSubCategoryViewController: TPCCategoryDataSourceDelegate {
 extension TPCSubCategoryViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+    }
+}
+
+extension TPCSubCategoryViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 0 {
+            let scale = (abs(scrollView.contentOffset.y)) / TPCRefreshControlOriginHeight
+            tableView.adjustRefreshViewWithScale(scale)
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        tableView.beginRefreshViewAnimation()
+//        if canLoadNewData {
+//            loadNewData()
+//        }
+//        // 到顶部时不进行刷新
+//        if scrollView.contentOffset.y > 0 {
+//            let expectedOffsetY = tableView.contentOffset.y + UIScreen.mainScreen().bounds.height - noMoreDataFooterView.bounds.height - TPCConfiguration.technicalTableViewTopBottomMargin
+//            print(expectedOffsetY, scrollView.contentSize.height)
+//            if scrollView.contentSize.height >= expectedOffsetY {
+//                loadMoreData()
+//            }
+//            reloadTableView()
+//        }
     }
 }
