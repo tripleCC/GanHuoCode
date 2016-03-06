@@ -209,24 +209,19 @@ extension TPCNetworkUtil {
 
 typealias TPCNetworkUtilLoadCategory = TPCNetworkUtil
 extension TPCNetworkUtilLoadCategory {
-    public func loadTechnicalByType(type: String, count: Int = 15, page: Int, completion:([GanHuoObject] -> ())) {
+    public func loadTechnicalByType(type: String, count: Int = 15, page: Int) {
         alamofire.request(.GET, TPCTechnicalType.Data(type, count, page).path())
                  .response { (request, response, data, errorType) -> Void in
                     if let data = data {
-                        var technicalArrayReal = [GanHuoObject]()
                         if let results = JSON(data: data).dictionaryValue["results"] {
                             if case let technocalsArray = results.arrayValue where technocalsArray.count > 0 {
-                                dispatchAMain{
-                                    TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock({ () -> Void in
-                                        technocalsArray.forEach {
-                                            GanHuoObject.insertObjectToContext(TPCCoreDataManager.shareInstance.backgroundManagedObjectContext, dict: $0.dictionaryValue)
-                                        }
-                                        TPCCoreDataManager.shareInstance.saveContext()
-                                    })
-                                }
-                                print(results)
+                                TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock({ () -> Void in
+                                    technocalsArray.forEach {
+                                        GanHuoObject.insertObjectToContext(TPCCoreDataManager.shareInstance.backgroundManagedObjectContext, dict: $0.dictionaryValue)
+                                    }
+                                    TPCCoreDataManager.shareInstance.saveContext()
+                                })
                             }
-                            completion(technicalArrayReal)
                         }
                     }
         }

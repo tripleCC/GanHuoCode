@@ -43,12 +43,7 @@ class TPCCategoryDataSource: NSObject {
         if categoryTitle == nil {
             // random
         } else {
-            TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: page, completion: { (technicals) -> () in
-//                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(5 * Double(NSEC_PER_SEC)))
-//                dispatch_after(delayTime, dispatch_get_main_queue()) {
-//                    print(GanHuoObject.fetch())
-//                }
-            })
+            TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: page)
         }
     }
 }
