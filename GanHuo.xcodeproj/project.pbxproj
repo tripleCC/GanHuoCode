@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		12E92B8827A2329C2999802B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */; };
+		D60D12BF1C8D399300C84D4C /* TPCCategoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60D12BE1C8D399300C84D4C /* TPCCategoryDataSource.swift */; };
 		D61A92551C8AC82900FD594C /* GanHuoObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A92531C8AC82900FD594C /* GanHuoObject+CoreDataProperties.swift */; };
 		D61A92561C8AC82900FD594C /* GanHuoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A92541C8AC82900FD594C /* GanHuoObject.swift */; };
 		D65156551C85AD4E005B161B /* TPCSelectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65156541C85AD4E005B161B /* TPCSelectHeaderView.swift */; };
@@ -20,7 +21,7 @@
 		D67CED971C85DE3600A38B0B /* TPCCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67CED961C85DE3600A38B0B /* TPCCategoryViewController.swift */; };
 		D67CED991C85EE6B00A38B0B /* TPCSubCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67CED981C85EE6B00A38B0B /* TPCSubCategoryViewController.swift */; };
 		D69797E61C2FBCA500A53CD2 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69797E51C2FBCA500A53CD2 /* UIViewController+Extension.swift */; };
-		D6C0E2BC1C871F5F0033EAFB /* TPCCategoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C0E2BB1C871F5E0033EAFB /* TPCCategoryDataSource.swift */; };
+		D6C0E2BC1C871F5F0033EAFB /* TPCFetchedResultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C0E2BB1C871F5E0033EAFB /* TPCFetchedResultsDataSource.swift */; };
 		D6C0E2BE1C872EBE0033EAFB /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C0E2BD1C872EBE0033EAFB /* UIColor+Extension.swift */; };
 		D6D8BF4C1C82D26F00CCA370 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6D8BF4A1C82D26F00CCA370 /* Main.storyboard */; };
 		D6D8BF861C82EB6600CCA370 /* TPCNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF781C82EB6600CCA370 /* TPCNavigationController.swift */; };
@@ -95,6 +96,7 @@
 		72EE590290576ABFA38A5059 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA83A096E1133C661EE95446 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D60D12BE1C8D399300C84D4C /* TPCCategoryDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCategoryDataSource.swift; sourceTree = "<group>"; };
 		D61A92531C8AC82900FD594C /* GanHuoObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GanHuoObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D61A92541C8AC82900FD594C /* GanHuoObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GanHuoObject.swift; sourceTree = "<group>"; };
 		D65156541C85AD4E005B161B /* TPCSelectHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCSelectHeaderView.swift; sourceTree = "<group>"; };
@@ -108,7 +110,7 @@
 		D67CED961C85DE3600A38B0B /* TPCCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCategoryViewController.swift; sourceTree = "<group>"; };
 		D67CED981C85EE6B00A38B0B /* TPCSubCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCSubCategoryViewController.swift; sourceTree = "<group>"; };
 		D69797E51C2FBCA500A53CD2 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		D6C0E2BB1C871F5E0033EAFB /* TPCCategoryDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCategoryDataSource.swift; sourceTree = "<group>"; };
+		D6C0E2BB1C871F5E0033EAFB /* TPCFetchedResultsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCFetchedResultsDataSource.swift; sourceTree = "<group>"; };
 		D6C0E2BD1C872EBE0033EAFB /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		D6D8BF4B1C82D26F00CCA370 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D6D8BF781C82EB6600CCA370 /* TPCNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCNavigationController.swift; sourceTree = "<group>"; };
@@ -360,7 +362,8 @@
 				D6D8BFDC1C8347E600CCA370 /* Category.storyboard */,
 				D67CED961C85DE3600A38B0B /* TPCCategoryViewController.swift */,
 				D67CED981C85EE6B00A38B0B /* TPCSubCategoryViewController.swift */,
-				D6C0E2BB1C871F5E0033EAFB /* TPCCategoryDataSource.swift */,
+				D60D12BE1C8D399300C84D4C /* TPCCategoryDataSource.swift */,
+				D6C0E2BB1C871F5E0033EAFB /* TPCFetchedResultsDataSource.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 			files = (
 				D6D8BFD01C82EB7700CCA370 /* TPCTechnicalObject.swift in Sources */,
 				D6D8BFB51C82EB7000CCA370 /* TPCPageScrollView.swift in Sources */,
+				D60D12BF1C8D399300C84D4C /* TPCCategoryDataSource.swift in Sources */,
 				D6D8BFC31C82EB7000CCA370 /* TPCApplicationTitleView.swift in Sources */,
 				D67CED971C85DE3600A38B0B /* TPCCategoryViewController.swift in Sources */,
 				D6DE713F1C2592A300C066DE /* AppDelegate.swift in Sources */,
@@ -688,7 +692,7 @@
 				D6DE71481C2592A300C066DE /* TPCStorageUtil.swift in Sources */,
 				D6DE71391C2592A300C066DE /* UIFont+Extension.swift in Sources */,
 				D6DE71361C2592A300C066DE /* String+Extension.swift in Sources */,
-				D6C0E2BC1C871F5F0033EAFB /* TPCCategoryDataSource.swift in Sources */,
+				D6C0E2BC1C871F5F0033EAFB /* TPCFetchedResultsDataSource.swift in Sources */,
 				D6DE71621C2592A300C066DE /* WKCC.xcdatamodeld in Sources */,
 				D6D8BFAF1C82EB7000CCA370 /* TPCGradientLabel.swift in Sources */,
 				D6DE71681C259EE900C066DE /* TPCVersionUtil.swift in Sources */,

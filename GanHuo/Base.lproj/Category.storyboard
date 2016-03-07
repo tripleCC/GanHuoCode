@@ -16,29 +16,103 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0j-G8-j9W" customClass="TPCSelectHeaderView" customModule="GanHuo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="cHF-dp-1Ts"/>
-                                </constraints>
-                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1m-Tp-br6" userLabel="contentScrollView">
-                                <rect key="frame" x="0.0" y="94" width="600" height="506"/>
+                                <rect key="frame" x="0.0" y="114" width="600" height="486"/>
                                 <connections>
                                     <outlet property="delegate" destination="1I0-2k-wFU" id="Cil-fD-Cqd"/>
                                 </connections>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZy-Wo-Nyl" userLabel="containerView">
+                                <rect key="frame" x="0.0" y="84" width="600" height="30"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0j-G8-j9W" customClass="TPCSelectHeaderView" customModule="GanHuo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.86938260869999995" blue="0.59410638240000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="cHF-dp-1Ts"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I2W-QB-zbl" customClass="TPCGradientView" customModule="GanHuo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="10" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="10" id="Uyz-Ma-OoM"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fromColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="horizontal" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="toColor">
+                                                <color key="value" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="opacity">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgF-mo-keP" customClass="TPCGradientView" customModule="GanHuo" customModuleProvider="target">
+                                        <rect key="frame" x="550" y="0.0" width="10" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="10" id="h4J-EE-snq"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="toColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="horizontal" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fromColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="opacity">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZX-ZG-emX">
+                                        <rect key="frame" x="560" y="0.0" width="40" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="mee-Wl-Ubu"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="QZX-ZG-emX" firstAttribute="leading" secondItem="mgF-mo-keP" secondAttribute="trailing" id="4lq-3n-2iO"/>
+                                    <constraint firstItem="J0j-G8-j9W" firstAttribute="leading" secondItem="tZy-Wo-Nyl" secondAttribute="leading" id="5bX-ME-35L"/>
+                                    <constraint firstItem="QZX-ZG-emX" firstAttribute="leading" secondItem="J0j-G8-j9W" secondAttribute="trailing" id="HBJ-5Q-lEx"/>
+                                    <constraint firstAttribute="height" constant="30" id="KHg-gc-hNj"/>
+                                    <constraint firstItem="J0j-G8-j9W" firstAttribute="top" secondItem="tZy-Wo-Nyl" secondAttribute="top" id="Qnl-Kc-SQ0"/>
+                                    <constraint firstItem="QZX-ZG-emX" firstAttribute="top" secondItem="tZy-Wo-Nyl" secondAttribute="top" id="Uf0-4t-tdg"/>
+                                    <constraint firstItem="I2W-QB-zbl" firstAttribute="top" secondItem="tZy-Wo-Nyl" secondAttribute="top" id="Wwu-74-TQn"/>
+                                    <constraint firstAttribute="bottom" secondItem="I2W-QB-zbl" secondAttribute="bottom" id="Zvs-Ud-phd"/>
+                                    <constraint firstAttribute="trailing" secondItem="QZX-ZG-emX" secondAttribute="trailing" id="aXx-dA-EIE"/>
+                                    <constraint firstItem="mgF-mo-keP" firstAttribute="top" secondItem="tZy-Wo-Nyl" secondAttribute="top" id="bqY-uP-REw"/>
+                                    <constraint firstAttribute="bottom" secondItem="J0j-G8-j9W" secondAttribute="bottom" id="jzB-is-0IG"/>
+                                    <constraint firstAttribute="bottom" secondItem="QZX-ZG-emX" secondAttribute="bottom" id="pEV-Le-Pie"/>
+                                    <constraint firstItem="I2W-QB-zbl" firstAttribute="leading" secondItem="tZy-Wo-Nyl" secondAttribute="leading" id="pYJ-9M-JWG"/>
+                                    <constraint firstAttribute="bottom" secondItem="mgF-mo-keP" secondAttribute="bottom" id="rb6-j2-Txa"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="J0j-G8-j9W" firstAttribute="top" secondItem="I9l-z2-OnV" secondAttribute="top" constant="64" id="2Wa-pr-cTx"/>
-                            <constraint firstItem="U1m-Tp-br6" firstAttribute="top" secondItem="J0j-G8-j9W" secondAttribute="bottom" id="F03-uV-Ui3"/>
                             <constraint firstItem="U1m-Tp-br6" firstAttribute="leading" secondItem="I9l-z2-OnV" secondAttribute="leading" id="HHL-Fp-bde"/>
+                            <constraint firstItem="tZy-Wo-Nyl" firstAttribute="leading" secondItem="I9l-z2-OnV" secondAttribute="leading" id="Nkf-B7-jE7"/>
                             <constraint firstAttribute="trailing" secondItem="U1m-Tp-br6" secondAttribute="trailing" id="SK8-js-hQt"/>
-                            <constraint firstAttribute="trailing" secondItem="J0j-G8-j9W" secondAttribute="trailing" id="aT8-rW-Urg"/>
-                            <constraint firstItem="J0j-G8-j9W" firstAttribute="leading" secondItem="I9l-z2-OnV" secondAttribute="leading" id="bFz-Zv-Lgv"/>
+                            <constraint firstAttribute="trailing" secondItem="tZy-Wo-Nyl" secondAttribute="trailing" id="VjF-qJ-sTP"/>
+                            <constraint firstItem="U1m-Tp-br6" firstAttribute="top" secondItem="ZrY-qU-poP" secondAttribute="bottom" id="Was-04-sSN"/>
+                            <constraint firstItem="U1m-Tp-br6" firstAttribute="top" secondItem="tZy-Wo-Nyl" secondAttribute="bottom" id="kJf-Ha-Bml"/>
+                            <constraint firstItem="tZy-Wo-Nyl" firstAttribute="top" secondItem="ZrY-qU-poP" secondAttribute="bottom" constant="64" id="piN-or-pdN"/>
                             <constraint firstItem="caY-Wn-9cC" firstAttribute="top" secondItem="U1m-Tp-br6" secondAttribute="bottom" id="wzi-BD-SvV"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Was-04-sSN"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="contentScrollView" destination="U1m-Tp-br6" id="ncD-8C-oGj"/>
@@ -47,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mzF-UP-Qfy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12" y="123"/>
+            <point key="canvasLocation" x="71" y="89"/>
         </scene>
     </scenes>
 </document>

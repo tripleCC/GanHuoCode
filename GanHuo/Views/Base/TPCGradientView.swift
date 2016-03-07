@@ -21,6 +21,14 @@ class TPCGradientView: UIView {
             gradientLayer.colors = [fromColor.CGColor, toColor.CGColor]
         }
     }
+    @IBInspectable var horizontal: Bool = false {
+        didSet {
+            if horizontal {
+                gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+                gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+            }
+        }
+    }
     @IBInspectable var opacity: Float = 0.5 {
         didSet {
             gradientLayer.opacity = opacity
@@ -36,7 +44,8 @@ class TPCGradientView: UIView {
         gradientLayer.colors = [UIColor.clearColor().CGColor, UIColor.blackColor().CGColor];
         gradientLayer.opacity = 0.5
         gradientLayer.frame = self.bounds
-        self.layer.insertSublayer(gradientLayer, atIndex: 0)
+        backgroundColor = UIColor.clearColor()
+        layer.insertSublayer(gradientLayer, atIndex: 0)
     }
     
     required init?(coder aDecoder: NSCoder) {
