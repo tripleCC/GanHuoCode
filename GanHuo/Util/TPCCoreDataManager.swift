@@ -15,7 +15,8 @@ protocol TPCCoreDataHelper {
     static var request: NSFetchRequest { get }
     init(context: NSManagedObjectContext, dict: RawType)
     func initializeWithRawType(dict: RawType)
-    static func fetch() -> [Self]
+    static func fetchInBackgroundContext() -> [Self]
+    static func insertObjectInBackgroundContext(dict: RawType) -> Self
 }
 
 extension TPCCoreDataHelper where Self : NSManagedObject {
@@ -23,7 +24,7 @@ extension TPCCoreDataHelper where Self : NSManagedObject {
         return String(self)
     }
     
-    static func fetch() -> [Self] {
+    static func fetchInBackgroundContext() -> [Self] {
         do {
             let result = try TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.executeFetchRequest(request)
             return result as! [Self]

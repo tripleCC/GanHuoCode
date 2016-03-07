@@ -14,21 +14,17 @@ protocol TPCCategoryDataSourceDelegate: class {
 }
 
 class TPCCategoryDataSource: NSObject {
+    var technicals = [GanHuoObject]()
     var tableView: TPCTableView!
     weak var delegate: TPCCategoryDataSourceDelegate?
-    var fetchedResultController: NSFetchedResultsController! {
+    private var page = 1
+    var loadNewRefreshing = false
+    var categoryTitle: String? {
         didSet {
-            fetchedResultController.delegate = self
-            do {
-                try fetchedResultController.performFetch()
-            } catch {
-                print(error)
-            }
-
+            categoryTitle = categoryTitle?.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+            loadNewData()
         }
     }
-    private var page = 1
-    var categoryTitle: String?
     private var reuseIdentifier: String!
     init(tableView: TPCTableView, reuseIdentifier: String) {
         super.init()
@@ -37,56 +33,48 @@ class TPCCategoryDataSource: NSObject {
     }
 }
 
-extension TPCCategoryDataSource: UITableViewDataSource {
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return fetchedResultController.sections?.count ?? 0
+typealias TPCCategoryDataSourceLoad = TPCCategoryDataSource
+extension TPCCategoryDataSourceLoad {
+    func loadNewData() {
+        loadNewRefreshing = true
+        TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: 1) { (technicals, error) -> () in
+            self.technicals.removeAll()
+            self.refreshWithTechnicals(technicals, error: error)
+            self.loadNewRefreshing = false
+        }
     }
     
+    func loadMoreData() {
+        TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: page) { (technicals, error) -> () in
+            self.refreshWithTechnicals(technicals, error: error)
+        }
+    }
+    
+    func refreshWithTechnicals(technicals: [GanHuoObject], error: NSError?) {
+        if error == nil {
+            self.technicals.appendContentsOf(technicals)
+        } else {
+            // 本地加载
+        }
+        self.page++
+        self.tableView.reloadData()
+        if loadNewRefreshing {
+            self.tableView.endRefreshing()
+        }
+    }
+}
+
+extension TPCCategoryDataSource: UITableViewDataSource {
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sections = fetchedResultController.sections else { return 0 }
-        return sections[section].numberOfObjects
+        return technicals.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let object = fetchedResultController.objectAtIndexPath(indexPath)
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
-        delegate?.renderCell(cell, withObject: object)
-        print(object.url)
+        delegate?.renderCell(cell, withObject: technicals[indexPath.row])
         return cell
     }
-
 }
 
-extension TPCCategoryDataSource: NSFetchedResultsControllerDelegate {
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        tableView.beginUpdates()
-    }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView.endUpdates()
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-            switch type {
-            case .Insert:
-                if let newIndexPath = newIndexPath {
-                    tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic)
-                }
-            case .Delete:
-                if let indexPath = indexPath {
-                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-                }
-            case .Move:
-                if newIndexPath != nil && indexPath != nil {
-                    tableView.moveRowAtIndexPath(indexPath!, toIndexPath: newIndexPath!)
-                }
-            case .Update:
-                if let indexPath = indexPath {
-                    tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-                }
-        }
-        
-    }
-}
 

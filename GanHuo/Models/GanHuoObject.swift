@@ -15,6 +15,17 @@ import SwiftyJSON
 public final class GanHuoObject: NSManagedObject ,TPCCoreDataHelper {
     public typealias RawType = [String : JSON]
     static var queryTimeString = ""
+    static var request: NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: entityName)
+        fetchRequest.fetchLimit = TPCLoadGanHuoDataOnce
+        fetchRequest.fetchBatchSize = 20;
+        if queryTimeString.characters.count > 0 {
+            let predicate = NSPredicate(format: queryTimeString)
+            fetchRequest.predicate = predicate
+        }
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "publishedAt", ascending: false)]
+        return fetchRequest
+    }
     init(context: NSManagedObjectContext, dict: RawType) {
         let entity = NSEntityDescription.entityForName(GanHuoObject.entityName, inManagedObjectContext: context)!
         super.init(entity: entity, insertIntoManagedObjectContext: context)
@@ -26,10 +37,21 @@ public final class GanHuoObject: NSManagedObject ,TPCCoreDataHelper {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
     
-    static func insertObjectToContext(context: NSManagedObjectContext, dict: RawType) {
-        let ganhuo = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! GanHuoObject
-        ganhuo.initializeWithRawType(dict)
+    static func insertObjectInBackgroundContext(dict: RawType) -> GanHuoObject {
+        if let id = dict["_id"]?.stringValue {
+            let results = fetchById(id)
+            if let ganhuo = results.first {
+                ganhuo.initializeWithRawType(dict)
+                return ganhuo
+            }
+        }
+        return GanHuoObject(dict: dict)
     }
+    
+//    static func insertObjectToContext(context: NSManagedObjectContext, dict: RawType) {
+//        let ganhuo = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context) as! GanHuoObject
+//        ganhuo.initializeWithRawType(dict)
+//    }
     
     convenience init(dict: RawType) {
         self.init(context: TPCCoreDataManager.shareInstance.managedObjectContext, dict: dict)
@@ -47,27 +69,14 @@ public final class GanHuoObject: NSManagedObject ,TPCCoreDataHelper {
     }
 }
 
-extension TPCCoreDataHelper where Self : GanHuoObject {
-    
-    static var request: NSFetchRequest {
-        let fetchRequest = NSFetchRequest(entityName: entityName)
-        fetchRequest.fetchLimit = 1000
-        fetchRequest.fetchBatchSize = 20;
-        if queryTimeString.characters.count > 0 {
-            let predicate = NSPredicate(format: queryTimeString)
-            fetchRequest.predicate = predicate
-        }
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "publishedAt", ascending: false)]
-        print(fetchRequest)
-        return fetchRequest
-    }
-    static func fetchByTime(time: (year: Int, month: Int, day: Int)) -> [Self] {
+extension GanHuoObject {
+    static func fetchByTime(time: (year: Int, month: Int, day: Int)) -> [GanHuoObject] {
         queryTimeString = String(format: "publishedAt CONTAINS '%04ld-%02ld-%02ld'", time.year, time.month, time.day)
-        return fetch()
+        return fetchInBackgroundContext()
     }
-    static func fetchById(id: String) -> [Self] {
+    static func fetchById(id: String) -> [GanHuoObject] {
         queryTimeString = "objectId == '\(id)'"
-        return fetch()
+        return fetchInBackgroundContext()
     }
 }
 

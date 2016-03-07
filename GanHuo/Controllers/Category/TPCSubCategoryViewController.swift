@@ -12,44 +12,11 @@ import CoreData
 class TPCSubCategoryViewController: UIViewController {
     var tableView: TPCTableView!
     var dataSource: TPCCategoryDataSource!
-    var categoryTitle: String? {
-        didSet {
-            categoryTitle = categoryTitle?.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
-        }
-    }
+    var categoryTitle: String?
     var page = 1
-    lazy var fetchRequestController: NSFetchedResultsController = {
-        let request = NSFetchRequest(entityName: GanHuoObject.entityName)
-        request.sortDescriptors = [NSSortDescriptor(key: "publishedAt", ascending: false)]
-        let predicate = NSPredicate(format: "type = '\(self.navigationItem.title!)'")
-        request.predicate = predicate
-        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: TPCCoreDataManager.shareInstance.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        
-        return frc
-    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
-//        tableView.backgroundColor = UIColor.randomColor()
-        loadNewData()
-        
-//        let b = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
-//        b.backgroundColor = UIColor.orangeColor()
-//        b.setTitle("sadfhak", forState: .Normal)
-//        b.addTarget(self, action: "add", forControlEvents: .TouchUpInside)
-//        view.addSubview(b)
-    }
-    
-    func add() {
-//        for var i = 0; i < 2; i++ {
-//            TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock({ () -> Void in
-//                GanHuoObject.insertObjectToContext(TPCCoreDataManager.shareInstance.backgroundManagedObjectContext)
-//                do {
-//                    try TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.save()
-//                    
-//                } catch{}
-//            })
-//        }
     }
     
     override func loadView() {
@@ -74,33 +41,13 @@ class TPCSubCategoryViewController: UIViewController {
         tableView.delegate = self
         dataSource = TPCCategoryDataSource(tableView: tableView, reuseIdentifier: reuseIdentifier)
         dataSource.delegate = self
-        dataSource.fetchedResultController = fetchRequestController
+        dataSource.categoryTitle = categoryTitle
         tableView.dataSource = dataSource
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        tableView.rowHeight = TPCConfiguration.technicalCellHeight
         tableView.tableFooterView = noMoreDataFooterView
-        tableView.estimatedRowHeight = UITableViewAutomaticDimension
-        tableView.rowHeight = 100
-    }
-    
-    private func loadNewData() {
-        if categoryTitle == nil {
-            // random
-        } else {
-            print("start loading")
-            TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: 1) {
-                self.tableView.endRefreshing()
-                self.page++
-                print("end loading")
-            }
-        }
-    }
-    
-    private func loadMoreData() {
-        TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: page) {
-            self.tableView.endRefreshing()
-            self.page++
-        }
+        tableView.estimatedRowHeight = 100
+//        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = 100;
     }
 }
 
@@ -143,20 +90,12 @@ extension TPCSubCategoryViewController: UIScrollViewDelegate {
     }
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if let sections = fetchRequestController.sections {
-            if let allAcount = sections.first?.numberOfObjects {
-                if let indexPath = tableView.indexPathForRowAtPoint(CGPoint(x: 1, y: targetContentOffset.memory.y)) {
-                    if Double(indexPath.row) > Double(allAcount) - Double(TPCLoadGanHuoDataOnce) * 0.5 {
-                        loadMoreData()
-                    }
-                }
+        if let indexPath = tableView.indexPathForRowAtPoint(CGPoint(x: 1, y: targetContentOffset.memory.y)) {
+            if Double(indexPath.row) > Double(dataSource.technicals.count) - Double(TPCLoadGanHuoDataOnce) * 0.5 {
+                dataSource.loadMoreData()
             }
         }
 //        adjustBarPositionByVelocity(velocity.y, contentOffsetY: targetContentOffset.memory.y)
-        
-        if tableView.refreshing() {
-            targetContentOffset.memory.y = min(CGFloat(TPCConfiguration.loadDataCountOnce) * TPCConfiguration.technicalCellHeight + TPCConfiguration.technicalOriginScrollViewContentOffsetY, targetContentOffset.memory.y)
-        }
-        //        debugPrint(__FUNCTION__, velocity, targetContentOffset.memory.y)
+//        debugPrint(__FUNCTION__, velocity, targetContentOffset.memory.y)
     }
 }

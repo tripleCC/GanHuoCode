@@ -31,7 +31,7 @@ class TPCCategoryViewController: TPCViewController {
         }
         contentScrollView.contentSize.width = CGFloat(childViewControllers.count) * TPCScreenWidth
         automaticallyAdjustsScrollViewInsets = false
-        selectHeaderView.titles = childViewControllers.map{ $0.navigationItem.title! }
+        selectHeaderView.titles = childViewControllers.map{ $0.navigationItem.title! }.filter{ $0 != "福利" }
     }
     
     override func viewDidLayoutSubviews() {

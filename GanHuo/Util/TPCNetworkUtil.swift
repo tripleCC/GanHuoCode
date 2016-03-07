@@ -209,22 +209,23 @@ extension TPCNetworkUtil {
 
 typealias TPCNetworkUtilLoadCategory = TPCNetworkUtil
 extension TPCNetworkUtilLoadCategory {
-    public func loadTechnicalByType(type: String, count: Int = TPCLoadGanHuoDataOnce, page: Int, completion:(() -> ())) {
+    public func loadTechnicalByType(type: String, count: Int = TPCLoadGanHuoDataOnce, page: Int, completion:((technicals: [GanHuoObject], error: NSError?) -> ())) {
         alamofire.request(.GET, TPCTechnicalType.Data(type, count, page).path())
                  .response { (request, response, data, errorType) -> Void in
+                    var ganhuoArray = [GanHuoObject]()
                     if let data = data {
                         if let results = JSON(data: data).dictionaryValue["results"] {
                             if case let technocalsArray = results.arrayValue where technocalsArray.count > 0 {
-                                TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock({ () -> Void in
+                                TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlockAndWait({ () -> Void in
                                     technocalsArray.forEach {
-                                        GanHuoObject.insertObjectToContext(TPCCoreDataManager.shareInstance.backgroundManagedObjectContext, dict: $0.dictionaryValue)
+                                        ganhuoArray.append(GanHuoObject.insertObjectInBackgroundContext($0.dictionaryValue))
                                     }
                                     TPCCoreDataManager.shareInstance.saveContext()
                                 })
                             }
                         }
                     }
-                    completion()
+                    completion(technicals: ganhuoArray, error: errorType)
         }
     }
 }
