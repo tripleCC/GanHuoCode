@@ -56,6 +56,11 @@ class TPCSelectHeaderView: UIView {
         view.backgroundColor = UIColor.lightGrayColor()
         return view
     }()
+    private lazy var bottomLine: CALayer = {
+        let line = CALayer()
+        line.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.2).CGColor
+        return line
+    }()
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.backgroundColor = UIColor.whiteColor()
@@ -75,6 +80,7 @@ class TPCSelectHeaderView: UIView {
     
     private func setupSubviews() {
         addSubview(scrollView)
+        layer.addSublayer(bottomLine)
     }
     
     private func addButtonItems() {
@@ -99,7 +105,7 @@ class TPCSelectHeaderView: UIView {
         scrollView.frame = bounds
         indicatorView.frame.size.height = 1.5
         indicatorView.frame.origin.y = scrollView.bounds.height - indicatorView.frame.height
-        let buttonW = scrollView.frame.size.width / kTitleButtonMaxVisibleCount
+        let buttonW = TPCScreenWidth / kTitleButtonMaxVisibleCount
         let buttonH = scrollView.bounds.size.height
         for (idx, button) in titleButtons.enumerate() {
             button.frame.size = CGSize(width: buttonW, height: buttonH)
@@ -111,6 +117,7 @@ class TPCSelectHeaderView: UIView {
             }
         }
         scrollView.contentSize = CGSize(width: CGFloat(titleButtons.count) * buttonW, height: 0)
+        bottomLine.frame = CGRect(x: 0, y: scrollView.frame.height - 0.5, width: scrollView.frame.width, height: 0.5)
     }
     
     func centerXOfButtonIndex(index: Int) -> CGFloat {
