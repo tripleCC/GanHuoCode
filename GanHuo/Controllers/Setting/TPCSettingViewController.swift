@@ -259,9 +259,11 @@ extension TPCSettingFunction {
     
     private func clearCache(indexPath: NSIndexPath) {
         let item = contents[indexPath.section][indexPath.row]
-        KingfisherManager.sharedManager.cache.clearDiskCacheWithCompletionHandler { () -> () in
-            item.detailTitle = "0.00M"
-            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+        TPCStorageUtil.shareInstance.clearFileCache {
+            KingfisherManager.sharedManager.cache.clearDiskCacheWithCompletionHandler { () -> () in
+                item.detailTitle = "0.00M"
+                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            }            
         }
     }
 }

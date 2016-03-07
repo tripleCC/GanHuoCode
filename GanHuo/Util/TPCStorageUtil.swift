@@ -26,10 +26,9 @@ class TPCStorageUtil {
         }
     }
     
-    // unuse
     func clearFileCache(completion: (() -> ())? = nil) {
         func clearFile() {
-            removeFileAtPath(TPCCoreDataManager.shareInstance.coreDataDirectory.path!) { $0.containsString(TPCSqliteFileName) }
+            removeFileAtPath(TPCStorageUtil.shareInstance.directoryForTechnicalDictionary)
         }
         if completion == nil {
             clearFile()
