@@ -2,7 +2,7 @@
 //  GanHuoObject+CoreDataProperties.swift
 //  
 //
-//  Created by tripleCC on 16/3/5.
+//  Created by tripleCC on 16/3/7.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -22,5 +22,6 @@ extension GanHuoObject {
     @NSManaged var url: String?
     @NSManaged var used: NSNumber?
     @NSManaged var who: String?
+    @NSManaged var read: NSNumber?
 
 }

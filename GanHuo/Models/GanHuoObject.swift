@@ -54,7 +54,7 @@ public final class GanHuoObject: NSManagedObject ,TPCCoreDataHelper {
 //    }
     
     convenience init(dict: RawType) {
-        self.init(context: TPCCoreDataManager.shareInstance.managedObjectContext, dict: dict)
+        self.init(context: TPCCoreDataManager.shareInstance.backgroundManagedObjectContext, dict: dict)
     }
     
     func initializeWithRawType(dict: RawType) {
@@ -69,13 +69,18 @@ public final class GanHuoObject: NSManagedObject ,TPCCoreDataHelper {
     }
 }
 
-extension GanHuoObject {
+typealias GanHuoObjectFetch = GanHuoObject
+extension GanHuoObjectFetch {
     static func fetchByTime(time: (year: Int, month: Int, day: Int)) -> [GanHuoObject] {
         queryTimeString = String(format: "publishedAt CONTAINS '%04ld-%02ld-%02ld'", time.year, time.month, time.day)
         return fetchInBackgroundContext()
     }
     static func fetchById(id: String) -> [GanHuoObject] {
         queryTimeString = "objectId == '\(id)'"
+        return fetchInBackgroundContext()
+    }
+    static func fetchWithNoPredicate() -> [GanHuoObject] {
+        queryTimeString = ""
         return fetchInBackgroundContext()
     }
 }
