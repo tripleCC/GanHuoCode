@@ -5,6 +5,7 @@
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="publishedAt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="read" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="used" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -16,6 +17,6 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="GanHuoObject" positionX="-63" positionY="54" width="128" height="165"/>
+        <element name="GanHuoObject" positionX="-63" positionY="54" width="128" height="180"/>
     </elements>
 </model>

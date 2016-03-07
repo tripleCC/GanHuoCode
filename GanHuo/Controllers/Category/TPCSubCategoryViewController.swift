@@ -46,8 +46,7 @@ class TPCSubCategoryViewController: UIViewController {
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         tableView.tableFooterView = noMoreDataFooterView
         tableView.estimatedRowHeight = 100
-//        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.rowHeight = 100;
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 }
 
@@ -61,7 +60,8 @@ extension TPCSubCategoryViewController: TPCCategoryDataSourceDelegate {
 
 extension TPCSubCategoryViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        dataSource.markAsReadedByIndexPath(indexPath)
     }
 }
 

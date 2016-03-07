@@ -17,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1m-Tp-br6" userLabel="contentScrollView">
-                                <rect key="frame" x="0.0" y="114" width="600" height="486"/>
+                                <rect key="frame" x="0.0" y="94" width="600" height="506"/>
                                 <connections>
                                     <outlet property="delegate" destination="1I0-2k-wFU" id="Cil-fD-Cqd"/>
                                 </connections>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZy-Wo-Nyl" userLabel="containerView">
-                                <rect key="frame" x="0.0" y="84" width="600" height="30"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="30"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0j-G8-j9W" customClass="TPCSelectHeaderView" customModule="GanHuo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
@@ -95,21 +95,28 @@
                                     <constraint firstItem="I2W-QB-zbl" firstAttribute="leading" secondItem="tZy-Wo-Nyl" secondAttribute="leading" id="pYJ-9M-JWG"/>
                                     <constraint firstAttribute="bottom" secondItem="mgF-mo-keP" secondAttribute="bottom" id="rb6-j2-Txa"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Qnl-Kc-SQ0"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="tZy-Wo-Nyl" firstAttribute="top" secondItem="I9l-z2-OnV" secondAttribute="top" constant="64" id="EbJ-v5-npi"/>
                             <constraint firstItem="U1m-Tp-br6" firstAttribute="leading" secondItem="I9l-z2-OnV" secondAttribute="leading" id="HHL-Fp-bde"/>
+                            <constraint firstItem="tZy-Wo-Nyl" firstAttribute="top" secondItem="ZrY-qU-poP" secondAttribute="bottom" id="MPA-7j-vYI"/>
                             <constraint firstItem="tZy-Wo-Nyl" firstAttribute="leading" secondItem="I9l-z2-OnV" secondAttribute="leading" id="Nkf-B7-jE7"/>
                             <constraint firstAttribute="trailing" secondItem="U1m-Tp-br6" secondAttribute="trailing" id="SK8-js-hQt"/>
                             <constraint firstAttribute="trailing" secondItem="tZy-Wo-Nyl" secondAttribute="trailing" id="VjF-qJ-sTP"/>
                             <constraint firstItem="U1m-Tp-br6" firstAttribute="top" secondItem="ZrY-qU-poP" secondAttribute="bottom" id="Was-04-sSN"/>
                             <constraint firstItem="U1m-Tp-br6" firstAttribute="top" secondItem="tZy-Wo-Nyl" secondAttribute="bottom" id="kJf-Ha-Bml"/>
-                            <constraint firstItem="tZy-Wo-Nyl" firstAttribute="top" secondItem="ZrY-qU-poP" secondAttribute="bottom" constant="64" id="piN-or-pdN"/>
                             <constraint firstItem="caY-Wn-9cC" firstAttribute="top" secondItem="U1m-Tp-br6" secondAttribute="bottom" id="wzi-BD-SvV"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="MPA-7j-vYI"/>
                                 <exclude reference="Was-04-sSN"/>
                             </mask>
                         </variation>

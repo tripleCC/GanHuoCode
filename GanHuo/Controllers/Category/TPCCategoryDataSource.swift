@@ -31,6 +31,16 @@ class TPCCategoryDataSource: NSObject {
         self.reuseIdentifier = reuseIdentifier
         self.tableView = tableView
     }
+    
+    func markAsReadedByIndexPath(indexPath: NSIndexPath) {
+        TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock { () -> Void in
+            self.technicals[indexPath.row].read = true
+            dispatchAMain {
+                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            TPCCoreDataManager.shareInstance.saveContext()
+        }
+    }
 }
 
 typealias TPCCategoryDataSourceLoad = TPCCategoryDataSource
@@ -39,8 +49,8 @@ extension TPCCategoryDataSourceLoad {
         loadNewRefreshing = true
         TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: 1) { (technicals, error) -> () in
             self.technicals.removeAll()
-            self.refreshWithTechnicals(technicals, error: error)
             self.loadNewRefreshing = false
+            self.refreshWithTechnicals(technicals, error: error)
         }
     }
     
@@ -55,11 +65,20 @@ extension TPCCategoryDataSourceLoad {
             self.technicals.appendContentsOf(technicals)
         } else {
             // 本地加载
+            loadFromCache {
+                
+            }
         }
         self.page++
         self.tableView.reloadData()
         if loadNewRefreshing {
             self.tableView.endRefreshing()
+        }
+    }
+    
+    func loadFromCache(completion:(() -> ())) {
+        TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock { () -> Void in
+            print(GanHuoObject.fetchWithNoPredicate())
         }
     }
 }
