@@ -24,14 +24,14 @@ class TPCCategoryViewController: TPCViewController {
     }
 
     private func setupChildController() {
-        TPCConfiguration.allCategories.forEach {
+        TPCConfiguration.allCategories.filter{ $0 != "福利" }.forEach {
             let subCategoryVc = TPCSubCategoryViewController()
             subCategoryVc.navigationItem.title = $0
             self.addChildViewController(subCategoryVc)
         }
         contentScrollView.contentSize.width = CGFloat(childViewControllers.count) * TPCScreenWidth
         automaticallyAdjustsScrollViewInsets = false
-        selectHeaderView.titles = childViewControllers.map{ $0.navigationItem.title! }.filter{ $0 != "福利" }
+        selectHeaderView.titles = childViewControllers.map{ $0.navigationItem.title! }
     }
     
     override func viewDidLayoutSubviews() {

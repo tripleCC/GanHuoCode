@@ -40,7 +40,7 @@ class TPCSelectHeaderView: UIView {
             if oldValue != nil {
                 oldValue!.enabled = true
                 disabledButton!.enabled = false
-                UIView.animateWithDuration(0.2, animations: { () -> Void in
+                UIView.animateWithDuration(0.1, animations: { () -> Void in
                     self.indicatorView.frame.size.width = self.disabledButton!.titleLabel!.frame.size.width
                     self.indicatorView.center.x = self.disabledButton!.center.x
                 })
