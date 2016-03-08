@@ -27,7 +27,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0j-G8-j9W" customClass="TPCSelectHeaderView" customModule="GanHuo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
-                                        <color key="backgroundColor" red="1" green="0.86938260869999995" blue="0.59410638240000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="cHF-dp-1Ts"/>
                                         </constraints>
@@ -70,15 +70,27 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZX-ZG-emX">
-                                        <rect key="frame" x="560" y="0.0" width="40" height="30"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Lg-aS-e0K" userLabel="bottomLine">
+                                        <rect key="frame" x="0.0" y="29.5" width="600" height="0.5"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.2010399070945946" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="mB3-dY-FhN"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZX-ZG-emX" userLabel="arrowButton">
+                                        <rect key="frame" x="560" y="0.0" width="40" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="mee-Wl-Ubu"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <inset key="imageEdgeInsets" minX="13" minY="7" maxX="13" maxY="7"/>
+                                        <state key="normal" image="arrow"/>
+                                        <connections>
+                                            <action selector="arrowButtonOnClicked:" destination="1I0-2k-wFU" eventType="touchUpInside" id="7O1-J5-tJh"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="QZX-ZG-emX" firstAttribute="leading" secondItem="mgF-mo-keP" secondAttribute="trailing" id="4lq-3n-2iO"/>
                                     <constraint firstItem="J0j-G8-j9W" firstAttribute="leading" secondItem="tZy-Wo-Nyl" secondAttribute="leading" id="5bX-ME-35L"/>
@@ -90,10 +102,13 @@
                                     <constraint firstAttribute="bottom" secondItem="I2W-QB-zbl" secondAttribute="bottom" id="Zvs-Ud-phd"/>
                                     <constraint firstAttribute="trailing" secondItem="QZX-ZG-emX" secondAttribute="trailing" id="aXx-dA-EIE"/>
                                     <constraint firstItem="mgF-mo-keP" firstAttribute="top" secondItem="tZy-Wo-Nyl" secondAttribute="top" id="bqY-uP-REw"/>
+                                    <constraint firstAttribute="bottom" secondItem="4Lg-aS-e0K" secondAttribute="bottom" id="epV-s7-222"/>
                                     <constraint firstAttribute="bottom" secondItem="J0j-G8-j9W" secondAttribute="bottom" id="jzB-is-0IG"/>
-                                    <constraint firstAttribute="bottom" secondItem="QZX-ZG-emX" secondAttribute="bottom" id="pEV-Le-Pie"/>
+                                    <constraint firstAttribute="trailing" secondItem="4Lg-aS-e0K" secondAttribute="trailing" id="k0k-Ml-grF"/>
+                                    <constraint firstAttribute="bottom" secondItem="QZX-ZG-emX" secondAttribute="bottom" constant="1" id="pEV-Le-Pie"/>
                                     <constraint firstItem="I2W-QB-zbl" firstAttribute="leading" secondItem="tZy-Wo-Nyl" secondAttribute="leading" id="pYJ-9M-JWG"/>
                                     <constraint firstAttribute="bottom" secondItem="mgF-mo-keP" secondAttribute="bottom" id="rb6-j2-Txa"/>
+                                    <constraint firstItem="4Lg-aS-e0K" firstAttribute="leading" secondItem="tZy-Wo-Nyl" secondAttribute="leading" id="xIR-IU-XNF"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -131,4 +146,7 @@
             <point key="canvasLocation" x="71" y="89"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow" width="64" height="64"/>
+    </resources>
 </document>

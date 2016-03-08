@@ -39,6 +39,21 @@ class TPCCategoryViewController: TPCViewController {
         selectHeaderView.setupSubviewsFrame()
         scrollViewDidEndScrollingAnimation(contentScrollView)
     }
+    
+    @IBAction func arrowButtonOnClicked(sender: AnyObject) {
+        let arrowButton = sender as! UIButton
+        let isSelected = arrowButton.selected
+        
+        UIView.animateWithDuration(0.25, animations: { () -> Void in
+                arrowButton.imageView!.transform = CGAffineTransformRotate(arrowButton.imageView!.transform, CGFloat(M_PI))
+//            if isSelected {
+//
+//            }
+            }) { (finished) -> Void in
+                
+        }
+        arrowButton.selected = !arrowButton.selected
+    }
 }
 
 extension TPCCategoryViewController : TPCSelectHeaderViewDelegate {

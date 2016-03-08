@@ -117,7 +117,7 @@ class TPCSelectHeaderView: UIView {
             }
         }
         scrollView.contentSize = CGSize(width: CGFloat(titleButtons.count) * buttonW, height: 0)
-        bottomLine.frame = CGRect(x: 0, y: scrollView.frame.height - 0.5, width: scrollView.frame.width, height: 0.5)
+//        bottomLine.frame = CGRect(x: 0, y: scrollView.frame.height - 0.5, width: scrollView.frame.width, height: 0.5)
     }
     
     func centerXOfButtonIndex(index: Int) -> CGFloat {
