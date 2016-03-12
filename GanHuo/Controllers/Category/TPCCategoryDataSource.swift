@@ -33,13 +33,9 @@ class TPCCategoryDataSource: NSObject {
         self.tableView = tableView
     }
     
-    func markAsReadedByIndexPath(indexPath: NSIndexPath) {
+    func fetchGanHuoByIndexPath(indexPath: NSIndexPath, completion:((ganhuo: GanHuoObject) -> ())) {
         TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock { () -> Void in
-            self.technicals[indexPath.row].read = true
-            dispatchAMain {
-                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            }
-            TPCCoreDataManager.shareInstance.saveContext()
+            completion(ganhuo: self.technicals[indexPath.row])
         }
     }
 }

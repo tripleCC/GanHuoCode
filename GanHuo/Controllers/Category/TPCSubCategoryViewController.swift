@@ -33,17 +33,22 @@ class TPCSubCategoryViewController: UIViewController {
         tableView.dataSource = dataSource
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         tableView.loadMoreFooterView.gotoWebAction = { [unowned self] in
-            let sb = UIStoryboard(name: "HomePage", bundle: nil)
-            let browserVc = sb.instantiateViewControllerWithIdentifier("BroswerViewController") as! TPCBroswerViewController
-            browserVc.URLString = TPCGankIOURLString
-            self.navigationController?.pushViewController(browserVc, animated: true)
+            self.pushToBrowserViewControllerWithURLString(TPCGankIOURLString)
             TPCUMManager.event(.TechinicalNoMoreData)
         }
+    }
+    
+    private func pushToBrowserViewControllerWithURLString(URLString: String) {
+        let sb = UIStoryboard(name: "HomePage", bundle: nil)
+        let browserVc = sb.instantiateViewControllerWithIdentifier("BroswerViewController") as! TPCBroswerViewController
+        browserVc.URLString = URLString
+        self.navigationController?.pushViewController(browserVc, animated: true)
     }
 }
 
 extension TPCSubCategoryViewController: TPCCategoryDataSourceDelegate {
     func renderCell(cell: UITableViewCell, withObject object: AnyObject?) {
+        // 这种后台上下文队列中的实体在主队列中访问是不可取的，需要通过objectID传递,但是暂时没问题，先这么用着吧。。。
         if let o = object as? GanHuoObject {
             let cell = cell as! TPCCategoryViewCell
             cell.ganhuo = o
@@ -55,7 +60,17 @@ extension TPCSubCategoryViewController: TPCCategoryDataSourceDelegate {
 extension TPCSubCategoryViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        dataSource.markAsReadedByIndexPath(indexPath)
+        dataSource.fetchGanHuoByIndexPath(indexPath) { (ganhuo) -> () in
+            ganhuo.read = true
+            let url = ganhuo.url
+            dispatchAMain {
+                if let url = url {
+                    self.pushToBrowserViewControllerWithURLString(url)
+                }
+                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            TPCCoreDataManager.shareInstance.saveContext()
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

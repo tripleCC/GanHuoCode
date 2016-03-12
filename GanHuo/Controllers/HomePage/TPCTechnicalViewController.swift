@@ -159,7 +159,7 @@ class TPCTechnicalViewController: TPCViewController {
             self.categoriesArray = categoriesArray
             self.loadingMore = false
             self.reloadTableView()
-            if technocals.count == 0 {
+            if technocals.count < TPCConfiguration.loadDataCountOnce {
                 self.tableView.loadMoreFooterView.type = .NoData
             } else {
                 self.tableView.loadMoreFooterView.type = .LoadMore
