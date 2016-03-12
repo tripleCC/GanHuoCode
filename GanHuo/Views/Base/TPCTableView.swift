@@ -53,10 +53,6 @@ class TPCTableView: UITableView, TPCRefreshable {
         refreshControl.addSubview(customView)
         
         loadMoreFooterView = TPCNoMoreDataFooterView.noMoreDataFooterView()
-        loadMoreFooterView.gotoWebAction = { [unowned self] in
-            self.viewController?.performSegueWithIdentifier("TechnicalVc2BrowserVc", sender: nil)
-            TPCUMManager.event(.TechinicalNoMoreData)
-        }
         tableFooterView = loadMoreFooterView
     }
     

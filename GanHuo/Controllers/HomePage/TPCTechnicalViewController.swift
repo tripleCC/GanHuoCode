@@ -17,6 +17,10 @@ class TPCTechnicalViewController: TPCViewController {
             tableView.dataSource = self
             tableView.separatorStyle = UITableViewCellSeparatorStyle.None
             tableView.rowHeight = TPCConfiguration.technicalCellHeight
+            tableView.loadMoreFooterView.gotoWebAction = { [unowned self] in
+                self.performSegueWithIdentifier("TechnicalVc2BrowserVc", sender: nil)
+                TPCUMManager.event(.TechinicalNoMoreData)
+            }
         }
     }
     private var technocals = [TPCTechnicalDictionary]()

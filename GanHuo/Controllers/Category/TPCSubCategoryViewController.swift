@@ -32,6 +32,13 @@ class TPCSubCategoryViewController: UIViewController {
         dataSource.categoryTitle = categoryTitle
         tableView.dataSource = dataSource
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        tableView.loadMoreFooterView.gotoWebAction = { [unowned self] in
+            let sb = UIStoryboard(name: "HomePage", bundle: nil)
+            let browserVc = sb.instantiateViewControllerWithIdentifier("BroswerViewController") as! TPCBroswerViewController
+            browserVc.URLString = TPCGankIOURLString
+            self.navigationController?.pushViewController(browserVc, animated: true)
+            TPCUMManager.event(.TechinicalNoMoreData)
+        }
     }
 }
 
@@ -68,10 +75,9 @@ extension TPCSubCategoryViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        tableView.beginRefreshViewAnimation()
-//        if canLoadNewData {
-//            loadNewData()
-//        }
+        if tableView.refreshing() {
+            dataSource.loadNewData()
+        }
 //        // 到顶部时不进行刷新
 //        if scrollView.contentOffset.y > 0 {
 //            let expectedOffsetY = tableView.contentOffset.y + UIScreen.mainScreen().bounds.height - noMoreDataFooterView.bounds.height - TPCConfiguration.technicalTableViewTopBottomMargin

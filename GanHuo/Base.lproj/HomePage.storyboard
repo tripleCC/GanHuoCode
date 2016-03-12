@@ -826,7 +826,7 @@
         <!--Broswer View Controller-->
         <scene sceneID="OMo-WD-AKj">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="MmX-q2-JDQ" customClass="TPCBroswerViewController" customModule="GanHuo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BroswerViewController" hidesBottomBarWhenPushed="YES" id="MmX-q2-JDQ" customClass="TPCBroswerViewController" customModule="GanHuo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IWS-2K-HWU"/>
                         <viewControllerLayoutGuide type="bottom" id="T4u-La-2Z5"/>

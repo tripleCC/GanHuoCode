@@ -209,8 +209,10 @@ extension TPCNetworkUtil {
 typealias TPCNetworkUtilLoadCategory = TPCNetworkUtil
 extension TPCNetworkUtilLoadCategory {
     public func loadTechnicalByType(type: String, count: Int = TPCLoadGanHuoDataOnce, page: Int, completion:((technicals: [GanHuoObject], error: NSError?) -> ())) {
+        print(page)
         alamofire.request(.GET, TPCTechnicalType.Data(type, count, page).path())
                  .response { (request, response, data, errorType) -> Void in
+                    print(request)
                     var ganhuoArray = [GanHuoObject]()
                     guard errorType == nil else {
                         completion(technicals: ganhuoArray, error: errorType)
@@ -228,9 +230,11 @@ extension TPCNetworkUtilLoadCategory {
                                     }
                                     TPCCoreDataManager.shareInstance.saveContext()
                                 })
+                                return
                             }
                         }
                     }
+                    completion(technicals: ganhuoArray, error: errorType)
         }
     }
 }
@@ -239,7 +243,10 @@ typealias TPCNetworkUtilLoadHomePage = TPCNetworkUtil
 extension TPCNetworkUtilLoadHomePage {
     public func loadTechnicalByYear(year: Int, month: Int, day: Int, completion:((TPCTechnicalDictionary, [String]) -> ())?) {
         // 过滤时间
-        if !filterTime((year, month, day), completion: completion) { return }
+        if !filterTime((year, month, day), completion: completion) {
+            completion?(TPCTechnicalDictionary(), [String]())
+            return
+        }
         
         if !loadFromCacheByTime((year, month, day), completion: completion) {
             loadTechnicalFromNetWorkByYear(year, month: month, day: day, completion: completion)
@@ -263,14 +270,12 @@ extension TPCNetworkUtilLoadHomePage {
             let timeString = String(format: "%04d-%02d-%02d", time.year, time.month, time.day)
             if !availableDays.contains(timeString) {
                 debugPrint(timeString)
-                completion?(TPCTechnicalDictionary(), [String]())
                 return false
             }
         } else {
             if let date = NSCalendar.currentCalendar().dateWithTime((time.year, time.month, time.day)) {
                 guard !date.isWeekend /*|| !noDataDays.contains(date)*/ else {
                     debugPrint(date)
-                    completion?(TPCTechnicalDictionary(), [String]())
                     return false
                 }
             }
@@ -329,8 +334,9 @@ extension TPCNetworkUtilLoadHomePage {
                         dispatchAMain() {
                             completion?(technicalDict, categories) }
                     }
-                    
+                    return
                 })
+                completion?(TPCTechnicalDictionary(), [String]())
             })
     }
     

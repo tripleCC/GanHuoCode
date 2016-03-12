@@ -19,6 +19,7 @@ class TPCCategoryDataSource: NSObject {
     weak var delegate: TPCCategoryDataSourceDelegate?
     private var page = 1
     var loadNewRefreshing = false
+    var loadMoreRefreshing = false
     var categoryTitle: String? {
         didSet {
             categoryTitle = categoryTitle?.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
@@ -46,44 +47,68 @@ class TPCCategoryDataSource: NSObject {
 typealias TPCCategoryDataSourceLoad = TPCCategoryDataSource
 extension TPCCategoryDataSourceLoad {
     func loadNewData() {
+        if loadNewRefreshing { return }
         loadNewRefreshing = true
         tableView.loadMoreFooterView.hidden = true
-        TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: 1) { (technicals, error) -> () in
+        tableView.beginRefreshViewAnimation()
+        page = 1
+        technicals.removeAll()
+        TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: page) { (technicals, error) -> () in
+            print(technicals.count)
             self.tableView.loadMoreFooterView.hidden = technicals.count == 0
-            self.technicals.removeAll()
-            self.loadNewRefreshing = false
             self.refreshWithTechnicals(technicals, error: error)
         }
     }
     
     func loadMoreData() {
+        if loadMoreRefreshing { return }
+        loadMoreRefreshing = true
         tableView.loadMoreFooterView.hidden = technicals.count == 0
         tableView.loadMoreFooterView.beginRefresh()
         TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: page) { (technicals, error) -> () in
+            print(self.page, technicals.count)
             self.refreshWithTechnicals(technicals, error: error)
             self.tableView.loadMoreFooterView.endRefresh()
+            self.loadMoreRefreshing = false
         }
     }
     
     func refreshWithTechnicals(technicals: [GanHuoObject], error: NSError?) {
         if error == nil {
-            self.technicals.appendContentsOf(technicals)
+            if technicals.count > 0 {
+                self.technicals.appendContentsOf(technicals)
+                self.page++
+                self.tableView.reloadData()
+            }
+            
+            if technicals.count < TPCLoadGanHuoDataOnce {
+                self.tableView.loadMoreFooterView.type = .NoData
+            } else {
+                self.tableView.loadMoreFooterView.type = .LoadMore
+            }
         } else {
             // 本地加载
             loadFromCache {
-                self.tableView.reloadData()                
+                self.tableView.reloadData()
             }
         }
-        self.page++
-        self.tableView.reloadData()
         if loadNewRefreshing {
-            self.tableView.endRefreshing()
+            dispatchSeconds(0.5) {
+                self.tableView.endRefreshing()
+                self.loadNewRefreshing = false
+            }
         }
     }
     
     func loadFromCache(completion:(() -> ())) {
         TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock { () -> Void in
-            self.technicals.appendContentsOf(GanHuoObject.fetchWithCategory(self.categoryTitle))
+            let fetchResults = GanHuoObject.fetchByCategory(self.categoryTitle, offset: self.technicals.count)
+            if fetchResults.count > 0 {
+                self.technicals.appendContentsOf(fetchResults)
+                self.page++
+            } else {
+                self.tableView.loadMoreFooterView.type = .NoData
+            }
             dispatchAMain{ completion() }
         }
     }

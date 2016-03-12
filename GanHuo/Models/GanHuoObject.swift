@@ -15,10 +15,12 @@ import SwiftyJSON
 public final class GanHuoObject: NSManagedObject ,TPCCoreDataHelper {
     public typealias RawType = [String : JSON]
     static var queryTimeString = ""
+    static var fetchOffset = 0
     static var request: NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: entityName)
         fetchRequest.fetchLimit = TPCLoadGanHuoDataOnce
         fetchRequest.fetchBatchSize = 20;
+        fetchRequest.fetchOffset = fetchOffset
         if queryTimeString.characters.count > 0 {
             let predicate = NSPredicate(format: queryTimeString)
             fetchRequest.predicate = predicate
@@ -84,12 +86,13 @@ extension GanHuoObjectFetch {
         queryTimeString = "objectId == '\(id)'"
         return fetchInBackgroundContext()
     }
-    static func fetchWithCategory(category: String?) -> [GanHuoObject] {
+    static func fetchByCategory(category: String?, offset: Int) -> [GanHuoObject] {
         if let category = category {
             queryTimeString = "type = '\(category)'"
         } else {
             queryTimeString = ""
         }
+        fetchOffset = offset
         return fetchInBackgroundContext()
     }
 }
