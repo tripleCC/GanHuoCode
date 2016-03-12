@@ -78,7 +78,7 @@ extension TPCCategoryDataSourceLoad {
     
     func loadFromCache(completion:(() -> ())) {
         TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock { () -> Void in
-            self.technicals.appendContentsOf(GanHuoObject.fetchWithNoPredicate())
+            self.technicals.appendContentsOf(GanHuoObject.fetchWithCategory(self.categoryTitle))
             dispatchAMain{ completion() }
         }
     }

@@ -84,8 +84,12 @@ extension GanHuoObjectFetch {
         queryTimeString = "objectId == '\(id)'"
         return fetchInBackgroundContext()
     }
-    static func fetchWithNoPredicate() -> [GanHuoObject] {
-        queryTimeString = ""
+    static func fetchWithCategory(category: String?) -> [GanHuoObject] {
+        if let category = category {
+            queryTimeString = "type = '\(category)'"
+        } else {
+            queryTimeString = ""
+        }
         return fetchInBackgroundContext()
     }
 }
