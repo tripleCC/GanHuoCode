@@ -66,6 +66,11 @@ public final class GanHuoObject: NSManagedObject ,TPCCoreDataHelper {
         createdAt = dict["createdAt"]?.stringValue ?? ""
         desc = dict["desc"]?.stringValue ?? ""
         url = dict["url"]?.stringValue ?? ""
+        calculateCellHeight()
+    }
+    
+    private func calculateCellHeight() {
+        cellHeight = TPCCategoryViewCell.cellHeightWithGanHuo(self)
     }
 }
 

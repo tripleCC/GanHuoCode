@@ -15,6 +15,12 @@ extension String {
         return str.boundingRectWithSize(CGSize(width: UIScreen.mainScreen().bounds.width, height: 10), options: NSStringDrawingOptions.UsesFontLeading, attributes: attributes, context: nil)
     }
     
+    public func heightWithFont(font: UIFont, width: CGFloat) -> CGFloat {
+        let str = self as NSString
+        let attributes = [NSFontAttributeName : font]
+        return str.boundingRectWithSize(CGSize(width: width, height: CGFloat(MAXFLOAT)), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributes, context: nil).size.height
+    }
+    
     public func ruleLabelBoundingRect() -> CGRect {
         let str = self as NSString
         let attributes = [NSFontAttributeName : TPCConfiguration.settingContentRuleLabelFont!]

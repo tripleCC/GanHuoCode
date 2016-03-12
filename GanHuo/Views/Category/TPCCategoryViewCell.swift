@@ -9,6 +9,13 @@
 import UIKit
 
 class TPCCategoryViewCell: UITableViewCell {
+    static func cellHeightWithGanHuo(ganhuo: GanHuoObject) -> CGFloat {
+        if let desc = ganhuo.desc {
+            return desc.heightWithFont(UIFont(name: UIFont.avenirBookFontName(), size: TPCConfiguration.themeCellBFontSize)!, width: TPCScreenWidth - 20) + 40
+        }
+        return 0
+    }
+    
     var ganhuo: GanHuoObject! {
         didSet {
             contentLabel.text = ganhuo.desc
