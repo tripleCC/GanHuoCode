@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		12E92B8827A2329C2999802B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */; };
+		D60B6F371C9427C900531423 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B6F361C9427C900531423 /* UIView+Extension.swift */; };
 		D60D12BF1C8D399300C84D4C /* TPCCategoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60D12BE1C8D399300C84D4C /* TPCCategoryDataSource.swift */; };
 		D61A92551C8AC82900FD594C /* GanHuoObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A92531C8AC82900FD594C /* GanHuoObject+CoreDataProperties.swift */; };
 		D61A92561C8AC82900FD594C /* GanHuoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A92541C8AC82900FD594C /* GanHuoObject.swift */; };
@@ -98,6 +99,7 @@
 		72EE590290576ABFA38A5059 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA83A096E1133C661EE95446 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D60B6F361C9427C900531423 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		D60D12BE1C8D399300C84D4C /* TPCCategoryDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCategoryDataSource.swift; sourceTree = "<group>"; };
 		D61A92531C8AC82900FD594C /* GanHuoObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GanHuoObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D61A92541C8AC82900FD594C /* GanHuoObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GanHuoObject.swift; sourceTree = "<group>"; };
@@ -457,6 +459,7 @@
 				D69797E51C2FBCA500A53CD2 /* UIViewController+Extension.swift */,
 				D667F9F81C5518920059F372 /* NSCalender+Extension.swift */,
 				D6C0E2BD1C872EBE0033EAFB /* UIColor+Extension.swift */,
+				D60B6F361C9427C900531423 /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 				D6DE71411C2592A300C066DE /* TPCCoreDataManager.swift in Sources */,
 				D6D8BFB81C82EB7000CCA370 /* TPCRefreshView.swift in Sources */,
 				D6DE71461C2592A300C066DE /* TPCPhotoUtil.swift in Sources */,
+				D60B6F371C9427C900531423 /* UIView+Extension.swift in Sources */,
 				D6DE714B1C2592A300C066DE /* TPCVenusUtil.swift in Sources */,
 				D66C25C11C53A31600E7D6A6 /* TPCActivityIndicator.swift in Sources */,
 				D6DE71381C2592A300C066DE /* UIButton+Extension.swift in Sources */,

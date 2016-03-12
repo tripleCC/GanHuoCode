@@ -14,7 +14,7 @@ class TPCTableView: UITableView, TPCRefreshable {
         return customView.subviews.first as! TPCRefreshView
     }
     var customView: UIView!
-    
+    var loadMoreFooterView: TPCNoMoreDataFooterView!
     override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
         if let last = visibleCells.last {
             let rowsIndex = numberOfRowsInSection(0) - 1
@@ -51,6 +51,18 @@ class TPCTableView: UITableView, TPCRefreshable {
         customView.backgroundColor = UIColor.clearColor()
         customView.frame = refreshControl.bounds
         refreshControl.addSubview(customView)
+        
+        loadMoreFooterView = TPCNoMoreDataFooterView.noMoreDataFooterView()
+        loadMoreFooterView.gotoWebAction = { [unowned self] in
+            self.viewController?.performSegueWithIdentifier("TechnicalVc2BrowserVc", sender: nil)
+            TPCUMManager.event(.TechinicalNoMoreData)
+        }
+        tableFooterView = loadMoreFooterView
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        loadMoreFooterView.bounds.size.height = TPCConfiguration.technicalTableViewFooterViewHeight
     }
 }
 

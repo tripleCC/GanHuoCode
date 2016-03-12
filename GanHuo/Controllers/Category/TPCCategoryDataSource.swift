@@ -47,7 +47,9 @@ typealias TPCCategoryDataSourceLoad = TPCCategoryDataSource
 extension TPCCategoryDataSourceLoad {
     func loadNewData() {
         loadNewRefreshing = true
+        tableView.loadMoreFooterView.hidden = true
         TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: 1) { (technicals, error) -> () in
+            self.tableView.loadMoreFooterView.hidden = technicals.count == 0
             self.technicals.removeAll()
             self.loadNewRefreshing = false
             self.refreshWithTechnicals(technicals, error: error)
@@ -55,8 +57,11 @@ extension TPCCategoryDataSourceLoad {
     }
     
     func loadMoreData() {
+        tableView.loadMoreFooterView.hidden = technicals.count == 0
+        tableView.loadMoreFooterView.beginRefresh()
         TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: page) { (technicals, error) -> () in
             self.refreshWithTechnicals(technicals, error: error)
+            self.tableView.loadMoreFooterView.endRefresh()
         }
     }
     

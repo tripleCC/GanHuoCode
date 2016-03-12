@@ -17,7 +17,6 @@ class TPCTechnicalViewController: TPCViewController {
             tableView.dataSource = self
             tableView.separatorStyle = UITableViewCellSeparatorStyle.None
             tableView.rowHeight = TPCConfiguration.technicalCellHeight
-            tableView.tableFooterView = noMoreDataFooterView
         }
     }
     private var technocals = [TPCTechnicalDictionary]()
@@ -31,7 +30,7 @@ class TPCTechnicalViewController: TPCViewController {
             if loadNoMoreData {
                 tableView.reloadData()
             }
-            tableView.tableFooterView?.hidden = !loadNoMoreData
+            tableView.loadMoreFooterView.type = loadNoMoreData ? .NoData : .LoadMore
         }
     }
     override func reloadTableView() {
@@ -60,17 +59,6 @@ class TPCTechnicalViewController: TPCViewController {
             return self.tableView.refreshing() && !self.loadingNew
         }
     }
-    
-    lazy var noMoreDataFooterView: TPCNoMoreDataFooterView = {
-        let footerView = TPCNoMoreDataFooterView.noMoreDataFooterView()
-        footerView.hidden = true
-        footerView.gotoWebAction = { [unowned self] in
-            self.performSegueWithIdentifier("TechnicalVc2BrowserVc", sender: nil)
-            TPCUMManager.event(.TechinicalNoMoreData)
-        }
-        debugPrint(footerView.bounds.height)
-        return footerView
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,13 +121,13 @@ class TPCTechnicalViewController: TPCViewController {
         super.viewDidLayoutSubviews()
         if let _ = navigationController {
             tableView.contentInset = UIEdgeInsets(top: TPCNavigationBarHeight + TPCConfiguration.technicalTableViewTopBottomMargin + TPCStatusBarHeight, left: 0, bottom: TPCConfiguration.technicalTableViewTopBottomMargin, right: 0)
-             tableView.tableFooterView?.bounds.size.height = TPCConfiguration.technicalTableViewFooterViewHeight
         }
     }
     
     private func loadNewData() {
         loadNoMoreData = false
         loadingNew = true
+        tableView.loadMoreFooterView.hidden = true
         tableView.beginRefreshViewAnimation()
         TPCNetworkUtil.shareInstance.loadNewData({ (technocals, categoriesArray) -> () in
             self.technocals = technocals
@@ -147,7 +135,12 @@ class TPCTechnicalViewController: TPCViewController {
             self.tableView.endRefreshing()
             self.loadingNew = false
             // 延迟0.5s，防抖动
-            dispatchSeconds(0.5) { self.reloadTableView() }
+            dispatchSeconds(0.5) {
+                self.reloadTableView()
+                if self.technocals.count > 0 {
+                    self.tableView.loadMoreFooterView.hidden = false
+                }
+            }
             }) { (type) -> () in
                 self.loadingNew = false
                 debugPrint(type.rawValue)
@@ -162,7 +155,14 @@ class TPCTechnicalViewController: TPCViewController {
             self.categoriesArray = categoriesArray
             self.loadingMore = false
             self.reloadTableView()
+            if technocals.count == 0 {
+                self.tableView.loadMoreFooterView.type = .NoData
+            } else {
+                self.tableView.loadMoreFooterView.type = .LoadMore
+                self.tableView.loadMoreFooterView.endRefresh()
+            }
         }
+        tableView.loadMoreFooterView.beginRefresh()
         TPCNetworkUtil.shareInstance.loadMoreData({ (technocals, categoriesArray) -> () in
             loadMoreDataAction(technocals, categoriesArray)
             }) { (type, technocals, categoriesArray) -> () in
@@ -246,7 +246,7 @@ extension TPCTechnicalViewController {
         }
         // 到顶部时不进行刷新
         if scrollView.contentOffset.y > 0 {
-            let expectedOffsetY = tableView.contentOffset.y + UIScreen.mainScreen().bounds.height - noMoreDataFooterView.bounds.height - TPCConfiguration.technicalTableViewTopBottomMargin
+            let expectedOffsetY = tableView.contentOffset.y + UIScreen.mainScreen().bounds.height - tableView.loadMoreFooterView.bounds.height - TPCConfiguration.technicalTableViewTopBottomMargin
             print(expectedOffsetY, scrollView.contentSize.height)
             if scrollView.contentSize.height >= expectedOffsetY {
                 loadMoreData()

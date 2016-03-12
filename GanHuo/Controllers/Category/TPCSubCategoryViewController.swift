@@ -13,7 +13,6 @@ class TPCSubCategoryViewController: UIViewController {
     var tableView: TPCTableView!
     var dataSource: TPCCategoryDataSource!
     var categoryTitle: String?
-    var page = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
@@ -22,17 +21,6 @@ class TPCSubCategoryViewController: UIViewController {
     override func loadView() {
         view = TPCTableView(frame: UIScreen.mainScreen().bounds, style: .Plain)
     }
-    
-    lazy var noMoreDataFooterView: TPCNoMoreDataFooterView = {
-        let footerView = TPCNoMoreDataFooterView.noMoreDataFooterView()
-        footerView.hidden = true
-        footerView.gotoWebAction = { [unowned self] in
-            self.performSegueWithIdentifier("TechnicalVc2BrowserVc", sender: nil)
-            TPCUMManager.event(.TechinicalNoMoreData)
-        }
-        debugPrint(footerView.bounds.height)
-        return footerView
-    }()
     
     private func setupSubviews() {
         let reuseIdentifier = "GanHuoCategoryCell"
@@ -44,7 +32,6 @@ class TPCSubCategoryViewController: UIViewController {
         dataSource.categoryTitle = categoryTitle
         tableView.dataSource = dataSource
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        tableView.tableFooterView = noMoreDataFooterView
     }
 }
 

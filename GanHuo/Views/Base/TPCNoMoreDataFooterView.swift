@@ -8,13 +8,34 @@
 
 import UIKit
 
+enum TPCFooterViewType: Int {
+    case LoadMore
+    case NoData
+}
+
 class TPCNoMoreDataFooterView: UIView {
     var gotoWebAction: (() -> ())?
     
     class func noMoreDataFooterView() -> TPCNoMoreDataFooterView {
         let footerView =  NSBundle.mainBundle().loadNibNamed("TPCNoMoreDataFooterView", owner: nil, options: nil).first as! TPCNoMoreDataFooterView
         footerView.bounds.size.height = TPCConfiguration.technicalTableViewFooterViewHeight
+        footerView.type = .LoadMore
         return footerView
+    }
+    
+    @IBOutlet weak var refreshView: TPCRefreshView! 
+    @IBOutlet weak var bottomLine: UIView!
+    var type: TPCFooterViewType = .LoadMore {
+        didSet {
+            let hide = type == .LoadMore
+            self.endLabel.hidden = hide
+            self.bottomLine.hidden = hide
+            self.endLineLeftImageView.hidden = hide
+            self.endLineRightImageView.hidden = hide
+            self.snowPointLabel.hidden = hide
+            self.gotoWebButton.hidden = hide
+            self.refreshView.hidden = !hide
+        }
     }
     
     @IBOutlet weak var endLabel: UILabel! {
@@ -54,5 +75,13 @@ class TPCNoMoreDataFooterView: UIView {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         debugPrint("点击了尾部")
+    }
+    
+    func beginRefresh() {
+        refreshView.addAnimation()
+        refreshView.prepareForAnimationWithScale(1.0)
+    }
+    func endRefresh() {
+        refreshView.endForAnimation()
     }
 }
