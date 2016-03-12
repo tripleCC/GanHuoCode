@@ -109,7 +109,6 @@ public class TPCNetworkUtil {
     
     init() {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        configuration.timeoutIntervalForResource = 3
         configuration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
         alamofire = Alamofire.Manager(configuration: configuration)
     }
@@ -213,19 +212,25 @@ extension TPCNetworkUtilLoadCategory {
         alamofire.request(.GET, TPCTechnicalType.Data(type, count, page).path())
                  .response { (request, response, data, errorType) -> Void in
                     var ganhuoArray = [GanHuoObject]()
+                    guard errorType == nil else {
+                        completion(technicals: ganhuoArray, error: errorType)
+                        return
+                    }
                     if let data = data {
                         if let results = JSON(data: data).dictionaryValue["results"] {
                             if case let technocalsArray = results.arrayValue where technocalsArray.count > 0 {
-                                TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlockAndWait({ () -> Void in
+                                TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock ({ () -> Void in
                                     technocalsArray.forEach {
                                         ganhuoArray.append(GanHuoObject.insertObjectInBackgroundContext($0.dictionaryValue))
+                                    }
+                                    dispatchAMain {
+                                        completion(technicals: ganhuoArray, error: errorType)
                                     }
                                     TPCCoreDataManager.shareInstance.saveContext()
                                 })
                             }
                         }
                     }
-                    completion(technicals: ganhuoArray, error: errorType)
         }
     }
 }

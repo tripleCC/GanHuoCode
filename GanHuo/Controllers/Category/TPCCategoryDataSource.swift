@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol TPCCategoryDataSourceDelegate: class {
-    func renderCell(cell: UITableViewCell, withObject object: AnyObject)
+    func renderCell(cell: UITableViewCell, withObject object: AnyObject?)
 }
 
 class TPCCategoryDataSource: NSObject {
@@ -66,7 +66,7 @@ extension TPCCategoryDataSourceLoad {
         } else {
             // 本地加载
             loadFromCache {
-                
+                self.tableView.reloadData()                
             }
         }
         self.page++
@@ -78,7 +78,8 @@ extension TPCCategoryDataSourceLoad {
     
     func loadFromCache(completion:(() -> ())) {
         TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock { () -> Void in
-            print(GanHuoObject.fetchWithNoPredicate())
+            self.technicals.appendContentsOf(GanHuoObject.fetchWithNoPredicate())
+            dispatchAMain{ completion() }
         }
     }
 }

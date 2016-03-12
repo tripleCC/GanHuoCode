@@ -51,10 +51,12 @@ class TPCSubCategoryViewController: UIViewController {
 }
 
 extension TPCSubCategoryViewController: TPCCategoryDataSourceDelegate {
-    func renderCell(cell: UITableViewCell, withObject object: AnyObject) {
-        let o = object as! GanHuoObject
-        let cell = cell as! TPCCategoryViewCell
-        cell.ganhuo = o
+    func renderCell(cell: UITableViewCell, withObject object: AnyObject?) {
+        if let o = object as? GanHuoObject {
+            let cell = cell as! TPCCategoryViewCell
+            cell.ganhuo = o
+        }
+        
     }
 }
 
