@@ -27,7 +27,7 @@
         <scene sceneID="qZ3-Ap-chr">
             <objects>
                 <navigationController id="3ds-RN-i2W" customClass="TPCNavigationController" customModule="GanHuo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="主页" id="Y4P-R5-Tba" userLabel="主页"/>
+                    <tabBarItem key="tabBarItem" title="主页" image="home" selectedImage="home-h" id="Y4P-R5-Tba" userLabel="主页"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aOw-5W-lIW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -64,7 +64,7 @@
         <scene sceneID="z4Q-Bo-aVb">
             <objects>
                 <navigationController id="v6A-sW-3mj" customClass="TPCNavigationController" customModule="GanHuo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="分类" id="Ry2-Su-4qy"/>
+                    <tabBarItem key="tabBarItem" title="分类" image="category" selectedImage="category-h" id="Ry2-Su-4qy"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5PY-zG-KkF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -81,7 +81,7 @@
         <scene sceneID="LUD-oh-kzJ">
             <objects>
                 <navigationController id="XPm-W6-iHP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我" id="0DE-Aj-tuO"/>
+                    <tabBarItem key="tabBarItem" title="我" image="me" selectedImage="me-h" id="0DE-Aj-tuO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0tC-uE-se3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -92,4 +92,12 @@
             <point key="canvasLocation" x="1762" y="1173"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="category" width="27" height="27"/>
+        <image name="category-h" width="27" height="27"/>
+        <image name="home" width="27" height="27"/>
+        <image name="home-h" width="27" height="27"/>
+        <image name="me" width="27" height="27"/>
+        <image name="me-h" width="27" height="27"/>
+    </resources>
 </document>

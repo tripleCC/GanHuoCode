@@ -13,6 +13,7 @@
 		D61A92561C8AC82900FD594C /* GanHuoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A92541C8AC82900FD594C /* GanHuoObject.swift */; };
 		D61CC8DE1C8DBC3000EDE97D /* TPCMarkReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61CC8DD1C8DBC3000EDE97D /* TPCMarkReadView.swift */; };
 		D65156551C85AD4E005B161B /* TPCSelectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65156541C85AD4E005B161B /* TPCSelectHeaderView.swift */; };
+		D6544A1F1C93C4CE0094DB3F /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6544A1E1C93C4CE0094DB3F /* UIScrollView+Extension.swift */; };
 		D65AA09B1C8A872A00A8C308 /* TPCCategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA0991C8A872A00A8C308 /* TPCCategoryViewCell.swift */; };
 		D65AA09C1C8A872A00A8C308 /* TPCCategoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65AA09A1C8A872A00A8C308 /* TPCCategoryViewCell.xib */; };
 		D667F9F11C53B19D0059F372 /* TPCArchivable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F01C53B19D0059F372 /* TPCArchivable.swift */; };
@@ -102,6 +103,7 @@
 		D61A92541C8AC82900FD594C /* GanHuoObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GanHuoObject.swift; sourceTree = "<group>"; };
 		D61CC8DD1C8DBC3000EDE97D /* TPCMarkReadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCMarkReadView.swift; sourceTree = "<group>"; };
 		D65156541C85AD4E005B161B /* TPCSelectHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCSelectHeaderView.swift; sourceTree = "<group>"; };
+		D6544A1E1C93C4CE0094DB3F /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		D65AA0991C8A872A00A8C308 /* TPCCategoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCategoryViewCell.swift; sourceTree = "<group>"; };
 		D65AA09A1C8A872A00A8C308 /* TPCCategoryViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCCategoryViewCell.xib; sourceTree = "<group>"; };
 		D667F9F01C53B19D0059F372 /* TPCArchivable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCArchivable.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 		D6DE70ED1C2592A300C066DE /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				D6544A1E1C93C4CE0094DB3F /* UIScrollView+Extension.swift */,
 				D6DE70EE1C2592A300C066DE /* CALayer+Extension.swift */,
 				D6DE70EF1C2592A300C066DE /* NSDate+Extension.swift */,
 				D6DE70F01C2592A300C066DE /* String+Extension.swift */,
@@ -644,6 +647,7 @@
 			files = (
 				D6D8BFD01C82EB7700CCA370 /* TPCTechnicalObject.swift in Sources */,
 				D6D8BFB51C82EB7000CCA370 /* TPCPageScrollView.swift in Sources */,
+				D6544A1F1C93C4CE0094DB3F /* UIScrollView+Extension.swift in Sources */,
 				D60D12BF1C8D399300C84D4C /* TPCCategoryDataSource.swift in Sources */,
 				D6D8BFC31C82EB7000CCA370 /* TPCApplicationTitleView.swift in Sources */,
 				D67CED971C85DE3600A38B0B /* TPCCategoryViewController.swift in Sources */,
