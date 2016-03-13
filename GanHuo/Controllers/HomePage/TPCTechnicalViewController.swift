@@ -63,7 +63,7 @@ class TPCTechnicalViewController: TPCViewController {
             return self.tableView.refreshing() && !self.loadingNew
         }
     }
-    
+    // MARK: 系统调用
     override func viewDidLoad() {
         super.viewDidLoad()
         TPCLaunchScreenView.showLaunchAniamtion()
@@ -78,19 +78,9 @@ class TPCTechnicalViewController: TPCViewController {
 //        UIFont.createAllTypeIcon()
     }
     
-    private func launchConfig(launchConfig: TPCLaunchConfig?) {
-        if let launchConfig = launchConfig {
-//                self.showUpdateView()
-            debugPrint(launchConfig.versionInfo?.version, launchConfig.versionInfo?.updateInfo)
-            TPCVersionUtil.versionInfo = launchConfig.versionInfo
-        } else {
-            TPCNetworkUtil.shareInstance.loadLaunchConfig({ (launchConfig) -> () in
-//                    self.showUpdateView()
-            debugPrint(launchConfig.versionInfo?.version, launchConfig.versionInfo?.updateInfo)
-                TPCVersionUtil.versionInfo = launchConfig.versionInfo
-                
-            })
-        }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        showTabBar()
     }
     
 //    private func showUpdateView() {
@@ -128,6 +118,7 @@ class TPCTechnicalViewController: TPCViewController {
         }
     }
     
+    // MARK: 网络请求
     private func loadNewData() {
         loadNoMoreData = false
         loadingNew = true
@@ -183,7 +174,23 @@ class TPCTechnicalViewController: TPCViewController {
                 debugPrint(type.rawValue)
         }
     }
+    
+    private func launchConfig(launchConfig: TPCLaunchConfig?) {
+        if let launchConfig = launchConfig {
+            //                self.showUpdateView()
+            debugPrint(launchConfig.versionInfo?.version, launchConfig.versionInfo?.updateInfo)
+            TPCVersionUtil.versionInfo = launchConfig.versionInfo
+        } else {
+            TPCNetworkUtil.shareInstance.loadLaunchConfig({ (launchConfig) -> () in
+                //                    self.showUpdateView()
+                debugPrint(launchConfig.versionInfo?.version, launchConfig.versionInfo?.updateInfo)
+                TPCVersionUtil.versionInfo = launchConfig.versionInfo
+                
+            })
+        }
+    }
 
+    // MARK: 控制器跳转
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "TechnicalVc2DetailVc" {
             if let detailVc = segue.destinationViewController as? TPCDetailViewController {
@@ -197,6 +204,28 @@ class TPCTechnicalViewController: TPCViewController {
                 browserVc.URLString = TPCGankIOURLString
             }
         }
+    }
+    
+    // MARK: 隐藏tabBar
+    private func hideTabBar() {
+        if let tabBarController = tabBarController as? TPCTabBarController {
+//            let tabBarMirror = tabBarController.createTabBarMirrorForView(view)
+            UIView.animateWithDuration(0.25, animations: { () -> Void in
+                tabBarController.tabBar.frame.origin.y += tabBarController.tabBar.frame.height
+//                tabBarMirror.alpha = 0
+            })
+        }
+    }
+    
+    private func showTabBar() {
+//        if let tabBarController = tabBarController as? TPCTabBarController {
+//            if tabBarController.tabBar.hidden {
+//                tabBarController.tabBar.transform = CGAffineTransformMakeTranslation(0, tabBarFrame!.size.height)
+//                UIView.animateWithDuration(0.25, animations: { () -> Void in
+//                    tabBarController.tabBar.transform = CGAffineTransformIdentity
+//                })
+//            }
+//        }
     }
 }
 
@@ -221,6 +250,7 @@ extension TPCTechnicalViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         guard !self.tableView.refreshing() else { return }
         if let cell = tableView.cellForRowAtIndexPath(indexPath) as? TPCTechnicalCell {
+            hideTabBar()
             let (beautyImageView, describeLabel) = cell.createSubviewsMirrorForView(view)
             view.addSubview(beautyImageView)
             view.addSubview(describeLabel)

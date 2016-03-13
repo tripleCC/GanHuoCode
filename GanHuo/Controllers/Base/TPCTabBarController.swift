@@ -13,7 +13,8 @@ class TPCTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.translucent = false
+        // opaque
+//        tabBar.translucent = false
         tabBar.backgroundImage = UIImage(color: UIColor.whiteColor())
         tabBar.shadowImage = UIImage()
     }
@@ -21,6 +22,14 @@ class TPCTabBarController: UITabBarController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func createTabBarMirrorForView(view: UIView) -> UIImageView {
+        let tabBarF = self.view.convertRect(tabBar.frame, toView: view)
+        let tabBarImageView = UIImageView(frame: tabBarF)
+        tabBarImageView.image = UIImage(layer: tabBar.layer)
+        view.addSubview(tabBarImageView)
+        return tabBarImageView
     }
     
     /*
