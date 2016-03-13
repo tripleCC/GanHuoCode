@@ -10,6 +10,12 @@ import UIKit
 
 class TPCCategoryViewController: TPCViewController {
     
+    @IBOutlet weak var favoriteView: TPCFavoriteGanHuoView! {
+        didSet {
+            favoriteView.hidden = true
+        }
+    }
+    @IBOutlet weak var headerContainerView: UIView!
     @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet weak var selectHeaderView: TPCSelectHeaderView! {
         didSet {
@@ -21,6 +27,26 @@ class TPCCategoryViewController: TPCViewController {
         super.viewDidLoad()
         setupChildController()
         navigationBarType = .Line
+        setupNav()
+    }
+    
+    private func setupNav() {
+        let segmentView = UISegmentedControl(items: ["分类", "收藏"])
+        segmentView.addTarget(self, action: "segmenViewOnClicked:", forControlEvents: UIControlEvents.ValueChanged)
+        segmentView.frame = CGRect(x: 0, y: 0, width: 150, height: 30)
+        segmentView.tintColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.8)
+        let titleFont = UIFont(name: TPCConfiguration.themeSFontName, size: 13.0)!
+        segmentView.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor(), NSFontAttributeName : titleFont], forState: .Selected)
+        segmentView.setTitleTextAttributes([NSFontAttributeName : titleFont], forState: .Normal)
+        segmentView.selectedSegmentIndex = 0
+        navigationItem.titleView = segmentView
+    }
+    
+    func segmenViewOnClicked(sender: UISegmentedControl) {
+        print(sender.selectedSegmentIndex)
+        favoriteView.hidden = sender.selectedSegmentIndex != 1
+        contentScrollView.hidden = !favoriteView.hidden
+        headerContainerView.hidden = contentScrollView.hidden
     }
 
     private func setupChildController() {

@@ -14,9 +14,16 @@ class TPCBroswerViewController: TPCViewController {
     var technical: TPCTechnicalObject? {
         didSet {
             self.URLString = technical?.url
+            if let id = technical?.objectId {
+                TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock({ () -> Void in
+                    self.ganhuo = GanHuoObject.fetchById(id).first
+                    print(self.ganhuo, id)
+                })
+            }
         }
     }
     var URLString: String?
+    var ganhuo: GanHuoObject?
     private lazy var webView: TPCWebView = {
         let configuration = WKWebViewConfiguration()
         configuration.allowsInlineMediaPlayback = true
@@ -107,11 +114,24 @@ class TPCBroswerViewController: TPCViewController {
     }
     
     func more() {
-        let messages = ["用浏览器打开"];
+        var messages = ["用浏览器打开"];
+        if let ganhuo = ganhuo {
+            messages.append(ganhuo.favorite == nil || !ganhuo.favorite!.boolValue ? "加入收藏" : "取消收藏")
+        }
         TPCPopoverView.showMessages(messages, containerSize: CGSize(width: 120, height: CGFloat(messages.count) * TPCPopViewDefaultCellHeight), fromView: navigationItem.rightBarButtonItem!.customView!, fadeDirection: TPCPopoverViewFadeDirection.RightTop) { (row) -> () in
             switch row {
             case 0:
                 self.openBySafari()
+            case 1:
+                TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock({ () -> Void in
+                    if self.ganhuo!.favorite == nil {
+                        self.ganhuo!.favorite = NSNumber(bool: false)
+                    }
+                    self.ganhuo!.favorite = NSNumber(bool: !self.ganhuo!.favorite!.boolValue)
+                    dispatchAMain {
+                        NSNotificationCenter.defaultCenter().postNotificationName(TPCFavoriteGanHuoChangeNotification, object: nil)
+                    }
+                })
             default:
                 return
             }

@@ -14,18 +14,20 @@ import SwiftyJSON
 /* http://stackoverflow.com/questions/25076276/unable-to-find-specific-subclass-of-nsmanagedobject */
 public final class GanHuoObject: NSManagedObject ,TPCCoreDataHelper {
     public typealias RawType = [String : JSON]
-    static var queryTimeString = ""
+    static var queryString = ""
+    static var sortString = "publishedAt"
     static var fetchOffset = 0
+    static var fetchLimit = TPCLoadGanHuoDataOnce
     static var request: NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: entityName)
-        fetchRequest.fetchLimit = TPCLoadGanHuoDataOnce
+        fetchRequest.fetchLimit = fetchLimit
         fetchRequest.fetchBatchSize = 20;
         fetchRequest.fetchOffset = fetchOffset
-        if queryTimeString.characters.count > 0 {
-            let predicate = NSPredicate(format: queryTimeString)
+        if queryString.characters.count > 0 {
+            let predicate = NSPredicate(format: queryString)
             fetchRequest.predicate = predicate
         }
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "publishedAt", ascending: false)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: sortString, ascending: false)]
         return fetchRequest
     }
     init(context: NSManagedObjectContext, dict: RawType) {
@@ -79,20 +81,27 @@ public final class GanHuoObject: NSManagedObject ,TPCCoreDataHelper {
 typealias GanHuoObjectFetch = GanHuoObject
 extension GanHuoObjectFetch {
     static func fetchByTime(time: (year: Int, month: Int, day: Int)) -> [GanHuoObject] {
-        queryTimeString = String(format: "publishedAt CONTAINS '%04ld-%02ld-%02ld'", time.year, time.month, time.day)
+        queryString = String(format: "publishedAt CONTAINS '%04ld-%02ld-%02ld'", time.year, time.month, time.day)
         return fetchInBackgroundContext()
     }
     static func fetchById(id: String) -> [GanHuoObject] {
-        queryTimeString = "objectId == '\(id)'"
+        queryString = "objectId == '\(id)'"
         return fetchInBackgroundContext()
     }
     static func fetchByCategory(category: String?, offset: Int) -> [GanHuoObject] {
         if let category = category {
-            queryTimeString = "type = '\(category)'"
+            queryString = "type == '\(category)'"
         } else {
-            queryTimeString = ""
+            queryString = ""
         }
         fetchOffset = offset
+        return fetchInBackgroundContext()
+    }
+    
+    static func fetchFavorite() -> [GanHuoObject] {
+        queryString = "favorite == \(NSNumber(bool: true))"
+        sortString = "favoriteAt"
+        fetchLimit = 1000
         return fetchInBackgroundContext()
     }
 }

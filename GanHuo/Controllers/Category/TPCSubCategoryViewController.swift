@@ -38,10 +38,11 @@ class TPCSubCategoryViewController: UIViewController {
         }
     }
     
-    private func pushToBrowserViewControllerWithURLString(URLString: String) {
+    private func pushToBrowserViewControllerWithURLString(URLString: String, ganhuo: GanHuoObject? = nil) {
         let sb = UIStoryboard(name: "HomePage", bundle: nil)
         let browserVc = sb.instantiateViewControllerWithIdentifier("BroswerViewController") as! TPCBroswerViewController
         browserVc.URLString = URLString
+        browserVc.ganhuo = ganhuo
         self.navigationController?.pushViewController(browserVc, animated: true)
     }
 }
@@ -65,7 +66,7 @@ extension TPCSubCategoryViewController: UITableViewDelegate {
             let url = ganhuo.url
             dispatchAMain {
                 if let url = url {
-                    self.pushToBrowserViewControllerWithURLString(url)
+                    self.pushToBrowserViewControllerWithURLString(url, ganhuo: ganhuo)
                 }
                 self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }

@@ -50,7 +50,7 @@ class TPCPopoverViewCell: UITableViewCell {
         
         contentView.backgroundColor = TPCPopViewDefaultThemeColor
         textLabel?.font = TPCPopViewDefaultFont
-        textLabel?.textAlignment = NSTextAlignment.Center
+        textLabel?.textAlignment = NSTextAlignment.Left
         textLabel?.textColor = TPCPopViewDefaultTextColor
         selectionStyle = UITableViewCellSelectionStyle.None
         contentView.addSubview(bottomLineView)
@@ -179,7 +179,8 @@ extension TPCPopoverView: UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! TPCPopoverViewCell
             cell.textLabel?.text = messages![indexPath.row]
-            cell.hideBottomLine = (indexPath.row == messages?.count ?? 0 - 1) || (messages?.count == 1)
+            print(indexPath.row, messages?.count)
+            cell.hideBottomLine = (indexPath.row == (messages?.count ?? 0) - 1) || (messages?.count == 1)
             return cell;
         }
     }
