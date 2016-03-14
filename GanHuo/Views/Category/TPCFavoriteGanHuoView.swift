@@ -40,7 +40,6 @@ class TPCFavoriteGanHuoView: UIView {
         tableView.registerNib(UINib(nibName: String(TPCCategoryViewCell.self), bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorStyle = .None
         tableView.tableFooterView = UIView()
         addSubview(tableView)
         
@@ -64,6 +63,7 @@ class TPCFavoriteGanHuoView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        tableView.separatorStyle = .None
         tableView.frame = bounds
         noFavoriteTipView.bounds.size = CGSize(width: 300, height: 100)
         noFavoriteTipView.center = tableView.center

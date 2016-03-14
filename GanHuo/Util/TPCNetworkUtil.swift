@@ -110,7 +110,6 @@ public class TPCNetworkUtil {
     init() {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
-        configuration.timeoutIntervalForRequest = 3.0
         alamofire = Alamofire.Manager(configuration: configuration)
     }
     
