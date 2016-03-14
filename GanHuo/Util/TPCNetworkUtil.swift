@@ -110,6 +110,7 @@ public class TPCNetworkUtil {
     init() {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
+        configuration.timeoutIntervalForRequest = 3.0
         alamofire = Alamofire.Manager(configuration: configuration)
     }
     
@@ -269,7 +270,7 @@ extension TPCNetworkUtilLoadHomePage {
         if let availableDays = TPCConfiguration.availableDays {
             let timeString = String(format: "%04d-%02d-%02d", time.year, time.month, time.day)
             if !availableDays.contains(timeString) {
-                debugPrint(timeString)
+                debugPrint(__FUNCTION__, timeString)
                 return false
             }
         } else {
@@ -287,6 +288,7 @@ extension TPCNetworkUtilLoadHomePage {
         TPCNetworkUtil.shareInstance
         alamofire.request(.GET, TPCTechnicalType.Day(year, month, day).path())
             .response(completionHandler: { (request, response, data, errorType) -> Void in
+                print(request, errorType)
                 // 移除已经下载好的请求
                 //                    dispatchGlobal() { self.removeRequest(request) }
                 dispatchGlobal({ () -> () in
@@ -334,9 +336,7 @@ extension TPCNetworkUtilLoadHomePage {
                         dispatchAMain() {
                             completion?(technicalDict, categories) }
                     }
-                    return
                 })
-                completion?(TPCTechnicalDictionary(), [String]())
             })
     }
     
