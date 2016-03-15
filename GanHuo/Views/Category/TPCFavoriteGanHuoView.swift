@@ -102,4 +102,21 @@ extension TPCFavoriteGanHuoView: UITableViewDataSource {
         }
         return TPCCategoryViewCell.cellHeightWithGanHuo(technicals[indexPath.row])
     }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let action = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "取消收藏") { (action, indexpath) -> Void in
+            TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlockAndWait({ () -> Void in
+                let ganhuo = self.technicals[indexPath.row]
+                ganhuo.favorite = NSNumber(bool: false)
+                self.technicals.removeAtIndex(indexPath.row)
+                TPCCoreDataManager.shareInstance.saveContext()
+                dispatchAMain({ () -> () in
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                })
+            })
+        }
+        action.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.2)
+//        action.backgroundEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        return [action]
+    }
 }
