@@ -62,7 +62,7 @@ extension TPCCategoryDataSourceLoad {
         tableView.loadMoreFooterView.hidden = technicals.count == 0
         tableView.loadMoreFooterView.beginRefresh()
         TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: page) { (technicals, error) -> () in
-            print(self.page, technicals.count)
+//            print(self.page, technicals.count)
             self.refreshWithTechnicals(technicals, error: error)
             self.tableView.loadMoreFooterView.endRefresh()
             self.loadMoreRefreshing = false

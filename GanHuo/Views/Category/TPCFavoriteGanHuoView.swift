@@ -51,6 +51,7 @@ class TPCFavoriteGanHuoView: UIView {
         TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock { () -> Void in
             self.technicals = GanHuoObject.fetchFavorite()
             dispatchAMain{
+                debugPrint(__FUNCTION__, "\(self.technicals.count)")
                 if self.technicals.count > 0 {
                     self.noFavoriteTipView.hidden = true
                     self.tableView.reloadData()

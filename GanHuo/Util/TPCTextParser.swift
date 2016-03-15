@@ -14,7 +14,7 @@ class TPCTextParser {
     }()
     
     func parseOriginString(string: String) -> String {
-        guard string.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) != 0 else { return string}
+        guard string.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) != 0 else { return string }
         let str = filterUnuseString(string)
         return str
     }

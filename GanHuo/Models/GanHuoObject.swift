@@ -16,6 +16,7 @@ public final class GanHuoObject: NSManagedObject ,TPCCoreDataHelper {
     public typealias RawType = [String : JSON]
     static var queryString = ""
     static var sortString = "publishedAt"
+    static var ascending = false
     static var fetchOffset = 0
     static var fetchLimit = TPCLoadGanHuoDataOnce
     static var request: NSFetchRequest {
@@ -27,7 +28,7 @@ public final class GanHuoObject: NSManagedObject ,TPCCoreDataHelper {
             let predicate = NSPredicate(format: queryString)
             fetchRequest.predicate = predicate
         }
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: sortString, ascending: false)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: sortString, ascending: ascending)]
         return fetchRequest
     }
     init(context: NSManagedObjectContext, dict: RawType) {
@@ -68,7 +69,7 @@ public final class GanHuoObject: NSManagedObject ,TPCCoreDataHelper {
         used = dict["used"]?.numberValue ?? NSNumber()
         type = dict["type"]?.stringValue ?? ""
         createdAt = dict["createdAt"]?.stringValue ?? ""
-        desc = dict["desc"]?.stringValue ?? ""
+        desc = TPCTextParser.shareTextParser.parseOriginString(dict["desc"]?.stringValue ?? "")
         url = dict["url"]?.stringValue ?? ""
         calculateCellHeight()
     }

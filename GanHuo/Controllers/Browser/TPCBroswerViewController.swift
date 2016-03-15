@@ -128,6 +128,7 @@ class TPCBroswerViewController: TPCViewController {
                         self.ganhuo!.favorite = NSNumber(bool: false)
                     }
                     self.ganhuo!.favorite = NSNumber(bool: !self.ganhuo!.favorite!.boolValue)
+                    self.ganhuo!.favoriteAt = String(NSDate().timeIntervalSince1970)
                     dispatchAMain {
                         NSNotificationCenter.defaultCenter().postNotificationName(TPCFavoriteGanHuoChangeNotification, object: nil)
                     }
