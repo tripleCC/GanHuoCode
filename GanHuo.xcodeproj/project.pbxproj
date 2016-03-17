@@ -28,6 +28,8 @@
 		D69797E61C2FBCA500A53CD2 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69797E51C2FBCA500A53CD2 /* UIViewController+Extension.swift */; };
 		D6C0E2BC1C871F5F0033EAFB /* TPCFetchedResultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C0E2BB1C871F5E0033EAFB /* TPCFetchedResultsDataSource.swift */; };
 		D6C0E2BE1C872EBE0033EAFB /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C0E2BD1C872EBE0033EAFB /* UIColor+Extension.swift */; };
+		D6C562C01C99959E00D8F0FA /* TPCCategoryEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C562BF1C99959E00D8F0FA /* TPCCategoryEditView.swift */; };
+		D6C562C21C9995BA00D8F0FA /* TPCCategoryEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6C562C11C9995BA00D8F0FA /* TPCCategoryEditView.xib */; };
 		D6D8BF4C1C82D26F00CCA370 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6D8BF4A1C82D26F00CCA370 /* Main.storyboard */; };
 		D6D8BF861C82EB6600CCA370 /* TPCNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF781C82EB6600CCA370 /* TPCNavigationController.swift */; };
 		D6D8BF871C82EB6600CCA370 /* TPCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF791C82EB6600CCA370 /* TPCViewController.swift */; };
@@ -122,6 +124,8 @@
 		D69797E51C2FBCA500A53CD2 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		D6C0E2BB1C871F5E0033EAFB /* TPCFetchedResultsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCFetchedResultsDataSource.swift; sourceTree = "<group>"; };
 		D6C0E2BD1C872EBE0033EAFB /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		D6C562BF1C99959E00D8F0FA /* TPCCategoryEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCategoryEditView.swift; sourceTree = "<group>"; };
+		D6C562C11C9995BA00D8F0FA /* TPCCategoryEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCCategoryEditView.xib; sourceTree = "<group>"; };
 		D6D8BF4B1C82D26F00CCA370 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D6D8BF781C82EB6600CCA370 /* TPCNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCNavigationController.swift; sourceTree = "<group>"; };
 		D6D8BF791C82EB6600CCA370 /* TPCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCViewController.swift; sourceTree = "<group>"; };
@@ -387,6 +391,8 @@
 				D61CC8DD1C8DBC3000EDE97D /* TPCMarkReadView.swift */,
 				D60B6F561C95801800531423 /* TPCFavoriteGanHuoView.swift */,
 				D60B6F581C95A2E200531423 /* TPCNoFavoriteTipView.xib */,
+				D6C562BF1C99959E00D8F0FA /* TPCCategoryEditView.swift */,
+				D6C562C11C9995BA00D8F0FA /* TPCCategoryEditView.xib */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -551,6 +557,7 @@
 				TargetAttributes = {
 					D6DE6FB81C25904C00C066DE = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 7DG5WQWWY9;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -591,6 +598,7 @@
 				D6D8BFC51C82EB7000CCA370 /* TPCLaunchScreenView.xib in Resources */,
 				D6D8BFBA1C82EB7000CCA370 /* TPCShareView.xib in Resources */,
 				D6DE71271C2592A300C066DE /* Assets.xcassets in Resources */,
+				D6C562C21C9995BA00D8F0FA /* TPCCategoryEditView.xib in Resources */,
 				D6D8BFB71C82EB7000CCA370 /* TPCRefreshContentsView.xib in Resources */,
 				D6D8BFB41C82EB7000CCA370 /* TPCNoMoreDataFooterView.xib in Resources */,
 				D6DE71281C2592A300C066DE /* HomePage.storyboard in Resources */,
@@ -705,6 +713,7 @@
 				D6DE71401C2592A300C066DE /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				D6D8BFC11C82EB7000CCA370 /* TPCDetailViewCell.swift in Sources */,
 				D6D8BFB31C82EB7000CCA370 /* TPCNoMoreDataFooterView.swift in Sources */,
+				D6C562C01C99959E00D8F0FA /* TPCCategoryEditView.swift in Sources */,
 				D6D8BFC21C82EB7000CCA370 /* TPCTechnicalCell.swift in Sources */,
 				D6D8BF901C82EB6600CCA370 /* TPCShowContentController.swift in Sources */,
 				D667F9F91C5518920059F372 /* NSCalender+Extension.swift in Sources */,
