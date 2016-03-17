@@ -9,8 +9,23 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TPCCategoryEditView" customModule="GanHuo" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="393" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gf5-Qe-16H">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="600"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Gf5-Qe-16H" secondAttribute="trailing" id="1g3-mX-WGm"/>
+                <constraint firstItem="Gf5-Qe-16H" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Qef-7W-8os"/>
+                <constraint firstItem="Gf5-Qe-16H" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qHl-Zn-HEN"/>
+                <constraint firstAttribute="bottom" secondItem="Gf5-Qe-16H" secondAttribute="bottom" id="wtY-7q-2yq"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="tableView" destination="Gf5-Qe-16H" id="Avd-vZ-VQN"/>
+            </connections>
             <point key="canvasLocation" x="258.5" y="355"/>
         </view>
     </objects>
