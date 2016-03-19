@@ -96,6 +96,7 @@ extension GanHuoObjectFetch {
             queryString = ""
         }
         fetchOffset = offset
+        fetchLimit = TPCLoadGanHuoDataOnce
         return fetchInBackgroundContext()
     }
     

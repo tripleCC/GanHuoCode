@@ -99,6 +99,7 @@ extension TPCCategoryDataSourceLoad {
     func loadFromCache(completion:(() -> ())) {
         TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock { () -> Void in
             let fetchResults = GanHuoObject.fetchByCategory(self.categoryTitle, offset: self.technicals.count)
+            debugPrint(fetchResults.count, self.technicals.count)
             if fetchResults.count > 0 {
                 self.technicals.appendContentsOf(fetchResults)
                 self.page++
