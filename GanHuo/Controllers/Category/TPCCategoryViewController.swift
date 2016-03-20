@@ -41,6 +41,7 @@ class TPCCategoryViewController: TPCViewController {
         view.insertSubview(editView, belowSubview: headerContainerView)
         editView.selectedAction = { editView in
             self.arrowButtonOnClicked(self.arrowButton)
+            // 有可能调整顺序后，还没有加载的页面刚好在当前页面，所以UIScrollView的代理方法不会被调用，也就不会主动加载数据
             self.loadControllerView()
         }
     }
