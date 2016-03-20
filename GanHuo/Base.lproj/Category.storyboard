@@ -36,6 +36,45 @@
                                             <constraint firstAttribute="height" constant="30" id="cHF-dp-1Ts"/>
                                         </constraints>
                                     </view>
+                                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ds0-Dq-IdV" userLabel="EditHeaderView">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EhJ-zc-lWs">
+                                                <rect key="frame" x="494" y="0.0" width="56" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="调整顺序">
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="selected" title="完成">
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="sortButtonOnClicked:" destination="1I0-2k-wFU" eventType="touchUpInside" id="XJS-C6-u8B"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NU3-cu-rRW">
+                                                <rect key="frame" x="10" y="0.0" width="56" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="选择分类">
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="selected" title="按住右边的按钮拖动排序">
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="EhJ-zc-lWs" secondAttribute="bottom" id="MMB-KU-ETr"/>
+                                            <constraint firstAttribute="bottom" secondItem="NU3-cu-rRW" secondAttribute="bottom" id="eAF-Gw-dbe"/>
+                                            <constraint firstAttribute="trailing" secondItem="EhJ-zc-lWs" secondAttribute="trailing" constant="10" id="jOi-69-5e0"/>
+                                            <constraint firstItem="EhJ-zc-lWs" firstAttribute="top" secondItem="ds0-Dq-IdV" secondAttribute="top" id="lVc-LB-oHb"/>
+                                            <constraint firstItem="NU3-cu-rRW" firstAttribute="leading" secondItem="ds0-Dq-IdV" secondAttribute="leading" constant="10" id="nF1-yw-hMq"/>
+                                            <constraint firstItem="NU3-cu-rRW" firstAttribute="top" secondItem="ds0-Dq-IdV" secondAttribute="top" id="qVK-la-Q8H"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I2W-QB-zbl" customClass="TPCGradientView" customModule="GanHuo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="10" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -94,14 +133,17 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="ds0-Dq-IdV" firstAttribute="bottom" secondItem="J0j-G8-j9W" secondAttribute="bottom" id="4B7-uz-fXp"/>
                                     <constraint firstItem="QZX-ZG-emX" firstAttribute="leading" secondItem="mgF-mo-keP" secondAttribute="trailing" id="4lq-3n-2iO"/>
                                     <constraint firstItem="J0j-G8-j9W" firstAttribute="leading" secondItem="tZy-Wo-Nyl" secondAttribute="leading" id="5bX-ME-35L"/>
                                     <constraint firstItem="QZX-ZG-emX" firstAttribute="leading" secondItem="J0j-G8-j9W" secondAttribute="trailing" id="HBJ-5Q-lEx"/>
                                     <constraint firstAttribute="height" constant="30" id="KHg-gc-hNj"/>
                                     <constraint firstItem="J0j-G8-j9W" firstAttribute="top" secondItem="tZy-Wo-Nyl" secondAttribute="top" id="Qnl-Kc-SQ0"/>
+                                    <constraint firstItem="ds0-Dq-IdV" firstAttribute="leading" secondItem="J0j-G8-j9W" secondAttribute="leading" id="TJU-DD-EqV"/>
                                     <constraint firstItem="QZX-ZG-emX" firstAttribute="top" secondItem="tZy-Wo-Nyl" secondAttribute="top" id="Uf0-4t-tdg"/>
+                                    <constraint firstItem="ds0-Dq-IdV" firstAttribute="trailing" secondItem="J0j-G8-j9W" secondAttribute="trailing" id="WAP-fR-Wxq"/>
                                     <constraint firstItem="I2W-QB-zbl" firstAttribute="top" secondItem="tZy-Wo-Nyl" secondAttribute="top" id="Wwu-74-TQn"/>
                                     <constraint firstAttribute="bottom" secondItem="I2W-QB-zbl" secondAttribute="bottom" id="Zvs-Ud-phd"/>
                                     <constraint firstAttribute="trailing" secondItem="QZX-ZG-emX" secondAttribute="trailing" id="aXx-dA-EIE"/>
@@ -111,6 +153,7 @@
                                     <constraint firstAttribute="trailing" secondItem="4Lg-aS-e0K" secondAttribute="trailing" id="k0k-Ml-grF"/>
                                     <constraint firstAttribute="bottom" secondItem="QZX-ZG-emX" secondAttribute="bottom" constant="1" id="pEV-Le-Pie"/>
                                     <constraint firstItem="I2W-QB-zbl" firstAttribute="leading" secondItem="tZy-Wo-Nyl" secondAttribute="leading" id="pYJ-9M-JWG"/>
+                                    <constraint firstItem="ds0-Dq-IdV" firstAttribute="top" secondItem="J0j-G8-j9W" secondAttribute="top" id="qtf-ng-t46"/>
                                     <constraint firstAttribute="bottom" secondItem="mgF-mo-keP" secondAttribute="bottom" id="rb6-j2-Txa"/>
                                     <constraint firstItem="4Lg-aS-e0K" firstAttribute="leading" secondItem="tZy-Wo-Nyl" secondAttribute="leading" id="xIR-IU-XNF"/>
                                 </constraints>
@@ -145,10 +188,14 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="arrowButton" destination="QZX-ZG-emX" id="MZl-PT-c8a"/>
                         <outlet property="contentScrollView" destination="U1m-Tp-br6" id="ncD-8C-oGj"/>
+                        <outlet property="editHeaderView" destination="ds0-Dq-IdV" id="CS9-pU-XIP"/>
                         <outlet property="favoriteView" destination="IE7-zg-OrV" id="HWC-uh-vWE"/>
                         <outlet property="headerContainerView" destination="tZy-Wo-Nyl" id="x5A-ZK-bBk"/>
                         <outlet property="selectHeaderView" destination="J0j-G8-j9W" id="7ar-Vo-Gjh"/>
+                        <outlet property="sortButton" destination="EhJ-zc-lWs" id="CqZ-xJ-MgR"/>
+                        <outlet property="tipButton" destination="NU3-cu-rRW" id="N0l-hP-ZRp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mzF-UP-Qfy" userLabel="First Responder" sceneMemberID="firstResponder"/>

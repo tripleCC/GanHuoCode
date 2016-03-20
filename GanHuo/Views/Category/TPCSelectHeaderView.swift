@@ -17,11 +17,25 @@ protocol TPCSelectHeaderViewDelegate : class {
 class TPCSelectHeaderView: UIView {
     var titles: [String]! {
         didSet {
-            addButtonItems()
+            if titleButtons.count > 0 {
+                sortTitleButtons()
+            } else {
+                addButtonItems()
+            }
         }
     }
     var selectedTitle: String? {
-        return disabledButton?.titleForState(.Normal)
+        get {
+            return disabledButton?.titleForState(.Normal)
+        }
+        set {
+            if let title = newValue {
+                debugPrint(__FUNCTION__, title)
+                if let index = titles.indexOf(title) {
+                    setDisabledButtonWithButtonIndex(index)
+                }
+            }
+        }
     }
     var contentSize: CGSize {
         return scrollView.contentSize
@@ -96,9 +110,14 @@ class TPCSelectHeaderView: UIView {
             button.backgroundColor = UIColor.clearColor()
             scrollView.addSubview(button)
             titleButtons.append(button)
-            print(title)
         }
         disabledButton = titleButtons.first
+    }
+    
+    private func sortTitleButtons() {
+        for (idx, button) in titleButtons.enumerate() {
+            button.setTitle(titles[idx], forState: .Normal)
+        }
     }
 
     func setupSubviewsFrame() {

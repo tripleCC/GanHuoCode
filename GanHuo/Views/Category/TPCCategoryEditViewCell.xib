@@ -23,21 +23,23 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5X1-AC-KM5">
                         <rect key="frame" x="10" y="10" width="265" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cSB-tX-Lgk" customClass="TPCSystemButton" customModule="GanHuo" customModuleProvider="target">
+                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cSB-tX-Lgk" customClass="TPCSystemButton" customModule="GanHuo" customModuleProvider="target">
                         <rect key="frame" x="285" y="9" width="25" height="25"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="Jqb-EE-S9M"/>
                             <constraint firstAttribute="height" constant="25" id="ZOI-xh-rna"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="enable" value="NO"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="1aq-cF-KzY" secondAttribute="bottom" id="FJA-Gi-WVu"/>
-                    <constraint firstItem="5X1-AC-KM5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Ixy-aQ-k9a"/>
                     <constraint firstAttribute="trailing" secondItem="1aq-cF-KzY" secondAttribute="trailing" id="Jd4-rV-9rp"/>
                     <constraint firstItem="cSB-tX-Lgk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="MYh-l3-Xzl"/>
                     <constraint firstAttribute="trailing" secondItem="cSB-tX-Lgk" secondAttribute="trailing" constant="10" id="Ngt-oG-Khk"/>
@@ -50,11 +52,16 @@
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="ewU-be-u0O"/>
                         <exclude reference="hrz-1Q-eWJ"/>
                         <exclude reference="hnX-PX-Tzo"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="5X1-AC-KM5" firstAttribute="leading" secondItem="KGk-i7-Jjw" secondAttribute="leading" constant="10" id="4Ic-y9-qpP"/>
+                <constraint firstItem="1aq-cF-KzY" firstAttribute="leading" secondItem="KGk-i7-Jjw" secondAttribute="leading" id="L8H-H7-1J7"/>
+            </constraints>
             <connections>
                 <outlet property="categoryLabel" destination="5X1-AC-KM5" id="ffb-cy-BWB"/>
                 <outlet property="selectButton" destination="cSB-tX-Lgk" id="eeS-xD-HLK"/>

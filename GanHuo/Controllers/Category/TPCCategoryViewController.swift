@@ -15,6 +15,13 @@ class TPCCategoryViewController: TPCViewController {
             favoriteView.hidden = true
         }
     }
+    @IBOutlet weak var tipButton: UIButton! {
+        didSet {
+//            tipButton.
+        }
+    }
+    @IBOutlet weak var arrowButton: UIButton!
+    @IBOutlet weak var sortButton: UIButton!
     @IBOutlet weak var headerContainerView: UIView!
     @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet weak var selectHeaderView: TPCSelectHeaderView! {
@@ -22,12 +29,20 @@ class TPCCategoryViewController: TPCViewController {
             selectHeaderView.delegate = self
         }
     }
+    @IBOutlet weak var editHeaderView: UIView!
+    var childControllers = [TPCSubCategoryViewController]()
+    var editView = TPCCategoryEditView.editView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupChildController()
         navigationBarType = .Line
         setupNav()
+        view.insertSubview(editView, belowSubview: headerContainerView)
+        editView.selectedAction = { editView in
+            self.arrowButtonOnClicked(self.arrowButton)
+            self.loadControllerView()
+        }
     }
     
     private func setupNav() {
@@ -47,46 +62,112 @@ class TPCCategoryViewController: TPCViewController {
         favoriteView.hidden = sender.selectedSegmentIndex != 1
         contentScrollView.hidden = !favoriteView.hidden
         headerContainerView.hidden = contentScrollView.hidden
+        editHeaderView.hidden = contentScrollView.hidden
+        editView.hidden = editHeaderView.hidden
     }
 
     private func setupChildController() {
-        TPCConfiguration.allCategories.filter{ $0 != "福利" }.forEach {
+        let titles = TPCStorageUtil.objectForKey(TPCCategoryStoreKey) as? [String] ?? TPCConfiguration.allCategories
+        titles.filter{ $0 != "福利" }.forEach {
             let subCategoryVc = TPCSubCategoryViewController()
-            subCategoryVc.navigationItem.title = $0
-            self.addChildViewController(subCategoryVc)
+            subCategoryVc.title = $0
+            addChildViewController(subCategoryVc)
+            childControllers.append(subCategoryVc)
         }
         contentScrollView.contentSize.width = CGFloat(childViewControllers.count) * TPCScreenWidth
         automaticallyAdjustsScrollViewInsets = false
-        selectHeaderView.titles = childViewControllers.map{ $0.navigationItem.title! }
+        selectHeaderView.titles =  childViewControllers.map{ $0.title! }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         selectHeaderView.setupSubviewsFrame()
-        scrollViewDidEndScrollingAnimation(contentScrollView)
+        if !arrowButton.selected {
+            scrollViewDidEndScrollingAnimation(contentScrollView)
+            editView.frame = contentScrollView.frame
+            editView.frame.origin.y = headerContainerView.frame.maxY - contentScrollView.frame.height
+        }
     }
     
     @IBAction func arrowButtonOnClicked(sender: AnyObject) {
         let arrowButton = sender as! UIButton
+        arrowButton.selected = !arrowButton.selected
         let isSelected = arrowButton.selected
+        debugPrint(isSelected)
+        if !isSelected {
+            TPCStorageUtil.setObject(editView.categories, forKey: TPCCategoryStoreKey)
+            adjustChildControllersViewFrame()
+            selectHeaderView.titles = editView.categories
+            selectHeaderView.selectedTitle = editView.selectedCategory
+            adjustContentViewOffsetByDisableButton(selectHeaderView.disabledButton!)
+        } else {
+            editView.categories = selectHeaderView.titles
+            editView.selectedCategory = selectHeaderView.selectedTitle
+        }
         
         UIView.animateWithDuration(0.25, animations: { () -> Void in
-                arrowButton.imageView!.transform = CGAffineTransformRotate(arrowButton.imageView!.transform, CGFloat(M_PI))
-//            if isSelected {
-//
-//            }
+            arrowButton.imageView!.transform = CGAffineTransformRotate(arrowButton.imageView!.transform, CGFloat(M_PI))
+            self.editHeaderView.alpha = isSelected ? 1 : 0
+            if isSelected {
+                self.editView.transform = CGAffineTransformMakeTranslation(0, self.editView.bounds.height)
+            } else {
+                self.editView.transform = CGAffineTransformIdentity
+            }
             }) { (finished) -> Void in
-                
+                if !isSelected {
+                    self.editView.type = .Select
+                    self.sortButton.selected = false
+                    self.tipButton.selected = false
+                }
         }
-        arrowButton.selected = !arrowButton.selected
+    }
+    
+    private func adjustChildControllersViewFrame() {
+        // 根据调整的分类顺序排序子控制器
+        var childControllersTemp = [TPCSubCategoryViewController]()
+        for category in editView.categories {
+            for vc in childControllers {
+                if category == vc.title {
+                    childControllersTemp.append(vc)
+                }
+            }
+        }
+        childControllers = childControllersTemp
+        
+        // 调整已显示的子控制器view的坐标
+        childControllers.forEach{
+            if let title = $0.categoryTitle {
+                if let index = editView.categories.indexOf(title) {
+                    $0.view.frame = CGRect(origin: CGPoint(x: CGFloat(index) * contentScrollView.frame.size.width, y: 0), size: contentScrollView.frame.size)
+                }
+            }
+        }
+        debugPrint(childControllers.map{ $0.categoryTitle }, childControllers.map{ $0.title })
+    }
+    
+    @IBAction func sortButtonOnClicked(sender: UIButton) {
+        if sender.selected {
+            sender.titleLabel?.text = "调整顺序"
+            tipButton.titleLabel?.text = "选择分类"
+            editView.type = .Select
+        } else {
+            sender.titleLabel?.text = "完成"
+            tipButton.titleLabel?.text = "按住右边的按钮拖动排序"
+            editView.type = .Edit
+        }
+        sender.selected = !sender.selected
+        tipButton.selected = sender.selected
     }
 }
 
 extension TPCCategoryViewController : TPCSelectHeaderViewDelegate {
     func selectHeaderView(view: TPCSelectHeaderView, didSelectButton button: UIButton) {
+        adjustContentViewOffsetByDisableButton(button)
+    }
+    
+    private func adjustContentViewOffsetByDisableButton(button: UIButton, animate: Bool = true) {
         let contentOffsetX = button.frame.origin.x / button.frame.size.width * contentScrollView.frame.size.width
         contentScrollView.setContentOffset(CGPoint(x: contentOffsetX, y: 0), animated: true)
-        print(contentOffsetX)
     }
 }
 
@@ -106,10 +187,16 @@ extension TPCCategoryViewController : UIScrollViewDelegate {
     }
     
     private func loadControllerViewByIndex(index: Int) {
-        let showingVc = childViewControllers[index] as! TPCSubCategoryViewController
+        let showingVc = childControllers[index]
+        debugPrint(__FUNCTION__, showingVc.title, showingVc.isViewLoaded())
         guard !showingVc.isViewLoaded() else { return }
         showingVc.categoryTitle = selectHeaderView.selectedTitle
         showingVc.view.frame = CGRect(origin: CGPoint(x: CGFloat(index) * contentScrollView.frame.size.width, y: 0), size: contentScrollView.frame.size)
         contentScrollView.addSubview(showingVc.tableView)
+    }
+    
+    private func loadControllerView() {
+        let index = contentScrollView.contentOffset.x / contentScrollView.frame.size.width
+        loadControllerViewByIndex(Int(index))
     }
 }

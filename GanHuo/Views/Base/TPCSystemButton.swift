@@ -72,6 +72,7 @@ class TPCSystemButton: UIView {
     }
     
     func circleViewDidTouchUpInside() {
+        debugPrint("system button on clicked")
         UIView.animateWithDuration(0.2, delay: 0.1, usingSpringWithDamping: 5, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
             self.circleView.transform = CGAffineTransformIdentity
             }) { (finished) -> Void in

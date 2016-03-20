@@ -18,7 +18,11 @@ class TPCCategoryEditViewCell: UITableViewCell {
     }
     
     @IBOutlet weak var selectButton: TPCSystemButton!
-    
+    var enable: Bool = false {
+        didSet {
+            selectButton.enable = enable
+        }
+    }
     var type: TPCCategoryEditType! {
         didSet {
             selectButton.hidden = type == .Edit
