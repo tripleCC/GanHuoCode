@@ -107,7 +107,7 @@ extension TPCSubCategoryViewController: UIScrollViewDelegate {
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if let indexPath = tableView.indexPathForRowAtPoint(CGPoint(x: 1, y: targetContentOffset.memory.y)) {
-            if Double(indexPath.row) > Double(dataSource.technicals.count) - Double(TPCLoadGanHuoDataOnce) * 0.5 {
+            if Double(indexPath.row) >= Double(dataSource.technicals.count) - Double(TPCLoadGanHuoDataOnce) * 0.7 {
                 dataSource.loadMoreData()
             }
         }
