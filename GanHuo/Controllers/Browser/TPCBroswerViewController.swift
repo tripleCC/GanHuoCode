@@ -14,10 +14,9 @@ class TPCBroswerViewController: TPCViewController {
     var technical: TPCTechnicalObject? {
         didSet {
             self.URLString = technical?.url
-            if let id = technical?.objectId {
+            if let rawData = technical?.rawData {
                 TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock({ () -> Void in
-                    self.ganhuo = GanHuoObject.fetchById(id).first
-                    print(self.ganhuo, id)
+                    self.ganhuo = GanHuoObject.insertObjectInBackgroundContext(rawData)
                 })
             }
         }
@@ -124,11 +123,13 @@ class TPCBroswerViewController: TPCViewController {
                 self.openBySafari()
             case 1:
                 TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock({ () -> Void in
-                    if self.ganhuo!.favorite == nil {
-                        self.ganhuo!.favorite = NSNumber(bool: false)
+                    if self.ganhuo != nil {
+                        if self.ganhuo!.favorite == nil {
+                            self.ganhuo!.favorite = NSNumber(bool: false)
+                        }
+                        self.ganhuo!.favorite = NSNumber(bool: !self.ganhuo!.favorite!.boolValue)
+                        self.ganhuo!.favoriteAt = String(NSDate().timeIntervalSince1970)
                     }
-                    self.ganhuo!.favorite = NSNumber(bool: !self.ganhuo!.favorite!.boolValue)
-                    self.ganhuo!.favoriteAt = String(NSDate().timeIntervalSince1970)
                     dispatchAMain {
                         NSNotificationCenter.defaultCenter().postNotificationName(TPCFavoriteGanHuoChangeNotification, object: nil)
                     }

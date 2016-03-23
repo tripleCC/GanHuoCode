@@ -11,6 +11,7 @@ import SwiftyJSON
 
 public struct TPCTechnicalObject: TPCGanHuo {
     public typealias RawType = [String : JSON]
+    var rawData: RawType?
     var who: String!
     var publishedAt: String!
     var desc: String!
@@ -21,6 +22,7 @@ public struct TPCTechnicalObject: TPCGanHuo {
     var createdAt: String!
     
     public init (dict: RawType) {
+        rawData = dict
         who = dict["who"]?.stringValue ?? ""
         publishedAt = dict["publishedAt"]?.stringValue ?? ""
         objectId = dict["_id"]?.stringValue ?? ""
@@ -28,8 +30,7 @@ public struct TPCTechnicalObject: TPCGanHuo {
         type = dict["type"]?.stringValue ?? ""
         createdAt = dict["createdAt"]?.stringValue ?? ""
         desc = dict["desc"]?.stringValue ?? ""
-        url = dict["url"]?.stringValue ?? ""
-        
+        url = dict["url"]?.stringValue ?? "" 
     }
     
     public init () {
