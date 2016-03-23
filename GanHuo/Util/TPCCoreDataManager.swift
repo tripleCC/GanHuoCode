@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 protocol TPCCoreDataHelper {
-    typealias RawType
+    associatedtype RawType
     static var entityName: String { get }
     static var request: NSFetchRequest { get }
     init(context: NSManagedObjectContext, dict: RawType)

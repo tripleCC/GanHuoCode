@@ -208,9 +208,8 @@ extension TPCStorageUtil {
         return [TPCRuleType.Two, TPCRuleType.Three]
     }
     
-    static func saveImageAlpha(var imageAlpha: Float) {
-        imageAlpha = imageAlpha == 0 ? -1 : imageAlpha
-        setFloat(imageAlpha, forKey: TPCSetPictureTransparencyKey)
+    static func saveImageAlpha(imageAlpha: Float) {
+        setFloat(imageAlpha == 0 ? -1 : imageAlpha, forKey: TPCSetPictureTransparencyKey)
         saveCloudConfiguration()
     }
     

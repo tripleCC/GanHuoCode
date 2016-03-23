@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 
 public protocol TPCGanHuo {
-    typealias RawType
+    associatedtype RawType
     init (dict: RawType)
 }
 

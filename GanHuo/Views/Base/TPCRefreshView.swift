@@ -67,10 +67,10 @@ extension TPCActivityIndicator where Self : TPCRefreshView {
         }
     }
     
-    func prepareForAnimationWithScale(var scale: CGFloat) {
-        scale = max(min(scale, 1), 0)
-        transform = CGAffineTransformMakeScale(scale, scale)
-        if scale <= 0.2 {
+    func prepareForAnimationWithScale(scale: CGFloat) {
+        let lscale = max(min(scale, 1), 0)
+        transform = CGAffineTransformMakeScale(lscale, lscale)
+        if lscale <= 0.2 {
             removeAnimation()
         }
     }

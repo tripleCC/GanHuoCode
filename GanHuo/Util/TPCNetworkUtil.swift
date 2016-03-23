@@ -131,20 +131,23 @@ public class TPCNetworkUtil {
                     self.technocalsTemp.append(technicalDict)
                     self.categoriesArrayTemp.append(categories)
                 }
-                guard ++self.loadDataCount != TPCConfiguration.loadDataCountOnce else {
+                self.loadDataCount += 1
+                guard self.loadDataCount != TPCConfiguration.loadDataCountOnce else {
                     self.resetCounter()
                     success?()
                     return
                 }
             } else {
                 debugPrint("load unsuccessfully", self.year, self.month, self.day)
-                guard ++self.loadEmptyCount < TPCConfiguration.loadDataMaxFailCount else {
+                self.loadEmptyCount += 1
+                guard self.loadEmptyCount < TPCConfiguration.loadDataMaxFailCount else {
                     self.resetCounter()
                     failure?(.BeyondMaxFailTime)
                     return
                 }
             }
-            (self.year, self.month, self.day) = NSDate.timeSinceNowByDayInterval(-(++self.dayInterval))
+            self.dayInterval += 1
+            (self.year, self.month, self.day) = NSDate.timeSinceNowByDayInterval(-(self.dayInterval))
             self.loadData(allLoadedAppend, success: success, failure: failure)
         }
     }
@@ -179,7 +182,8 @@ public class TPCNetworkUtil {
     }
     
     public func loadMoreData(success: (([TPCTechnicalDictionary], [[String]]) -> ())?, failure: ((TPCFailureType, [TPCTechnicalDictionary], [[String]]) -> ())?) {
-        (year, month, day) = NSDate.timeSinceNowByDayInterval(-(++self.dayInterval))
+        self.dayInterval += 1
+        (year, month, day) = NSDate.timeSinceNowByDayInterval(-(self.dayInterval))
         loadData(success: { () -> () in
             success?(self.technocals, self.categoriesArray)
             }) { (type) -> () in
@@ -268,7 +272,7 @@ extension TPCNetworkUtilLoadHomePage {
         if let availableDays = TPCConfiguration.availableDays {
             let timeString = String(format: "%04d-%02d-%02d", time.year, time.month, time.day)
             if !availableDays.contains(timeString) {
-                debugPrint(__FUNCTION__, timeString)
+                debugPrint(#function, timeString)
                 return false
             }
         } else {
@@ -316,7 +320,7 @@ extension TPCNetworkUtilLoadHomePage {
                                     technicalDict[item] = technicalArray
                                 }
                             }
-                            self.venusInterval++
+                            self.venusInterval += 1
                         }
                         if categories.count > TPCConfiguration.allCategories.count && TPCVenusUtil.venusFlag {
                             if categories.count > TPCStorageUtil.fetchAllCategories().count {

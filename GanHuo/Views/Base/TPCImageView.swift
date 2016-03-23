@@ -98,11 +98,11 @@ class TPCImageView: UIView {
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         scrollView.addSubview(imageView)
         
-        let oneTap = UITapGestureRecognizer(target: self, action: "oneTap")
+        let oneTap = UITapGestureRecognizer(target: self, action: #selector(TPCImageView.oneTap))
         oneTap.numberOfTapsRequired = 1
         imageView.addGestureRecognizer(oneTap)
         
-        let doubleTap = UITapGestureRecognizer(target: self, action: "doubleTap:")
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(TPCImageView.doubleTap(_:)))
         doubleTap.numberOfTapsRequired = 2
         imageView.addGestureRecognizer(doubleTap)
         
@@ -117,7 +117,7 @@ class TPCImageView: UIView {
     }
     
     func doubleTap(gesture: UIGestureRecognizer) {
-        debugPrint(__FUNCTION__)
+        debugPrint(#function)
         if scrollView.zoomScale == 1 {
             let point = gesture.locationInView(gesture.view)
             let width = bounds.width / scrollView.maximumZoomScale
@@ -129,7 +129,7 @@ class TPCImageView: UIView {
     }
     
     func oneTap() {
-        debugPrint(__FUNCTION__)
+        debugPrint(#function)
         oneTapAction?()
     }
     

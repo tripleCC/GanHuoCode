@@ -11,7 +11,7 @@ import UIKit
 class TPCImageAlphaController: TPCViewController {
     @IBOutlet weak var alphaSlideView: UISlider! {
         didSet {
-            alphaSlideView.addTarget(self, action: "alphaDidChange:", forControlEvents: UIControlEvents.ValueChanged)
+            alphaSlideView.addTarget(self, action: #selector(TPCImageAlphaController.alphaDidChange(_:)), forControlEvents: UIControlEvents.ValueChanged)
             alphaSlideView.value = TPCConfiguration.imageAlpha
         }
     }

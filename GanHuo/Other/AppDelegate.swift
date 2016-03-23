@@ -19,12 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TPCConfiguration.setInitialize()
         TPCUMManager.start()
         TPCVersionUtil.registerLocalNotification()
-        TPCStorageUtil.setCloudSaveObserver(self, selector: "storeDidChange:")
+        TPCStorageUtil.setCloudSaveObserver(self, selector: #selector(AppDelegate.storeDidChange(_:)))
         return true
     }
 
     func storeDidChange(notification: NSNotification) {
-        debugPrint(__FUNCTION__, notification)
+        debugPrint(#function, notification)
         if let saveKeys = notification.userInfo?[NSUbiquitousKeyValueStoreChangedKeysKey] as? [String] {
             if saveKeys.contains(TPCCloudSaveKey) {
                 TPCStorageUtil.fetchCloudConfiguration()

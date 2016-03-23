@@ -59,6 +59,6 @@ extension TPCShowCategoryController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedRow = categories[indexPath.row]
         tableView.reloadData()
-        debugPrint(__FUNCTION__, selectedRow, indexPath.row)
+        debugPrint(#function, selectedRow, indexPath.row)
     }
 }

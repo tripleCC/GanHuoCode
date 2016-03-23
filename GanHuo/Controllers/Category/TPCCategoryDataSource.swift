@@ -73,7 +73,7 @@ extension TPCCategoryDataSourceLoad {
         if error == nil {
             if technicals.count > 0 {
                 self.technicals.appendContentsOf(technicals)
-                self.page++
+                self.page += 1
                 self.tableView.reloadData()
             }
             
@@ -102,7 +102,7 @@ extension TPCCategoryDataSourceLoad {
             debugPrint(fetchResults.count, self.technicals.count)
             if fetchResults.count > 0 {
                 self.technicals.appendContentsOf(fetchResults)
-                self.page++
+                self.page += 1
             } else {
                 self.tableView.loadMoreFooterView.type = .NoData
             }

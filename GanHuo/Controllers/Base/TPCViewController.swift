@@ -160,7 +160,7 @@ extension TPCNotificationManager {
     }
     
     func applicationDidEnterBackground(notification: NSNotification) {
-        print(__FUNCTION__, self)
+        print(#function, self)
         adjustBarToOriginPosition(false)
     }
 }

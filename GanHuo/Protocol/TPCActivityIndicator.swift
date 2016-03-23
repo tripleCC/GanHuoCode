@@ -13,5 +13,5 @@ public protocol TPCActivityIndicator {
     func removeAnimation()
     func endForAnimation()
     func addLayersWithSize(size: CGSize, tintColor: UIColor)
-    func prepareForAnimationWithScale(var scale: CGFloat)
+    func prepareForAnimationWithScale(scale: CGFloat)
 }

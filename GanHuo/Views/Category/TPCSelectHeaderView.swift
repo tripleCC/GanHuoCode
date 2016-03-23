@@ -30,7 +30,7 @@ class TPCSelectHeaderView: UIView {
         }
         set {
             if let title = newValue {
-                debugPrint(__FUNCTION__, title)
+                debugPrint(#function, title)
                 if let index = titles.indexOf(title) {
                     setDisabledButtonWithButtonIndex(index)
                 }
@@ -106,7 +106,7 @@ class TPCSelectHeaderView: UIView {
             button.setTitle(title, forState: .Normal)
             button.setTitleColor(UIColor.lightGrayColor().colorWithAlphaComponent(0.8), forState: .Normal)
             button.setTitleColor(UIColor.grayColor(), forState: .Disabled)
-            button.addTarget(self, action: "titleButtonOnClicked:", forControlEvents: .TouchUpInside)
+            button.addTarget(self, action: #selector(TPCSelectHeaderView.titleButtonOnClicked(_:)), forControlEvents: .TouchUpInside)
             button.backgroundColor = UIColor.clearColor()
             scrollView.addSubview(button)
             titleButtons.append(button)

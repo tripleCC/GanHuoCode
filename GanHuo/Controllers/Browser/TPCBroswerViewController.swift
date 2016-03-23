@@ -209,7 +209,7 @@ extension TPCBroswerViewController: WKNavigationDelegate {
     func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         progressView.progress = 0
         lastEstimatedProgress = 0
-        debugPrint(__FUNCTION__, navigation)
+        debugPrint(#function, navigation)
     }
     
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {

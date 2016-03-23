@@ -28,7 +28,7 @@ class TPCFavoriteGanHuoView: UIView {
     }
     
     private func setupConfig() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "favoriteGanHuoChange", name: TPCFavoriteGanHuoChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TPCFavoriteGanHuoView.favoriteGanHuoChange), name: TPCFavoriteGanHuoChangeNotification, object: nil)
     }
     
     func favoriteGanHuoChange() {
@@ -51,7 +51,7 @@ class TPCFavoriteGanHuoView: UIView {
         TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock { () -> Void in
             self.technicals = GanHuoObject.fetchFavorite()
             dispatchAMain{
-                debugPrint(__FUNCTION__, "\(self.technicals.count)")
+                debugPrint(#function, "\(self.technicals.count)")
                 if self.technicals.count > 0 {
                     self.noFavoriteTipView.hidden = true
                     self.tableView.reloadData()

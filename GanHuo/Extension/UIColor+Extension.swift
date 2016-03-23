@@ -39,10 +39,10 @@ extension UIColor {
     }
     
     var rgbValue: Int {
-        let r = UnsafeMutablePointer<CGFloat>()
-        let g = UnsafeMutablePointer<CGFloat>()
-        let b = UnsafeMutablePointer<CGFloat>()
-        let a = UnsafeMutablePointer<CGFloat>()
+        let r = UnsafeMutablePointer<CGFloat>(nil)
+        let g = UnsafeMutablePointer<CGFloat>(nil)
+        let b = UnsafeMutablePointer<CGFloat>(nil)
+        let a = UnsafeMutablePointer<CGFloat>(nil)
         self.getRed(r, green: g, blue: b, alpha: a)
         let red = r.memory * 255
         let green = g.memory * 255
@@ -51,10 +51,10 @@ extension UIColor {
     }
     
     var rgbaValue: Int {
-        let r = UnsafeMutablePointer<CGFloat>()
-        let g = UnsafeMutablePointer<CGFloat>()
-        let b = UnsafeMutablePointer<CGFloat>()
-        let a = UnsafeMutablePointer<CGFloat>()
+        let r = UnsafeMutablePointer<CGFloat>(nil)
+        let g = UnsafeMutablePointer<CGFloat>(nil)
+        let b = UnsafeMutablePointer<CGFloat>(nil)
+        let a = UnsafeMutablePointer<CGFloat>(nil)
         self.getRed(r, green: g, blue: b, alpha: a)
         let red = r.memory * 255
         let green = g.memory * 255
@@ -73,53 +73,5 @@ extension UIColor {
     
     convenience init(rgbValue: Int, alpha: CGFloat) {
         self.init(red: (CGFloat((rgbValue & 0xFF0000) >> 16)) / 255.0, green: (CGFloat((rgbValue & 0xFF00) >> 8)) / 255.0, blue: (CGFloat(rgbValue & 0xFF)) / 255.0, alpha: alpha)
-    }
-    
-    convenience init(hexString: String) {
-        let (r, g, b, a) = hexStrToRGBA(hexString)
-        self.init(red: r, green: g, blue: b, alpha: a)
-    }
-}
-
-func hexStrToRGBA(var str: String) -> (r: CGFloat, g: CGFloat, b: CGFloat, a:CGFloat) {
-    let set = NSCharacterSet.whitespaceAndNewlineCharacterSet()
-    str = str.stringByTrimmingCharactersInSet(set).uppercaseString
-    if str.hasPrefix("#") {
-        str = str.substringFromIndex(str.startIndex.successor())
-    } else if str.hasPrefix("0X") {
-        str = str.substringFromIndex(str.startIndex.advancedBy(2))
-    }
-    
-    let length = str.characters.count
-    guard length == 3 || length == 4 || length == 6 || length == 8 else {
-        return(0, 0, 0, 0)
-    }
-    
-    func hexStrToInt(str: String) -> Int {
-        return Int(str) ?? 0
-    }
-    
-    if length < 5 {
-        let r =  CGFloat(hexStrToInt(str.substringWithRange(Range(start: str.startIndex, end: str.startIndex.successor())))) / 255.0
-        let g = CGFloat(hexStrToInt(str.substringWithRange(Range(start: str.startIndex.successor(), end: str.startIndex.advancedBy(2))))) / 255.0
-        let b = CGFloat(hexStrToInt(str.substringWithRange(Range(start: str.startIndex.advancedBy(2), end: str.startIndex.advancedBy(3))))) / 255.0
-        var a: CGFloat
-        if length == 4 {
-            a = CGFloat(hexStrToInt(str.substringWithRange(Range(start: str.startIndex.advancedBy(3), end: str.startIndex.advancedBy(4))))) / 255.0
-        } else {
-            a = 1
-        }
-        return (r, g, b, a)
-    } else {
-        let r =  CGFloat(hexStrToInt(str.substringWithRange(Range(start: str.startIndex, end: str.startIndex.advancedBy(2))))) / 255.0
-        let g = CGFloat(hexStrToInt(str.substringWithRange(Range(start: str.startIndex.advancedBy(2), end: str.startIndex.advancedBy(4))))) / 255.0
-        let b = CGFloat(hexStrToInt(str.substringWithRange(Range(start: str.startIndex.advancedBy(4), end: str.startIndex.advancedBy(6))))) / 255.0
-        var a: CGFloat
-        if length == 8 {
-            a = CGFloat(hexStrToInt(str.substringWithRange(Range(start: str.startIndex.advancedBy(6), end: str.startIndex.advancedBy(8))))) / 255.0
-        } else {
-            a = 1
-        }
-        return (r, g, b, a)
     }
 }

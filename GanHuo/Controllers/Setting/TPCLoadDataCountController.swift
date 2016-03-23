@@ -57,6 +57,6 @@ extension TPCLoadDataCountController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedRow = loadDataOnceArray[indexPath.row]
         tableView.reloadData()
-        debugPrint(__FUNCTION__, selectedRow, indexPath.row)
+        debugPrint(#function, selectedRow, indexPath.row)
     }
 }
