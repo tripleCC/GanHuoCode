@@ -15,8 +15,11 @@ class TPCTabBarController: UITabBarController {
         super.viewDidLoad()
         // opaque
 //        tabBar.translucent = false
+        
         tabBar.backgroundImage = UIImage(color: UIColor.whiteColor())
         tabBar.shadowImage = UIImage()
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(rgbValue: 0x515151)], forState: .Selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(rgbValue: 0xcdcdcd)], forState: .Normal)
     }
 
     override func didReceiveMemoryWarning() {
