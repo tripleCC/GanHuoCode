@@ -54,6 +54,7 @@ class TPCVenusUtil {
                     TPCStorageUtil.shareInstance.clearFileCache()
                     KingfisherManager.sharedManager.cache.clearDiskCache()
                     KingfisherManager.sharedManager.cache.clearMemoryCache()
+                    TPCStorageUtil.setObject(nil, forKey: TPCCategoryStoreKey)
                 }
             }
             completion(launchConfig: launchConfig)
