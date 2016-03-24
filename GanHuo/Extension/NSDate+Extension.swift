@@ -16,6 +16,12 @@ extension NSDate {
         return weekday == 0 || weekday == 1
     }
     
+    var todayString: String {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.stringFromDate(NSDate())
+    }
+    
     public class func currentTime() -> (Int, Int, Int) {
         return NSDate.timeSinceNowByDayInterval(0)
     }

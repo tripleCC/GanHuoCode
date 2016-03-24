@@ -59,12 +59,23 @@ class TPCCategoryViewController: TPCViewController {
     }
     
     func segmenViewOnClicked(sender: UISegmentedControl) {
-        print(sender.selectedSegmentIndex)
+        debugPrint(sender.selectedSegmentIndex)
         favoriteView.hidden = sender.selectedSegmentIndex != 1
         contentScrollView.hidden = !favoriteView.hidden
         headerContainerView.hidden = contentScrollView.hidden
         editHeaderView.hidden = contentScrollView.hidden
         editView.hidden = editHeaderView.hidden
+        if sender.selectedSegmentIndex == 1 {
+            doOnceInAppLifeWithKey("TPCCategoryViewController.showFavoriteTip", action: {
+                self.showFavoriteTip()
+            })
+        }
+    }
+    
+    private func showFavoriteTip() {
+        let alert = UIAlertController(title: "", message: "收藏的文章会在App升级或者删除时清空，所以要记得及时阅读哦~", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "知道了", style: .Default, handler: nil))
+        navigationController?.presentViewController(alert, animated: true, completion: nil)
     }
 
     private func setupChildController() {

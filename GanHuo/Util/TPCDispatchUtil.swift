@@ -40,3 +40,18 @@ func dispatchAMain(action: () -> ()) {
         }
     }
 }
+
+func doOnceInAppLifeWithKey(key: String, action:(() -> Void)) {
+    guard !NSUserDefaults.standardUserDefaults().boolForKey(key) else { return }
+    action()
+    NSUserDefaults.standardUserDefaults().setBool(true, forKey: key)
+}
+
+func doOnceADayWithKey(key: String, action:(() -> Void)) {
+    if let todayString = NSUserDefaults.standardUserDefaults().objectForKey(key) as? String {
+        if todayString != NSDate().todayString {
+            action()
+            NSUserDefaults.standardUserDefaults().setObject(NSDate().todayString, forKey: key)
+        }
+    }
+}
