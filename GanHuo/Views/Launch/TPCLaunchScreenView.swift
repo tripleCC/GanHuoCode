@@ -36,7 +36,8 @@ class TPCLaunchScreenView: UIView {
                 UIView.animateWithDuration(0.4, delay: 0.15 * index, options: .CurveLinear, animations: { () -> Void in
                     subview.transform = CGAffineTransformTranslate(subview.transform, transition.x, transition.y)
                     }, completion: { (finished) -> Void in
-                        if ++count == self.subviews.count - 1 {
+                        count += 1
+                        if count == self.subviews.count - 1 {
                             UIView.animateWithDuration(0.2, animations: { () -> Void in
                                 self.centerImageView.transform = CGAffineTransformMakeScale(0.8, 0.8)
                                 }, completion: { (finished) -> Void in

@@ -55,7 +55,7 @@ class TPCAboutMeController: TPCViewController {
     
     @IBOutlet var linkButtons: [TPCLinkButton]! {
         didSet {
-            linkButtons.forEach{ $0.addTarget(self, action: "gotoLinks:", forControlEvents: .TouchDown) }
+            linkButtons.forEach{ $0.addTarget(self, action: #selector(TPCAboutMeController.gotoLinks(_:)), forControlEvents: .TouchDown) }
         }
     }
     

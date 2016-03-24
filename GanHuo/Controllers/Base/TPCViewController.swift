@@ -142,11 +142,11 @@ class TPCViewController: UIViewController {
 typealias TPCNotificationManager = TPCViewController
 extension TPCNotificationManager {
     func registerObserverForApplicationDidEnterBackground() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationDidEnterBackground:", name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UIApplicationDelegate.applicationDidEnterBackground(_:)), name: UIApplicationDidEnterBackgroundNotification, object: nil)
     }
     
     func registerReloadTableView() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadTableView", name: TPCTechnicalReloadDataNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TPCViewController.reloadTableView), name: TPCTechnicalReloadDataNotification, object: nil)
     }
     
     func postReloadTableView() {

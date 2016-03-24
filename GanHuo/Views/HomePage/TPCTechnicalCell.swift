@@ -35,7 +35,8 @@ class TPCTechnicalCell: UITableViewCell {
                         for technical in technicals {
                             if (TPCConfiguration.contentRules.contains(TPCRuleType.Two) && TPCConfiguration.contentRules.contains(TPCRuleType.Three)) {
                                 if technical.desc!.technicalCellLabelBoundingRect().size.width < TPCScreenWidth - 3 * TPCConfiguration.technicalCellLeftRightMargin {
-                                    if validDescCount++ < TPCConfiguration.technicalCellShowTextLineMax {
+                                    validDescCount += 1
+                                    if validDescCount < TPCConfiguration.technicalCellShowTextLineMax {
                                         descString += technical.desc! + "\n ●"
                                     }
                                 }
@@ -44,7 +45,8 @@ class TPCTechnicalCell: UITableViewCell {
                                     descString += technical.desc! + "\n ●"
                                 }
                             } else if (TPCConfiguration.contentRules.contains(TPCRuleType.Three)) {
-                                if validDescCount++ < TPCConfiguration.technicalCellShowTextLineMax {
+                                validDescCount += 1
+                                if validDescCount < TPCConfiguration.technicalCellShowTextLineMax {
                                     descString += technical.desc! + "\n ●"
                                 }
                             } else if (TPCConfiguration.contentRules.contains(TPCRuleType.Four)) {

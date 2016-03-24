@@ -61,7 +61,8 @@ class TPCShowContentController: TPCViewController {
         for testString in testStringArray {
             if (selectedRows.contains(TPCRuleType.Two) && selectedRows.contains(TPCRuleType.Three)) {
                 if testString.ruleLabelBoundingRect().width < ruleLabel.bounds.width {
-                    if validDescCount++ < TPCConfiguration.technicalCellShowTextLineMax {
+                    validDescCount += 1
+                    if validDescCount < TPCConfiguration.technicalCellShowTextLineMax {
                         destString += testString
                     }
                 }
@@ -70,7 +71,8 @@ class TPCShowContentController: TPCViewController {
                     destString += testString
                 }
             } else if (selectedRows.contains(TPCRuleType.Three)) {
-                if validDescCount++ < TPCConfiguration.technicalCellShowTextLineMax {
+                validDescCount += 1
+                if validDescCount < TPCConfiguration.technicalCellShowTextLineMax {
                     destString += testString
                 }
             } else if (selectedRows.contains(TPCRuleType.Four)) {

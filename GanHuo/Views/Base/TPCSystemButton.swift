@@ -39,8 +39,8 @@ class TPCSystemButton: UIView {
     private func setupSubviews() {
         circleView = UIButton(type: UIButtonType.Custom)
         circleView.adjustsImageWhenHighlighted = false
-        circleView.addTarget(self, action: "circleViewDidTouchDown", forControlEvents: UIControlEvents.TouchDown)
-        circleView.addTarget(self, action: "circleViewDidTouchUpInside", forControlEvents: UIControlEvents.TouchUpInside)
+        circleView.addTarget(self, action: #selector(TPCSystemButton.circleViewDidTouchDown), forControlEvents: UIControlEvents.TouchDown)
+        circleView.addTarget(self, action: #selector(TPCSystemButton.circleViewDidTouchUpInside), forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(circleView)
         circleView.frame = bounds
         

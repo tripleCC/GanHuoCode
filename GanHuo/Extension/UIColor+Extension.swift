@@ -17,20 +17,20 @@ extension UIColor {
     }
     
     var r: CGFloat {
-        let r = UnsafeMutablePointer<CGFloat>()
-        self.getRed(r, green: UnsafeMutablePointer<CGFloat>(), blue: UnsafeMutablePointer<CGFloat>(), alpha: UnsafeMutablePointer<CGFloat>())
+        let r = UnsafeMutablePointer<CGFloat>(nil)
+        self.getRed(r, green: UnsafeMutablePointer<CGFloat>(nil), blue: UnsafeMutablePointer<CGFloat>(nil), alpha: UnsafeMutablePointer<CGFloat>(nil))
         return r.memory
     }
     
     var g: CGFloat {
-        let g = UnsafeMutablePointer<CGFloat>()
-        self.getRed(UnsafeMutablePointer<CGFloat>(), green: g, blue: UnsafeMutablePointer<CGFloat>(), alpha: UnsafeMutablePointer<CGFloat>())
+        let g = UnsafeMutablePointer<CGFloat>(nil)
+        self.getRed(UnsafeMutablePointer<CGFloat>(nil), green: g, blue: UnsafeMutablePointer<CGFloat>(nil), alpha: UnsafeMutablePointer<CGFloat>(nil))
         return g.memory
     }
     
     var b: CGFloat {
-        let b = UnsafeMutablePointer<CGFloat>()
-        self.getRed(UnsafeMutablePointer<CGFloat>(), green: UnsafeMutablePointer<CGFloat>(), blue: b, alpha: UnsafeMutablePointer<CGFloat>())
+        let b = UnsafeMutablePointer<CGFloat>(nil)
+        self.getRed(UnsafeMutablePointer<CGFloat>(nil), green: UnsafeMutablePointer<CGFloat>(nil), blue: b, alpha: UnsafeMutablePointer<CGFloat>(nil))
         return b.memory
     }
     

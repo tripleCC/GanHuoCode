@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2hh-kq-h6H">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2hh-kq-h6H">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -16,7 +16,6 @@
                     <connections>
                         <segue destination="3ds-RN-i2W" kind="relationship" relationship="viewControllers" id="bu5-SY-rxN"/>
                         <segue destination="v6A-sW-3mj" kind="relationship" relationship="viewControllers" id="Cs2-hX-eOl"/>
-                        <segue destination="XPm-W6-iHP" kind="relationship" relationship="viewControllers" id="4wn-ah-GMD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MDi-f6-V5N" userLabel="First Responder" sceneMemberID="firstResponder"/>

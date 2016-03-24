@@ -23,7 +23,7 @@ class TPCShareView: UIView {
     @IBOutlet weak var sinaContainerView: UIView! {
         didSet {
             sinaContainerView.userInteractionEnabled = true
-            let tap = UITapGestureRecognizer(target: self, action: "sinaContainerViewOnClicked")
+            let tap = UITapGestureRecognizer(target: self, action: #selector(TPCShareView.sinaContainerViewOnClicked))
             sinaContainerView.addGestureRecognizer(tap)
         }
     }
@@ -31,7 +31,7 @@ class TPCShareView: UIView {
     @IBOutlet weak var qqContainerView: UIView! {
         didSet {
             qqContainerView.userInteractionEnabled = true
-            let tap = UITapGestureRecognizer(target: self, action: "qqContainerViewOnClicked")
+            let tap = UITapGestureRecognizer(target: self, action: #selector(TPCShareView.qqContainerViewOnClicked))
             qqContainerView.addGestureRecognizer(tap)
         }
     }
@@ -39,7 +39,7 @@ class TPCShareView: UIView {
     @IBOutlet weak var qqZoneContainerView: UIView! {
         didSet {
             qqZoneContainerView.userInteractionEnabled = true
-            let tap = UITapGestureRecognizer(target: self, action: "qqZoneContainerViewOnClicked")
+            let tap = UITapGestureRecognizer(target: self, action: #selector(TPCShareView.qqZoneContainerViewOnClicked))
             qqZoneContainerView.addGestureRecognizer(tap)
         }
     }
@@ -47,7 +47,7 @@ class TPCShareView: UIView {
     @IBOutlet weak var wxContainerView: UIView! {
         didSet {
             wxContainerView.userInteractionEnabled = true
-            let tap = UITapGestureRecognizer(target: self, action: "wxContainerViewOnClicked")
+            let tap = UITapGestureRecognizer(target: self, action: #selector(TPCShareView.wxContainerViewOnClicked))
             wxContainerView.addGestureRecognizer(tap)
         }
     }
@@ -104,7 +104,7 @@ class TPCShareView: UIView {
     
     class func showWithTitle(title: String?, desc: String? = nil, image: UIImage? = nil, mediaURL: NSURL? = nil) {
         let shareView = TPCShareView.shareView()
-        let tap = UITapGestureRecognizer(target: shareView, action: "maskViewOnClicked")
+        let tap = UITapGestureRecognizer(target: shareView, action: #selector(TPCShareView.maskViewOnClicked))
         shareView.addGestureRecognizer(tap)
         shareView.title = title
         shareView.desc = desc
