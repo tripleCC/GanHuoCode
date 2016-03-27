@@ -112,6 +112,7 @@ extension TPCFavoriteGanHuoView: UITableViewDataSource {
                 TPCCoreDataManager.shareInstance.saveContext()
                 dispatchAMain({ () -> () in
                     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                    self.noFavoriteTipView.hidden = self.technicals.count != 0
                 })
             })
         }
