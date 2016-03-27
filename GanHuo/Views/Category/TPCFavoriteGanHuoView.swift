@@ -54,10 +54,10 @@ class TPCFavoriteGanHuoView: UIView {
                 debugPrint(#function, "\(self.technicals.count)")
                 if self.technicals.count > 0 {
                     self.noFavoriteTipView.hidden = true
-                    self.tableView.reloadData()
                 } else {
                     self.noFavoriteTipView.hidden = false
                 }
+                self.tableView.reloadData()
             }
         }
     }
