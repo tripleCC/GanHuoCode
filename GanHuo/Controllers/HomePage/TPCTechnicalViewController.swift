@@ -114,7 +114,7 @@ class TPCTechnicalViewController: TPCViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if let _ = navigationController {
-            tableView.contentInset = UIEdgeInsets(top: TPCNavigationBarHeight + TPCConfiguration.technicalTableViewTopBottomMargin + TPCStatusBarHeight, left: 0, bottom: TPCConfiguration.technicalTableViewTopBottomMargin, right: 0)
+            tableView.contentInset = UIEdgeInsets(top: TPCNavigationBarHeight + TPCConfiguration.technicalTableViewTopBottomMargin + TPCStatusBarHeight, left: 0, bottom: TPCConfiguration.technicalTableViewTopBottomMargin + TPCTabBarHeight, right: 0)
         }
     }
     
