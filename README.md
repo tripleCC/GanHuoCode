@@ -20,6 +20,8 @@ DONE:
   - SDWebImage－》Kingfisher  (***** waiting version 2.0.0)
   - Cache (*** archive)
   - Favorites (***local)
+  
+  
 App切图：<br>
 ![](Images/2016-01-08 23_33_15.gif)
 ![](Images/2016-01-08 23_33_55.gif)
