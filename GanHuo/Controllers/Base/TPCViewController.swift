@@ -100,7 +100,7 @@ class TPCViewController: UIViewController {
     func adjustBarPositionByVelocity(velocity: CGFloat, contentOffsetY: CGFloat, animated: Bool = true) {
         guard let _ = view.window else { return }
         var descNavY = navigationBarFrame!.origin.y
-        var descTabY = tabBarFrame!.origin.y
+        var descTabY = tabBarFrame?.origin.y ?? 0
         if velocity > 1.0 {
 //            debugPrint("隐藏")
             descNavY = -TPCNavigationBarHeight
