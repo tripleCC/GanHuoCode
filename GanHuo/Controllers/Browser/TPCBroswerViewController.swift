@@ -100,7 +100,7 @@ class TPCBroswerViewController: TPCViewController {
         super.viewDidLoad()
         view.addSubview(webView)
         setupNav()
-        webView.loadRequest(URLString.flatMap{ NSURL(string: $0).flatMap{ NSURLRequest(URL: $0) } } ?? NSURLRequest())
+        webView.loadRequest(URLString.flatMap{ NSURL(string: $0).flatMap{ NSMutableURLRequest(URL: $0, cachePolicy: .ReturnCacheDataElseLoad, timeoutInterval: 15) } } ?? NSURLRequest())
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: NSKeyValueObservingOptions.New, context: nil)
         registerObserverForApplicationDidEnterBackground()
     }

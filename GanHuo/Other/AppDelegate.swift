@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import MonkeyKing
 
+let TPCURLMemoryCacheSize = 1024 * 1024 * 512
+let TPCURLDiskCacheSize = 1024 * 1024 * 1024 * 100
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -20,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TPCUMManager.start()
         TPCVersionUtil.registerLocalNotification()
         TPCStorageUtil.setCloudSaveObserver(self, selector: #selector(AppDelegate.storeDidChange(_:)))
+        NSURLCache.setSharedURLCache(NSURLCache(memoryCapacity:TPCURLMemoryCacheSize , diskCapacity: TPCURLDiskCacheSize, diskPath: "Cache.db"))
         return true
     }
 
