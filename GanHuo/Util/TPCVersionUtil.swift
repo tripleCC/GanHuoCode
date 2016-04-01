@@ -42,11 +42,6 @@ class TPCVersionUtil {
         }
     }
     
-    static func registerLocalNotification() {
-        let setting = UIUserNotificationSettings(forTypes: [.Alert, .Sound, .Badge], categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(setting)
-    }
-    
     static func showUpdateMessage() {
         guard !hadShowed else { return }
         dispatchGlobal { 

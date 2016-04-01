@@ -17,10 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    private func registerRemoteNotification() {
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         TPCConfiguration.setInitialize()
         TPCUMManager.start()
-        TPCVersionUtil.registerLocalNotification()
+        registerRemoteNotification()
         TPCStorageUtil.setCloudSaveObserver(self, selector: #selector(AppDelegate.storeDidChange(_:)))
         NSURLCache.setSharedURLCache(NSURLCache(memoryCapacity:TPCURLMemoryCacheSize , diskCapacity: TPCURLDiskCacheSize, diskPath: "Cache.db"))
         return true
@@ -75,6 +80,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         TPCCoreDataManager.shareInstance.saveContext()
     }
-
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        print(#function, deviceToken)
+    }
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        print(#function)
+        application.registerForRemoteNotifications()
+    }
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print(#function)
+    }
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
+        print(#function)
+        completionHandler()
+    }
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        print(#function, userInfo)
+    }
 }
 
