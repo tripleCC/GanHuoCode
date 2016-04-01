@@ -68,12 +68,16 @@ class TPCAboutMeController: TPCViewController {
         if segue.identifier == "AboutMeVc2BrowserVc" {
             if let descVc = segue.destinationViewController as? TPCBroswerViewController,
                 let title = sender as? String {
-                    for link in aboutMe!.links! {
-                        if link.title == title {
-                            descVc.URLString = link.url
-                            break
+                if let aboutMe = aboutMe {
+                    if let links = aboutMe.links {
+                        for link in links {
+                            if link.title == title {
+                                descVc.URLString = link.url
+                                break
+                            }
                         }
                     }
+                }
             }
         }
     }
