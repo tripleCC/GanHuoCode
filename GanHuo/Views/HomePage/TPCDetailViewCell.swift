@@ -24,7 +24,7 @@ class TPCDetailViewCell: UITableViewCell {
     
     private lazy var contentLabel: UILabel = {
         let contentLabel = UILabel()
-        contentLabel.font = TPCConfiguration.themeSFont
+        contentLabel.font = UIFont(name: TPCConfiguration.themeSFontName, size: 14.0)
         contentLabel.textColor = UIColor.grayColor()
         contentLabel.numberOfLines = 0
         return contentLabel
