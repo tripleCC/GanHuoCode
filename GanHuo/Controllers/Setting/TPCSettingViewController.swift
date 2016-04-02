@@ -148,9 +148,11 @@ class TPCSettingViewController: TPCViewController {
     private func setupNav() {
         navigationBarType = .Line
         navigationItem.title = "设置"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", action: { [unowned self] (enable) -> () in
-            self.dismissViewControllerAnimated(true, completion: nil)
-        })
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "home-h"), target: self, action: #selector(TPCSettingViewController.dismiss))
+    }
+    
+    func dismiss() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     private func getRuleStringWithItems(items: [String]) -> String {

@@ -82,7 +82,6 @@ class TPCDetailViewController: TPCViewController {
 //        view.alpha = 0
         headerImageView.alpha = 0
         tableView.alpha = 0
-        navigationController!.fd_interactivePopMaxAllowedInitialDistanceToLeftEdge = 0.1
         adjustBarToHidenPosition()
     }
     
@@ -90,7 +89,6 @@ class TPCDetailViewController: TPCViewController {
 //        view.alpha = 1
         headerImageView.alpha = 1
         tableView.alpha = 1
-        navigationController!.fd_interactivePopMaxAllowedInitialDistanceToLeftEdge = 0
         adjustBarToOriginPosition()
     }
     

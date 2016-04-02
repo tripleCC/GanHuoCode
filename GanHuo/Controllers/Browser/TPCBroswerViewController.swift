@@ -11,10 +11,11 @@ import WebKit
 import SafariServices
 
 class TPCBroswerViewController: TPCViewController {
-
+    private let rightCustomButtonImageViewAnimationKey = "rightCustomButtonImageView"
     var technical: TPCTechnicalObject? {
         didSet {
-            self.URLString = technical?.url
+            URLString = technical?.url
+            navigationItem.title = technical?.desc ?? ""
             if let rawData = technical?.rawData {
                 TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock({ () -> Void in
                     self.ganhuo = GanHuoObject.insertObjectInBackgroundContext(rawData)
@@ -46,53 +47,78 @@ class TPCBroswerViewController: TPCViewController {
         return progressView
     }()
     
-    @IBOutlet weak var toolBar: UIView!
-    @IBOutlet weak var backItem: TPCSystemButton! {
+    @IBOutlet weak var toolBar: UIToolbar! {
         didSet {
-            backItem.animationCompletion = { [unowned self] (inout enable: Bool) in
-                if self.webView.canGoBack {
-                    self.webView.goBack()
+            for view in toolBar.subviews {
+                if view.bounds.height < 2 {
+                    if let view = view as? UIImageView {
+                        view.removeFromSuperview()
+                        break
+                    }
                 }
-
             }
         }
     }
-    @IBOutlet weak var forwardItem: TPCSystemButton! {
-        didSet {
-            forwardItem.animationCompletion = { [unowned self] (inout enable: Bool) in
-                if self.webView.canGoForward {
-                    self.webView.goForward()
+    
+    
+    @IBAction func backItemOnClicked(sender: AnyObject) {
+        if webView.canGoBack {
+            webView.goBack()
+        }
+    }
+    
+    @IBAction func forwardItemOnClicked(sender: AnyObject) {
+        if webView.canGoForward {
+            webView.goForward()
+        }
+    }
+    
+    @IBAction func shareItemOnClicked(sender: AnyObject) {
+        var shareText = navigationItem.title ?? "" + " "
+        if let urlString = webView.URL?.absoluteString {
+            shareText += urlString
+        }
+        TPCShareView.showWithTitle(technical?.desc, desc: technical?.desc, mediaURL: webView.URL)
+    }
+    
+    @IBAction func readItemOnClicked(sender: AnyObject) {
+        // 这里有条件可以从localhost读取，这样就可以读取网页缓存了（为知笔记就是这么干的，就是不知道他的实现方式）
+        let sfVc = SFSafariViewController(URL: webView.URL!, entersReaderIfAvailable: true)
+        sfVc.delegate = self
+        navigationController?.navigationBar.hidden = true
+        navigationController!.pushViewController(sfVc, animated: true)
+    }
+    
+    @IBAction func favoriteItemOnClicked(sender: AnyObject) {
+        TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock({ () -> Void in
+            if self.ganhuo != nil {
+                if self.ganhuo!.favorite == nil {
+                    self.ganhuo!.favorite = NSNumber(bool: false)
                 }
-                
+                self.ganhuo!.favorite = NSNumber(bool: !self.ganhuo!.favorite!.boolValue)
+                self.ganhuo!.favoriteAt = String(NSDate().timeIntervalSince1970)
             }
-        }
+            dispatchAMain {
+                self.changeFavoriteImage()
+                NSNotificationCenter.defaultCenter().postNotificationName(TPCFavoriteGanHuoChangeNotification, object: nil)
+            }
+        })
     }
-    @IBOutlet weak var refreshItem: TPCSystemButton! {
+    
+    func changeFavoriteImage() {
+        favoriteItem.image = ganhuo?.favorite?.boolValue == true ? UIImage(named: "favorite_h") : UIImage(named: "favorite")
+    }
+    
+    @IBOutlet weak var backItem: UIBarButtonItem!
+    @IBOutlet weak var forwardItem: UIBarButtonItem!
+    @IBOutlet weak var readItem: UIBarButtonItem!
+    @IBOutlet weak var favoriteItem: UIBarButtonItem! {
         didSet {
-            refreshItem.animationCompletion = { [unowned self] (inout enable: Bool) in
-                self.webView.reload()
-            }
+            changeFavoriteImage()
         }
     }
-    @IBOutlet weak var closeItem: TPCSystemButton! {
-        didSet {
-            closeItem.animationCompletion = { [unowned self] (inout enable: Bool) in
-                self.navigationController?.popViewControllerAnimated(true)
-            }
-        }
-    }
-    @IBOutlet weak var shareItem: TPCSystemButton! {
-        didSet {
-            shareItem.animationCompletion = { [unowned self] (inout enable: Bool) in
-                debugPrint("分享")
-                var shareText = self.navigationItem.title ?? "" + " "
-                if let urlString = self.webView.URL?.absoluteString {
-                    shareText += urlString
-                }
-                TPCShareView.showWithTitle(self.technical?.desc, desc: self.technical?.desc, mediaURL: self.webView.URL)
-            }
-        }
-    }
+    @IBOutlet weak var shareItem: UIBarButtonItem!
+    
     @IBOutlet weak var toolBar2ViewBottomConstrains: NSLayoutConstraint!
     
     var lastEstimatedProgress: Double = 0
@@ -108,7 +134,16 @@ class TPCBroswerViewController: TPCViewController {
     
     func setupNav() {
         navigationBarBackgroundView.addSubview(progressView)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more"), target: self, action:  #selector(TPCBroswerViewController.more), position: .Right, fit: true)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "browser_refresh"), target: self, action: #selector(TPCBroswerViewController.refreshWebView), position: .Right)
+    }
+    
+    var rightCustomButtonImageView: UIImageView? {
+        return (navigationItem.rightBarButtonItem?.customView as? UIButton)?.imageView
+    }
+    
+    func refreshWebView() {
+        rightCustomButtonImageView?.layer.addRotateAnimationWithDuration(1.0, forKey: rightCustomButtonImageViewAnimationKey)
+        webView.reload()
     }
     
     func more() {
@@ -141,10 +176,9 @@ class TPCBroswerViewController: TPCViewController {
     }
     
     func openBySafari() {
-        navigationController!.pushViewController(SFSafariViewController(URL: webView.URL!, entersReaderIfAvailable: true), animated: true)
-//        if let url = NSURL(string: URLString ?? "") {
-//            UIApplication.sharedApplication().openURL(url)
-//        }
+        if let url = NSURL(string: URLString ?? "") {
+            UIApplication.sharedApplication().openURL(url)
+        }
     }
     
     deinit {
@@ -173,6 +207,10 @@ class TPCBroswerViewController: TPCViewController {
                 progressView.setProgress((Float)(webView.estimatedProgress), animated: true)
                 progressView.hidden = progressView.progress == 1.0
                 lastEstimatedProgress = webView.estimatedProgress
+                if progressView.progress == 1.0 {
+                    rightCustomButtonImageView?.layer.removeAllAnimations()
+                }
+                
                 print(progressView.progress)
             }
         }
@@ -207,19 +245,42 @@ class TPCBroswerViewController: TPCViewController {
 
 }
 
+extension TPCBroswerViewController: SFSafariViewControllerDelegate {
+    func safariViewControllerDidFinish(controller: SFSafariViewController) {
+        debugPrint(#function)
+        navigationController?.popViewControllerAnimated(true)
+        navigationController?.navigationBar.hidden = false
+    }
+    
+    func safariViewController(controller: SFSafariViewController, didCompleteInitialLoad didLoadSuccessfully: Bool) {
+        debugPrint(#function)
+    }
+}
+
 extension TPCBroswerViewController: WKNavigationDelegate {
     func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         progressView.progress = 0
         lastEstimatedProgress = 0
+        changeBackForwordImage()
         debugPrint(#function, navigation)
     }
     
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
         navigationItem.title = webView.title
-        forwardItem.enable = webView.canGoForward
-        backItem.enable = webView.canGoBack
-        
-        debugPrint(webView.title)
+        changeBackForwordImage()
+        rightCustomButtonImageView?.layer.removeAllAnimations()
+        debugPrint(webView.title, webView.canGoForward, webView.canGoBack)
+    }
+    
+    func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
+        rightCustomButtonImageView?.layer.removeAllAnimations()
+    }
+    
+    func changeBackForwordImage() {
+        forwardItem.enabled = webView.canGoForward
+        backItem.enabled = webView.canGoBack
+        forwardItem.image = forwardItem.enabled ? UIImage(named: "brower_foward") : UIImage(named: "brower_forword_d")
+        backItem.image = backItem.enabled ? UIImage(named: "brower_back") : UIImage(named: "brower_back_d")
     }
 }
 

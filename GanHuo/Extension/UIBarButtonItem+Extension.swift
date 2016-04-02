@@ -17,7 +17,7 @@ extension UIBarButtonItem {
         let btn = UIButton(type: UIButtonType.Custom)
         btn.frame = CGRect(x: 0, y: 0, width: 80, height: 35)
         if position == .Left {
-            btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
+            btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0)
         }
         btn.addTarget(target, action: action, forControlEvents: UIControlEvents.TouchDown)
         btn.setImage(image, forState: UIControlState.Normal)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-let TPCStatusBarHeight: CGFloat = 20.0
+let TPCStatusBarHeight: CGFloat = Swift.min(UIApplication.sharedApplication().statusBarFrame.size.height, UIApplication.sharedApplication().statusBarFrame.size.width)
 let TPCNavigationBarHeight: CGFloat = 44.0
 let TPCTabBarHeight: CGFloat = 49.0 - 1.0
 let TPCScreenWidth = UIScreen.mainScreen().bounds.width

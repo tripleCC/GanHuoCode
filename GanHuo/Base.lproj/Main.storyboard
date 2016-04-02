@@ -92,10 +92,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="category" width="27" height="27"/>
-        <image name="category-h" width="27" height="27"/>
-        <image name="home" width="27" height="27"/>
-        <image name="home-h" width="27" height="27"/>
+        <image name="category" width="23" height="23"/>
+        <image name="category-h" width="23" height="23"/>
+        <image name="home" width="26" height="26"/>
+        <image name="home-h" width="26" height="26"/>
         <image name="me" width="27" height="27"/>
         <image name="me-h" width="27" height="27"/>
     </resources>
