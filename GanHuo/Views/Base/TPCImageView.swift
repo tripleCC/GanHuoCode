@@ -17,6 +17,7 @@ class TPCImageView: UIView {
         }
     }
     var oneTapAction: (() -> ())?
+    var longPressAction: (() -> ())?
     var image: UIImage? {
         return imageView.image
     }
@@ -108,6 +109,9 @@ class TPCImageView: UIView {
         
         oneTap.requireGestureRecognizerToFail(doubleTap)
         
+        let longPress = UILongPressGestureRecognizer(target: self, action:  #selector(TPCImageView.longPress))
+        longPress.minimumPressDuration = 0.3
+        imageView.addGestureRecognizer(longPress)
         progressView = DALabeledCircularProgressView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         progressView.center = CGPoint(x: bounds.width * 0.5, y: bounds.height * 0.5)
         progressView.roundedCorners = Int(true)
@@ -131,6 +135,11 @@ class TPCImageView: UIView {
     func oneTap() {
         debugPrint(#function)
         oneTapAction?()
+    }
+    
+    func longPress() {
+        debugPrint(#function)
+        longPressAction?()
     }
     
     override func layoutSubviews() {

@@ -250,7 +250,7 @@ extension TPCPopoverView {
     }
     
     private class func showMessages(messages: [String], containerSize: CGSize, fromView: UIView, fadeDirection: TPCPopoverViewFadeDirection, clickAction: ((row: Int) -> ())?, dataSource: TPCPopoverViewDataSource?, delegate: TPCPopoverViewDelegate?) {
-        let frame = CGRect(x: fromView.center.x, y: fromView.frame.maxY + 10, width: containerSize.width, height: containerSize.height + 10)
+        let frame = CGRect(x: fromView.center.x, y: fromView.frame.maxY + fromView.frame.height * 0.5, width: containerSize.width, height: containerSize.height + 10)
         showMessages(messages, containerFrame: frame, fadeDirection: fadeDirection, clickAction: clickAction, dataSource: dataSource, delegate: delegate)
     }
     

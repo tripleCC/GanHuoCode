@@ -85,7 +85,7 @@ class TPCViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         view.bringSubviewToFront(navigationBarBackgroundView)
-        self.navigationBarFrame!.origin.y = TPCStatusBarHeight
+        navigationBarFrame!.origin.y = TPCStatusBarHeight
         if navigationItem.title != nil {
             TPCUMManager.beginLogPageView(navigationItem.title!)
         }
@@ -102,16 +102,16 @@ class TPCViewController: UIViewController {
         var descNavY = navigationBarFrame!.origin.y
         var descTabY = tabBarFrame?.origin.y ?? 0
         if velocity > 1.0 {
-//            debugPrint("隐藏")
+            debugPrint("隐藏")
             descNavY = -TPCNavigationBarHeight
             descTabY = TPCScreenHeight
         } else if velocity < -1.0 {
-//            debugPrint("显示")
+            debugPrint("显示")
             descNavY = TPCStatusBarHeight
             descTabY = TPCScreenHeight - TPCTabBarHeight
         } else {
             if contentOffsetY <= TPCNavigationBarHeight * 2 + TPCStatusBarHeight {
-//                debugPrint("显示")
+                debugPrint("显示")
                 descNavY = TPCStatusBarHeight
             }
         }
@@ -142,7 +142,11 @@ class TPCViewController: UIViewController {
 typealias TPCNotificationManager = TPCViewController
 extension TPCNotificationManager {
     func registerObserverForApplicationDidEnterBackground() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UIApplicationDelegate.applicationDidEnterBackground(_:)), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TPCViewController.applicationDidEnterBackground(_:)), name: UIApplicationDidEnterBackgroundNotification, object: nil)
+    }
+    
+    func registerObserverForApplicationDidEnterForeground() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TPCViewController.applicationDidEnterForeground(_:)), name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
     
     func registerReloadTableView() {
@@ -157,6 +161,10 @@ extension TPCNotificationManager {
     
     func removeObserver() {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func applicationDidEnterForeground(notification: NSNotification) {
+        print(#function, self)
     }
     
     func applicationDidEnterBackground(notification: NSNotification) {

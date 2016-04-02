@@ -25,6 +25,9 @@ class TPCPageScrollView: UIView {
                 backupImageView.tag = 1
             } else {
                 scrollView.scrollEnabled = false
+                // 覆盖全屏手势
+                let pan = UIPanGestureRecognizer(target: self, action: nil)
+                currentImageView.addGestureRecognizer(pan)
             }
             currentImageView.imageURLString = imageURLStrings[0]
             currentImageView.tag = 0
@@ -58,11 +61,17 @@ class TPCPageScrollView: UIView {
         currentImageView.oneTapAction = { [unowned self] in
             self.removeSelf()
         }
+        currentImageView.longPressAction = { [unowned self] in
+            self.setupBottomToolView()
+        }
         scrollView.addSubview(currentImageView)
         
         backupImageView = TPCImageView(frame: CGRect(x: bounds.width * 2, y: 0, width: bounds.width, height: bounds.height))
         backupImageView.oneTapAction = { [unowned self] in
             self.removeSelf()
+        }
+        backupImageView.longPressAction = { [unowned self] in
+            self.setupBottomToolView()
         }
         scrollView.addSubview(backupImageView)
         
@@ -79,7 +88,7 @@ class TPCPageScrollView: UIView {
         countLabel.textColor = UIColor.whiteColor()
         addSubview(countLabel)
         
-        setupBottomToolView()
+//        setupBottomToolView()
     }
     
     private func setupGradientLayers() {
@@ -98,34 +107,53 @@ class TPCPageScrollView: UIView {
     }
     
     private func setupBottomToolView() {
-        let buttonWH: CGFloat = 30.0
-        let backButtonX = TPCScreenWidth * 0.1
-        let backButtonY = TPCScreenHeight - buttonWH * 1.5
-        let backButton = TPCSystemButton(frame: CGRect(x: TPCScreenWidth - backButtonX - buttonWH, y: backButtonY, width: buttonWH, height: buttonWH))
-        backButton.title = "关闭"
-        backButton.animationCompletion = { [unowned self] (inout enable: Bool) in
-            self.removeSelf()
-        }
-        addSubview(backButton)
-        
-        let saveButton = TPCSystemButton(frame: CGRect(x: TPCScreenWidth * 0.5 - buttonWH * 0.5, y: backButtonY, width: buttonWH, height: buttonWH))
-        saveButton.title = "保存"
-        saveButton.animationCompletion = { [unowned self] (inout enable: Bool) in
-            debugPrint("保存")
+        let alertVc = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        alertVc.addAction(UIAlertAction(title: "保存图片", style: .Default, handler: { (action) in
             if let image = self.currentImageView.image {
                 TPCPhotoUtil.saveImage(image, completion: { (success) -> () in
                     self.imageDidFinishAuthorize(success: success)
                 })
             }
-        }
-        addSubview(saveButton)
-        
-        let shareButton = TPCSystemButton(frame: CGRect(x: backButtonX, y: backButtonY, width: buttonWH, height: buttonWH))
-        shareButton.title = "分享"
-        shareButton.animationCompletion = { [unowned self] (inout enable: Bool) in
+        }))
+        alertVc.addAction(UIAlertAction(title: "分享图片", style: .Default, handler: { (action) in
             TPCShareView.showWithTitle(nil, desc: "干货", image: self.currentImageView.image)
-        }
-        addSubview(shareButton)
+        }))
+        
+        alertVc.addAction(UIAlertAction(title: "取消", style: .Cancel, handler: { (action) in
+//            self.removeSelf()
+        }))
+        
+        viewController?.presentViewController(alertVc, animated: true, completion: nil)
+        
+        
+//        let buttonWH: CGFloat = 30.0
+//        let backButtonX = TPCScreenWidth * 0.1
+//        let backButtonY = TPCScreenHeight - buttonWH * 1.5
+//        let backButton = TPCSystemButton(frame: CGRect(x: TPCScreenWidth - backButtonX - buttonWH, y: backButtonY, width: buttonWH, height: buttonWH))
+//        backButton.title = "关闭"
+//        backButton.animationCompletion = { [unowned self] (inout enable: Bool) in
+//            self.removeSelf()
+//        }
+//        addSubview(backButton)
+//        
+//        let saveButton = TPCSystemButton(frame: CGRect(x: TPCScreenWidth * 0.5 - buttonWH * 0.5, y: backButtonY, width: buttonWH, height: buttonWH))
+//        saveButton.title = "保存"
+//        saveButton.animationCompletion = { [unowned self] (inout enable: Bool) in
+//            debugPrint("保存")
+//            if let image = self.currentImageView.image {
+//                TPCPhotoUtil.saveImage(image, completion: { (success) -> () in
+//                    self.imageDidFinishAuthorize(success: success)
+//                })
+//            }
+//        }
+//        addSubview(saveButton)
+//        
+//        let shareButton = TPCSystemButton(frame: CGRect(x: backButtonX, y: backButtonY, width: buttonWH, height: buttonWH))
+//        shareButton.title = "分享"
+//        shareButton.animationCompletion = { [unowned self] (inout enable: Bool) in
+//            TPCShareView.showWithTitle(nil, desc: "干货", image: self.currentImageView.image)
+//        }
+//        addSubview(shareButton)
     }
     
     func imageDidFinishAuthorize(success success: Bool) {

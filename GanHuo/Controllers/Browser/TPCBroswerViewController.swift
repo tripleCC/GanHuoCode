@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import SafariServices
 
 class TPCBroswerViewController: TPCViewController {
 
@@ -107,9 +108,7 @@ class TPCBroswerViewController: TPCViewController {
     
     func setupNav() {
         navigationBarBackgroundView.addSubview(progressView)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "更多", action: { [unowned self] (enable) -> () in
-            self.more()
-        })
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more"), target: self, action:  #selector(TPCBroswerViewController.more), position: .Right, fit: true)
     }
     
     func more() {
@@ -117,6 +116,7 @@ class TPCBroswerViewController: TPCViewController {
         if let ganhuo = ganhuo {
             messages.append(ganhuo.favorite == nil || !ganhuo.favorite!.boolValue ? "加入收藏" : "取消收藏")
         }
+        
         TPCPopoverView.showMessages(messages, containerSize: CGSize(width: 120, height: CGFloat(messages.count) * TPCPopViewDefaultCellHeight), fromView: navigationItem.rightBarButtonItem!.customView!, fadeDirection: TPCPopoverViewFadeDirection.RightTop) { (row) -> () in
             switch row {
             case 0:
@@ -141,9 +141,10 @@ class TPCBroswerViewController: TPCViewController {
     }
     
     func openBySafari() {
-        if let url = NSURL(string: URLString ?? "") {
-            UIApplication.sharedApplication().openURL(url)
-        }
+        navigationController!.pushViewController(SFSafariViewController(URL: webView.URL!, entersReaderIfAvailable: true), animated: true)
+//        if let url = NSURL(string: URLString ?? "") {
+//            UIApplication.sharedApplication().openURL(url)
+//        }
     }
     
     deinit {

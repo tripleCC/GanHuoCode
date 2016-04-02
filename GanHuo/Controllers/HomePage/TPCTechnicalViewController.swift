@@ -93,13 +93,7 @@ class TPCTechnicalViewController: TPCViewController {
 
     private func setupNav() {
         navigationItem.titleView = TPCApplicationTitleView(frame: CGRect(x: 0, y: 0, width: TPCNavigationBarHeight, height: TPCNavigationBarHeight))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "设置", action: { [unowned self] (enable) -> () in
-            self.set()
-        })
-        
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "收藏", action: { [unowned self] (enable) -> () in
-//
-//            })
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), target: self, action: #selector(TPCTechnicalViewController.set))
     }
     
     func set() {

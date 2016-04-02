@@ -10,6 +10,7 @@ import UIKit
 import Kingfisher
 
 class TPCDetailViewController: TPCViewController {
+    let navigationBarHideKey = "TPCDetailViewNavigationBarHideKey"
     let reuseIdentifier = "TPCDetailCell"
     let reuseHeaderIdentifier = "TPCDetailHeader"
     var technicalDict: TPCTechnicalDictionary?
@@ -51,16 +52,16 @@ class TPCDetailViewController: TPCViewController {
         if let technical = technicalDict?["福利"]?.first {
             headerImageView.kf_setImageWithURL(NSURL(string: technical.url!)!)
         }
+        registerObserverForApplicationDidEnterBackground()
+        registerObserverForApplicationDidEnterForeground()
     }
     
     private func setupNav() {
         navigationBarBackgroundView.removeFromSuperview()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "全部", action: { [unowned self] (enable) -> () in
-            self.showAllImages()
-        })
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "all"), style: .Done, target: self, action: #selector(TPCDetailViewController.showAllImages))
     }
     
-    private func showAllImages() {
+    func showAllImages() {
         if let technicals = technicalDict?["福利"] {
             let pageScrollView = TPCPageScrollView(frame: view.bounds)
             pageScrollView.backgroundColor = UIColor.blackColor()
@@ -69,7 +70,7 @@ class TPCDetailViewController: TPCViewController {
             }
             pageScrollView.imageURLStrings = technicals.flatMap{ $0.url }
             pageScrollView.alpha = 0
-            UIApplication.sharedApplication().keyWindow?.addSubview(pageScrollView)
+            view.addSubview(pageScrollView)
             UIView.animateWithDuration(0.5) { () -> Void in
                 self.prepareForPageAppear()
                 pageScrollView.alpha = 1
@@ -78,12 +79,18 @@ class TPCDetailViewController: TPCViewController {
     }
     
     func prepareForPageAppear() {
-        view.alpha = 0
+//        view.alpha = 0
+        headerImageView.alpha = 0
+        tableView.alpha = 0
+        navigationController!.fd_interactivePopMaxAllowedInitialDistanceToLeftEdge = 0.1
         adjustBarToHidenPosition()
     }
     
     func prepareForPageDisappear() {
-        view.alpha = 1
+//        view.alpha = 1
+        headerImageView.alpha = 1
+        tableView.alpha = 1
+        navigationController!.fd_interactivePopMaxAllowedInitialDistanceToLeftEdge = 0
         adjustBarToOriginPosition()
     }
     
@@ -91,9 +98,22 @@ class TPCDetailViewController: TPCViewController {
         super.viewDidLayoutSubviews()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    override func applicationDidEnterBackground(notification: NSNotification) {
+        NSUserDefaults.standardUserDefaults().setBool(navigationBarFrame!.origin.y == TPCStatusBarHeight, forKey: navigationBarHideKey)
+        debugPrint(#function, navigationBarFrame!.origin.y == TPCStatusBarHeight)
+    }
+    
+    override func applicationDidEnterForeground(notification: NSNotification) {
+        debugPrint(#function)
+        if !NSUserDefaults.standardUserDefaults().boolForKey(navigationBarHideKey) {
+            dispatchSeconds(0.5, action: { 
+                self.adjustBarToHidenPosition()
+            })
+        }
+    }
+    
+    deinit {
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: navigationBarHideKey)
     }
     
     override func didReceiveMemoryWarning() {

@@ -27,6 +27,8 @@ struct TPCConfiguration {
     static let navigationBarTitleFont = UIFont(name: TPCConfiguration.themeBFontName, size: 18.0)
     static let navigationBarTitleColor = UIColor.grayColor()
     
+    static let navigationBarBackColor = UIColor(rgbValue: 0x515151)
+    
     static let technicalCellHeight: CGFloat = 400.0
     static let technicalCellLeftRightMargin: CGFloat = 10.0
     static let technicalBeautyImageViewHeight: CGFloat = 390.0

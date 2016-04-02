@@ -12,7 +12,7 @@ class TPCNavigationController: UINavigationController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        navigationBar.tintColor = UIColor.orangeColor()
+        navigationBar.tintColor = TPCConfiguration.navigationBarBackColor
         navigationBar.barTintColor = UIColor.clearColor()
         navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         navigationBar.shadowImage = UIImage()
@@ -20,11 +20,11 @@ class TPCNavigationController: UINavigationController {
     }
     
     override func pushViewController(viewController: UIViewController, animated: Bool) {
-        if viewControllers.count != 0 {
-            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", action: { [unowned self] (enable) -> () in
-                self.back()
-            })
-        }
+//        if viewControllers.count != 0 {
+//            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", action: { [unowned self] (enable) -> () in
+//                self.back()
+//            })
+//        }
         
         super.pushViewController(viewController, animated: animated)
     }
