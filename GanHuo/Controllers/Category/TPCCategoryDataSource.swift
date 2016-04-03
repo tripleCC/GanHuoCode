@@ -48,9 +48,9 @@ extension TPCCategoryDataSourceLoad {
         tableView.loadMoreFooterView.hidden = true
         tableView.beginRefreshViewAnimation()
         page = 1
-        technicals.removeAll()
         TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: page) { (technicals, error) -> () in
             print(technicals.count)
+            self.technicals.removeAll()
             self.tableView.loadMoreFooterView.hidden = technicals.count == 0
             self.refreshWithTechnicals(technicals, error: error)
         }
