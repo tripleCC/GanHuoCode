@@ -14,6 +14,11 @@
 		D60D12BF1C8D399300C84D4C /* TPCCategoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60D12BE1C8D399300C84D4C /* TPCCategoryDataSource.swift */; };
 		D61A92551C8AC82900FD594C /* GanHuoObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A92531C8AC82900FD594C /* GanHuoObject+CoreDataProperties.swift */; };
 		D61A92561C8AC82900FD594C /* GanHuoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A92541C8AC82900FD594C /* GanHuoObject.swift */; };
+		D61AFD431CB104540080A9B9 /* TPCCollectionViewWaterflowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AFD421CB104540080A9B9 /* TPCCollectionViewWaterflowLayout.swift */; };
+		D61AFD451CB1145C0080A9B9 /* TPCWelfareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AFD441CB1145C0080A9B9 /* TPCWelfareViewController.swift */; };
+		D61AFD481CB116620080A9B9 /* TPCWelfareCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AFD461CB116620080A9B9 /* TPCWelfareCollectionViewCell.swift */; };
+		D61AFD491CB116620080A9B9 /* TPCWelfareCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D61AFD471CB116620080A9B9 /* TPCWelfareCollectionViewCell.xib */; };
+		D61AFD4B1CB11B150080A9B9 /* TPCCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AFD4A1CB11B150080A9B9 /* TPCCollectionView.swift */; };
 		D61CC8DE1C8DBC3000EDE97D /* TPCMarkReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61CC8DD1C8DBC3000EDE97D /* TPCMarkReadView.swift */; };
 		D65156551C85AD4E005B161B /* TPCSelectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65156541C85AD4E005B161B /* TPCSelectHeaderView.swift */; };
 		D6544A1F1C93C4CE0094DB3F /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6544A1E1C93C4CE0094DB3F /* UIScrollView+Extension.swift */; };
@@ -112,6 +117,11 @@
 		D60D12BE1C8D399300C84D4C /* TPCCategoryDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCategoryDataSource.swift; sourceTree = "<group>"; };
 		D61A92531C8AC82900FD594C /* GanHuoObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GanHuoObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D61A92541C8AC82900FD594C /* GanHuoObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GanHuoObject.swift; sourceTree = "<group>"; };
+		D61AFD421CB104540080A9B9 /* TPCCollectionViewWaterflowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCollectionViewWaterflowLayout.swift; sourceTree = "<group>"; };
+		D61AFD441CB1145C0080A9B9 /* TPCWelfareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCWelfareViewController.swift; sourceTree = "<group>"; };
+		D61AFD461CB116620080A9B9 /* TPCWelfareCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCWelfareCollectionViewCell.swift; sourceTree = "<group>"; };
+		D61AFD471CB116620080A9B9 /* TPCWelfareCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCWelfareCollectionViewCell.xib; sourceTree = "<group>"; };
+		D61AFD4A1CB11B150080A9B9 /* TPCCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCollectionView.swift; sourceTree = "<group>"; };
 		D61CC8DD1C8DBC3000EDE97D /* TPCMarkReadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCMarkReadView.swift; sourceTree = "<group>"; };
 		D65156541C85AD4E005B161B /* TPCSelectHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCSelectHeaderView.swift; sourceTree = "<group>"; };
 		D6544A1E1C93C4CE0094DB3F /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
@@ -328,6 +338,7 @@
 				D6D8BF9E1C82EB7000CCA370 /* TPCShareView.xib */,
 				D6D8BF9F1C82EB7000CCA370 /* TPCSystemButton.swift */,
 				D6D8BFA01C82EB7000CCA370 /* TPCTableView.swift */,
+				D61AFD4A1CB11B150080A9B9 /* TPCCollectionView.swift */,
 				D6D8BFA11C82EB7000CCA370 /* TPCUpdateView.swift */,
 				D6D8BFA21C82EB7000CCA370 /* TPCUpdateView.xib */,
 				D6D8BFA31C82EB7000CCA370 /* TPCWebView.swift */,
@@ -384,6 +395,7 @@
 				D67CED981C85EE6B00A38B0B /* TPCSubCategoryViewController.swift */,
 				D60D12BE1C8D399300C84D4C /* TPCCategoryDataSource.swift */,
 				D6C0E2BB1C871F5E0033EAFB /* TPCFetchedResultsDataSource.swift */,
+				D61AFD441CB1145C0080A9B9 /* TPCWelfareViewController.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -401,6 +413,9 @@
 				D6C562C11C9995BA00D8F0FA /* TPCCategoryEditView.xib */,
 				D6C562E61C9B056E00D8F0FA /* TPCCategoryEditViewCell.swift */,
 				D6C562E71C9B056E00D8F0FA /* TPCCategoryEditViewCell.xib */,
+				D61AFD421CB104540080A9B9 /* TPCCollectionViewWaterflowLayout.swift */,
+				D61AFD461CB116620080A9B9 /* TPCWelfareCollectionViewCell.swift */,
+				D61AFD471CB116620080A9B9 /* TPCWelfareCollectionViewCell.xib */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -618,6 +633,7 @@
 				D60B6F591C95A2E200531423 /* TPCNoFavoriteTipView.xib in Resources */,
 				D6D8BF4C1C82D26F00CCA370 /* Main.storyboard in Resources */,
 				D6D8BFBE1C82EB7000CCA370 /* TPCUpdateView.xib in Resources */,
+				D61AFD491CB116620080A9B9 /* TPCWelfareCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,6 +697,7 @@
 				D6544A1F1C93C4CE0094DB3F /* UIScrollView+Extension.swift in Sources */,
 				D60D12BF1C8D399300C84D4C /* TPCCategoryDataSource.swift in Sources */,
 				D6D8BFC31C82EB7000CCA370 /* TPCApplicationTitleView.swift in Sources */,
+				D61AFD451CB1145C0080A9B9 /* TPCWelfareViewController.swift in Sources */,
 				D67CED971C85DE3600A38B0B /* TPCCategoryViewController.swift in Sources */,
 				D6DE713F1C2592A300C066DE /* AppDelegate.swift in Sources */,
 				D6DE71431C2592A300C066DE /* TPCConst.swift in Sources */,
@@ -695,6 +712,8 @@
 				D61A92551C8AC82900FD594C /* GanHuoObject+CoreDataProperties.swift in Sources */,
 				D6DE713A1C2592A300C066DE /* UIImage+Extension.swift in Sources */,
 				D61CC8DE1C8DBC3000EDE97D /* TPCMarkReadView.swift in Sources */,
+				D61AFD4B1CB11B150080A9B9 /* TPCCollectionView.swift in Sources */,
+				D61AFD431CB104540080A9B9 /* TPCCollectionViewWaterflowLayout.swift in Sources */,
 				D6D8BFCE1C82EB7700CCA370 /* TPCLaunchConfig.swift in Sources */,
 				D6D8BFBB1C82EB7000CCA370 /* TPCSystemButton.swift in Sources */,
 				D6DE71491C2592A300C066DE /* TPCTextParser.swift in Sources */,
@@ -709,6 +728,7 @@
 				D60B6F371C9427C900531423 /* UIView+Extension.swift in Sources */,
 				D6DE714B1C2592A300C066DE /* TPCVenusUtil.swift in Sources */,
 				D66C25C11C53A31600E7D6A6 /* TPCActivityIndicator.swift in Sources */,
+				D61AFD481CB116620080A9B9 /* TPCWelfareCollectionViewCell.swift in Sources */,
 				D6DE71381C2592A300C066DE /* UIButton+Extension.swift in Sources */,
 				D69797E61C2FBCA500A53CD2 /* UIViewController+Extension.swift in Sources */,
 				D60B6F571C95801800531423 /* TPCFavoriteGanHuoView.swift in Sources */,

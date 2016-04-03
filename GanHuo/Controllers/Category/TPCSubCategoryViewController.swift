@@ -49,7 +49,7 @@ class TPCSubCategoryViewController: UIViewController {
 }
 
 extension TPCSubCategoryViewController: TPCCategoryDataSourceDelegate {
-    func renderCell(cell: UITableViewCell, withObject object: AnyObject?) {
+    func renderCell(cell: UIView, withObject object: AnyObject?) {
         // 这种后台上下文队列中的实体在主队列中访问是不可取的，需要通过objectID传递,但是暂时没问题，先这么用着吧。。。
         if let o = object as? GanHuoObject {
             let cell = cell as! TPCCategoryViewCell

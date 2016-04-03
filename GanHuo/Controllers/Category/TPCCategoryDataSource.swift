@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol TPCCategoryDataSourceDelegate: class {
-    func renderCell(cell: UITableViewCell, withObject object: AnyObject?)
+    func renderCell(cell: UIView, withObject object: AnyObject?)
 }
 
 class TPCCategoryDataSource: NSObject {
@@ -31,6 +31,13 @@ class TPCCategoryDataSource: NSObject {
         super.init()
         self.reuseIdentifier = reuseIdentifier
         self.tableView = tableView
+    }
+    
+    var collectionView: TPCCollectionView!
+    init(collectionView: TPCCollectionView, reuseIdentifier: String) {
+        super.init()
+        self.reuseIdentifier = reuseIdentifier
+        self.collectionView = collectionView
     }
     
     func fetchGanHuoByIndexPath(indexPath: NSIndexPath, completion:((ganhuo: GanHuoObject) -> ())) {
