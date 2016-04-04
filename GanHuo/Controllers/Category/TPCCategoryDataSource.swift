@@ -131,4 +131,15 @@ extension TPCCategoryDataSource: UITableViewDataSource {
     }
 }
 
+extension TPCCategoryDataSource: UICollectionViewDataSource {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return technicals.count
+    }
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        delegate?.renderCell(cell, withObject: technicals[indexPath.row])
+        return cell
+    }
+}
+
 

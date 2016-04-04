@@ -23,25 +23,12 @@ class TPCWelfareViewController: UIViewController {
         super.viewDidLoad()
         colletionView = view as! TPCCollectionView
         colletionView.backgroundColor = UIColor.whiteColor()
-        colletionView.dataSource = self
-        colletionView.registerNib(UINib(nibName: String(TPCWelfareCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: reuseIndentifier)
-        
         dataSource = TPCCategoryDataSource(collectionView: colletionView, reuseIdentifier: reuseIndentifier)
         dataSource.delegate = self
         dataSource.categoryTitle = "福利"
+        colletionView.dataSource = dataSource
+        colletionView.registerNib(UINib(nibName: String(TPCWelfareCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: reuseIndentifier)
     }
-}
-
-extension TPCWelfareViewController: UICollectionViewDataSource {
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
-    }
-    
-    
 }
 
 extension TPCWelfareViewController: TPCCollectionViewWaterflowLayoutDelegate {
