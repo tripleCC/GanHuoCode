@@ -1,14 +1,15 @@
 //
-//  TPCCategoryViewCell.swift
+//  TPCCategoryTableViewCell.swift
 //  GanHuo
 //
-//  Created by tripleCC on 16/3/5.
+//  Created by tripleCC on 16/4/4.
 //  Copyright © 2016年 tripleCC. All rights reserved.
 //
 
 import UIKit
 
-class TPCCategoryViewCell: UICollectionViewCell {
+class TPCCategoryTableViewCell: UITableViewCell {
+
     static func cellHeightWithGanHuo(ganhuo: GanHuoObject) -> CGFloat {
         if let desc = ganhuo.desc {
             return desc.heightWithFont(UIFont(name: UIFont.avenirBookFontName(), size: TPCConfiguration.themeCellBFontSize)!, width: TPCScreenWidth - 20) + 40
@@ -33,6 +34,7 @@ class TPCCategoryViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-//        contentView.backgroundColor = UIColor.randomColor()
+        //        contentView.backgroundColor = UIColor.randomColor()
     }
+    
 }

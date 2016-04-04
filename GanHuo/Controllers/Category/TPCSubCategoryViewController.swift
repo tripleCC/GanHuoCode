@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class TPCSubCategoryViewController: UIViewController {
-    var tableView: TPCTableView!
+    var collectionView: TPCCollectionView!
     var dataSource: TPCCategoryDataSource!
     var categoryTitle: String?
     override func viewDidLoad() {
@@ -19,32 +19,21 @@ class TPCSubCategoryViewController: UIViewController {
     }
     
     override func loadView() {
-        view = TPCTableView(frame: UIScreen.mainScreen().bounds, style: .Plain)
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        view = TPCCollectionView(frame: UIScreen.mainScreen().bounds, collectionViewLayout: layout)
     }
     
     private func setupSubviews() {
         let reuseIdentifier = "GanHuoCategoryCell"
-        tableView = view as! TPCTableView
-        tableView.registerNib(UINib(nibName: String(TPCCategoryViewCell.self), bundle: nil), forCellReuseIdentifier: reuseIdentifier)
-        tableView.delegate = self
-        dataSource = TPCCategoryDataSource(tableView: tableView, reuseIdentifier: reuseIdentifier)
+        collectionView = view as! TPCCollectionView
+        collectionView.registerNib(UINib(nibName: String(TPCCategoryViewCell.self), bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.registerNib(UINib(nibName: String(TPCLoadMoreReusableView.self), bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: String(TPCLoadMoreReusableView.self))
+        collectionView.delegate = self
+        dataSource = TPCCategoryDataSource(collectionView: collectionView, reuseIdentifier: reuseIdentifier)
         dataSource.delegate = self
         dataSource.categoryTitle = categoryTitle
-        tableView.dataSource = dataSource
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        tableView.loadMoreFooterView.gotoWebAction = { [unowned self] in
-            self.pushToBrowserViewControllerWithURLString(TPCGankIOURLString)
-            TPCUMManager.event(.TechinicalNoMoreData)
-        }
-    }
-    
-    private func pushToBrowserViewControllerWithURLString(URLString: String, ganhuo: GanHuoObject? = nil) {
-        let sb = UIStoryboard(name: "HomePage", bundle: nil)
-        let browserVc = sb.instantiateViewControllerWithIdentifier("BroswerViewController") as! TPCBroswerViewController
-        browserVc.URLString = URLString
-        browserVc.navigationItem.title = ganhuo?.desc ?? ""
-        browserVc.ganhuo = ganhuo
-        self.navigationController?.pushViewController(browserVc, animated: true)
+        collectionView.dataSource = dataSource
     }
 }
 
@@ -55,13 +44,11 @@ extension TPCSubCategoryViewController: TPCCategoryDataSourceDelegate {
             let cell = cell as! TPCCategoryViewCell
             cell.ganhuo = o
         }
-        
     }
 }
 
-extension TPCSubCategoryViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+extension TPCSubCategoryViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         dataSource.fetchGanHuoByIndexPath(indexPath) { (ganhuo) -> () in
             ganhuo.read = true
             let url = ganhuo.url
@@ -69,17 +56,21 @@ extension TPCSubCategoryViewController: UITableViewDelegate {
                 if let url = url {
                     self.pushToBrowserViewControllerWithURLString(url, ganhuo: ganhuo)
                 }
-                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                self.collectionView.reloadItemsAtIndexPaths([indexPath])
             }
             TPCCoreDataManager.shareInstance.saveContext()
         }
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         if let height = dataSource.technicals[indexPath.row].cellHeight {
-            return CGFloat(height.floatValue)
+            return CGSize(width: view.bounds.width, height: CGFloat(height.floatValue))
         }
-        return TPCCategoryViewCell.cellHeightWithGanHuo(dataSource.technicals[indexPath.row])
+        return CGSize(width: view.bounds.width, height: TPCCategoryViewCell.cellHeightWithGanHuo(dataSource.technicals[indexPath.row]))
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: view.bounds.width, height: TPCConfiguration.technicalFooterViewHeight)
     }
 }
 
@@ -87,32 +78,21 @@ extension TPCSubCategoryViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if scrollView.contentOffset.y < 0 {
             let scale = (abs(scrollView.contentOffset.y)) / TPCRefreshControlOriginHeight
-            tableView.adjustRefreshViewWithScale(scale)
+            collectionView.adjustRefreshViewWithScale(scale)
         }
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        if tableView.refreshing() {
+        if collectionView.refreshing() {
             dataSource.loadNewData()
         }
-//        // 到顶部时不进行刷新
-//        if scrollView.contentOffset.y > 0 {
-//            let expectedOffsetY = tableView.contentOffset.y + UIScreen.mainScreen().bounds.height - noMoreDataFooterView.bounds.height - TPCConfiguration.technicalTableViewTopBottomMargin
-//            print(expectedOffsetY, scrollView.contentSize.height)
-//            if scrollView.contentSize.height >= expectedOffsetY {
-//                loadMoreData()
-//            }
-//            reloadTableView()
-//        }
     }
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if let indexPath = tableView.indexPathForRowAtPoint(CGPoint(x: 1, y: targetContentOffset.memory.y)) {
+        if let indexPath = collectionView.indexPathForItemAtPoint(CGPoint(x: 1, y: targetContentOffset.memory.y)) {
             if Double(indexPath.row) >= Double(dataSource.technicals.count) - Double(TPCLoadGanHuoDataOnce) * 0.7 {
                 dataSource.loadMoreData()
             }
         }
-//        adjustBarPositionByVelocity(velocity.y, contentOffsetY: targetContentOffset.memory.y)
-//        debugPrint(__FUNCTION__, velocity, targetContentOffset.memory.y)
     }
 }

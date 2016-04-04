@@ -16,7 +16,7 @@ class TPCNavigationController: UINavigationController {
         navigationBar.barTintColor = UIColor.clearColor()
         navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         navigationBar.shadowImage = UIImage()
-        navigationBar.titleTextAttributes = [NSFontAttributeName : TPCConfiguration.navigationBarTitleFont!, NSForegroundColorAttributeName : TPCConfiguration.navigationBarTitleColor]
+        navigationBar.titleTextAttributes = [NSFontAttributeName : TPCConfiguration.navigationBarTitleFont!, NSForegroundColorAttributeName : TPCConfiguration.navigationBarBackColor]
     }
     
     override func pushViewController(viewController: UIViewController, animated: Bool) {

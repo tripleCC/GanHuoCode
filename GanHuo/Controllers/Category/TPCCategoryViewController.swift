@@ -50,7 +50,7 @@ class TPCCategoryViewController: TPCViewController {
         let segmentView = UISegmentedControl(items: ["分类", "收藏"])
         segmentView.addTarget(self, action: #selector(TPCCategoryViewController.segmenViewOnClicked(_:)), forControlEvents: UIControlEvents.ValueChanged)
         segmentView.frame = CGRect(x: 0, y: 0, width: 150, height: 30)
-        segmentView.tintColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.8)
+        segmentView.tintColor = TPCConfiguration.navigationBarBackColor
         let titleFont = UIFont(name: TPCConfiguration.themeSFontName, size: 13.0)!
         segmentView.setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor(), NSFontAttributeName : titleFont], forState: .Selected)
         segmentView.setTitleTextAttributes([NSFontAttributeName : titleFont], forState: .Normal)
@@ -204,7 +204,7 @@ extension TPCCategoryViewController : UIScrollViewDelegate {
         guard !showingVc.isViewLoaded() else { return }
         showingVc.categoryTitle = selectHeaderView.selectedTitle
         showingVc.view.frame = CGRect(origin: CGPoint(x: CGFloat(index) * contentScrollView.frame.size.width, y: 0), size: contentScrollView.frame.size)
-        contentScrollView.addSubview(showingVc.tableView)
+        contentScrollView.addSubview(showingVc.view)
     }
     
     private func loadControllerView() {

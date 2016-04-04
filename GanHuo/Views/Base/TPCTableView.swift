@@ -58,7 +58,7 @@ class TPCTableView: UITableView, TPCRefreshable {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        loadMoreFooterView.bounds.size.height = TPCConfiguration.technicalTableViewFooterViewHeight
+        loadMoreFooterView.bounds.size.height = TPCConfiguration.technicalFooterViewHeight
     }
 }
 

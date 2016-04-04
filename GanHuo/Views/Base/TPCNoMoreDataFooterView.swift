@@ -18,7 +18,7 @@ class TPCNoMoreDataFooterView: UIView {
     
     class func noMoreDataFooterView() -> TPCNoMoreDataFooterView {
         let footerView =  NSBundle.mainBundle().loadNibNamed("TPCNoMoreDataFooterView", owner: nil, options: nil).first as! TPCNoMoreDataFooterView
-        footerView.bounds.size.height = TPCConfiguration.technicalTableViewFooterViewHeight
+        footerView.bounds.size.height = TPCConfiguration.technicalFooterViewHeight
         footerView.type = .LoadMore
         return footerView
     }

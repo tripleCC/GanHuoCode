@@ -25,4 +25,13 @@ extension UIViewController {
     func performSegueWithIdentifierType(type: TPCIdentifierType, sender: AnyObject?) {
         performSegueWithIdentifier(type.rawValue, sender: sender)
     }
+    
+    func pushToBrowserViewControllerWithURLString(URLString: String, ganhuo: GanHuoObject? = nil) {
+        let sb = UIStoryboard(name: "HomePage", bundle: nil)
+        let browserVc = sb.instantiateViewControllerWithIdentifier("BroswerViewController") as! TPCBroswerViewController
+        browserVc.URLString = URLString
+        browserVc.navigationItem.title = ganhuo?.desc ?? ""
+        browserVc.ganhuo = ganhuo
+        self.navigationController?.pushViewController(browserVc, animated: true)
+    }
 }

@@ -37,7 +37,7 @@ class TPCFavoriteGanHuoView: UIView {
     
     private func setupSubviews() {
         tableView = UITableView(frame: frame, style: .Plain)
-        tableView.registerNib(UINib(nibName: String(TPCCategoryViewCell.self), bundle: nil), forCellReuseIdentifier: reuseIdentifier)
+        tableView.registerNib(UINib(nibName: String(TPCCategoryTableViewCell.self), bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -86,7 +86,7 @@ extension TPCFavoriteGanHuoView: UITableViewDelegate {
 
 extension TPCFavoriteGanHuoView: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TPCCategoryViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! TPCCategoryTableViewCell
         cell.readedView.hidden = true
         cell.ganhuo = technicals[indexPath.row]
         return cell
@@ -100,9 +100,9 @@ extension TPCFavoriteGanHuoView: UITableViewDataSource {
         if let height = technicals[indexPath.row].cellHeight {
             return CGFloat(height.floatValue)
         }
-        return TPCCategoryViewCell.cellHeightWithGanHuo(technicals[indexPath.row])
+        return TPCCategoryTableViewCell.cellHeightWithGanHuo(technicals[indexPath.row])
     }
-    
+    // UICollectionView没有这个功能，需要自己实现，还是用UITableView好了
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let action = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "取消收藏") { (action, indexpath) -> Void in
             TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlockAndWait({ () -> Void in

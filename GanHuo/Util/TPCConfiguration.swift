@@ -33,7 +33,7 @@ struct TPCConfiguration {
     static let technicalCellLeftRightMargin: CGFloat = 10.0
     static let technicalBeautyImageViewHeight: CGFloat = 390.0
     static let technicalTableViewTopBottomMargin: CGFloat = 5.0
-    static let technicalTableViewFooterViewHeight: CGFloat = 100
+    static let technicalFooterViewHeight: CGFloat = 100
     static let technicalCellLabelFont = UIFont(name: UIFont.avenirBookFontName(), size: TPCConfiguration.themeCellSFontSize)
     static let technicalOriginScrollViewContentOffsetY = -TPCNavigationBarHeight - TPCConfiguration.technicalTableViewTopBottomMargin - TPCStatusBarHeight
     

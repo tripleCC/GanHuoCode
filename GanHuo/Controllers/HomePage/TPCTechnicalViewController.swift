@@ -48,7 +48,7 @@ class TPCTechnicalViewController: TPCViewController {
             if self.categoriesArray.count == TPCConfiguration.loadDataCountOnce {
                 return self.lastScrollViewOffsetY + CGFloat(TPCConfiguration.loadDataCountOnce) * 0.5 * TPCConfiguration.technicalCellHeight
             } else {
-                return TPCConfiguration.technicalCellHeight * CGFloat(self.categoriesArray.count - TPCConfiguration.loadDataCountOnce) + self.lastScrollViewOffsetY - TPCScreenHeight - TPCConfiguration.technicalTableViewFooterViewHeight
+                return TPCConfiguration.technicalCellHeight * CGFloat(self.categoriesArray.count - TPCConfiguration.loadDataCountOnce) + self.lastScrollViewOffsetY - TPCScreenHeight - TPCConfiguration.technicalFooterViewHeight
             }
         }
     }

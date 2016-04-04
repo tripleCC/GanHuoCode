@@ -14,7 +14,14 @@ class TPCCollectionView: UICollectionView, TPCRefreshable {
         return customView.subviews.first as! TPCRefreshView
     }
     var customView: UIView!
-    var loadMoreFooterView: TPCNoMoreDataFooterView!
+    var loadMoreFooterView: TPCNoMoreDataFooterView? {
+        didSet {
+            loadMoreFooterView?.gotoWebAction = { [unowned self] in
+                self.viewController?.pushToBrowserViewControllerWithURLString(TPCGankIOURLString)
+                TPCUMManager.event(.TechinicalNoMoreData)
+            }
+        }
+    }
     override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
         if let last = visibleCells().last {
             let rowsIndex = numberOfItemsInSection(0) - 1
@@ -39,6 +46,7 @@ class TPCCollectionView: UICollectionView, TPCRefreshable {
     }
     
     private func setupSubviews() {
+        backgroundColor = UIColor.whiteColor()
         refreshControl = UIRefreshControl()
         refreshControl.backgroundColor = UIColor.clearColor()
         refreshControl.tintColor = UIColor.clearColor()
@@ -49,12 +57,9 @@ class TPCCollectionView: UICollectionView, TPCRefreshable {
         customView.backgroundColor = UIColor.clearColor()
         customView.frame = refreshControl.bounds
         refreshControl.addSubview(customView)
-        
-        loadMoreFooterView = TPCNoMoreDataFooterView.noMoreDataFooterView()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        loadMoreFooterView.bounds.size.height = TPCConfiguration.technicalTableViewFooterViewHeight
     }
 }

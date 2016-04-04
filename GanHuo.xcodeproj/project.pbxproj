@@ -12,6 +12,11 @@
 		D60B6F571C95801800531423 /* TPCFavoriteGanHuoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B6F561C95801800531423 /* TPCFavoriteGanHuoView.swift */; };
 		D60B6F591C95A2E200531423 /* TPCNoFavoriteTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D60B6F581C95A2E200531423 /* TPCNoFavoriteTipView.xib */; };
 		D60D12BF1C8D399300C84D4C /* TPCCategoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60D12BE1C8D399300C84D4C /* TPCCategoryDataSource.swift */; };
+		D611B4CE1CB20F4400D5A2C7 /* TPCCategoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D611B4CD1CB20F4400D5A2C7 /* TPCCategoryViewCell.xib */; };
+		D611B4D11CB215C000D5A2C7 /* TPCLoadMoreReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611B4CF1CB215C000D5A2C7 /* TPCLoadMoreReusableView.swift */; };
+		D611B4D21CB215C000D5A2C7 /* TPCLoadMoreReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D611B4D01CB215C000D5A2C7 /* TPCLoadMoreReusableView.xib */; };
+		D611B4D51CB221E100D5A2C7 /* TPCCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611B4D31CB221E100D5A2C7 /* TPCCategoryTableViewCell.swift */; };
+		D611B4D61CB221E100D5A2C7 /* TPCCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D611B4D41CB221E100D5A2C7 /* TPCCategoryTableViewCell.xib */; };
 		D61A92551C8AC82900FD594C /* GanHuoObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A92531C8AC82900FD594C /* GanHuoObject+CoreDataProperties.swift */; };
 		D61A92561C8AC82900FD594C /* GanHuoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A92541C8AC82900FD594C /* GanHuoObject.swift */; };
 		D61AFD431CB104540080A9B9 /* TPCCollectionViewWaterflowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AFD421CB104540080A9B9 /* TPCCollectionViewWaterflowLayout.swift */; };
@@ -23,7 +28,6 @@
 		D65156551C85AD4E005B161B /* TPCSelectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65156541C85AD4E005B161B /* TPCSelectHeaderView.swift */; };
 		D6544A1F1C93C4CE0094DB3F /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6544A1E1C93C4CE0094DB3F /* UIScrollView+Extension.swift */; };
 		D65AA09B1C8A872A00A8C308 /* TPCCategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA0991C8A872A00A8C308 /* TPCCategoryViewCell.swift */; };
-		D65AA09C1C8A872A00A8C308 /* TPCCategoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65AA09A1C8A872A00A8C308 /* TPCCategoryViewCell.xib */; };
 		D667F9F11C53B19D0059F372 /* TPCArchivable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F01C53B19D0059F372 /* TPCArchivable.swift */; };
 		D667F9F91C5518920059F372 /* NSCalender+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F81C5518920059F372 /* NSCalender+Extension.swift */; };
 		D66C25BF1C53A13200E7D6A6 /* TPCRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C25BE1C53A13200E7D6A6 /* TPCRefreshable.swift */; };
@@ -115,6 +119,11 @@
 		D60B6F561C95801800531423 /* TPCFavoriteGanHuoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCFavoriteGanHuoView.swift; sourceTree = "<group>"; };
 		D60B6F581C95A2E200531423 /* TPCNoFavoriteTipView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCNoFavoriteTipView.xib; sourceTree = "<group>"; };
 		D60D12BE1C8D399300C84D4C /* TPCCategoryDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCategoryDataSource.swift; sourceTree = "<group>"; };
+		D611B4CD1CB20F4400D5A2C7 /* TPCCategoryViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCCategoryViewCell.xib; sourceTree = "<group>"; };
+		D611B4CF1CB215C000D5A2C7 /* TPCLoadMoreReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCLoadMoreReusableView.swift; sourceTree = "<group>"; };
+		D611B4D01CB215C000D5A2C7 /* TPCLoadMoreReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCLoadMoreReusableView.xib; sourceTree = "<group>"; };
+		D611B4D31CB221E100D5A2C7 /* TPCCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		D611B4D41CB221E100D5A2C7 /* TPCCategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCCategoryTableViewCell.xib; sourceTree = "<group>"; };
 		D61A92531C8AC82900FD594C /* GanHuoObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GanHuoObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D61A92541C8AC82900FD594C /* GanHuoObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GanHuoObject.swift; sourceTree = "<group>"; };
 		D61AFD421CB104540080A9B9 /* TPCCollectionViewWaterflowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCollectionViewWaterflowLayout.swift; sourceTree = "<group>"; };
@@ -126,7 +135,6 @@
 		D65156541C85AD4E005B161B /* TPCSelectHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCSelectHeaderView.swift; sourceTree = "<group>"; };
 		D6544A1E1C93C4CE0094DB3F /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		D65AA0991C8A872A00A8C308 /* TPCCategoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCategoryViewCell.swift; sourceTree = "<group>"; };
-		D65AA09A1C8A872A00A8C308 /* TPCCategoryViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCCategoryViewCell.xib; sourceTree = "<group>"; };
 		D667F9F01C53B19D0059F372 /* TPCArchivable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCArchivable.swift; sourceTree = "<group>"; };
 		D667F9F81C5518920059F372 /* NSCalender+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalender+Extension.swift"; sourceTree = "<group>"; };
 		D66C25BE1C53A13200E7D6A6 /* TPCRefreshable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCRefreshable.swift; sourceTree = "<group>"; };
@@ -330,6 +338,8 @@
 				D6D8BF961C82EB7000CCA370 /* TPCLinkButton.swift */,
 				D6D8BF971C82EB7000CCA370 /* TPCNoMoreDataFooterView.swift */,
 				D6D8BF981C82EB7000CCA370 /* TPCNoMoreDataFooterView.xib */,
+				D611B4CF1CB215C000D5A2C7 /* TPCLoadMoreReusableView.swift */,
+				D611B4D01CB215C000D5A2C7 /* TPCLoadMoreReusableView.xib */,
 				D6D8BF991C82EB7000CCA370 /* TPCPageScrollView.swift */,
 				D6D8BF9A1C82EB7000CCA370 /* TPCPopoverView.swift */,
 				D6D8BF9B1C82EB7000CCA370 /* TPCRefreshContentsView.xib */,
@@ -404,10 +414,9 @@
 			isa = PBXGroup;
 			children = (
 				D65156541C85AD4E005B161B /* TPCSelectHeaderView.swift */,
+				D611B4CD1CB20F4400D5A2C7 /* TPCCategoryViewCell.xib */,
 				D65AA0991C8A872A00A8C308 /* TPCCategoryViewCell.swift */,
-				D65AA09A1C8A872A00A8C308 /* TPCCategoryViewCell.xib */,
 				D61CC8DD1C8DBC3000EDE97D /* TPCMarkReadView.swift */,
-				D60B6F561C95801800531423 /* TPCFavoriteGanHuoView.swift */,
 				D60B6F581C95A2E200531423 /* TPCNoFavoriteTipView.xib */,
 				D6C562BF1C99959E00D8F0FA /* TPCCategoryEditView.swift */,
 				D6C562C11C9995BA00D8F0FA /* TPCCategoryEditView.xib */,
@@ -416,6 +425,9 @@
 				D61AFD421CB104540080A9B9 /* TPCCollectionViewWaterflowLayout.swift */,
 				D61AFD461CB116620080A9B9 /* TPCWelfareCollectionViewCell.swift */,
 				D61AFD471CB116620080A9B9 /* TPCWelfareCollectionViewCell.xib */,
+				D611B4D31CB221E100D5A2C7 /* TPCCategoryTableViewCell.swift */,
+				D611B4D41CB221E100D5A2C7 /* TPCCategoryTableViewCell.xib */,
+				D60B6F561C95801800531423 /* TPCFavoriteGanHuoView.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -620,13 +632,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6D8BFDE1C8347E600CCA370 /* Category.storyboard in Resources */,
-				D65AA09C1C8A872A00A8C308 /* TPCCategoryViewCell.xib in Resources */,
 				D6E504D31C2C1D9C00838446 /* AboutMe.json in Resources */,
 				D6D8BFC51C82EB7000CCA370 /* TPCLaunchScreenView.xib in Resources */,
 				D6D8BFBA1C82EB7000CCA370 /* TPCShareView.xib in Resources */,
+				D611B4D21CB215C000D5A2C7 /* TPCLoadMoreReusableView.xib in Resources */,
+				D611B4D61CB221E100D5A2C7 /* TPCCategoryTableViewCell.xib in Resources */,
 				D6DE71271C2592A300C066DE /* Assets.xcassets in Resources */,
 				D6C562C21C9995BA00D8F0FA /* TPCCategoryEditView.xib in Resources */,
 				D6D8BFB71C82EB7000CCA370 /* TPCRefreshContentsView.xib in Resources */,
+				D611B4CE1CB20F4400D5A2C7 /* TPCCategoryViewCell.xib in Resources */,
 				D6D8BFB41C82EB7000CCA370 /* TPCNoMoreDataFooterView.xib in Resources */,
 				D6DE71281C2592A300C066DE /* HomePage.storyboard in Resources */,
 				D6C562E91C9B056E00D8F0FA /* TPCCategoryEditViewCell.xib in Resources */,
@@ -717,6 +731,7 @@
 				D6D8BFCE1C82EB7700CCA370 /* TPCLaunchConfig.swift in Sources */,
 				D6D8BFBB1C82EB7000CCA370 /* TPCSystemButton.swift in Sources */,
 				D6DE71491C2592A300C066DE /* TPCTextParser.swift in Sources */,
+				D611B4D51CB221E100D5A2C7 /* TPCCategoryTableViewCell.swift in Sources */,
 				D6D8BFBC1C82EB7000CCA370 /* TPCTableView.swift in Sources */,
 				D6D8BFB61C82EB7000CCA370 /* TPCPopoverView.swift in Sources */,
 				D6D8BFBF1C82EB7000CCA370 /* TPCWebView.swift in Sources */,
@@ -758,6 +773,7 @@
 				D6C0E2BC1C871F5F0033EAFB /* TPCFetchedResultsDataSource.swift in Sources */,
 				D6DE71621C2592A300C066DE /* WKCC.xcdatamodeld in Sources */,
 				D6D8BFAF1C82EB7000CCA370 /* TPCGradientLabel.swift in Sources */,
+				D611B4D11CB215C000D5A2C7 /* TPCLoadMoreReusableView.swift in Sources */,
 				D6DE71681C259EE900C066DE /* TPCVersionUtil.swift in Sources */,
 				D6C0E2BE1C872EBE0033EAFB /* UIColor+Extension.swift in Sources */,
 				D6D8BF8F1C82EB6600CCA370 /* TPCShowCategoryController.swift in Sources */,

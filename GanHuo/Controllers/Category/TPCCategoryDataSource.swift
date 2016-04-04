@@ -15,7 +15,6 @@ protocol TPCCategoryDataSourceDelegate: class {
 
 class TPCCategoryDataSource: NSObject {
     var technicals = [GanHuoObject]()
-    var tableView: TPCTableView!
     weak var delegate: TPCCategoryDataSourceDelegate?
     private var page = 1
     var loadNewRefreshing = false
@@ -27,12 +26,6 @@ class TPCCategoryDataSource: NSObject {
         }
     }
     private var reuseIdentifier: String!
-    init(tableView: TPCTableView, reuseIdentifier: String) {
-        super.init()
-        self.reuseIdentifier = reuseIdentifier
-        self.tableView = tableView
-    }
-    
     var collectionView: TPCCollectionView!
     init(collectionView: TPCCollectionView, reuseIdentifier: String) {
         super.init()
@@ -52,13 +45,13 @@ extension TPCCategoryDataSourceLoad {
     func loadNewData() {
         if loadNewRefreshing { return }
         loadNewRefreshing = true
-        tableView.loadMoreFooterView.hidden = true
-        tableView.beginRefreshViewAnimation()
+        collectionView.loadMoreFooterView?.hidden = true
+        collectionView.beginRefreshViewAnimation()
         page = 1
         TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: page) { (technicals, error) -> () in
             print(technicals.count)
             self.technicals.removeAll()
-            self.tableView.loadMoreFooterView.hidden = technicals.count == 0
+            self.collectionView.loadMoreFooterView?.hidden = technicals.count == 0
             self.refreshWithTechnicals(technicals, error: error)
         }
     }
@@ -66,12 +59,11 @@ extension TPCCategoryDataSourceLoad {
     func loadMoreData() {
         if loadMoreRefreshing { return }
         loadMoreRefreshing = true
-        tableView.loadMoreFooterView.hidden = technicals.count == 0
-        tableView.loadMoreFooterView.beginRefresh()
+        collectionView.loadMoreFooterView?.hidden = technicals.count == 0
+        collectionView.loadMoreFooterView?.beginRefresh()
         TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: page) { (technicals, error) -> () in
-//            print(self.page, technicals.count)
             self.refreshWithTechnicals(technicals, error: error)
-            self.tableView.loadMoreFooterView.endRefresh()
+            self.collectionView.loadMoreFooterView?.endRefresh()
             self.loadMoreRefreshing = false
         }
     }
@@ -81,23 +73,23 @@ extension TPCCategoryDataSourceLoad {
             if technicals.count > 0 {
                 self.technicals.appendContentsOf(technicals)
                 self.page += 1
-                self.tableView.reloadData()
+                self.collectionView.reloadData()
             }
             
             if technicals.count < TPCLoadGanHuoDataOnce {
-                self.tableView.loadMoreFooterView.type = .NoData
+                self.collectionView.loadMoreFooterView?.type = .NoData
             } else {
-                self.tableView.loadMoreFooterView.type = .LoadMore
+                self.collectionView.loadMoreFooterView?.type = .LoadMore
             }
         } else {
             // 本地加载
             loadFromCache {
-                self.tableView.reloadData()
+                self.collectionView.reloadData()
             }
         }
         if loadNewRefreshing {
             dispatchSeconds(0.5) {
-                self.tableView.endRefreshing()
+                self.collectionView.endRefreshing()
                 self.loadNewRefreshing = false
             }
         }
@@ -111,23 +103,10 @@ extension TPCCategoryDataSourceLoad {
                 self.technicals.appendContentsOf(fetchResults)
                 self.page += 1
             } else {
-                self.tableView.loadMoreFooterView.type = .NoData
+                self.collectionView.loadMoreFooterView?.type = .NoData
             }
             dispatchAMain{ completion() }
         }
-    }
-}
-
-extension TPCCategoryDataSource: UITableViewDataSource {
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return technicals.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
-        delegate?.renderCell(cell, withObject: technicals[indexPath.row])
-        return cell
     }
 }
 
@@ -139,6 +118,17 @@ extension TPCCategoryDataSource: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
         delegate?.renderCell(cell, withObject: technicals[indexPath.row])
         return cell
+    }
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        var reuseableView = TPCLoadMoreReusableView()
+        if kind == UICollectionElementKindSectionFooter {
+            reuseableView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: String(TPCLoadMoreReusableView.self), forIndexPath: indexPath) as! TPCLoadMoreReusableView
+            if self.collectionView.loadMoreFooterView == nil {
+                self.collectionView.loadMoreFooterView = reuseableView.noMoreDataFooterView
+                self.collectionView.loadMoreFooterView?.hidden = technicals.count == 0
+            }
+        }
+        return reuseableView
     }
 }
 

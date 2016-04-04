@@ -105,7 +105,7 @@ class TPCSelectHeaderView: UIView {
             button.titleLabel?.font = TPCConfiguration.themeSFont
             button.setTitle(title, forState: .Normal)
             button.setTitleColor(UIColor.lightGrayColor().colorWithAlphaComponent(0.8), forState: .Normal)
-            button.setTitleColor(UIColor.grayColor(), forState: .Disabled)
+            button.setTitleColor(TPCConfiguration.navigationBarBackColor, forState: .Disabled)
             button.addTarget(self, action: #selector(TPCSelectHeaderView.titleButtonOnClicked(_:)), forControlEvents: .TouchUpInside)
             button.backgroundColor = UIColor.clearColor()
             scrollView.addSubview(button)

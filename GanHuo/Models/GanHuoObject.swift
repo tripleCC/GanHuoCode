@@ -75,7 +75,7 @@ public final class GanHuoObject: NSManagedObject ,TPCCoreDataHelper {
     }
     
     private func calculateCellHeight() {
-        cellHeight = TPCCategoryViewCell.cellHeightWithGanHuo(self)
+        cellHeight = TPCCategoryTableViewCell.cellHeightWithGanHuo(self)
     }
 }
 
