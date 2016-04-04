@@ -23,4 +23,4 @@ let TPCFavoriteGanHuoChangeNotification = "TPCFavoriteGanHuoChangeNotification"
 let TPCCurrentVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
 
 
-let TPCLoadGanHuoDataOnce: Int = 15
+let TPCLoadGanHuoDataOnce: Int = 14

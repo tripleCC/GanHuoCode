@@ -64,10 +64,10 @@ class TPCCollectionViewWaterflowLayout: UICollectionViewLayout {
     override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         let attribute = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
         if let collectionWidth = collectionView?.frame.width {
-            var width = collectionWidth - edgeInsets.left - edgeInsets.right
+            var width = (collectionWidth - edgeInsets.left - edgeInsets.right) / CGFloat(columnCount)
             width -= CGFloat(columnCount - 1) * columnMargin / CGFloat(columnCount)
             let height = delegate?.waterflowLayout(self, heightForItemAtIndex: indexPath.item, itemWidth: width) ?? 0
-            
+            print(width)
             var destColumn = 0
             var minColumnHeight = columnsHeight.first
             for i in 0 ..< columnCount {

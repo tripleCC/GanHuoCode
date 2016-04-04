@@ -12,7 +12,7 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="193" height="202"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J44-eV-Ymd">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J44-eV-Ymd">
                         <rect key="frame" x="0.0" y="0.0" width="193" height="202"/>
                     </imageView>
                 </subviews>
@@ -26,7 +26,7 @@
             </constraints>
             <size key="customSize" width="193" height="202"/>
             <connections>
-                <outlet property="contentImageView" destination="J44-eV-Ymd" id="Rfo-fa-urM"/>
+                <outlet property="contentImageView" destination="J44-eV-Ymd" id="rPd-oD-XLR"/>
             </connections>
             <point key="canvasLocation" x="338.5" y="262"/>
         </collectionViewCell>

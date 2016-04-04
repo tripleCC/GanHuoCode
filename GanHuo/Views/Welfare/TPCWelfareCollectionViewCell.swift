@@ -12,7 +12,7 @@ class TPCWelfareCollectionViewCell: UICollectionViewCell {
     var imageURLString: String? {
         didSet {
             let _ = imageURLString.flatMap{ NSURL(string: $0) }.flatMap{
-                contentImageView.kf_setImageWithURL($0)
+                contentImageView.kf_setImageWithURL($0, placeholderImage: UIImage(), optionsInfo: [.Transition(.Fade(0.5))])
             }
         }
     }

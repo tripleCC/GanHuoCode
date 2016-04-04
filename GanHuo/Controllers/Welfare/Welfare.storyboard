@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Welfare View Controller-->
+        <scene sceneID="y14-Js-1UZ">
+            <objects>
+                <viewController storyboardIdentifier="Welfare" id="84R-6g-bEm" customClass="TPCWelfareViewController" customModule="GanHuo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="I1L-nf-pOA"/>
+                        <viewControllerLayoutGuide type="bottom" id="xlg-ez-7CC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mb4-ZI-lrd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="foe-7B-T1B" customClass="TPCCollectionView" customModule="GanHuo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="V3J-A4-FFe">
+                                    <size key="itemSize" width="111" height="102"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="delegate" destination="84R-6g-bEm" id="tRA-pW-3Pg"/>
+                                </connections>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cz0-DZ-yOc" userLabel="venusMaskView">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fuli_venus" translatesAutoresizingMaskIntoConstraints="NO" id="rWo-dS-ele">
+                                        <rect key="frame" x="82.5" y="62.5" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="3yn-AQ-6JJ"/>
+                                            <constraint firstAttribute="height" constant="35" id="WRh-qE-Bmc"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你还未有任何福利~" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXt-Ie-Xho">
+                                        <rect key="frame" x="0.0" y="107.5" width="200" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="KXt-Ie-Xho" secondAttribute="trailing" id="0Xl-1X-hUb"/>
+                                    <constraint firstAttribute="width" constant="200" id="GNe-x8-mXh"/>
+                                    <constraint firstItem="rWo-dS-ele" firstAttribute="centerX" secondItem="Cz0-DZ-yOc" secondAttribute="centerX" id="L40-B8-K06"/>
+                                    <constraint firstItem="KXt-Ie-Xho" firstAttribute="top" secondItem="Cz0-DZ-yOc" secondAttribute="top" constant="10" id="TjQ-Ao-rig"/>
+                                    <constraint firstItem="rWo-dS-ele" firstAttribute="centerY" secondItem="Cz0-DZ-yOc" secondAttribute="centerY" constant="-20" id="fwf-gN-QCg"/>
+                                    <constraint firstItem="KXt-Ie-Xho" firstAttribute="leading" secondItem="Cz0-DZ-yOc" secondAttribute="leading" id="hrc-jH-cFM"/>
+                                    <constraint firstAttribute="height" constant="200" id="rim-o6-hy5"/>
+                                    <constraint firstItem="KXt-Ie-Xho" firstAttribute="top" secondItem="rWo-dS-ele" secondAttribute="bottom" constant="10" id="yqe-dV-tQ6"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="TjQ-Ao-rig"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="foe-7B-T1B" secondAttribute="bottom" id="Ihd-66-UEe"/>
+                            <constraint firstItem="xlg-ez-7CC" firstAttribute="top" secondItem="foe-7B-T1B" secondAttribute="bottom" id="Rgy-Pb-iZv"/>
+                            <constraint firstAttribute="trailing" secondItem="foe-7B-T1B" secondAttribute="trailing" id="TyI-Md-8XI"/>
+                            <constraint firstItem="Cz0-DZ-yOc" firstAttribute="centerX" secondItem="Mb4-ZI-lrd" secondAttribute="centerX" id="YgT-n2-0L1"/>
+                            <constraint firstItem="foe-7B-T1B" firstAttribute="top" secondItem="I1L-nf-pOA" secondAttribute="bottom" id="doz-dv-QZk"/>
+                            <constraint firstItem="foe-7B-T1B" firstAttribute="top" secondItem="Mb4-ZI-lrd" secondAttribute="top" id="pae-wR-2mH"/>
+                            <constraint firstItem="Cz0-DZ-yOc" firstAttribute="centerY" secondItem="Mb4-ZI-lrd" secondAttribute="centerY" id="rl7-pG-9Bo"/>
+                            <constraint firstItem="foe-7B-T1B" firstAttribute="leading" secondItem="Mb4-ZI-lrd" secondAttribute="leading" id="vNu-E8-j6p"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="doz-dv-QZk"/>
+                                <exclude reference="Rgy-Pb-iZv"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="foe-7B-T1B" id="l2a-Tb-UdG"/>
+                        <outlet property="venusMaskView" destination="Cz0-DZ-yOc" id="Kpz-ST-u8U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z3V-8o-IcO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-26" y="-486"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="fuli_venus" width="64" height="64"/>
+    </resources>
+</document>

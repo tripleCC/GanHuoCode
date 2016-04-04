@@ -16,6 +16,7 @@
                     <connections>
                         <segue destination="3ds-RN-i2W" kind="relationship" relationship="viewControllers" id="bu5-SY-rxN"/>
                         <segue destination="v6A-sW-3mj" kind="relationship" relationship="viewControllers" id="Cs2-hX-eOl"/>
+                        <segue destination="V7X-25-ZgY" kind="relationship" relationship="viewControllers" id="Myu-PS-Tcf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MDi-f6-V5N" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -88,12 +89,41 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m00-VJ-euL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1762" y="1173"/>
+            <point key="canvasLocation" x="1762" y="1687"/>
+        </scene>
+        <!--福利-->
+        <scene sceneID="8Sm-je-2Fa">
+            <objects>
+                <navigationController id="V7X-25-ZgY" customClass="TPCNavigationController" customModule="GanHuo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="福利" image="fuli" selectedImage="fuli_h" id="rE2-0V-SBB"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M3X-0l-8Ev">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6Z0-TK-9d3" kind="relationship" relationship="rootViewController" id="8mk-cy-9HP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o99-4Z-9vw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1762" y="1077"/>
+        </scene>
+        <!--Welfare-->
+        <scene sceneID="UBm-PB-GDT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Welfare" referencedIdentifier="Welfare" id="6Z0-TK-9d3" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="v4t-jJ-Dmk"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5nd-tD-x1d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2294.5" y="1077"/>
         </scene>
     </scenes>
     <resources>
         <image name="category" width="23" height="23"/>
         <image name="category-h" width="23" height="23"/>
+        <image name="fuli" width="32" height="32"/>
+        <image name="fuli_h" width="32" height="32"/>
         <image name="home" width="26" height="26"/>
         <image name="home-h" width="26" height="26"/>
         <image name="me" width="27" height="27"/>

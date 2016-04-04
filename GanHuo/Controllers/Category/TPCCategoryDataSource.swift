@@ -51,8 +51,8 @@ extension TPCCategoryDataSourceLoad {
         TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: page) { (technicals, error) -> () in
             print(technicals.count)
             self.technicals.removeAll()
-            self.collectionView.loadMoreFooterView?.hidden = technicals.count == 0
             self.refreshWithTechnicals(technicals, error: error)
+            self.collectionView.loadMoreFooterView?.hidden = technicals.count == 0
         }
     }
     

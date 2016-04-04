@@ -80,6 +80,7 @@ class TPCCategoryViewController: TPCViewController {
 
     private func setupChildController() {
         let titles = TPCStorageUtil.objectForKey(TPCCategoryStoreKey) as? [String] ?? TPCConfiguration.allCategories
+        // 福利单独出来
         titles.filter{ $0 != "福利" }.forEach {
             let subCategoryVc = TPCSubCategoryViewController()
             subCategoryVc.title = $0
