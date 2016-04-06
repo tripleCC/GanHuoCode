@@ -23,8 +23,8 @@ class TPCWelfareViewController: TPCViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.hidden = !TPCVenusUtil.venusFlag
-        venusMaskView.hidden = !collectionView.hidden
+//        collectionView.hidden = !TPCVenusUtil.venusFlag
+//        venusMaskView.hidden = !collectionView.hidden
         
         navigationItem.title = categoryTitle
         collectionView.backgroundColor = UIColor.whiteColor()

@@ -29,7 +29,7 @@
                                     <outlet property="delegate" destination="84R-6g-bEm" id="tRA-pW-3Pg"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cz0-DZ-yOc" userLabel="venusMaskView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cz0-DZ-yOc" userLabel="venusMaskView">
                                 <rect key="frame" x="200" y="200" width="200" height="200"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fuli_venus" translatesAutoresizingMaskIntoConstraints="NO" id="rWo-dS-ele">

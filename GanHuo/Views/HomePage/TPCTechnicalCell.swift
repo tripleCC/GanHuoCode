@@ -97,4 +97,8 @@ class TPCTechnicalCell: UITableViewCell {
         describeLabel.image = UIImage(layer: self.describeLabel.layer)
         return (beautyImageView, describeLabel)
     }
+    
+    func setParallax(value: CGFloat) {
+        beautyImageView.transform = CGAffineTransformMakeTranslation(0, value)
+    }
 }

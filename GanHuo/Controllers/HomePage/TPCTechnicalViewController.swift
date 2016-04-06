@@ -306,6 +306,11 @@ extension TPCTechnicalViewController {
             let scale = (abs(scrollView.contentOffset.y - TPCConfiguration.technicalOriginScrollViewContentOffsetY)) / TPCRefreshControlOriginHeight
             tableView.adjustRefreshViewWithScale(scale)
         }
+        let cells = tableView.visibleCells
+        cells.forEach {
+            let value = -40 + ($0.frame.origin.y - tableView.contentOffset.y) / 5
+            ($0 as! TPCTechnicalCell).setParallax(value)
+        }
     }
     
     //    func scrollViewDidScroll(scrollView: UIScrollView) {
