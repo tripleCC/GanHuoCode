@@ -23,5 +23,12 @@ class TPCWelfareCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+}
 
+extension TPCWelfareCollectionViewCell: NTTansitionWaterfallGridViewProtocol {
+    func snapShotForTransition() -> UIView! {
+        let snapShotView = UIImageView(image: contentImageView.image)
+        snapShotView.frame = contentImageView.frame
+        return snapShotView
+    }
 }
