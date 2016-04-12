@@ -45,6 +45,8 @@
 		D64C8F851CBD44FC00DD3B8A /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70F31C2592A300C066DE /* UIFont+Extension.swift */; };
 		D64C8F861CBD450F00DD3B8A /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70EE1C2592A300C066DE /* CALayer+Extension.swift */; };
 		D64C8F871CBD451D00DD3B8A /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70F41C2592A300C066DE /* UIImage+Extension.swift */; };
+		D64C8FB21CBD4CCE00DD3B8A /* TPCGanHuoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C8FB11CBD4CCE00DD3B8A /* TPCGanHuoAPI.swift */; };
+		D64C8FB31CBD4CCE00DD3B8A /* TPCGanHuoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C8FB11CBD4CCE00DD3B8A /* TPCGanHuoAPI.swift */; };
 		D65156551C85AD4E005B161B /* TPCSelectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65156541C85AD4E005B161B /* TPCSelectHeaderView.swift */; };
 		D6544A1F1C93C4CE0094DB3F /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6544A1E1C93C4CE0094DB3F /* UIScrollView+Extension.swift */; };
 		D65AA09B1C8A872A00A8C308 /* TPCCategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65AA0991C8A872A00A8C308 /* TPCCategoryViewCell.swift */; };
@@ -201,6 +203,7 @@
 		D64C8F731CBD3F2F00DD3B8A /* TPCShareViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TPCShareViewController.storyboard; sourceTree = "<group>"; };
 		D64C8F741CBD3F2F00DD3B8A /* TPCShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCShareViewController.swift; sourceTree = "<group>"; };
 		D64C8F811CBD3F7B00DD3B8A /* GanHuoShareExtension.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = GanHuoShareExtension.xcassets; sourceTree = "<group>"; };
+		D64C8FB11CBD4CCE00DD3B8A /* TPCGanHuoAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCGanHuoAPI.swift; sourceTree = "<group>"; };
 		D65156541C85AD4E005B161B /* TPCSelectHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCSelectHeaderView.swift; sourceTree = "<group>"; };
 		D6544A1E1C93C4CE0094DB3F /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		D65AA0991C8A872A00A8C308 /* TPCCategoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCategoryViewCell.swift; sourceTree = "<group>"; };
@@ -673,6 +676,7 @@
 				D6DE71041C2592A300C066DE /* TPCConst.swift */,
 				D6DE71051C2592A300C066DE /* TPCDispatchUtil.swift */,
 				D6DE71061C2592A300C066DE /* TPCNetworkUtil.swift */,
+				D64C8FB11CBD4CCE00DD3B8A /* TPCGanHuoAPI.swift */,
 				D6DE71071C2592A300C066DE /* TPCPhotoUtil.swift */,
 				D6DE71081C2592A300C066DE /* TPCShareManager.swift */,
 				D6DE71091C2592A300C066DE /* TPCStorageUtil.swift */,
@@ -875,6 +879,7 @@
 				D64C8F841CBD42C800DD3B8A /* TPCApplicationTitleView.swift in Sources */,
 				D64C8F781CBD3F2F00DD3B8A /* TPCShareItem.swift in Sources */,
 				D64C8F871CBD451D00DD3B8A /* UIImage+Extension.swift in Sources */,
+				D64C8FB31CBD4CCE00DD3B8A /* TPCGanHuoAPI.swift in Sources */,
 				D64C8F861CBD450F00DD3B8A /* CALayer+Extension.swift in Sources */,
 				D64C8F7A1CBD3F2F00DD3B8A /* TPCShareItemTypePickView.swift in Sources */,
 				D64C8F7C1CBD3F2F00DD3B8A /* TPCShareViewCell.swift in Sources */,
@@ -942,6 +947,7 @@
 				D64C8F7F1CBD3F2F00DD3B8A /* TPCShareViewController.swift in Sources */,
 				D6D8BFB11C82EB7000CCA370 /* TPCImageView.swift in Sources */,
 				D6D8BF861C82EB6600CCA370 /* TPCNavigationController.swift in Sources */,
+				D64C8FB21CBD4CCE00DD3B8A /* TPCGanHuoAPI.swift in Sources */,
 				D6D8BFC71C82EB7000CCA370 /* TPCSettingSubCell.swift in Sources */,
 				D6C562E81C9B056E00D8F0FA /* TPCCategoryEditViewCell.swift in Sources */,
 				D6DE71401C2592A300C066DE /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
@@ -1033,6 +1039,7 @@
 		D60CD2B81CBD153A0015C0A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1053,6 +1060,7 @@
 		D60CD2B91CBD153A0015C0A5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

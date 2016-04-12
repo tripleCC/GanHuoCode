@@ -136,7 +136,6 @@
                                                 <state key="normal" title="发布">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                                 </state>
-                                                <state key="selected" title="确定"/>
                                                 <connections>
                                                     <action selector="post:" destination="j1y-V4-xli" eventType="touchUpInside" id="QhU-d8-mp9"/>
                                                 </connections>

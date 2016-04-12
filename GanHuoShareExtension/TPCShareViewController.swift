@@ -8,6 +8,7 @@
 
 import UIKit
 import Social
+import Alamofire
 
 public class TPCShareViewController: UIViewController {
     var URLString: String?
@@ -26,7 +27,7 @@ public class TPCShareViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     
     @IBAction func cancel(sender: AnyObject) {
-        if !postButton.selected {
+        if postButton.titleForState(.Normal) == "发布" {
             hideSelf({ 
                 let error = NSError(domain: "", code: 0, userInfo: nil)
                 self.extensionContext?.cancelRequestWithError(error)
@@ -37,7 +38,7 @@ public class TPCShareViewController: UIViewController {
     }
     
     @IBAction func post(sender: AnyObject) {
-        if !postButton.selected {
+        if postButton.titleForState(.Normal) == "发布" {
             postGanHuo()
         } else {
             if let item = items.last {
@@ -54,6 +55,21 @@ public class TPCShareViewController: UIViewController {
         
     }
     
+    override public func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        pickView.transform = CGAffineTransformMakeTranslation(0, pickView.frame.height)
+    }
+    
+    override public func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        containerView.transform = CGAffineTransformMakeTranslation(0, UIScreen.mainScreen().bounds.height - containerView.frame.maxY)
+        doAnimateAction({ 
+            self.containerView.transform = CGAffineTransformIdentity
+            })
+    }
+}
+
+extension TPCShareViewController {
     private func fetchURLString() {
         if let item = extensionContext?.inputItems.first {
             let itemp = item.attachments.flatMap{ $0.first }
@@ -87,13 +103,26 @@ public class TPCShareViewController: UIViewController {
     }
     
     private func postGanHuo() {
-        hideSelf { 
+        let keys = ["url", "desc", "who", "type", "debug"]
+        var parameters = [String : AnyObject]()
+        for (idx, key) in keys.enumerate() {
+            if idx < items.count {
+                parameters[key] = items[idx].content
+            }
+        }
+        parameters["debug"] = true
+        print(parameters)
+        Alamofire.request(.POST, TPCTechnicalType.Add2Gank.path(), parameters: parameters)
+                 .response { (request, response, data, error) in
+                    print(response, data, request)
+        }
+        hideSelf {
             self.extensionContext?.completeRequestReturningItems(nil, completionHandler: nil)
         }
     }
     
     private func hideSelf(completion: (() -> Void)) {
-        doAnimateAction({ 
+        doAnimateAction({
             self.containerView.transform = CGAffineTransformMakeTranslation(0, -self.containerView.frame.maxY)
             self.view.alpha = 0
             }, completion: completion)
@@ -103,7 +132,7 @@ public class TPCShareViewController: UIViewController {
         doAnimateAction({
             self.pickView.transform = CGAffineTransformIdentity
             }, completion: {
-                self.postButton.selected = true
+                self.postButton.setTitle("确定", forState: .Normal)
         })
     }
     
@@ -111,7 +140,7 @@ public class TPCShareViewController: UIViewController {
         doAnimateAction({
             self.pickView.transform = CGAffineTransformMakeTranslation(0, self.pickView.frame.height)
             }, completion: {
-                self.postButton.selected = false
+                self.postButton.setTitle("发布", forState: .Normal)
         })
     }
     
@@ -119,21 +148,8 @@ public class TPCShareViewController: UIViewController {
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 10, initialSpringVelocity: 1.0, options: .CurveEaseInOut, animations: {
             action()
             }, completion: { finished in
-        completion?()
+                completion?()
         })
-    }
-    
-    override public func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        pickView.transform = CGAffineTransformMakeTranslation(0, pickView.frame.height)
-    }
-    
-    override public func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        containerView.transform = CGAffineTransformMakeTranslation(0, UIScreen.mainScreen().bounds.height - containerView.frame.maxY)
-        doAnimateAction({ 
-            self.containerView.transform = CGAffineTransformIdentity
-            })
     }
 }
 
@@ -163,35 +179,3 @@ extension TPCShareViewController: UITableViewDataSource {
         return 50
     }
 }
-    
-//    override func isContentValid() -> Bool {
-//        // Do validation of contentText and/or NSExtensionContext attachments here
-//        return true
-//    }
-
-//    override func didSelectPost() {
-//        if let item = extensionContext?.inputItems.first {
-//            
-//            let oitem = NSExtensionItem()
-//            oitem.attributedContentText = NSAttributedString(string: contentText)
-//            
-//            extensionContext?.completeRequestReturningItems([oitem], completionHandler: nil)
-//        }
-//        // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
-//    
-//        // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
-//        self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
-//    }
-//
-//    override func configurationItems() -> [AnyObject]! {
-//        let one = SLComposeSheetConfigurationItem()
-//        one.title = "分类"
-//        one.value = "iOS"
-//        one.tapHandler = {
-//            let v = UIViewController()
-//            self.pushConfigurationViewController(v)
-//        }
-//        return [one]
-//    }
-
-//}
