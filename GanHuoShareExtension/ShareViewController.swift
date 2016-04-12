@@ -9,12 +9,13 @@
 import UIKit
 import Social
 
+
 class ShareViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let sb = UIStoryboard(name: "ShareViewController", bundle: NSBundle(forClass: ShareViewController.self))
+        let sb = UIStoryboard(name: "TPCShareViewController", bundle: NSBundle(forClass: TPCShareViewController.self))
         if let vc = sb.instantiateInitialViewController() {
             addChildViewController(vc)
             self.view.addSubview(vc.view)

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="j1y-V4-xli">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Share View Controller-->
         <scene sceneID="ceB-am-kn3">
             <objects>
-                <viewController id="j1y-V4-xli" customClass="TPCShareViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TPCShareViewController" id="j1y-V4-xli" customClass="TPCShareViewController" customModule="GanHuo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8bI-gs-bmD"/>
                         <viewControllerLayoutGuide type="bottom" id="d5i-Ba-RvD"/>
@@ -21,29 +21,11 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iz1-0T-09a">
                                 <rect key="frame" x="150" y="88" width="300" height="244"/>
                                 <subviews>
-                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WhC-On-4nx">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
-                                        <items>
-                                            <barButtonItem title="取消" id="47H-zv-836">
-                                                <connections>
-                                                    <action selector="cancel:" destination="j1y-V4-xli" id="i87-2h-9uO"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem systemItem="flexibleSpace" id="WjK-fE-GGD"/>
-                                            <barButtonItem image="ganhuo" id="OEp-mj-9KC"/>
-                                            <barButtonItem systemItem="flexibleSpace" id="iBJ-ys-YS0"/>
-                                            <barButtonItem title="发布" id="7FI-07-n6D">
-                                                <connections>
-                                                    <action selector="post:" destination="j1y-V4-xli" id="x2d-Ib-so6"/>
-                                                </connections>
-                                            </barButtonItem>
-                                        </items>
-                                    </toolbar>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4l2-Vz-zOb">
                                         <rect key="frame" x="0.0" y="44" width="300" height="200"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ShareViewTableViewCell" rowHeight="50" id="H1W-cc-LXj" customClass="TPCShareViewCell" customModule="GanHuoShareExtension" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TPCShareViewCell" rowHeight="50" id="H1W-cc-LXj" customClass="TPCShareViewCell" customModule="GanHuo" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="300" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H1W-cc-LXj" id="fBn-j3-1Sb">
@@ -68,7 +50,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxI-4R-RrU">
                                                             <rect key="frame" x="45" y="10" width="245" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcB-fO-8NO">
@@ -120,25 +102,84 @@
                                             <outlet property="delegate" destination="j1y-V4-xli" id="CT7-uW-uLG"/>
                                         </connections>
                                     </tableView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRM-Hr-xh0" customClass="ShareItemTypePickView" customModule="GanHuoShareExtension" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRM-Hr-xh0" customClass="TPCShareItemTypePickView" customModule="GanHuo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44" width="300" height="200"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zXJ-OO-w55" userLabel="tooBar">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5b7-0q-aRO" userLabel="seperatorLine">
+                                                <rect key="frame" x="0.0" y="43" width="300" height="0.5"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="0.5" id="jgG-mx-UTv"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bk9-wO-CI3">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="43.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="lYm-PW-JWQ"/>
+                                                </constraints>
+                                                <state key="normal" title="取消">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancel:" destination="j1y-V4-xli" eventType="touchUpInside" id="ESK-pE-Tdr"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R8Y-gf-Tlh">
+                                                <rect key="frame" x="250" y="0.0" width="50" height="43"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="DvJ-O2-Nh6"/>
+                                                </constraints>
+                                                <state key="normal" title="发布">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="selected" title="确定"/>
+                                                <connections>
+                                                    <action selector="post:" destination="j1y-V4-xli" eventType="touchUpInside" id="QhU-d8-mp9"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4YJ-Fe-dsl" customClass="TPCApplicationTitleView" customModule="GanHuo" customModuleProvider="target">
+                                                <rect key="frame" x="96" y="0.0" width="108" height="43"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="4YJ-Fe-dsl" secondAttribute="height" multiplier="78:31" id="nkI-Li-SIn"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="Bk9-wO-CI3" firstAttribute="leading" secondItem="zXJ-OO-w55" secondAttribute="leading" id="0a8-E5-43n"/>
+                                            <constraint firstItem="4YJ-Fe-dsl" firstAttribute="top" secondItem="zXJ-OO-w55" secondAttribute="top" id="1MM-i5-TAR"/>
+                                            <constraint firstItem="4YJ-Fe-dsl" firstAttribute="centerX" secondItem="zXJ-OO-w55" secondAttribute="centerX" id="2Pa-Zm-bAR"/>
+                                            <constraint firstAttribute="bottom" secondItem="5b7-0q-aRO" secondAttribute="bottom" id="4SX-kf-Q5e"/>
+                                            <constraint firstAttribute="height" constant="44" id="5X4-JP-BEY"/>
+                                            <constraint firstAttribute="trailing" secondItem="5b7-0q-aRO" secondAttribute="trailing" id="I48-8u-ScZ"/>
+                                            <constraint firstItem="R8Y-gf-Tlh" firstAttribute="top" secondItem="zXJ-OO-w55" secondAttribute="top" id="Izq-vJ-5KU"/>
+                                            <constraint firstAttribute="trailing" secondItem="R8Y-gf-Tlh" secondAttribute="trailing" id="V2j-b7-74k"/>
+                                            <constraint firstItem="Bk9-wO-CI3" firstAttribute="top" secondItem="zXJ-OO-w55" secondAttribute="top" id="VxS-iC-d6V"/>
+                                            <constraint firstItem="5b7-0q-aRO" firstAttribute="top" secondItem="R8Y-gf-Tlh" secondAttribute="bottom" id="WIW-kW-z0w"/>
+                                            <constraint firstItem="5b7-0q-aRO" firstAttribute="top" secondItem="4YJ-Fe-dsl" secondAttribute="bottom" id="gS7-KS-CkW"/>
+                                            <constraint firstItem="5b7-0q-aRO" firstAttribute="top" secondItem="Bk9-wO-CI3" secondAttribute="bottom" id="xIq-cs-V4o"/>
+                                            <constraint firstItem="5b7-0q-aRO" firstAttribute="leading" secondItem="zXJ-OO-w55" secondAttribute="leading" id="xfQ-UY-5jZ"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="4l2-Vz-zOb" secondAttribute="bottom" id="4jR-vc-pgz"/>
                                     <constraint firstAttribute="width" constant="300" id="4kO-nw-WYd"/>
                                     <constraint firstAttribute="trailing" secondItem="4l2-Vz-zOb" secondAttribute="trailing" id="784-Rf-NZH"/>
+                                    <constraint firstItem="zXJ-OO-w55" firstAttribute="leading" secondItem="iz1-0T-09a" secondAttribute="leading" id="Boi-Nf-4nx"/>
                                     <constraint firstItem="bRM-Hr-xh0" firstAttribute="trailing" secondItem="4l2-Vz-zOb" secondAttribute="trailing" id="DVb-1W-m7w"/>
                                     <constraint firstAttribute="height" constant="244" id="NjW-RQ-i4J"/>
+                                    <constraint firstItem="4l2-Vz-zOb" firstAttribute="top" secondItem="zXJ-OO-w55" secondAttribute="bottom" id="TDq-Q5-7a0"/>
+                                    <constraint firstAttribute="trailing" secondItem="zXJ-OO-w55" secondAttribute="trailing" id="TFk-Kj-6fQ"/>
                                     <constraint firstItem="bRM-Hr-xh0" firstAttribute="leading" secondItem="4l2-Vz-zOb" secondAttribute="leading" id="Tag-mv-9qx"/>
-                                    <constraint firstAttribute="trailing" secondItem="WhC-On-4nx" secondAttribute="trailing" id="Vu1-92-a9b"/>
+                                    <constraint firstItem="zXJ-OO-w55" firstAttribute="top" secondItem="iz1-0T-09a" secondAttribute="top" id="Y4p-g3-cDe"/>
                                     <constraint firstItem="bRM-Hr-xh0" firstAttribute="bottom" secondItem="4l2-Vz-zOb" secondAttribute="bottom" id="buJ-UI-Lxt"/>
-                                    <constraint firstItem="WhC-On-4nx" firstAttribute="leading" secondItem="iz1-0T-09a" secondAttribute="leading" id="crm-B0-Nz1"/>
                                     <constraint firstItem="4l2-Vz-zOb" firstAttribute="leading" secondItem="iz1-0T-09a" secondAttribute="leading" id="nAr-Sz-0R1"/>
                                     <constraint firstItem="bRM-Hr-xh0" firstAttribute="top" secondItem="4l2-Vz-zOb" secondAttribute="top" id="oO0-9j-bHv"/>
-                                    <constraint firstItem="4l2-Vz-zOb" firstAttribute="top" secondItem="WhC-On-4nx" secondAttribute="bottom" id="uUT-zk-Y9P"/>
-                                    <constraint firstItem="WhC-On-4nx" firstAttribute="top" secondItem="iz1-0T-09a" secondAttribute="top" id="yj1-g7-yQ9"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -154,10 +195,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cancelButton" destination="47H-zv-836" id="h3r-c2-bHp"/>
+                        <outlet property="cancelButton" destination="Bk9-wO-CI3" id="2H7-XD-vCV"/>
                         <outlet property="containerView" destination="iz1-0T-09a" id="Nwf-kw-t9w"/>
                         <outlet property="pickView" destination="bRM-Hr-xh0" id="IfR-BO-dXL"/>
-                        <outlet property="postButton" destination="7FI-07-n6D" id="eQL-Rj-9nQ"/>
+                        <outlet property="postButton" destination="R8Y-gf-Tlh" id="KXW-1I-1ue"/>
                         <outlet property="tableView" destination="4l2-Vz-zOb" id="DDG-el-EBD"/>
                     </connections>
                 </viewController>
@@ -166,7 +207,4 @@
             <point key="canvasLocation" x="539" y="97"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="ganhuo" width="60" height="60"/>
-    </resources>
 </document>

@@ -22,11 +22,11 @@ public class TPCShareViewController: UIViewController {
             pickView.typesTitle = ["Android", "iOS", "休息视频", "福利", "拓展资源", "前端", "瞎推荐", "App"]
         }
     }
-    @IBOutlet weak var postButton: UIBarButtonItem!
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var postButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     @IBAction func cancel(sender: AnyObject) {
-        if postButton.title == "发布" {
+        if !postButton.selected {
             hideSelf({ 
                 let error = NSError(domain: "", code: 0, userInfo: nil)
                 self.extensionContext?.cancelRequestWithError(error)
@@ -37,7 +37,7 @@ public class TPCShareViewController: UIViewController {
     }
     
     @IBAction func post(sender: AnyObject) {
-        if postButton.title == "发布" {
+        if !postButton.selected {
             postGanHuo()
         } else {
             if let item = items.last {
@@ -76,12 +76,12 @@ public class TPCShareViewController: UIViewController {
     
     private func initializeItems() {
         items.removeAll()
-        let URLItem = TPCShareItem(content: URLString, placeholder: "输入分享链接", contentImage: UIImage(named: "link")!)
-        let descItem = TPCShareItem(placeholder: "输入分享描述", contentImage: UIImage(named: "明细")!)
-        let publisherItem = TPCShareItem(placeholder: "输入发布人昵称", contentImage: UIImage(named: "人")!)
-        let typeItem = TPCShareItem(content: "iOS", contentImage: UIImage(named: "标签")!, type: .Display, clickAction: { content in
+        
+        let URLItem = TPCShareItem(content: URLString, placeholder: "输入分享链接", contentImage: UIImage(named: "se_link")!)
+        let descItem = TPCShareItem(placeholder: "输入分享描述", contentImage: UIImage(named: "se_detail")!)
+        let publisherItem = TPCShareItem(placeholder: "输入发布人昵称", contentImage: UIImage(named: "se_publisher")!)
+        let typeItem = TPCShareItem(content: "iOS", contentImage: UIImage(named: "se_type")!, type: .Display, clickAction: { content in
             self.showPickView()
-            print(content)
         })
         items.appendContentsOf([URLItem, descItem, publisherItem, typeItem])
     }
@@ -103,7 +103,7 @@ public class TPCShareViewController: UIViewController {
         doAnimateAction({
             self.pickView.transform = CGAffineTransformIdentity
             }, completion: {
-                self.postButton.title = "确定"
+                self.postButton.selected = true
         })
     }
     
@@ -111,7 +111,7 @@ public class TPCShareViewController: UIViewController {
         doAnimateAction({
             self.pickView.transform = CGAffineTransformMakeTranslation(0, self.pickView.frame.height)
             }, completion: {
-                self.postButton.title = "发布"
+                self.postButton.selected = false
         })
     }
     

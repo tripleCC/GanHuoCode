@@ -122,8 +122,8 @@
     <resources>
         <image name="category" width="23" height="23"/>
         <image name="category-h" width="23" height="23"/>
-        <image name="fuli" width="32" height="32"/>
-        <image name="fuli_h" width="32" height="32"/>
+        <image name="fuli" width="26" height="26"/>
+        <image name="fuli_h" width="26" height="26"/>
         <image name="home" width="26" height="26"/>
         <image name="home-h" width="26" height="26"/>
         <image name="me" width="27" height="27"/>
