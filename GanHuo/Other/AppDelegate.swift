@@ -11,7 +11,7 @@ import CoreData
 import MonkeyKing
 
 let TPCURLMemoryCacheSize = 1024 * 1024 * 512
-let TPCURLDiskCacheSize = 1024 * 1024 * 1024 * 100
+let TPCURLDiskCacheSize = 1024 * 1024 * 1024 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
