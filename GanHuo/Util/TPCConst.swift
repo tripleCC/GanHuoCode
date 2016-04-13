@@ -9,7 +9,7 @@
 import UIKit
 
 
-#if SHARE_EXTENSION
+#if GanHuoShareExtension
 let TPCStatusBarHeight = CGFloat(20)
 #else
 let TPCStatusBarHeight: CGFloat = Swift.min(UIApplication.sharedApplication().statusBarFrame.size.height, UIApplication.sharedApplication().statusBarFrame.size.width)

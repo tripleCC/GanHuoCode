@@ -13,8 +13,11 @@ public protocol TPCGanHuoAPI {
 }
 
 public enum TPCGanHuoType {
+    #if GanHuoDev
+    static let TPCGanHuoBaseURLString = "https://localhost/"
+    #else
     static let TPCGanHuoBaseURLString = "https://raw.githubusercontent.com/tripleCC/GanHuo/master/"
-    
+    #endif
     public enum ImageTypeSubtype: TPCGanHuoAPI {
         static let ImageTypeSubtypeURLString = "images/"
         case VenusImage(Int)
