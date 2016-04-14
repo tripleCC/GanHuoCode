@@ -96,7 +96,7 @@ extension TPCShareViewController {
     private func initializeItems() {
         items.removeAll()
         
-        let URLItem = TPCShareItem(content: URLString, placeholder: "输入分享链接", contentImage: UIImage(named: "se_link")!)
+        let URLItem = TPCShareItem(content: URLString, placeholder: "输入/粘贴分享链接", contentImage: UIImage(named: "se_link")!)
         let descItem = TPCShareItem(placeholder: "输入分享描述", contentImage: UIImage(named: "se_detail")!)
         let publisherItem = TPCShareItem(content: getPublsiher(), placeholder: "输入发布人昵称", contentImage: UIImage(named: "se_publisher")!)
         let typeItem = TPCShareItem(content: "iOS", contentImage: UIImage(named: "se_type")!, type: .Display, clickAction: { [unowned self] content in
