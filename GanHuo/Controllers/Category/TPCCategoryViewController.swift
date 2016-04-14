@@ -56,6 +56,12 @@ class TPCCategoryViewController: TPCViewController {
         segmentView.setTitleTextAttributes([NSFontAttributeName : titleFont], forState: .Normal)
         segmentView.selectedSegmentIndex = 0
         navigationItem.titleView = segmentView
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "search"), style: .Done, target: self, action: #selector(search))
+    }
+    
+    func search() {
+        print(#function)
     }
     
     func segmenViewOnClicked(sender: UISegmentedControl) {
