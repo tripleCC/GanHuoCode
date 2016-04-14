@@ -24,6 +24,9 @@
 		D611B4D21CB215C000D5A2C7 /* TPCLoadMoreReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D611B4D01CB215C000D5A2C7 /* TPCLoadMoreReusableView.xib */; };
 		D611B4D51CB221E100D5A2C7 /* TPCCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611B4D31CB221E100D5A2C7 /* TPCCategoryTableViewCell.swift */; };
 		D611B4D81CB2289000D5A2C7 /* TPCCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D611B4D71CB2289000D5A2C7 /* TPCCategoryTableViewCell.xib */; };
+		D614A2FC1CBFE3B5009B607F /* TPCDispatchUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71051C2592A300C066DE /* TPCDispatchUtil.swift */; };
+		D614A2FD1CBFE3EB009B607F /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70EF1C2592A300C066DE /* NSDate+Extension.swift */; };
+		D614A2FE1CBFE3F2009B607F /* NSCalender+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F81C5518920059F372 /* NSCalender+Extension.swift */; };
 		D61A92551C8AC82900FD594C /* GanHuoObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A92531C8AC82900FD594C /* GanHuoObject+CoreDataProperties.swift */; };
 		D61A92561C8AC82900FD594C /* GanHuoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61A92541C8AC82900FD594C /* GanHuoObject.swift */; };
 		D61AFD431CB104540080A9B9 /* TPCCollectionViewWaterflowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AFD421CB104540080A9B9 /* TPCCollectionViewWaterflowLayout.swift */; };
@@ -1153,10 +1156,13 @@
 				D64C8FB41CBDDEFF00DD3B8A /* TPCConst.swift in Sources */,
 				D64C8F871CBD451D00DD3B8A /* UIImage+Extension.swift in Sources */,
 				D64C8FB31CBD4CCE00DD3B8A /* TPCGanHuoAPI.swift in Sources */,
+				D614A2FD1CBFE3EB009B607F /* NSDate+Extension.swift in Sources */,
 				D64C8F861CBD450F00DD3B8A /* CALayer+Extension.swift in Sources */,
 				D606E1751CBFB3AD005D2AFE /* TPCPlaceholderTextView.swift in Sources */,
 				D64C8F7A1CBD3F2F00DD3B8A /* TPCShareItemTypePickView.swift in Sources */,
 				D64C8F7C1CBD3F2F00DD3B8A /* TPCShareViewCell.swift in Sources */,
+				D614A2FE1CBFE3F2009B607F /* NSCalender+Extension.swift in Sources */,
+				D614A2FC1CBFE3B5009B607F /* TPCDispatchUtil.swift in Sources */,
 				D60CD2AF1CBD153A0015C0A5 /* ShareViewController.swift in Sources */,
 				D64C8F801CBD3F2F00DD3B8A /* TPCShareViewController.swift in Sources */,
 			);

@@ -20,6 +20,10 @@ class ShareViewController: UIViewController {
             addChildViewController(vc)
             self.view.addSubview(vc.view)
             vc.view.frame = view.bounds
+            vc.view.alpha = 0
+            UIView.animateWithDuration(0.1, animations: {
+                vc.view.alpha = 1
+            })
         }
     }
 //    override func isContentValid() -> Bool {

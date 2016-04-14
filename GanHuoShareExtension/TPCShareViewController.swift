@@ -52,18 +52,16 @@ public class TPCShareViewController: UIViewController {
     override public func viewDidLoad() {
         initializeItems()
         fetchURLString()
-        
+        containerView.transform = CGAffineTransformMakeTranslation(0, UIScreen.mainScreen().bounds.height)
     }
     
     override public func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         pickView.transform = CGAffineTransformMakeTranslation(0, pickView.frame.height)
-        containerView.transform = CGAffineTransformMakeTranslation(0, UIScreen.mainScreen().bounds.height - containerView.frame.maxY)
     }
     
     override public func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-//        containerView.transform = CGAffineTransformMakeTranslation(0, UIScreen.mainScreen().bounds.height - containerView.frame.maxY)
         doAnimateAction({
             self.containerView.transform = CGAffineTransformIdentity
             })
@@ -115,15 +113,31 @@ extension TPCShareViewController {
                 parameters[key] = items[idx].content
             }
         }
-        parameters["debug"] = true
+        parameters["debug"] = false
         savePublisher(parameters["who"] as? String ?? "")
         print(parameters)
         Alamofire.request(.POST, TPCTechnicalType.Add2Gank.path(), parameters: parameters)
                  .response { (request, response, data, error) in
                     print(response, data, request)
-        }
-        hideSelf {
-            self.extensionContext?.completeRequestReturningItems(nil, completionHandler: nil)
+                    var message: String
+                    var title: String
+                    if error == nil {
+                        title = "上传成功!"
+                        message = "恭喜你成为干货编辑部的一份子!"
+                    } else {
+                        title = "上传失败 = =|"
+                        message = error!.description
+                    }
+                    let ac = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+                    self.presentViewController(ac, animated: true, completion: {
+                        dispatchSeconds(1) {
+                            ac.dismissViewControllerAnimated(true, completion: { finished in
+                                self.hideSelf {
+                                    self.extensionContext?.completeRequestReturningItems(nil, completionHandler: nil)
+                                }
+                            })
+                        }
+                    })
         }
     }
     
