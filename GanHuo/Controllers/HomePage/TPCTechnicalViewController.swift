@@ -94,6 +94,28 @@ class TPCTechnicalViewController: TPCViewController {
     private func setupNav() {
         navigationItem.titleView = TPCApplicationTitleView(frame: CGRect(x: 0, y: 0, width: TPCNavigationBarHeight, height: TPCNavigationBarHeight))
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "setting"), target: self, action: #selector(TPCTechnicalViewController.set))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "upload"), target: self, action: #selector(TPCTechnicalViewController.upload), position: .Right, fit: false)
+    }
+    
+    private var uploadVc: TPCShareViewController?
+    func upload() {
+        if uploadVc == nil {
+            let sb = UIStoryboard(name: "TPCShareViewController", bundle: NSBundle(forClass: TPCShareViewController.self))
+            if let vc = sb.instantiateInitialViewController() as? TPCShareViewController {
+                uploadVc = vc
+                vc.view.frame = view.bounds
+                vc.actionBeforeDisapear = { [unowned self] vc in
+                    vc.view.removeFromSuperview()
+                    self.uploadVc = nil
+                }
+                UIApplication.sharedApplication().keyWindow?.addSubview(vc.view)
+                vc.view.alpha = 0
+                UIView.animateWithDuration(0.1, animations: { 
+                    vc.view.alpha = 1
+                })
+            }
+        }
     }
     
     func set() {

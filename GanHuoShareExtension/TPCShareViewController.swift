@@ -13,7 +13,7 @@ import Alamofire
 public class TPCShareViewController: UIViewController {
     var URLString: String?
     var items = [TPCShareItem]()
-
+    var actionBeforeDisapear: ((vc: TPCShareViewController) -> Void)?
     @IBOutlet weak var containerView: UIView!
     
     @IBOutlet weak var tableView: UITableView!
@@ -58,14 +58,19 @@ public class TPCShareViewController: UIViewController {
     override public func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         pickView.transform = CGAffineTransformMakeTranslation(0, pickView.frame.height)
+        containerView.transform = CGAffineTransformMakeTranslation(0, UIScreen.mainScreen().bounds.height - containerView.frame.maxY)
     }
     
     override public func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        containerView.transform = CGAffineTransformMakeTranslation(0, UIScreen.mainScreen().bounds.height - containerView.frame.maxY)
-        doAnimateAction({ 
+//        containerView.transform = CGAffineTransformMakeTranslation(0, UIScreen.mainScreen().bounds.height - containerView.frame.maxY)
+        doAnimateAction({
             self.containerView.transform = CGAffineTransformIdentity
             })
+    }
+    
+    deinit {
+        print("释放了")
     }
 }
 
@@ -95,8 +100,8 @@ extension TPCShareViewController {
         
         let URLItem = TPCShareItem(content: URLString, placeholder: "输入分享链接", contentImage: UIImage(named: "se_link")!)
         let descItem = TPCShareItem(placeholder: "输入分享描述", contentImage: UIImage(named: "se_detail")!)
-        let publisherItem = TPCShareItem(placeholder: "输入发布人昵称", contentImage: UIImage(named: "se_publisher")!)
-        let typeItem = TPCShareItem(content: "iOS", contentImage: UIImage(named: "se_type")!, type: .Display, clickAction: { content in
+        let publisherItem = TPCShareItem(content: getPublsiher(), placeholder: "输入发布人昵称", contentImage: UIImage(named: "se_publisher")!)
+        let typeItem = TPCShareItem(content: "iOS", contentImage: UIImage(named: "se_type")!, type: .Display, clickAction: { [unowned self] content in
             self.showPickView()
         })
         items.appendContentsOf([URLItem, descItem, publisherItem, typeItem])
@@ -111,6 +116,7 @@ extension TPCShareViewController {
             }
         }
         parameters["debug"] = true
+        savePublisher(parameters["who"] as? String ?? "")
         print(parameters)
         Alamofire.request(.POST, TPCTechnicalType.Add2Gank.path(), parameters: parameters)
                  .response { (request, response, data, error) in
@@ -121,11 +127,25 @@ extension TPCShareViewController {
         }
     }
     
+    private func savePublisher(publisher: String) {
+        let userDefaults = NSUserDefaults(suiteName: "group.com.triplecc.WKCC")
+        userDefaults?.setObject(publisher, forKey: "who")
+    }
+    
+    private func getPublsiher() -> String {
+        let userDefaults = NSUserDefaults(suiteName: "group.com.triplecc.WKCC")
+        return userDefaults?.objectForKey("who") as? String ?? ""
+    }
+    
     private func hideSelf(completion: (() -> Void)) {
         doAnimateAction({
             self.containerView.transform = CGAffineTransformMakeTranslation(0, -self.containerView.frame.maxY)
             self.view.alpha = 0
-            }, completion: completion)
+            }, completion: { finished in
+                completion()
+                self.dismissViewControllerAnimated(false, completion: nil)
+                self.actionBeforeDisapear?(vc: self)
+        })
     }
     
     private func showPickView() {
@@ -158,6 +178,8 @@ extension TPCShareViewController: UITableViewDelegate {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let item = items[indexPath.row]
         item.clickAction?(item.content)
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! TPCShareViewCell
+        cell.beEditing()
     }
 }
 

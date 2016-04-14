@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		12E92B8827A2329C2999802B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */; };
+		D606E15C1CBF303B005D2AFE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */; };
 		D60B6F371C9427C900531423 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B6F361C9427C900531423 /* UIView+Extension.swift */; };
 		D60B6F571C95801800531423 /* TPCFavoriteGanHuoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B6F561C95801800531423 /* TPCFavoriteGanHuoView.swift */; };
 		D60B6F591C95A2E200531423 /* TPCNoFavoriteTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D60B6F581C95A2E200531423 /* TPCNoFavoriteTipView.xib */; };
@@ -451,6 +452,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D606E15C1CBF303B005D2AFE /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
