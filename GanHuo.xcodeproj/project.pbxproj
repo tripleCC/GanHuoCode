@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		12E92B8827A2329C2999802B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */; };
 		D606E15C1CBF303B005D2AFE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */; };
+		D606E16F1CBFB38F005D2AFE /* TPCTextFiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = D606E16E1CBFB38F005D2AFE /* TPCTextFiled.swift */; };
+		D606E1701CBFB38F005D2AFE /* TPCTextFiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = D606E16E1CBFB38F005D2AFE /* TPCTextFiled.swift */; };
+		D606E1711CBFB38F005D2AFE /* TPCTextFiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = D606E16E1CBFB38F005D2AFE /* TPCTextFiled.swift */; };
+		D606E1731CBFB3AD005D2AFE /* TPCPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D606E1721CBFB3AD005D2AFE /* TPCPlaceholderTextView.swift */; };
+		D606E1741CBFB3AD005D2AFE /* TPCPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D606E1721CBFB3AD005D2AFE /* TPCPlaceholderTextView.swift */; };
+		D606E1751CBFB3AD005D2AFE /* TPCPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D606E1721CBFB3AD005D2AFE /* TPCPlaceholderTextView.swift */; };
 		D60B6F371C9427C900531423 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B6F361C9427C900531423 /* UIView+Extension.swift */; };
 		D60B6F571C95801800531423 /* TPCFavoriteGanHuoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B6F561C95801800531423 /* TPCFavoriteGanHuoView.swift */; };
 		D60B6F591C95A2E200531423 /* TPCNoFavoriteTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D60B6F581C95A2E200531423 /* TPCNoFavoriteTipView.xib */; };
@@ -320,6 +326,8 @@
 		72EE590290576ABFA38A5059 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA83A096E1133C661EE95446 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D606E16E1CBFB38F005D2AFE /* TPCTextFiled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCTextFiled.swift; sourceTree = "<group>"; };
+		D606E1721CBFB3AD005D2AFE /* TPCPlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCPlaceholderTextView.swift; sourceTree = "<group>"; };
 		D60B6F361C9427C900531423 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		D60B6F561C95801800531423 /* TPCFavoriteGanHuoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCFavoriteGanHuoView.swift; sourceTree = "<group>"; };
 		D60B6F581C95A2E200531423 /* TPCNoFavoriteTipView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCNoFavoriteTipView.xib; sourceTree = "<group>"; };
@@ -620,6 +628,8 @@
 				D6D8BFA11C82EB7000CCA370 /* TPCUpdateView.swift */,
 				D6D8BFA21C82EB7000CCA370 /* TPCUpdateView.xib */,
 				D6D8BFA31C82EB7000CCA370 /* TPCWebView.swift */,
+				D606E16E1CBFB38F005D2AFE /* TPCTextFiled.swift */,
+				D606E1721CBFB3AD005D2AFE /* TPCPlaceholderTextView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1143,12 +1153,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D64C8F851CBD44FC00DD3B8A /* UIFont+Extension.swift in Sources */,
+				D606E1711CBFB38F005D2AFE /* TPCTextFiled.swift in Sources */,
 				D64C8F841CBD42C800DD3B8A /* TPCApplicationTitleView.swift in Sources */,
 				D64C8F781CBD3F2F00DD3B8A /* TPCShareItem.swift in Sources */,
 				D64C8FB41CBDDEFF00DD3B8A /* TPCConst.swift in Sources */,
 				D64C8F871CBD451D00DD3B8A /* UIImage+Extension.swift in Sources */,
 				D64C8FB31CBD4CCE00DD3B8A /* TPCGanHuoAPI.swift in Sources */,
 				D64C8F861CBD450F00DD3B8A /* CALayer+Extension.swift in Sources */,
+				D606E1751CBFB3AD005D2AFE /* TPCPlaceholderTextView.swift in Sources */,
 				D64C8F7A1CBD3F2F00DD3B8A /* TPCShareItemTypePickView.swift in Sources */,
 				D64C8F7C1CBD3F2F00DD3B8A /* TPCShareViewCell.swift in Sources */,
 				D60CD2AF1CBD153A0015C0A5 /* ShareViewController.swift in Sources */,
@@ -1163,10 +1175,12 @@
 				D64C8FEB1CBDE92A00DD3B8A /* TPCTechnicalObject.swift in Sources */,
 				D64C8FEC1CBDE92A00DD3B8A /* TPCPageScrollView.swift in Sources */,
 				D64C8FED1CBDE92A00DD3B8A /* UIScrollView+Extension.swift in Sources */,
+				D606E1701CBFB38F005D2AFE /* TPCTextFiled.swift in Sources */,
 				D64C8FEE1CBDE92A00DD3B8A /* TPCCategoryDataSource.swift in Sources */,
 				D64C8FEF1CBDE92A00DD3B8A /* TPCShareItemTypePickView.swift in Sources */,
 				D64C8FF01CBDE92A00DD3B8A /* TPCShareItem.swift in Sources */,
 				D64C8FF11CBDE92A00DD3B8A /* TPCApplicationTitleView.swift in Sources */,
+				D606E1741CBFB3AD005D2AFE /* TPCPlaceholderTextView.swift in Sources */,
 				D64C8FF21CBDE92A00DD3B8A /* TPCCategoryViewController.swift in Sources */,
 				D64C8FF31CBDE92A00DD3B8A /* AppDelegate.swift in Sources */,
 				D64C8FF41CBDE92A00DD3B8A /* TPCConst.swift in Sources */,
@@ -1263,10 +1277,12 @@
 				D6D8BFD01C82EB7700CCA370 /* TPCTechnicalObject.swift in Sources */,
 				D6D8BFB51C82EB7000CCA370 /* TPCPageScrollView.swift in Sources */,
 				D6544A1F1C93C4CE0094DB3F /* UIScrollView+Extension.swift in Sources */,
+				D606E16F1CBFB38F005D2AFE /* TPCTextFiled.swift in Sources */,
 				D60D12BF1C8D399300C84D4C /* TPCCategoryDataSource.swift in Sources */,
 				D64C8F791CBD3F2F00DD3B8A /* TPCShareItemTypePickView.swift in Sources */,
 				D64C8F771CBD3F2F00DD3B8A /* TPCShareItem.swift in Sources */,
 				D6D8BFC31C82EB7000CCA370 /* TPCApplicationTitleView.swift in Sources */,
+				D606E1731CBFB3AD005D2AFE /* TPCPlaceholderTextView.swift in Sources */,
 				D67CED971C85DE3600A38B0B /* TPCCategoryViewController.swift in Sources */,
 				D6DE713F1C2592A300C066DE /* AppDelegate.swift in Sources */,
 				D6DE71431C2592A300C066DE /* TPCConst.swift in Sources */,

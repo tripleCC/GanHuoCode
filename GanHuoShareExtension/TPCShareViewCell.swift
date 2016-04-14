@@ -37,6 +37,13 @@ public class TPCShareViewCell: UITableViewCell {
         }
     }
     
+    func beEditing() {
+        if !inputTextField.hidden {
+            inputTextField.becomeFirstResponder()
+        } else {
+            superview?.endEditing(true)
+        }
+    }
     
     override public func awakeFromNib() {
         super.awakeFromNib()

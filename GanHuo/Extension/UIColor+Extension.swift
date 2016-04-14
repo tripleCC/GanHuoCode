@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIColor {
+    
     static func randomColor() -> UIColor {
         let randomRed: CGFloat = CGFloat(drand48())
         let randomGreen: CGFloat = CGFloat(drand48())
