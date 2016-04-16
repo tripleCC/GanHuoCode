@@ -58,12 +58,19 @@ class TPCStorageUtil {
         return fileSize
     }
     
-    static func setObject(value: AnyObject?, forKey defaultName: String) {
-        NSUserDefaults.standardUserDefaults().setObject(value, forKey: defaultName)
+    static func setObject(value: AnyObject?, forKey defaultName: String, suiteName name: String? = nil) {
+        if name != nil {
+            NSUserDefaults(suiteName: name)?.setObject(value, forKey: defaultName)
+        } else {
+            NSUserDefaults.standardUserDefaults().setObject(value, forKey: defaultName)
+        }
     }
     
-    static func objectForKey(defaultName: String) -> AnyObject? {
-        return NSUserDefaults.standardUserDefaults().objectForKey(defaultName)
+    static func objectForKey(defaultName: String, suiteName name: String? = nil) -> AnyObject? {
+        guard name != nil else {
+            return NSUserDefaults.standardUserDefaults().objectForKey(defaultName)
+        }
+        return NSUserDefaults(suiteName: name)?.objectForKey(defaultName)
     }
     
     static func setFloat(value: Float, forKey defaultName: String) {
@@ -83,30 +90,3 @@ class TPCStorageUtil {
     }
 }
 
-let TPCCloudSaveKey = "TPCCloudSave"
-extension TPCStorageUtil {
-    static func saveCloudConfiguration() {
-        setDictionary(TPCConfiguration.dictionaryWithConfiguration(), forKey: TPCCloudSaveKey)
-    }
-    
-    static func fetchCloudConfiguration() {
-        if let configuration = dictionaryForKey(TPCCloudSaveKey) {
-            TPCConfiguration.setConfigurationWithCloudDictionary(configuration)
-        }
-    }
-    
-    static func setCloudSaveObserver(observer: AnyObject, selector aSelector: Selector) {
-        let s = NSUbiquitousKeyValueStore.defaultStore()
-        NSNotificationCenter.defaultCenter().addObserver(observer, selector: aSelector, name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: s)
-        NSUbiquitousKeyValueStore.defaultStore().synchronize()
-    }
-    
-    static func setDictionary(aDictionary: [String : AnyObject]?, forKey key: String) {
-        NSUbiquitousKeyValueStore.defaultStore().setDictionary(aDictionary, forKey: key)
-        NSUbiquitousKeyValueStore.defaultStore().synchronize()
-    }
-    
-    static func dictionaryForKey(aKey: String) -> [String : AnyObject]? {
-        return NSUbiquitousKeyValueStore.defaultStore().dictionaryForKey(aKey)
-    }
-}

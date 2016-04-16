@@ -14,7 +14,15 @@ public protocol TPCGanHuoAPI {
 
 public enum TPCGanHuoType {
     #if GanHuoDev
-    static let TPCGanHuoBaseURLString = "https://localhost/"
+    static var TPCGanHuoBaseURLString: String {
+        get {
+            if let _ = UIDevice.currentDevice().model.lowercaseString.rangeOfString("simulator") {
+                return "http://192.168.1.108/ganhuo/"
+            } else {
+                return "http://localhost/ganhuo/"
+            }
+        }
+    }
     #else
     static let TPCGanHuoBaseURLString = "https://raw.githubusercontent.com/tripleCC/GanHuo/master/"
     #endif

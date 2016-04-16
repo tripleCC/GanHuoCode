@@ -31,3 +31,14 @@ let TPCCurrentVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVers
 
 
 let TPCLoadGanHuoDataOnce: Int = 14
+
+let TPCAppGroupKey = "group.com.triplecc.WKCC"
+
+
+let TPCLoadDataNumberOnceKey = "TPCLoadDataNumberOnce"
+let TPCCategoryDisplayAtHomeKey = "TPCCategoryDisplayAtHome"
+let TPCAllCategoriesKey = "TPCAllCategories"
+let TPCSetContentRulesAtHomeKey = "TPCSetContentRulesAtHome"
+let TPCSetPictureTransparencyKey = "TPCSetPictureTransparency"
+
+let TPCFilterCategories = ["Android", "App"]

@@ -230,7 +230,7 @@ extension TPCNetworkUtilLoadHomePage {
                             let results = JSON(data: data)["results"].dictionaryValue
                             for item in categories {
                                 // filter Android
-                                guard TPCVenusUtil.venusFlag || !TPCVenusUtil.filterCategories.contains(item) else {
+                                guard TPCVenusUtil.venusFlag || !TPCFilterCategories.contains(item) else {
                                     categories.removeAtIndex(categories.indexOf(item)!)
                                     continue
                                 }
@@ -294,15 +294,6 @@ extension TPCNetworkUtilLoadAuthor {
     }
     
     public func loadLaunchConfig(completion: (launchConfig: TPCLaunchConfig) -> ()) {
-//        alamofire.request(.GET, "http://192.168.1.105/test/LaunchConfig.json")
-//            .response(completionHandler: { (request, response, data, ErrorType) -> Void in
-//                print(data, response)
-//                if let data = data {
-//                    completion(launchConfig: TPCLaunchConfig(dict: JSON(data: data)))
-//                } else {
-//                    debugPrint(ErrorType.debugDescription)
-//                }
-//            })
         loadGanHuoByPath(TPCGanHuoType.ConfigTypeSubtype.LaunchConfig) { (response) -> () in
             completion(launchConfig: TPCLaunchConfig(dict: response))
         }

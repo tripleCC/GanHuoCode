@@ -127,11 +127,6 @@ extension TPCConfiguration {
     }
 }
 
-let TPCLoadDataNumberOnceKey = "TPCLoadDataNumberOnce"
-let TPCCategoryDisplayAtHomeKey = "TPCCategoryDisplayAtHome"
-let TPCAllCategoriesKey = "TPCAllCategories"
-let TPCSetContentRulesAtHomeKey = "TPCSetContentRulesAtHome"
-let TPCSetPictureTransparencyKey = "TPCSetPictureTransparency"
 extension TPCStorageUtil {
     static func saveLoadDataNumberOnce(number: String) {
         setObject(number, forKey: TPCLoadDataNumberOnceKey)
@@ -221,5 +216,33 @@ extension TPCStorageUtil {
         imageAlpha = imageAlpha == -1 ? 0 : imageAlpha
         
         return imageAlpha
+    }
+}
+
+let TPCCloudSaveKey = "TPCCloudSave"
+extension TPCStorageUtil {
+    static func saveCloudConfiguration() {
+        setDictionary(TPCConfiguration.dictionaryWithConfiguration(), forKey: TPCCloudSaveKey)
+    }
+    
+    static func fetchCloudConfiguration() {
+        if let configuration = dictionaryForKey(TPCCloudSaveKey) {
+            TPCConfiguration.setConfigurationWithCloudDictionary(configuration)
+        }
+    }
+    
+    static func setCloudSaveObserver(observer: AnyObject, selector aSelector: Selector) {
+        let s = NSUbiquitousKeyValueStore.defaultStore()
+        NSNotificationCenter.defaultCenter().addObserver(observer, selector: aSelector, name: NSUbiquitousKeyValueStoreDidChangeExternallyNotification, object: s)
+        NSUbiquitousKeyValueStore.defaultStore().synchronize()
+    }
+    
+    static func setDictionary(aDictionary: [String : AnyObject]?, forKey key: String) {
+        NSUbiquitousKeyValueStore.defaultStore().setDictionary(aDictionary, forKey: key)
+        NSUbiquitousKeyValueStore.defaultStore().synchronize()
+    }
+    
+    static func dictionaryForKey(aKey: String) -> [String : AnyObject]? {
+        return NSUbiquitousKeyValueStore.defaultStore().dictionaryForKey(aKey)
     }
 }

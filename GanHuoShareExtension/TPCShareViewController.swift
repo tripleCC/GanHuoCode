@@ -14,13 +14,23 @@ public class TPCShareViewController: UIViewController {
     var URLString: String?
     var items = [TPCShareItem]()
     var actionBeforeDisapear: ((vc: TPCShareViewController) -> Void)?
+    
+    var categories: [String] {
+        get {
+            if let categories = TPCStorageUtil.objectForKey(TPCAllCategoriesKey, suiteName: TPCAppGroupKey) as? [String] {
+                return categories
+            } else {
+                return ["iOS", "Android", "App", "瞎推荐", "前端", "福利", "休息视频", "拓展资源"].filter{ !TPCFilterCategories.contains($0) }
+            }
+        }
+    }
     @IBOutlet weak var containerView: UIView!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pickView: TPCShareItemTypePickView! {
         didSet {
             // 这里到时候要从userdefault里面取
-            pickView.typesTitle = ["Android", "iOS", "休息视频", "福利", "拓展资源", "前端", "瞎推荐", "App"]
+            pickView.typesTitle = categories
         }
     }
     @IBOutlet weak var postButton: UIButton!
@@ -99,7 +109,7 @@ extension TPCShareViewController {
         let URLItem = TPCShareItem(content: URLString, placeholder: "输入/粘贴分享链接", contentImage: UIImage(named: "se_link")!)
         let descItem = TPCShareItem(placeholder: "输入分享描述", contentImage: UIImage(named: "se_detail")!)
         let publisherItem = TPCShareItem(content: getPublsiher(), placeholder: "输入发布人昵称", contentImage: UIImage(named: "se_publisher")!)
-        let typeItem = TPCShareItem(content: "iOS", contentImage: UIImage(named: "se_type")!, type: .Display, clickAction: { [unowned self] content in
+        let typeItem = TPCShareItem(content: categories.first, contentImage: UIImage(named: "se_type")!, type: .Display, clickAction: { [unowned self] content in
             self.showPickView()
         })
         items.appendContentsOf([URLItem, descItem, publisherItem, typeItem])
@@ -142,12 +152,12 @@ extension TPCShareViewController {
     }
     
     private func savePublisher(publisher: String) {
-        let userDefaults = NSUserDefaults(suiteName: "group.com.triplecc.WKCC")
+        let userDefaults = NSUserDefaults(suiteName: TPCAppGroupKey)
         userDefaults?.setObject(publisher, forKey: "who")
     }
     
     private func getPublsiher() -> String {
-        let userDefaults = NSUserDefaults(suiteName: "group.com.triplecc.WKCC")
+        let userDefaults = NSUserDefaults(suiteName: TPCAppGroupKey)
         return userDefaults?.objectForKey("who") as? String ?? ""
     }
     

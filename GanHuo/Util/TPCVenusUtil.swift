@@ -13,7 +13,6 @@ let TPCVenusKey = "TPCVenus"
 let venusURL = ""
 class TPCVenusUtil {
     static var venusFlag = false
-    static let filterCategories = ["Android", "App"]
     static let filterSetItems: [String] = [TPCSetItemType.FavorableReception.rawValue,
         TPCSetItemType.ContentRules.rawValue,
         TPCSetItemType.LoadDataEachTime.rawValue,
@@ -46,7 +45,7 @@ class TPCVenusUtil {
                 if !venusFlag {
                     debugPrint("Close venus model")
                     TPCConfiguration.allRules.removeAtIndex(TPCConfiguration.allRules.indexOf(TPCRuleType.One)!)
-                    TPCConfiguration.allCategories = TPCConfiguration.allCategories.filter{ !filterCategories.contains($0) }
+                    TPCConfiguration.allCategories = TPCConfiguration.allCategories.filter{ !TPCFilterCategories.contains($0) }
                     TPCConfiguration.loadDataCountOnce = 5
                 } else {
                     debugPrint("Open venus model")
@@ -56,6 +55,8 @@ class TPCVenusUtil {
                     KingfisherManager.sharedManager.cache.clearMemoryCache()
                     TPCStorageUtil.setObject(nil, forKey: TPCCategoryStoreKey)
                 }
+                // 给SE用，这里代码不是很好
+                TPCStorageUtil.setObject(TPCConfiguration.allCategories, forKey: TPCAllCategoriesKey, suiteName: TPCAppGroupKey)
             }
             completion(launchConfig: launchConfig)
         }
