@@ -16,10 +16,10 @@ public enum TPCGanHuoType {
     #if GanHuoDev
     static var TPCGanHuoBaseURLString: String {
         get {
-            if let _ = UIDevice.currentDevice().model.lowercaseString.rangeOfString("simulator") {
-                return "http://192.168.1.108/ganhuo/"
-            } else {
+            if let _ = UIDevice.currentDevice().name.lowercaseString.rangeOfString("simulator") {
                 return "http://localhost/ganhuo/"
+            } else {
+                return "http://192.168.1.108/ganhuo/"
             }
         }
     }
