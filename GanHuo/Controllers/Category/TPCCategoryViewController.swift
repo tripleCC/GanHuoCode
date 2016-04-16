@@ -73,7 +73,9 @@ class TPCCategoryViewController: TPCViewController {
         editView.hidden = editHeaderView.hidden
         if sender.selectedSegmentIndex == 1 {
             doOnceInAppLifeWithKey("TPCCategoryViewController.showFavoriteTip", action: {
-                self.showFavoriteTip()
+                dispatchSeconds(1, action: { 
+                    self.showFavoriteTip()
+                })
             })
         }
     }
