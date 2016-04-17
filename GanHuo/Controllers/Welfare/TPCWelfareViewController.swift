@@ -125,6 +125,7 @@ extension TPCWelfareViewController: UIScrollViewDelegate {
     }
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        shouldLayoutAfterLoad = false
         if let indexPath = collectionView.indexPathForItemAtPoint(CGPoint(x: 100, y: targetContentOffset.memory.y)) {
             if Double(indexPath.row) >= Double(dataSource.technicals.count) - Double(TPCLoadGanHuoDataOnce) * 0.9 {
                 dataSource.loadMoreData()
