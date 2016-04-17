@@ -38,9 +38,10 @@
 		D6266E051CB545D8006E6F65 /* TPCTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6266E031CB545D8006E6F65 /* TPCTransition.swift */; };
 		D63E65E01CC226A000EAF9FC /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C0E2BD1C872EBE0033EAFB /* UIColor+Extension.swift */; };
 		D63E65E21CC2281900EAF9FC /* TPCStorageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71091C2592A300C066DE /* TPCStorageUtil.swift */; };
-		D63E65E31CC2282E00EAF9FC /* TPCTechnicalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFCC1C82EB7700CCA370 /* TPCTechnicalObject.swift */; };
 		D63E65E41CC2283600EAF9FC /* TPCArchivable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F01C53B19D0059F372 /* TPCArchivable.swift */; };
 		D63E65E51CC2283D00EAF9FC /* TPCAboutMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFC91C82EB7700CCA370 /* TPCAboutMe.swift */; };
+		D63E65EA1CC27B2000EAF9FC /* TPCPageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E65E91CC27B2000EAF9FC /* TPCPageViewCell.swift */; };
+		D63E65EB1CC27B2000EAF9FC /* TPCPageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63E65E91CC27B2000EAF9FC /* TPCPageViewCell.swift */; };
 		D64C8F771CBD3F2F00DD3B8A /* TPCShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C8F701CBD3F2F00DD3B8A /* TPCShareItem.swift */; };
 		D64C8F781CBD3F2F00DD3B8A /* TPCShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C8F701CBD3F2F00DD3B8A /* TPCShareItem.swift */; };
 		D64C8F791CBD3F2F00DD3B8A /* TPCShareItemTypePickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C8F711CBD3F2F00DD3B8A /* TPCShareItemTypePickView.swift */; };
@@ -170,7 +171,6 @@
 		D64C90581CBDE92A00DD3B8A /* TPCCategoryEditViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6C562E71C9B056E00D8F0FA /* TPCCategoryEditViewCell.xib */; };
 		D64C90591CBDE92A00DD3B8A /* TPCShareViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D64C8F731CBD3F2F00DD3B8A /* TPCShareViewController.storyboard */; };
 		D64C905A1CBDE92A00DD3B8A /* GanHuoShareExtension.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D64C8F811CBD3F7B00DD3B8A /* GanHuoShareExtension.xcassets */; };
-		D64C905B1CBDE92A00DD3B8A /* TPCWelfareCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6D9A4DD1CB28E5D005456CE /* TPCWelfareCollectionViewCell.xib */; };
 		D64C905C1CBDE92A00DD3B8A /* TPCNoFavoriteTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D60B6F581C95A2E200531423 /* TPCNoFavoriteTipView.xib */; };
 		D64C905D1CBDE92A00DD3B8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6D8BF4A1C82D26F00CCA370 /* Main.storyboard */; };
 		D64C905E1CBDE92A00DD3B8A /* TPCUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6D8BFA21C82EB7000CCA370 /* TPCUpdateView.xib */; };
@@ -185,6 +185,7 @@
 		D67CED971C85DE3600A38B0B /* TPCCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67CED961C85DE3600A38B0B /* TPCCategoryViewController.swift */; };
 		D67CED991C85EE6B00A38B0B /* TPCSubCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67CED981C85EE6B00A38B0B /* TPCSubCategoryViewController.swift */; };
 		D68937D61CA42A1F009C6B31 /* TPCPopUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68937D51CA42A1F009C6B31 /* TPCPopUtil.swift */; };
+		D6928F1F1CC3979100DA4264 /* TPCTechnicalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFCC1C82EB7700CCA370 /* TPCTechnicalObject.swift */; };
 		D69797E61C2FBCA500A53CD2 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69797E51C2FBCA500A53CD2 /* UIViewController+Extension.swift */; };
 		D6C0E2BC1C871F5F0033EAFB /* TPCFetchedResultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C0E2BB1C871F5E0033EAFB /* TPCFetchedResultsDataSource.swift */; };
 		D6C0E2BE1C872EBE0033EAFB /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C0E2BD1C872EBE0033EAFB /* UIColor+Extension.swift */; };
@@ -237,7 +238,6 @@
 		D6D9A4D81CB23BE5005456CE /* Welfare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6D9A4D71CB23BE5005456CE /* Welfare.storyboard */; };
 		D6D9A4DA1CB23D2C005456CE /* TPCWelfareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D9A4D91CB23D2C005456CE /* TPCWelfareViewController.swift */; };
 		D6D9A4DC1CB28BC1005456CE /* TPCWelfareCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D9A4DB1CB28BC1005456CE /* TPCWelfareCollectionViewCell.swift */; };
-		D6D9A4DE1CB28E5D005456CE /* TPCWelfareCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6D9A4DD1CB28E5D005456CE /* TPCWelfareCollectionViewCell.xib */; };
 		D6DE71271C2592A300C066DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6DE70DD1C2592A300C066DE /* Assets.xcassets */; };
 		D6DE71281C2592A300C066DE /* HomePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6DE70DE1C2592A300C066DE /* HomePage.storyboard */; };
 		D6DE71341C2592A300C066DE /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70EE1C2592A300C066DE /* CALayer+Extension.swift */; };
@@ -354,6 +354,7 @@
 		D6266DFF1CB545A6006E6F65 /* UICollecion+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollecion+Extension.swift"; sourceTree = "<group>"; };
 		D6266E021CB545D8006E6F65 /* TPCFadeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCFadeTransition.swift; sourceTree = "<group>"; };
 		D6266E031CB545D8006E6F65 /* TPCTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCTransition.swift; sourceTree = "<group>"; };
+		D63E65E91CC27B2000EAF9FC /* TPCPageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCPageViewCell.swift; sourceTree = "<group>"; };
 		D64C8F701CBD3F2F00DD3B8A /* TPCShareItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCShareItem.swift; sourceTree = "<group>"; };
 		D64C8F711CBD3F2F00DD3B8A /* TPCShareItemTypePickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCShareItemTypePickView.swift; sourceTree = "<group>"; };
 		D64C8F721CBD3F2F00DD3B8A /* TPCShareViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCShareViewCell.swift; sourceTree = "<group>"; };
@@ -427,7 +428,6 @@
 		D6D9A4D71CB23BE5005456CE /* Welfare.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welfare.storyboard; sourceTree = "<group>"; };
 		D6D9A4D91CB23D2C005456CE /* TPCWelfareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCWelfareViewController.swift; sourceTree = "<group>"; };
 		D6D9A4DB1CB28BC1005456CE /* TPCWelfareCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCWelfareCollectionViewCell.swift; sourceTree = "<group>"; };
-		D6D9A4DD1CB28E5D005456CE /* TPCWelfareCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCWelfareCollectionViewCell.xib; sourceTree = "<group>"; };
 		D6DE6FB91C25904C00C066DE /* GanHuo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GanHuo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6DE70DD1C2592A300C066DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6DE70DF1C2592A300C066DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HomePage.storyboard; sourceTree = "<group>"; };
@@ -737,8 +737,8 @@
 		D6D9A4D61CB23BCD005456CE /* Welfare */ = {
 			isa = PBXGroup;
 			children = (
-				D6D9A4DD1CB28E5D005456CE /* TPCWelfareCollectionViewCell.xib */,
 				D6D9A4DB1CB28BC1005456CE /* TPCWelfareCollectionViewCell.swift */,
+				D63E65E91CC27B2000EAF9FC /* TPCPageViewCell.swift */,
 			);
 			path = Welfare;
 			sourceTree = "<group>";
@@ -1021,7 +1021,6 @@
 				D64C90581CBDE92A00DD3B8A /* TPCCategoryEditViewCell.xib in Resources */,
 				D64C90591CBDE92A00DD3B8A /* TPCShareViewController.storyboard in Resources */,
 				D64C905A1CBDE92A00DD3B8A /* GanHuoShareExtension.xcassets in Resources */,
-				D64C905B1CBDE92A00DD3B8A /* TPCWelfareCollectionViewCell.xib in Resources */,
 				D64C905C1CBDE92A00DD3B8A /* TPCNoFavoriteTipView.xib in Resources */,
 				D64C905D1CBDE92A00DD3B8A /* Main.storyboard in Resources */,
 				D64C905E1CBDE92A00DD3B8A /* TPCUpdateView.xib in Resources */,
@@ -1048,7 +1047,6 @@
 				D6C562E91C9B056E00D8F0FA /* TPCCategoryEditViewCell.xib in Resources */,
 				D64C8F7D1CBD3F2F00DD3B8A /* TPCShareViewController.storyboard in Resources */,
 				D64C8F821CBD3F7B00DD3B8A /* GanHuoShareExtension.xcassets in Resources */,
-				D6D9A4DE1CB28E5D005456CE /* TPCWelfareCollectionViewCell.xib in Resources */,
 				D60B6F591C95A2E200531423 /* TPCNoFavoriteTipView.xib in Resources */,
 				D6D8BF4C1C82D26F00CCA370 /* Main.storyboard in Resources */,
 				D6D8BFBE1C82EB7000CCA370 /* TPCUpdateView.xib in Resources */,
@@ -1157,7 +1155,6 @@
 			files = (
 				D64C8F851CBD44FC00DD3B8A /* UIFont+Extension.swift in Sources */,
 				D64C8F841CBD42C800DD3B8A /* TPCApplicationTitleView.swift in Sources */,
-				D63E65E31CC2282E00EAF9FC /* TPCTechnicalObject.swift in Sources */,
 				D63E65E51CC2283D00EAF9FC /* TPCAboutMe.swift in Sources */,
 				D63E65E01CC226A000EAF9FC /* UIColor+Extension.swift in Sources */,
 				D63E65E21CC2281900EAF9FC /* TPCStorageUtil.swift in Sources */,
@@ -1172,6 +1169,7 @@
 				D64C8F7C1CBD3F2F00DD3B8A /* TPCShareViewCell.swift in Sources */,
 				D63E65E41CC2283600EAF9FC /* TPCArchivable.swift in Sources */,
 				D614A2FE1CBFE3F2009B607F /* NSCalender+Extension.swift in Sources */,
+				D6928F1F1CC3979100DA4264 /* TPCTechnicalObject.swift in Sources */,
 				D614A2FC1CBFE3B5009B607F /* TPCDispatchUtil.swift in Sources */,
 				D60CD2AF1CBD153A0015C0A5 /* ShareViewController.swift in Sources */,
 				D64C8F801CBD3F2F00DD3B8A /* TPCShareViewController.swift in Sources */,
@@ -1218,6 +1216,7 @@
 				D64C900B1CBDE92A00DD3B8A /* TPCViewController.swift in Sources */,
 				D64C900C1CBDE92A00DD3B8A /* TPCUpdateView.swift in Sources */,
 				D64C900D1CBDE92A00DD3B8A /* TPCCoreDataManager.swift in Sources */,
+				D63E65EB1CC27B2000EAF9FC /* TPCPageViewCell.swift in Sources */,
 				D64C900E1CBDE92A00DD3B8A /* TPCRefreshView.swift in Sources */,
 				D64C900F1CBDE92A00DD3B8A /* TPCPhotoUtil.swift in Sources */,
 				D64C90101CBDE92A00DD3B8A /* UIView+Extension.swift in Sources */,
@@ -1319,6 +1318,7 @@
 				D6D8BF871C82EB6600CCA370 /* TPCViewController.swift in Sources */,
 				D6D8BFBD1C82EB7000CCA370 /* TPCUpdateView.swift in Sources */,
 				D6DE71411C2592A300C066DE /* TPCCoreDataManager.swift in Sources */,
+				D63E65EA1CC27B2000EAF9FC /* TPCPageViewCell.swift in Sources */,
 				D6D8BFB81C82EB7000CCA370 /* TPCRefreshView.swift in Sources */,
 				D6DE71461C2592A300C066DE /* TPCPhotoUtil.swift in Sources */,
 				D60B6F371C9427C900531423 /* UIView+Extension.swift in Sources */,

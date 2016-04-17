@@ -24,7 +24,31 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TPCWelfareCollectionViewCell" id="dvz-Yl-zPB" customClass="TPCWelfareCollectionViewCell" customModule="GanHuo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="111" height="102"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="111" height="102"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="igk-8S-1Jk">
+                                                    <rect key="frame" x="0.0" y="0.0" width="111" height="102"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="igk-8S-1Jk" secondAttribute="trailing" id="8MR-Gu-DAf"/>
+                                            <constraint firstItem="igk-8S-1Jk" firstAttribute="top" secondItem="dvz-Yl-zPB" secondAttribute="top" id="QZH-K1-ikl"/>
+                                            <constraint firstAttribute="bottom" secondItem="igk-8S-1Jk" secondAttribute="bottom" id="VxN-mW-N9d"/>
+                                            <constraint firstItem="igk-8S-1Jk" firstAttribute="leading" secondItem="dvz-Yl-zPB" secondAttribute="leading" id="lu6-Ni-I6k"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="contentImageView" destination="igk-8S-1Jk" id="Pe2-jX-c3Y"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
                                     <outlet property="delegate" destination="84R-6g-bEm" id="tRA-pW-3Pg"/>
                                 </connections>
@@ -90,6 +114,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z3V-8o-IcO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-26" y="-486"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="1jG-oI-ixW">
+            <objects>
+                <viewController storyboardIdentifier="TPCPageViewController" id="Kcl-KZ-IyF" customClass="TPCPageViewController" customModule="GanHuo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oIr-U0-1Ud"/>
+                        <viewControllerLayoutGuide type="bottom" id="WmO-af-DTi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fKa-iz-QhQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Il9-0X-dWi" customClass="TPCCollectionView" customModule="GanHuo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewLayout key="collectionViewLayout" id="8mA-Md-HJt"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TPCPageViewCell" id="uRY-SV-xzD" customClass="TPCPageViewCell" customModule="GanHuo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="147"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="147"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <size key="customSize" width="150" height="147"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Kcl-KZ-IyF" id="7YM-KR-cWH"/>
+                                    <outlet property="delegate" destination="Kcl-KZ-IyF" id="jwb-3B-p11"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WmO-af-DTi" firstAttribute="top" secondItem="Il9-0X-dWi" secondAttribute="bottom" id="5vA-Dn-cw1"/>
+                            <constraint firstAttribute="bottom" secondItem="Il9-0X-dWi" secondAttribute="bottom" id="BmZ-nt-nX4"/>
+                            <constraint firstItem="Il9-0X-dWi" firstAttribute="top" secondItem="oIr-U0-1Ud" secondAttribute="bottom" id="f5X-qR-LwS"/>
+                            <constraint firstAttribute="trailing" secondItem="Il9-0X-dWi" secondAttribute="trailing" id="mrz-nL-CwZ"/>
+                            <constraint firstItem="Il9-0X-dWi" firstAttribute="leading" secondItem="fKa-iz-QhQ" secondAttribute="leading" id="ssH-ri-4UM"/>
+                            <constraint firstItem="Il9-0X-dWi" firstAttribute="top" secondItem="fKa-iz-QhQ" secondAttribute="top" id="uWx-2p-0uv"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="f5X-qR-LwS"/>
+                                <exclude reference="5vA-Dn-cw1"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Il9-0X-dWi" id="HDn-NI-RPC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iph-PZ-3IB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="747" y="-516"/>
         </scene>
     </scenes>
     <resources>

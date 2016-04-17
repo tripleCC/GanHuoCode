@@ -13,7 +13,9 @@ import UIKit
 let TPCStatusBarHeight = CGFloat(20)
 #else
 let TPCStatusBarHeight: CGFloat = Swift.min(UIApplication.sharedApplication().statusBarFrame.size.height, UIApplication.sharedApplication().statusBarFrame.size.width)
+let TPCRootViewController = UIApplication.sharedApplication().keyWindow?.rootViewController as! UITabBarController
 #endif
+
 
 let TPCNavigationBarHeight: CGFloat = 44.0
 let TPCNavigationBarAndStatusBarHeight = TPCNavigationBarHeight + TPCStatusBarHeight
@@ -26,6 +28,8 @@ let TPCGankIOURLString = "http://gank.io/"
 
 let TPCTechnicalReloadDataNotification = "TPCTechnicalReloadDataNotification"
 let TPCFavoriteGanHuoChangeNotification = "TPCFavoriteGanHuoChangeNotification"
+
+let TPCCategoryReloadDataNotification = "TPCCategoryReloadDataNotification"
 
 let TPCCurrentVersion = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
 

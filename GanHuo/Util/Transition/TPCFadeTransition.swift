@@ -13,11 +13,7 @@ protocol NTTransitionProtocol{
 }
 
 protocol NTTansitionWaterfallGridViewProtocol{
-    func snapShotForTransition() -> UIView!
-}
-
-protocol NTWaterFallViewControllerProtocol : NTTransitionProtocol{
-    func viewWillAppearWithPageIndex(pageIndex : NSInteger)
+    func snapShotForTransition() -> UIImageView!
 }
 
 protocol NTHorizontalPageViewControllerProtocol : NTTransitionProtocol{
@@ -25,63 +21,76 @@ protocol NTHorizontalPageViewControllerProtocol : NTTransitionProtocol{
 }
 
 class TPCCollectionToPageZoomTransition: TPCTransitionProtocol {
-    init(duration: NSTimeInterval = 1, zoomScale: CGFloat = 0.25) {
+    init(duration: NSTimeInterval = 1) {
         self.animationDuration = duration
-        self.zoomScale = zoomScale
     }
     internal var animationDuration: NSTimeInterval
-    private var zoomScale: CGFloat
     
     func isSatisfyRequirementByFromVc(fromVc: UIViewController, toVc: UIViewController, operation: UINavigationControllerOperation) -> Bool {
         
         let fromVCConfromA = (fromVc as? NTTransitionProtocol)
-        let fromVCConfromB = (fromVc as? NTWaterFallViewControllerProtocol)
         let fromVCConfromC = (fromVc as? NTHorizontalPageViewControllerProtocol)
         
         let toVCConfromA = (toVc as? NTTransitionProtocol)
-        let toVCConfromB = (toVc as? NTWaterFallViewControllerProtocol)
         let toVCConfromC = (toVc as? NTHorizontalPageViewControllerProtocol)
         return ((fromVCConfromA != nil)&&(toVCConfromA != nil)&&(
-        (fromVCConfromB != nil && toVCConfromC != nil) || (fromVCConfromC != nil && toVCConfromB != nil)))
+        (toVCConfromC != nil) || (fromVCConfromC != nil)))
     }
     
     func popTransitionFromVc(fromVc: UIViewController, toVc: UIViewController, containerView: UIView, completion: (() -> Void)) {
         let toView = toVc.view!
         containerView.addSubview(toView)
-        toView.hidden = true
         let waterFallView = (toVc as! NTTransitionProtocol).transitionCollectionView()
         let pageView = (fromVc as! NTTransitionProtocol).transitionCollectionView()
-                    waterFallView.layoutIfNeeded()
         let indexPath = pageView.fromPageIndexPath()
-        let gridView = waterFallView.cellForItemAtIndexPath(indexPath)
-        let leftUpperPoint = gridView!.convertPoint(CGPointZero, toView: toVc.view)
         
-        let snapShot = (gridView as! NTTansitionWaterfallGridViewProtocol).snapShotForTransition()
-        snapShot.transform = CGAffineTransformMakeScale(zoomScale, zoomScale)
-        let pullOffsetY = (fromVc as! NTHorizontalPageViewControllerProtocol).pageViewCellScrollViewContentOffset().y
+        var waterGridView = waterFallView.cellForItemAtIndexPath(indexPath)
+        if waterGridView == nil {
+            waterFallView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .None, animated: false)
+            waterFallView.layoutIfNeeded()
+            waterGridView = waterFallView.cellForItemAtIndexPath(indexPath)
+        }
+        toView.hidden = true
+        
+        waterGridView?.hidden = true
+        print(indexPath.item)
+        
+        var leftUpperPoint = CGPoint.zero
+        if waterGridView != nil {
+            leftUpperPoint = waterGridView!.convertPoint(CGPointZero, toView: toVc.view)
+        }
+        
+        let pageGridView = pageView.cellForItemAtIndexPath(indexPath)
+        let snapShot = (pageGridView as! NTTansitionWaterfallGridViewProtocol).snapShotForTransition()
         let offsetY : CGFloat = fromVc.navigationController!.navigationBarHidden ? 0.0 : TPCNavigationBarAndStatusBarHeight
-        snapShot.origin(CGPointMake(0, -pullOffsetY+offsetY))
+        
+        if let imageSize = snapShot.image?.size {
+            let snapShotH = (toView.frame.size.width / imageSize.width) * imageSize.height
+            let y = (TPCScreenHeight + offsetY) * 0.5 - snapShotH * 0.5
+            snapShot.frame = CGRect(x: 0, y: y, width: toView.frame.size.width, height: snapShotH)
+        }
+        
         containerView.addSubview(snapShot)
         toView.hidden = false
         toView.alpha = 0
-        toView.transform = snapShot.transform
-        toView.frame = CGRectMake(-(leftUpperPoint.x * zoomScale),-((leftUpperPoint.y-offsetY) * zoomScale+pullOffsetY+offsetY),
-                                  toView.frame.size.width, toView.frame.size.height)
         let whiteViewContainer = UIView(frame: UIScreen.mainScreen().bounds)
         whiteViewContainer.backgroundColor = UIColor.whiteColor()
         containerView.addSubview(snapShot)
         containerView.insertSubview(whiteViewContainer, belowSubview: toView)
         
+        let backgroundView = (fromVc as! TPCViewController).navigationBarBackgroundView
+        containerView.addSubview(backgroundView)
+        
         UIView.animateWithDuration(animationDuration, animations: {
-            snapShot.transform = CGAffineTransformIdentity
-            snapShot.frame = CGRectMake(leftUpperPoint.x, leftUpperPoint.y, snapShot.frame.size.width, snapShot.frame.size.height)
-            toView.transform = CGAffineTransformIdentity
-            toView.frame = CGRectMake(0, 0, toView.frame.size.width, toView.frame.size.height);
+            TPCRootViewController.tabBar.frame.origin.y = TPCScreenHeight - TPCTabBarHeight
+            snapShot.frame = CGRectMake(leftUpperPoint.x, leftUpperPoint.y, TPCCollectionViewWaterflowLayout.defaultCellWidth, TPCCollectionViewWaterflowLayout.defaultCellWidth)
             toView.alpha = 1
             }, completion:{finished in
                 if finished {
+                    (fromVc as! TPCViewController).view.addSubview(backgroundView)
                     snapShot.removeFromSuperview()
                     whiteViewContainer.removeFromSuperview()
+                    waterGridView?.hidden = false
                     completion()
                 }
         })
@@ -99,33 +108,39 @@ class TPCCollectionToPageZoomTransition: TPCTransitionProtocol {
         
         let indexPath = waterFallView.toIndexPath()
         let gridView = waterFallView.cellForItemAtIndexPath(indexPath)
+        gridView?.hidden = true
         
         let leftUpperPoint = gridView!.convertPoint(CGPointZero, toView: nil)
         pageView.hidden = true
         pageView.scrollToItemAtIndexPath(indexPath, atScrollPosition:.CenteredHorizontally, animated: false)
         
         let offsetY : CGFloat = fromVc.navigationController!.navigationBarHidden ? 0.0 : TPCNavigationBarAndStatusBarHeight
-        let offsetStatuBar : CGFloat = toVc.navigationController!.navigationBarHidden ? 0.0 :
-        TPCStatusBarHeight;
         let snapShot = (gridView as! NTTansitionWaterfallGridViewProtocol).snapShotForTransition()
         containerView.addSubview(snapShot)
-        snapShot.origin(leftUpperPoint)
+        
+        
+        let backgroundView = (fromVc as! TPCViewController).navigationBarBackgroundView
+        containerView.addSubview(backgroundView)
+        
+        snapShot.frame.origin = leftUpperPoint
+        
         UIView.animateWithDuration(animationDuration, animations: {
-            snapShot.transform = CGAffineTransformMakeScale(self.zoomScale,
-                self.zoomScale)
-            snapShot.frame = CGRectMake(0, offsetY, snapShot.frame.size.width, snapShot.frame.size.height)
+            TPCRootViewController.tabBar.frame.origin.y = TPCScreenHeight + TPCTabBarHeight
+            if let imageSize = snapShot.image?.size {
+                if imageSize.width != 0 {
+                    let snapShotH = (fromView.frame.size.width / imageSize.width) * imageSize.height
+                    let snapShotY = (TPCScreenHeight + offsetY) * 0.5 - snapShotH * 0.5
+                    snapShot.frame = CGRect(x: 0, y: snapShotY, width: fromView.frame.size.width, height: snapShotH)                    
+                }
+            }
             
             fromView.alpha = 0
-            fromView.transform = snapShot.transform
-            fromView.frame = CGRectMake(-(leftUpperPoint.x)*self.zoomScale,
-                -(leftUpperPoint.y-offsetStatuBar)*self.zoomScale+offsetStatuBar,
-                fromView.frame.size.width,
-                fromView.frame.size.height)
             },completion:{finished in
                 if finished {
+                    (fromVc as! TPCViewController).view.addSubview(backgroundView)
                     snapShot.removeFromSuperview()
                     pageView.hidden = false
-                    fromView.transform = CGAffineTransformIdentity
+                    gridView?.hidden = false
                     completion()
                 }
         })

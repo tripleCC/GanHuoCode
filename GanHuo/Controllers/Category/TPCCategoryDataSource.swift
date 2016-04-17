@@ -49,7 +49,7 @@ extension TPCCategoryDataSourceLoad {
         collectionView.beginRefreshViewAnimation()
         page = 1
         TPCNetworkUtil.shareInstance.loadTechnicalByType(categoryTitle!, page: page) { (technicals, error) -> () in
-            print(technicals.count)
+//            print(technicals.count)
             self.technicals.removeAll()
             self.refreshWithTechnicals(technicals, error: error)
             self.collectionView.loadMoreFooterView?.hidden = technicals.count == 0
@@ -73,7 +73,9 @@ extension TPCCategoryDataSourceLoad {
             if technicals.count > 0 {
                 self.technicals.appendContentsOf(technicals)
                 self.page += 1
+                debugPrint("下载完成")
                 self.collectionView.reloadData()
+                NSNotificationCenter.defaultCenter().postNotificationName(TPCCategoryReloadDataNotification, object: self)
             }
             
             if technicals.count < TPCLoadGanHuoDataOnce {
@@ -85,6 +87,7 @@ extension TPCCategoryDataSourceLoad {
             // 本地加载
             loadFromCache {
                 self.collectionView.reloadData()
+                NSNotificationCenter.defaultCenter().postNotificationName(TPCCategoryReloadDataNotification, object: self)
             }
         }
         if loadNewRefreshing {
@@ -112,11 +115,13 @@ extension TPCCategoryDataSourceLoad {
 
 extension TPCCategoryDataSource: UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        debugPrint("刷新数据")
         return technicals.count
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
         delegate?.renderCell(cell, withObject: technicals[indexPath.row])
+        print(indexPath.item)
         return cell
     }
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {

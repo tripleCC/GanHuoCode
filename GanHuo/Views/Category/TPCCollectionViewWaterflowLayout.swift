@@ -14,6 +14,13 @@ protocol TPCCollectionViewWaterflowLayoutDelegate {
 }
 
 class TPCCollectionViewWaterflowLayout: UICollectionViewLayout {
+    static var defaultCellWidth = (TPCScreenWidth -
+        TPCCollectionViewWaterflowLayoutStatic.kDefaultColumnMargin *
+        CGFloat(TPCCollectionViewWaterflowLayoutStatic.kDefaultColumnCount - 1) -
+        TPCCollectionViewWaterflowLayoutStatic.kDefaultEdgeInsets.left -
+        TPCCollectionViewWaterflowLayoutStatic.kDefaultEdgeInsets.right) /
+        CGFloat(TPCCollectionViewWaterflowLayoutStatic.kDefaultColumnCount)
+    
     var delegate: TPCCollectionViewWaterflowLayoutDelegate?
     struct TPCCollectionViewWaterflowLayoutStatic {
         static let kDefaultColumnCount = Int(2)
@@ -67,7 +74,6 @@ class TPCCollectionViewWaterflowLayout: UICollectionViewLayout {
             var width = (collectionWidth - edgeInsets.left - edgeInsets.right) / CGFloat(columnCount)
             width -= CGFloat(columnCount - 1) * columnMargin / CGFloat(columnCount)
             let height = delegate?.waterflowLayout(self, heightForItemAtIndex: indexPath.item, itemWidth: width) ?? 0
-            print(width)
             var destColumn = 0
             var minColumnHeight = columnsHeight.first
             for i in 0 ..< columnCount {

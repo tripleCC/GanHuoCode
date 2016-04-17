@@ -19,7 +19,7 @@ public enum TPCGanHuoType {
             if let _ = UIDevice.currentDevice().name.lowercaseString.rangeOfString("simulator") {
                 return "http://localhost/ganhuo/"
             } else {
-                return "http://192.168.1.108/ganhuo/"
+                return "http://192.168.1.102/ganhuo/"
             }
         }
     }

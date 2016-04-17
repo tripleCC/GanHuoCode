@@ -9,13 +9,6 @@
 import Foundation
 import UIKit
 
-extension UIView{
-    func origin (point : CGPoint){
-        frame.origin.x = point.x
-        frame.origin.y = point.y
-    }
-}
-
 var kIndexPathPointer = "kIndexPathPointer"
 
 extension UICollectionView{
@@ -43,7 +36,7 @@ extension UICollectionView{
     }
     
     func fromPageIndexPath () -> NSIndexPath{
-        let index : Int = Int(self.contentOffset.x/self.frame.size.width)
+        let index : Int = Int(self.contentOffset.x / self.frame.size.width)
         return NSIndexPath(forRow: index, inSection: 0)
     }
 }

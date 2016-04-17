@@ -26,9 +26,12 @@ class TPCWelfareCollectionViewCell: UICollectionViewCell {
 }
 
 extension TPCWelfareCollectionViewCell: NTTansitionWaterfallGridViewProtocol {
-    func snapShotForTransition() -> UIView! {
+    func snapShotForTransition() -> UIImageView! {
+        guard contentImageView.image != nil else { return UIImageView() }
         let snapShotView = UIImageView(image: contentImageView.image)
         snapShotView.frame = contentImageView.frame
+        snapShotView.contentMode = UIViewContentMode.ScaleAspectFill
+        snapShotView.clipsToBounds = true
         return snapShotView
     }
 }
