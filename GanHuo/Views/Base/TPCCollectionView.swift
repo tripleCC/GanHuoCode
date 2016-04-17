@@ -22,18 +22,7 @@ class TPCCollectionView: UICollectionView, TPCRefreshable {
             }
         }
     }
-    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-        if let last = visibleCells().last {
-            let rowsIndex = numberOfItemsInSection(0) - 1
-            let index = indexPathForCell(last)?.row
-            if index > rowsIndex - 3 {
-                debugPrint("刷新")
-                // 这里会刷新两次，但是不影响
-                reloadData()
-            }
-        }
-        return super.hitTest(point, withEvent: event)
-    }
+   
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         setupSubviews()
