@@ -154,7 +154,9 @@ extension TPCNetworkUtilLoadCategory {
                         if let results = JSON(data: data).dictionaryValue["results"] {
                             if case let technocalsArray = results.arrayValue where technocalsArray.count > 0 {
                                 TPCCoreDataManager.shareInstance.backgroundManagedObjectContext.performBlock ({ () -> Void in
-                                    ganhuoArray = technocalsArray.map{ GanHuoObject.insertObjectInBackgroundContext($0.dictionaryValue) }.sort{ $0.publishedAt > $1.publishedAt }
+                                    ganhuoArray = technocalsArray
+                                        .map{ GanHuoObject.insertObjectInBackgroundContext($0.dictionaryValue) }
+                                        .sort{ $0.publishedAt > $1.publishedAt }
                     
                                     dispatchAMain {
                                         completion(technicals: ganhuoArray, error: errorType)

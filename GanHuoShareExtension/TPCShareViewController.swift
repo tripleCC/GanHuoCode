@@ -9,6 +9,7 @@
 import UIKit
 import Social
 import Alamofire
+import MobileCoreServices
 
 public class TPCShareViewController: UIViewController {
     var URLString: String?
@@ -87,15 +88,22 @@ extension TPCShareViewController {
         if let item = extensionContext?.inputItems.first {
             let itemp = item.attachments.flatMap{ $0.first }
             if let itemp = itemp as? NSItemProvider {
-                if itemp.hasItemConformingToTypeIdentifier("public.url") {
-                    itemp.loadItemForTypeIdentifier("public.url", options: nil, completionHandler: { (url, error) in
-                        if let url = url as? NSURL {
-                            self.URLString = url.absoluteString
-                            if let URLItem = self.items.first {
-                                URLItem.content = self.URLString
-                                self.tableView.reloadData()
+                if itemp.hasItemConformingToTypeIdentifier(String(kUTTypePropertyList)) {
+                    itemp.loadItemForTypeIdentifier(String(kUTTypePropertyList), options: nil, completionHandler: { (jsData, error) in
+                        if let jsDict = jsData as? NSDictionary {
+                            if let jsPreprocessingResults = jsDict[NSExtensionJavaScriptPreprocessingResultsKey] as? NSDictionary {
+                                if let title = jsPreprocessingResults["title"] as? String {
+                                    self.items[1].content = title
+                                }
+                                
+                                if let URLString = jsPreprocessingResults["URL"] as? String {
+                                    self.URLString = URLString
+                                    if let URLItem = self.items.first {
+                                        URLItem.content = self.URLString
+                                        self.tableView.reloadData()
+                                    }
+                                }
                             }
-                            print(url.absoluteString)
                         }
                     })
                 }

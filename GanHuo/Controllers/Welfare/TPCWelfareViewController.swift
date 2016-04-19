@@ -25,6 +25,9 @@ class TPCWelfareViewController: TPCViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        venusMaskView.hidden = TPCVenusUtil.venusFlag
+        collectionView.hidden = !venusMaskView.hidden
+        
         navigationBarType = .Line
         navigationController!.delegate = delegateHolder
         navigationItem.title = categoryTitle
