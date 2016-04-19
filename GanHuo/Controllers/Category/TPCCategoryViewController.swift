@@ -61,7 +61,7 @@ class TPCCategoryViewController: TPCViewController {
     }
     
     func search() {
-        print(#function)
+        performSegueWithIdentifier("CategoryVc2SearchVc", sender: nil)
     }
     
     func segmenViewOnClicked(sender: UISegmentedControl) {
@@ -72,7 +72,7 @@ class TPCCategoryViewController: TPCViewController {
         editHeaderView.hidden = contentScrollView.hidden
         editView.hidden = editHeaderView.hidden
         if sender.selectedSegmentIndex == 1 {
-            doOnceInAppLifeWithKey("TPCCategoryViewController.showFavoriteTip", action: {
+            doOnceInAppLifeWithKey(String(TPCCategoryViewController.showFavoriteTip), action: {
                 dispatchSeconds(1, action: { 
                     self.showFavoriteTip()
                 })

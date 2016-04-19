@@ -1,15 +1,17 @@
 PODS:
-  - Alamofire (3.2.0)
+  - Alamofire (3.3.1)
   - DACircularProgress (2.3.1)
-  - Kingfisher (2.0.3)
+  - FDFullscreenPopGesture (1.1)
+  - Kingfisher (2.2.2)
   - MonkeyKing (0.7)
-  - PKHUD (3.0.0)
+  - PKHUD (3.1.0)
   - SwiftyJSON (2.3.2)
   - UMengAnalytics-NO-IDFA (3.6.7)
 
 DEPENDENCIES:
   - Alamofire
   - DACircularProgress
+  - FDFullscreenPopGesture
   - Kingfisher
   - MonkeyKing (= 0.7)
   - PKHUD
@@ -17,11 +19,12 @@ DEPENDENCIES:
   - UMengAnalytics-NO-IDFA
 
 SPEC CHECKSUMS:
-  Alamofire: 4da478599fccddff361205c8929333d7fe18dceb
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
-  Kingfisher: 44c1f1912f19371a67d701e67c96d6bb45ca1c8d
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+  Kingfisher: 7e8de5b0cf7b5dc8ec559d193029a0859df93ef1
   MonkeyKing: 6b693e38951b1e4850a475b7ee194bd6f75a9f2b
-  PKHUD: e1648a176717bcdf480ec4b91ff1f023f8abb8c4
+  PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   UMengAnalytics-NO-IDFA: 6d02561a00579b2e37718f204eb81347df5d7b8b
 

@@ -106,6 +106,12 @@ extension GanHuoObjectFetch {
         fetchLimit = 1000
         return fetchInBackgroundContext()
     }
+    
+    static func fetchSearchResultsByKey(key: String) -> [GanHuoObject] {
+        queryString = "desc CONTAINS '\(key)' "
+        fetchLimit = 1000
+        return fetchInBackgroundContext()
+    }
 }
 
 infix operator !? { }
