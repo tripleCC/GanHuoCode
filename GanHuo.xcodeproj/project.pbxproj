@@ -8,6 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		12E92B8827A2329C2999802B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */; };
+		D60418671CC7D59A0028C7D6 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70F31C2592A300C066DE /* UIFont+Extension.swift */; };
+		D60418681CC7D59A0028C7D6 /* TPCApplicationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFA91C82EB7000CCA370 /* TPCApplicationTitleView.swift */; };
+		D60418691CC7D59A0028C7D6 /* TPCAboutMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFC91C82EB7700CCA370 /* TPCAboutMe.swift */; };
+		D604186A1CC7D59A0028C7D6 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C0E2BD1C872EBE0033EAFB /* UIColor+Extension.swift */; };
+		D604186B1CC7D59A0028C7D6 /* TPCStorageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71091C2592A300C066DE /* TPCStorageUtil.swift */; };
+		D604186C1CC7D59A0028C7D6 /* TPCShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C8F701CBD3F2F00DD3B8A /* TPCShareItem.swift */; };
+		D604186D1CC7D59A0028C7D6 /* TPCConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71041C2592A300C066DE /* TPCConst.swift */; };
+		D604186E1CC7D59A0028C7D6 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70F41C2592A300C066DE /* UIImage+Extension.swift */; };
+		D604186F1CC7D59A0028C7D6 /* TPCGanHuoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C8FB11CBD4CCE00DD3B8A /* TPCGanHuoAPI.swift */; };
+		D60418701CC7D59A0028C7D6 /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70EF1C2592A300C066DE /* NSDate+Extension.swift */; };
+		D60418711CC7D59A0028C7D6 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70EE1C2592A300C066DE /* CALayer+Extension.swift */; };
+		D60418721CC7D59A0028C7D6 /* TPCPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D606E1721CBFB3AD005D2AFE /* TPCPlaceholderTextView.swift */; };
+		D60418731CC7D59A0028C7D6 /* TPCShareItemTypePickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C8F711CBD3F2F00DD3B8A /* TPCShareItemTypePickView.swift */; };
+		D60418741CC7D59A0028C7D6 /* TPCShareViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C8F721CBD3F2F00DD3B8A /* TPCShareViewCell.swift */; };
+		D60418751CC7D59A0028C7D6 /* TPCArchivable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F01C53B19D0059F372 /* TPCArchivable.swift */; };
+		D60418761CC7D59A0028C7D6 /* NSCalender+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F81C5518920059F372 /* NSCalender+Extension.swift */; };
+		D60418771CC7D59A0028C7D6 /* TPCTechnicalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BFCC1C82EB7700CCA370 /* TPCTechnicalObject.swift */; };
+		D60418781CC7D59A0028C7D6 /* TPCDispatchUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71051C2592A300C066DE /* TPCDispatchUtil.swift */; };
+		D60418791CC7D59A0028C7D6 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60CD2AE1CBD153A0015C0A5 /* ShareViewController.swift */; };
+		D604187A1CC7D59A0028C7D6 /* TPCShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C8F741CBD3F2F00DD3B8A /* TPCShareViewController.swift */; };
+		D604187C1CC7D59A0028C7D6 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */; };
+		D604187E1CC7D59A0028C7D6 /* TPCShareViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D64C8F731CBD3F2F00DD3B8A /* TPCShareViewController.storyboard */; };
+		D604187F1CC7D59A0028C7D6 /* GanHuoPreprocessor.js in Resources */ = {isa = PBXBuildFile; fileRef = D611BDBE1CC634CD00900D4C /* GanHuoPreprocessor.js */; };
+		D60418801CC7D59A0028C7D6 /* GanHuoShareExtension.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D64C8F811CBD3F7B00DD3B8A /* GanHuoShareExtension.xcassets */; };
+		D60418811CC7D59A0028C7D6 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D60CD2B01CBD153A0015C0A5 /* MainInterface.storyboard */; };
+		D60418971CC7DC1E0028C7D6 /* GanHuoShareExtensionDev.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D60418851CC7D59A0028C7D6 /* GanHuoShareExtensionDev.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D60435B31CC66437006A262E /* TPCCategoryEditViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60435A61CC66437006A262E /* TPCCategoryEditViewCell.swift */; };
 		D60435B41CC66437006A262E /* TPCCategoryEditViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60435A61CC66437006A262E /* TPCCategoryEditViewCell.swift */; };
 		D60435B51CC66437006A262E /* TPCCategoryEditViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D60435A71CC66437006A262E /* TPCCategoryEditViewCell.xib */; };
@@ -189,7 +215,6 @@
 		D64C905A1CBDE92A00DD3B8A /* GanHuoShareExtension.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D64C8F811CBD3F7B00DD3B8A /* GanHuoShareExtension.xcassets */; };
 		D64C905D1CBDE92A00DD3B8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6D8BF4A1C82D26F00CCA370 /* Main.storyboard */; };
 		D64C905E1CBDE92A00DD3B8A /* TPCUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6D8BFA21C82EB7000CCA370 /* TPCUpdateView.xib */; };
-		D64C906C1CBDFCE500DD3B8A /* GanHuoShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D60CD2AC1CBD153A0015C0A5 /* GanHuoShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D6544A1F1C93C4CE0094DB3F /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6544A1E1C93C4CE0094DB3F /* UIScrollView+Extension.swift */; };
 		D667F9F11C53B19D0059F372 /* TPCArchivable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F01C53B19D0059F372 /* TPCArchivable.swift */; };
 		D667F9F91C5518920059F372 /* NSCalender+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F81C5518920059F372 /* NSCalender+Extension.swift */; };
@@ -274,14 +299,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D60CD2B41CBD153A0015C0A5 /* PBXContainerItemProxy */ = {
+		D60418981CC7DC1E0028C7D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D6DE6FB11C25904C00C066DE /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D60CD2AB1CBD153A0015C0A5;
-			remoteInfo = GanHuoShareExtension;
+			remoteGlobalIDString = D60418651CC7D59A0028C7D6;
+			remoteInfo = GanHuoShareExtensionDev;
 		};
-		D64C906D1CBDFCE500DD3B8A /* PBXContainerItemProxy */ = {
+		D60CD2B41CBD153A0015C0A5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D6DE6FB11C25904C00C066DE /* Project object */;
 			proxyType = 1;
@@ -291,6 +316,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		D604189A1CC7DC1E0028C7D6 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D60418971CC7DC1E0028C7D6 /* GanHuoShareExtensionDev.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D60CD29B1CBD15010015C0A5 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -322,23 +358,14 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D64C906F1CBDFCE500DD3B8A /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				D64C906C1CBDFCE500DD3B8A /* GanHuoShareExtension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		72EE590290576ABFA38A5059 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA83A096E1133C661EE95446 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		D60418851CC7D59A0028C7D6 /* GanHuoShareExtensionDev.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GanHuoShareExtensionDev.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D60418861CC7D59A0028C7D6 /* GanHuoShareExtension copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GanHuoShareExtension copy-Info.plist"; path = "/Users/songruiwang/GitHub/GanHuoCode/GanHuoShareExtension copy-Info.plist"; sourceTree = "<absolute>"; };
 		D60435A61CC66437006A262E /* TPCCategoryEditViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCategoryEditViewCell.swift; sourceTree = "<group>"; };
 		D60435A71CC66437006A262E /* TPCCategoryEditViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCCategoryEditViewCell.xib; sourceTree = "<group>"; };
 		D60435A81CC66437006A262E /* TPCCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -471,6 +498,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D604187B1CC7D59A0028C7D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D604187C1CC7D59A0028C7D6 /* Pods.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D60CD2A91CBD153A0015C0A5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -776,6 +811,7 @@
 				A8041A30D1BA3456D5508AD7 /* Pods */,
 				A44A4B5EBE5BE4FA794A259E /* Frameworks */,
 				D64C90681CBDE92A00DD3B8A /* GanHuo copy-Info.plist */,
+				D60418861CC7D59A0028C7D6 /* GanHuoShareExtension copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -785,6 +821,7 @@
 				D6DE6FB91C25904C00C066DE /* GanHuo.app */,
 				D60CD2AC1CBD153A0015C0A5 /* GanHuoShareExtension.appex */,
 				D64C90671CBDE92A00DD3B8A /* GanHuoDev.app */,
+				D60418851CC7D59A0028C7D6 /* GanHuoShareExtensionDev.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -879,6 +916,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D60418651CC7D59A0028C7D6 /* GanHuoShareExtensionDev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D60418821CC7D59A0028C7D6 /* Build configuration list for PBXNativeTarget "GanHuoShareExtensionDev" */;
+			buildPhases = (
+				D60418661CC7D59A0028C7D6 /* Sources */,
+				D604187B1CC7D59A0028C7D6 /* Frameworks */,
+				D604187D1CC7D59A0028C7D6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GanHuoShareExtensionDev;
+			productName = GanHuoShareExtension;
+			productReference = D60418851CC7D59A0028C7D6 /* GanHuoShareExtensionDev.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		D60CD2AB1CBD153A0015C0A5 /* GanHuoShareExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D60CD2B71CBD153A0015C0A5 /* Build configuration list for PBXNativeTarget "GanHuoShareExtension" */;
@@ -907,12 +961,12 @@
 				D64C905F1CBDE92A00DD3B8A /* Embed Pods Frameworks */,
 				D64C90601CBDE92A00DD3B8A /* Copy Pods Resources */,
 				D64C90611CBDE92A00DD3B8A /* Embed Frameworks */,
-				D64C906F1CBDFCE500DD3B8A /* Embed App Extensions */,
+				D604189A1CC7DC1E0028C7D6 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D64C906E1CBDFCE500DD3B8A /* PBXTargetDependency */,
+				D60418991CC7DC1E0028C7D6 /* PBXTargetDependency */,
 			);
 			name = GanHuoDev;
 			productName = GanHuo;
@@ -952,6 +1006,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = tripleCC;
 				TargetAttributes = {
+					D60418651CC7D59A0028C7D6 = {
+						DevelopmentTeam = 7DG5WQWWY9;
+					};
 					D60CD2AB1CBD153A0015C0A5 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 7DG5WQWWY9;
@@ -1000,11 +1057,23 @@
 				D6DE6FB81C25904C00C066DE /* GanHuo */,
 				D64C8FE61CBDE92A00DD3B8A /* GanHuoDev */,
 				D60CD2AB1CBD153A0015C0A5 /* GanHuoShareExtension */,
+				D60418651CC7D59A0028C7D6 /* GanHuoShareExtensionDev */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D604187D1CC7D59A0028C7D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D604187E1CC7D59A0028C7D6 /* TPCShareViewController.storyboard in Resources */,
+				D604187F1CC7D59A0028C7D6 /* GanHuoPreprocessor.js in Resources */,
+				D60418801CC7D59A0028C7D6 /* GanHuoShareExtension.xcassets in Resources */,
+				D60418811CC7D59A0028C7D6 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D60CD2AA1CBD153A0015C0A5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1167,6 +1236,33 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D60418661CC7D59A0028C7D6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D60418671CC7D59A0028C7D6 /* UIFont+Extension.swift in Sources */,
+				D60418681CC7D59A0028C7D6 /* TPCApplicationTitleView.swift in Sources */,
+				D60418691CC7D59A0028C7D6 /* TPCAboutMe.swift in Sources */,
+				D604186A1CC7D59A0028C7D6 /* UIColor+Extension.swift in Sources */,
+				D604186B1CC7D59A0028C7D6 /* TPCStorageUtil.swift in Sources */,
+				D604186C1CC7D59A0028C7D6 /* TPCShareItem.swift in Sources */,
+				D604186D1CC7D59A0028C7D6 /* TPCConst.swift in Sources */,
+				D604186E1CC7D59A0028C7D6 /* UIImage+Extension.swift in Sources */,
+				D604186F1CC7D59A0028C7D6 /* TPCGanHuoAPI.swift in Sources */,
+				D60418701CC7D59A0028C7D6 /* NSDate+Extension.swift in Sources */,
+				D60418711CC7D59A0028C7D6 /* CALayer+Extension.swift in Sources */,
+				D60418721CC7D59A0028C7D6 /* TPCPlaceholderTextView.swift in Sources */,
+				D60418731CC7D59A0028C7D6 /* TPCShareItemTypePickView.swift in Sources */,
+				D60418741CC7D59A0028C7D6 /* TPCShareViewCell.swift in Sources */,
+				D60418751CC7D59A0028C7D6 /* TPCArchivable.swift in Sources */,
+				D60418761CC7D59A0028C7D6 /* NSCalender+Extension.swift in Sources */,
+				D60418771CC7D59A0028C7D6 /* TPCTechnicalObject.swift in Sources */,
+				D60418781CC7D59A0028C7D6 /* TPCDispatchUtil.swift in Sources */,
+				D60418791CC7D59A0028C7D6 /* ShareViewController.swift in Sources */,
+				D604187A1CC7D59A0028C7D6 /* TPCShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D60CD2A81CBD153A0015C0A5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1405,15 +1501,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D60418991CC7DC1E0028C7D6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D60418651CC7D59A0028C7D6 /* GanHuoShareExtensionDev */;
+			targetProxy = D60418981CC7DC1E0028C7D6 /* PBXContainerItemProxy */;
+		};
 		D60CD2B51CBD153A0015C0A5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D60CD2AB1CBD153A0015C0A5 /* GanHuoShareExtension */;
 			targetProxy = D60CD2B41CBD153A0015C0A5 /* PBXContainerItemProxy */;
-		};
-		D64C906E1CBDFCE500DD3B8A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D60CD2AB1CBD153A0015C0A5 /* GanHuoShareExtension */;
-			targetProxy = D64C906D1CBDFCE500DD3B8A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1455,6 +1551,52 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D60418831CC7D59A0028C7D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_SE;
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_ENTITLEMENTS = GanHuoShareExtension/GanHuoShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ruiwang Song (F9R4JDMBBX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ruiwang Song (F9R4JDMBBX)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "GanHuoShareExtension copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				OTHER_SWIFT_FLAGS = "-DGanHuoShareExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = com.triplecc.WKCC.dev.GanHuoShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "bb371a7f-bccb-4a76-9db8-a4fe819d43ca";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D60418841CC7D59A0028C7D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_SE;
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_ENTITLEMENTS = GanHuoShareExtension/GanHuoShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ruiwang Song (F9R4JDMBBX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ruiwang Song (F9R4JDMBBX)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "GanHuoShareExtension copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				OTHER_SWIFT_FLAGS = "-DGanHuoShareExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = com.triplecc.WKCC.dev.GanHuoShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "bb371a7f-bccb-4a76-9db8-a4fe819d43ca";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		D60CD2B81CBD153A0015C0A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1471,9 +1613,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				OTHER_SWIFT_FLAGS = "-DGanHuoShareExtension";
-				PRODUCT_BUNDLE_IDENTIFIER = com.triplecc.WKCC.dev.GanHuoShareExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.triplecc.WKCC.GanHuoShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bb371a7f-bccb-4a76-9db8-a4fe819d43ca";
+				PROVISIONING_PROFILE = "394695a8-1d52-49f4-b298-d88afa3286a4";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1494,9 +1636,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				OTHER_SWIFT_FLAGS = "-DGanHuoShareExtension";
-				PRODUCT_BUNDLE_IDENTIFIER = com.triplecc.WKCC.dev.GanHuoShareExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.triplecc.WKCC.GanHuoShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bb371a7f-bccb-4a76-9db8-a4fe819d43ca";
+				PROVISIONING_PROFILE = "394695a8-1d52-49f4-b298-d88afa3286a4";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -1658,7 +1800,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.triplecc.WKCC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "387b2aeb-d6c2-4353-81c1-f3b946964768";
+				PROVISIONING_PROFILE = "badba6b1-d44a-4eb8-b890-65e01625c7aa";
 				SWIFT_OBJC_BRIDGING_HEADER = "GanHuo/Other/WKCCSwift-Bridging-Header.h";
 			};
 			name = Debug;
@@ -1683,7 +1825,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.triplecc.WKCC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "387b2aeb-d6c2-4353-81c1-f3b946964768";
+				PROVISIONING_PROFILE = "badba6b1-d44a-4eb8-b890-65e01625c7aa";
 				SWIFT_OBJC_BRIDGING_HEADER = "GanHuo/Other/WKCCSwift-Bridging-Header.h";
 			};
 			name = Release;
@@ -1691,6 +1833,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D60418821CC7D59A0028C7D6 /* Build configuration list for PBXNativeTarget "GanHuoShareExtensionDev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D60418831CC7D59A0028C7D6 /* Debug */,
+				D60418841CC7D59A0028C7D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D60CD2B71CBD153A0015C0A5 /* Build configuration list for PBXNativeTarget "GanHuoShareExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
