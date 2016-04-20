@@ -23,8 +23,12 @@ enum TPCUMEvent: String {
 
 class TPCUMManager {
     class func start() {
-        let v = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"]
-        MobClick.setAppVersion(v as! String)
+        #if GanHuoDev
+            let v = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String + "_dev"
+        #else
+            let v = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
+        #endif
+        MobClick.setAppVersion(v)
         MobClick.setLogEnabled(true)
         MobClick.startWithAppkey(UMAPPKEY, reportPolicy: BATCH, channelId: nil)
     }

@@ -15,7 +15,7 @@ let TPCStatusBarHeight = CGFloat(20)
 let TPCStatusBarHeight: CGFloat = Swift.min(UIApplication.sharedApplication().statusBarFrame.size.height, UIApplication.sharedApplication().statusBarFrame.size.width)
 let TPCRootViewController = UIApplication.sharedApplication().keyWindow?.rootViewController as! UITabBarController
 #endif
-
+let TPCIphoneKeyboardHeight = CGFloat(251.5)
 
 let TPCNavigationBarHeight: CGFloat = 44.0
 let TPCNavigationBarAndStatusBarHeight = TPCNavigationBarHeight + TPCStatusBarHeight
@@ -44,5 +44,7 @@ let TPCCategoryDisplayAtHomeKey = "TPCCategoryDisplayAtHome"
 let TPCAllCategoriesKey = "TPCAllCategories"
 let TPCSetContentRulesAtHomeKey = "TPCSetContentRulesAtHome"
 let TPCSetPictureTransparencyKey = "TPCSetPictureTransparency"
+
+let TPCSearchHistoriesKey = "TPCSearchHistoriesKey"
 
 let TPCFilterCategories = ["Android", "App"]
