@@ -142,7 +142,7 @@ extension TPCSearchViewController: UITableViewDelegate, UITableViewDataSource {
         containerView.frame = CGRect(origin: .zero, size: CGSize(width: tableView.frame.width, height: 35))
         let textLabel = UILabel(frame: CGRect(origin: CGPoint(x: 5, y: 0), size: CGSize(width: containerView.frame.width - 5, height: containerView.frame.height)))
         textLabel.text = showHistories ? "搜索记录" : "搜索 \"\(searchBar.text ?? "")\""
-        textLabel.font = UIFont.systemFontOfSize(16)
+        textLabel.font = UIFont.systemFontOfSize(14)
         textLabel.textColor = TPCConfiguration.navigationBarBackColor
         textLabel.backgroundColor = UIColor.whiteColor()
         
