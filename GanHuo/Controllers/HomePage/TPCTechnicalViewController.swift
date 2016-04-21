@@ -71,7 +71,7 @@ class TPCTechnicalViewController: TPCViewController {
         registerObserverForApplicationDidEnterBackground()
         registerReloadTableView()
         TPCVenusUtil.setInitialize { (launchConfig) -> () in
-            self.loadNewData()
+            self.loadMoreData()
             self.launchConfig(launchConfig)
         }
 //        UIFont.showAllFonts()

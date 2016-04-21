@@ -329,7 +329,7 @@ extension TPCNetworkUtilLoadJSPatch {
     }
     
     func loadJSPatchFileWithURLString(URLString: String, completion: ((String) -> Void)) {
-        Alamofire.request(.GET, URLString)
+        alamofire.request(.GET, URLString)
             .response(completionHandler: { (request, response, data, error) in
                 if let data = data {
                     if let jsScript = String(data: data, encoding: NSUTF8StringEncoding) {

@@ -59,12 +59,12 @@ class TPCJSPatchManager: NSObject {
         let fetchStatusCompletion = { (version: String, jsPath: String) in
             self.fetchDate = NSDate()
             debugPrint(version, self.jsVersion)
-            if version > self.jsVersion {
-                self.jsVersion = version
+            if Float(version) > Float(self.jsVersion) {
                 TPCNetworkUtil.shareInstance.loadJSPatchFileWithURLString(jsPath, completion: { (jsScript) in
                     JPEngine.evaluateScript(jsScript)
                     do {
                         try jsScript.writeToFile(self.jsScriptPath, atomically: true, encoding: NSUTF8StringEncoding)
+                        self.jsVersion = version
                     } catch let error {
                         print(error)
                     }
