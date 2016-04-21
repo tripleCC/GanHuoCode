@@ -2,6 +2,9 @@ PODS:
   - Alamofire (3.3.1)
   - DACircularProgress (2.3.1)
   - FDFullscreenPopGesture (1.1)
+  - JSPatch (1.0):
+    - JSPatch/Core (= 1.0)
+  - JSPatch/Core (1.0)
   - Kingfisher (2.2.2)
   - MonkeyKing (0.7)
   - PKHUD (3.1.0)
@@ -12,6 +15,7 @@ DEPENDENCIES:
   - Alamofire
   - DACircularProgress
   - FDFullscreenPopGesture
+  - JSPatch
   - Kingfisher
   - MonkeyKing (= 0.7)
   - PKHUD
@@ -22,6 +26,7 @@ SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+  JSPatch: c689ea4dde17441f2f4a95d40dfedb8900c20099
   Kingfisher: 7e8de5b0cf7b5dc8ec559d193029a0859df93ef1
   MonkeyKing: 6b693e38951b1e4850a475b7ee194bd6f75a9f2b
   PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab

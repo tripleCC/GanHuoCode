@@ -48,7 +48,7 @@ public enum TPCGanHuoType {
         static let ConfigTypeSubtypeURLString = "configuration/"
         case AboutMe = "AboutMe"
         case LaunchConfig = "LaunchConfig"
-        
+        case HotfixStatus = "HotfixStatus"
         public func path() -> String {
             var pathComponent = String()
             switch self {
@@ -56,7 +56,10 @@ public enum TPCGanHuoType {
                 pathComponent = "AboutMe.json"
             case .LaunchConfig:
                 pathComponent = "LaunchConfig.json"
+            case .HotfixStatus:
+                pathComponent = "HotfixStatus.json"
             }
+            
             return TPCGanHuoType.TPCGanHuoBaseURLString + ConfigTypeSubtype.ConfigTypeSubtypeURLString + pathComponent
         }
     }

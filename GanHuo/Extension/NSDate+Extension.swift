@@ -8,7 +8,8 @@
 
 import Foundation
 
-let oneDay: NSTimeInterval = 60 * 60 * 24
+let oneHour: NSTimeInterval = 60 * 60
+let oneDay: NSTimeInterval = oneHour * 24
 extension NSDate {
     var isWeekend: Bool {
         let weekday = (NSCalendar.currentCalendar().weekdayWithDate(self) + 7) % 8

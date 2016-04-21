@@ -1,4 +1,5 @@
 platform :ios,8.0
+pod 'JSPatch'
 pod 'Alamofire'
 pod 'SwiftyJSON'
 pod 'Kingfisher'

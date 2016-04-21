@@ -75,6 +75,10 @@
 		D60CD2B21CBD153A0015C0A5 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D60CD2B01CBD153A0015C0A5 /* MainInterface.storyboard */; };
 		D60CD2B61CBD153A0015C0A5 /* GanHuoShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D60CD2AC1CBD153A0015C0A5 /* GanHuoShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D60D12BF1C8D399300C84D4C /* TPCCategoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60D12BE1C8D399300C84D4C /* TPCCategoryDataSource.swift */; };
+		D61134D81CC8D3C600602566 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61134D71CC8D3C600602566 /* JavaScriptCore.framework */; };
+		D61134D91CC8D3CE00602566 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61134D71CC8D3C600602566 /* JavaScriptCore.framework */; };
+		D61134DB1CC8D42200602566 /* TPCJSPatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61134DA1CC8D42200602566 /* TPCJSPatchManager.swift */; };
+		D61134DC1CC8D42200602566 /* TPCJSPatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61134DA1CC8D42200602566 /* TPCJSPatchManager.swift */; };
 		D611B4D11CB215C000D5A2C7 /* TPCLoadMoreReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611B4CF1CB215C000D5A2C7 /* TPCLoadMoreReusableView.swift */; };
 		D611B4D21CB215C000D5A2C7 /* TPCLoadMoreReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D611B4D01CB215C000D5A2C7 /* TPCLoadMoreReusableView.xib */; };
 		D611BDBF1CC634CD00900D4C /* GanHuoPreprocessor.js in Resources */ = {isa = PBXBuildFile; fileRef = D611BDBE1CC634CD00900D4C /* GanHuoPreprocessor.js */; };
@@ -389,6 +393,8 @@
 		D60CD2B11CBD153A0015C0A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		D60CD2B31CBD153A0015C0A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D60D12BE1C8D399300C84D4C /* TPCCategoryDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCategoryDataSource.swift; sourceTree = "<group>"; };
+		D61134D71CC8D3C600602566 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		D61134DA1CC8D42200602566 /* TPCJSPatchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCJSPatchManager.swift; sourceTree = "<group>"; };
 		D611B4CF1CB215C000D5A2C7 /* TPCLoadMoreReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCLoadMoreReusableView.swift; sourceTree = "<group>"; };
 		D611B4D01CB215C000D5A2C7 /* TPCLoadMoreReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCLoadMoreReusableView.xib; sourceTree = "<group>"; };
 		D611BDBE1CC634CD00900D4C /* GanHuoPreprocessor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = GanHuoPreprocessor.js; sourceTree = "<group>"; };
@@ -518,6 +524,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D61134D91CC8D3CE00602566 /* JavaScriptCore.framework in Frameworks */,
 				D64C90491CBDE92A00DD3B8A /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -526,6 +533,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D61134D81CC8D3C600602566 /* JavaScriptCore.framework in Frameworks */,
 				12E92B8827A2329C2999802B /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -536,6 +544,7 @@
 		A44A4B5EBE5BE4FA794A259E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D61134D71CC8D3C600602566 /* JavaScriptCore.framework */,
 				7FE7EA0F9A5A525A33C5DAA3 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -909,6 +918,7 @@
 				D6DE71671C259EE900C066DE /* TPCVersionUtil.swift */,
 				D68937D51CA42A1F009C6B31 /* TPCPopUtil.swift */,
 				D64C8FB11CBD4CCE00DD3B8A /* TPCGanHuoAPI.swift */,
+				D61134DA1CC8D42200602566 /* TPCJSPatchManager.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1317,6 +1327,7 @@
 				D64C8FFF1CBDE92A00DD3B8A /* GanHuoObject+CoreDataProperties.swift in Sources */,
 				D64C90001CBDE92A00DD3B8A /* UIImage+Extension.swift in Sources */,
 				D64C90021CBDE92A00DD3B8A /* TPCCollectionView.swift in Sources */,
+				D61134DC1CC8D42200602566 /* TPCJSPatchManager.swift in Sources */,
 				D64C90041CBDE92A00DD3B8A /* TPCLaunchConfig.swift in Sources */,
 				D64C90051CBDE92A00DD3B8A /* TPCSystemButton.swift in Sources */,
 				D60435C81CC66437006A262E /* TPCMarkReadView.swift in Sources */,
@@ -1421,6 +1432,7 @@
 				D61A92551C8AC82900FD594C /* GanHuoObject+CoreDataProperties.swift in Sources */,
 				D6DE713A1C2592A300C066DE /* UIImage+Extension.swift in Sources */,
 				D61AFD4B1CB11B150080A9B9 /* TPCCollectionView.swift in Sources */,
+				D61134DB1CC8D42200602566 /* TPCJSPatchManager.swift in Sources */,
 				D6D8BFCE1C82EB7700CCA370 /* TPCLaunchConfig.swift in Sources */,
 				D6D8BFBB1C82EB7000CCA370 /* TPCSystemButton.swift in Sources */,
 				D60435C71CC66437006A262E /* TPCMarkReadView.swift in Sources */,
@@ -1787,8 +1799,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = GanHuo/GanHuo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ruiwang Song (F9R4JDMBBX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ruiwang Song (F9R4JDMBBX)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1800,7 +1812,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.triplecc.WKCC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "badba6b1-d44a-4eb8-b890-65e01625c7aa";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GanHuo/Other/WKCCSwift-Bridging-Header.h";
 			};
 			name = Debug;
@@ -1812,8 +1824,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = GanHuo/GanHuo.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ruiwang Song (F9R4JDMBBX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ruiwang Song (F9R4JDMBBX)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1825,7 +1837,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.triplecc.WKCC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "badba6b1-d44a-4eb8-b890-65e01625c7aa";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "GanHuo/Other/WKCCSwift-Bridging-Header.h";
 			};
 			name = Release;
