@@ -7,7 +7,6 @@
 
 TODO：
 
-  - CoreData+icloud (***)
   - UI TEST  (**)
   - etc<br>
   
@@ -20,9 +19,18 @@ DONE:
   - SDWebImage－》Kingfisher  (***** waiting version 2.0.0)
   - Cache (*** archive)
   - Favorites (***local)
+  - CoreData+ ~~icloud~~(***)
   
   
 App切图：<br>
-![](Images/2016-01-08 23_33_15.gif)
-![](Images/2016-01-08 23_33_55.gif)
-![](Images/2016-01-08 23_35_50.gif)
+![](Images/1.png)
+![](Images/2.png)
+![](Images/3.png)
+![](Images/4.png)
+![](Images/5.png)
+![](Images/6.png)
+![](Images/7.png)
+![](Images/8.png)
+![](Images/9.png)
+![](Images/10.png)
+
