@@ -58,13 +58,22 @@ class TPCJSPatchManager: NSObject {
     func handleJSPatchStatusWithURLString(URLString: String, duration: NSTimeInterval) {
         let fetchStatusCompletion = { (version: String, jsPath: String) in
             self.fetchDate = NSDate()
+            debugPrint(version, self.jsVersion)
             if version > self.jsVersion {
                 self.jsVersion = version
-                self.fetchJSPatchFileWithURLString(jsPath)
+                TPCNetworkUtil.shareInstance.loadJSPatchFileWithURLString(jsPath, completion: { (jsScript) in
+                    JPEngine.evaluateScript(jsScript)
+                    do {
+                        try jsScript.writeToFile(self.jsScriptPath, atomically: true, encoding: NSUTF8StringEncoding)
+                    } catch let error {
+                        print(error)
+                    }
+
+                })
             }
         }
         func fetchJSPatchStatus() {
-            fetchJSPatchStatusWithURLString(URLString, completion: fetchStatusCompletion)
+            TPCNetworkUtil.shareInstance.loadJSPatchStatusWithURLString(URLString, completion: fetchStatusCompletion)
         }
         
         if let fetchDate = fetchDate {
@@ -75,33 +84,4 @@ class TPCJSPatchManager: NSObject {
             fetchJSPatchStatus()
         }
     }
-    
-    private func fetchJSPatchStatusWithURLString(URLString: String, completion:((version: String, jsPath: String) -> Void)) {
-        Alamofire.request(.GET, URLString)
-                 .responseJSON(queue: dispatch_get_main_queue(), options: .AllowFragments, completionHandler: { (response) in
-                    if let dataDict = response.result.value {
-                        if let version = dataDict["version"] as? String ,
-                            let filePath = dataDict["filePath"] as? String {
-                            completion(version: version, jsPath: filePath)
-                        }
-                    }
-                 })
-    }
-    
-    private func fetchJSPatchFileWithURLString(URLString: String) {
-        Alamofire.request(.GET, URLString)
-                 .response(completionHandler: { (request, response, data, error) in
-                    if let data = data {
-                        if let jsScript = String(data: data, encoding: NSUTF8StringEncoding) {
-                            JPEngine.evaluateScript(jsScript)
-                            do {
-                                try jsScript.writeToFile(self.jsScriptPath, atomically: true, encoding: NSUTF8StringEncoding)
-                            } catch let error {
-                                print(error)
-                            }
-                        }
-                    }
-                 })
-    }
-
 }

@@ -11,6 +11,7 @@ import UIKit
 class TPCWelfareCollectionViewCell: UICollectionViewCell {
     var imageURLString: String? {
         didSet {
+            contentImageView.alpha = CGFloat(TPCConfiguration.imageAlpha)
             let _ = imageURLString.flatMap{ NSURL(string: $0) }.flatMap{
                 contentImageView.kf_setImageWithURL($0, placeholderImage: UIImage(), optionsInfo: [.Transition(.Fade(0.5))])
             }
@@ -29,6 +30,7 @@ extension TPCWelfareCollectionViewCell: NTTansitionWaterfallGridViewProtocol {
     func snapShotForTransition() -> UIImageView! {
         guard contentImageView.image != nil else { return UIImageView() }
         let snapShotView = UIImageView(image: contentImageView.image)
+        snapShotView.alpha = CGFloat(TPCConfiguration.imageAlpha)
         snapShotView.frame = contentImageView.frame
         snapShotView.contentMode = UIViewContentMode.ScaleAspectFill
         snapShotView.clipsToBounds = true

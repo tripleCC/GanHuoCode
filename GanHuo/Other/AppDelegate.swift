@@ -29,8 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         registerRemoteNotification()
         TPCStorageUtil.setCloudSaveObserver(self, selector: #selector(AppDelegate.storeDidChange(_:)))
         NSURLCache.setSharedURLCache(NSURLCache(memoryCapacity:TPCURLMemoryCacheSize , diskCapacity: TPCURLDiskCacheSize, diskPath: "Cache.db"))
-        
-        
         print(NSBundle.mainBundle().pathForResource("all", ofType: "png"))
         return true
     }

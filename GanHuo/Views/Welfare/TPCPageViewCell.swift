@@ -16,6 +16,7 @@ class TPCPageViewCell: UICollectionViewCell, NTTansitionWaterfallGridViewProtoco
 
     var imageURLString: String! {
         didSet {
+            imageView.alpha = CGFloat(TPCConfiguration.imageAlpha)
             imageView.kf_setImageWithURL(NSURL(string: imageURLString)!, placeholderImage: UIImage(), optionsInfo: []) { (image, error, cacheType, imageURL) in
                 self.setNeedsLayout()
                 self.layoutIfNeeded()
@@ -54,6 +55,7 @@ class TPCPageViewCell: UICollectionViewCell, NTTansitionWaterfallGridViewProtoco
         guard imageView.image != nil else { return UIImageView() }
         let snapShotView = UIImageView(image: imageView.image)
         snapShotView.frame = imageView!.frame
+        snapShotView.alpha = CGFloat(TPCConfiguration.imageAlpha)
         snapShotView.contentMode = UIViewContentMode.ScaleAspectFill
         snapShotView.clipsToBounds = true
         return snapShotView

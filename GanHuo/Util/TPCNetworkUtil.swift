@@ -314,6 +314,32 @@ extension TPCNetworkUtilLoadAuthor {
     }
 }
 
+typealias TPCNetworkUtilLoadJSPatch = TPCNetworkUtil
+extension TPCNetworkUtilLoadJSPatch {
+    func loadJSPatchStatusWithURLString(URLString: String, completion:((version: String, jsPath: String) -> Void)) {
+        alamofire.request(.GET, URLString)
+            .responseJSON(queue: dispatch_get_main_queue(), options: .AllowFragments, completionHandler: { (response) in
+                if let dataDict = response.result.value {
+                    if let version = dataDict["version"] as? String ,
+                        let filePath = dataDict["filePath"] as? String {
+                        completion(version: version, jsPath: filePath)
+                    }
+                }
+            })
+    }
+    
+    func loadJSPatchFileWithURLString(URLString: String, completion: ((String) -> Void)) {
+        Alamofire.request(.GET, URLString)
+            .response(completionHandler: { (request, response, data, error) in
+                if let data = data {
+                    if let jsScript = String(data: data, encoding: NSUTF8StringEncoding) {
+                        completion(jsScript)
+                    }
+                }
+            })
+    }
+}
+
 //extension TPCStorageUtil {
 //    var pathForNoDataDays: String {
 //        return NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).first! + "/NoDataDays.plist"
