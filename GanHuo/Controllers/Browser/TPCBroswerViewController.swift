@@ -84,10 +84,10 @@ class TPCBroswerViewController: TPCViewController {
     @IBAction func readItemOnClicked(sender: AnyObject) {
         // 这里有条件可以从localhost读取，这样就可以读取网页缓存了（为知笔记就是这么干的，就是不知道他的实现方式）
         // 应该是执行js，然后用document.documentElement.outerHTML导出储存，用SFSafariViewController打开本地HTML
-        let sfVc = SFSafariViewController(URL: webView.URL!, entersReaderIfAvailable: true)
+        let sfVc = SFSafariViewController(URL: webView.URL ?? NSURL(), entersReaderIfAvailable: true)
         sfVc.delegate = self
         navigationController?.navigationBar.hidden = true
-        navigationController!.pushViewController(sfVc, animated: true)
+        navigationController?.pushViewController(sfVc, animated: true)
     }
     
     @IBAction func favoriteItemOnClicked(sender: AnyObject) {

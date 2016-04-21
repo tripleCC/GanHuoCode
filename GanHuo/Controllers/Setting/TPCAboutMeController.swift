@@ -12,7 +12,7 @@ import SwiftyJSON
 class TPCAboutMeController: TPCViewController {
     var aboutMe: TPCAboutMe? {
         didSet {
-            if aboutMe?.links?.count == 0 {
+            if aboutMe?.detail == nil {
                 aboutMe = TPCAboutMe(dict: JSON(data: NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("AboutMe", ofType: "json")!)!))
             }
         }
