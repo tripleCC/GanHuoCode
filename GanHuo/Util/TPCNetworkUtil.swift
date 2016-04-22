@@ -38,6 +38,7 @@ public class TPCNetworkUtil {
     init() {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
+        configuration.requestCachePolicy = .ReloadIgnoringLocalCacheData
         alamofire = Alamofire.Manager(configuration: configuration)
     }
     

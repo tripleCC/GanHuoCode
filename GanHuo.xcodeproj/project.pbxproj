@@ -1026,6 +1026,12 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
 						};
 					};
 					D64C8FE61CBDE92A00DD3B8A = {
@@ -1615,8 +1621,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_SE;
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_ENTITLEMENTS = GanHuoShareExtension/GanHuoShareExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ruiwang Song (F9R4JDMBBX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ruiwang Song (F9R4JDMBBX)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ruiwang Song (7DG5WQWWY9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ruiwang Song (7DG5WQWWY9)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1627,8 +1633,9 @@
 				OTHER_SWIFT_FLAGS = "-DGanHuoShareExtension";
 				PRODUCT_BUNDLE_IDENTIFIER = com.triplecc.WKCC.GanHuoShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "394695a8-1d52-49f4-b298-d88afa3286a4";
+				PROVISIONING_PROFILE = "515f585b-f418-4710-a8ea-cac68fc51966";
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1638,8 +1645,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon_SE;
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_ENTITLEMENTS = GanHuoShareExtension/GanHuoShareExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ruiwang Song (F9R4JDMBBX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ruiwang Song (F9R4JDMBBX)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ruiwang Song (7DG5WQWWY9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ruiwang Song (7DG5WQWWY9)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1650,8 +1657,9 @@
 				OTHER_SWIFT_FLAGS = "-DGanHuoShareExtension";
 				PRODUCT_BUNDLE_IDENTIFIER = com.triplecc.WKCC.GanHuoShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "394695a8-1d52-49f4-b298-d88afa3286a4";
+				PROVISIONING_PROFILE = "515f585b-f418-4710-a8ea-cac68fc51966";
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1812,8 +1820,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.triplecc.WKCC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "badba6b1-d44a-4eb8-b890-65e01625c7aa";
+				PROVISIONING_PROFILE = "2f78d7d8-eba5-4bf6-96d8-0421e83d9318";
 				SWIFT_OBJC_BRIDGING_HEADER = "GanHuo/Other/WKCCSwift-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1837,8 +1846,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.triplecc.WKCC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "badba6b1-d44a-4eb8-b890-65e01625c7aa";
+				PROVISIONING_PROFILE = "2f78d7d8-eba5-4bf6-96d8-0421e83d9318";
 				SWIFT_OBJC_BRIDGING_HEADER = "GanHuo/Other/WKCCSwift-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
