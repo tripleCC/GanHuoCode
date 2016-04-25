@@ -1681,7 +1681,7 @@
 				INFOPLIST_FILE = "GanHuo copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DGanHuoDev";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DGanHuoDev -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.triplecc.WKCC.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2c7e86ff-16f1-428b-a40c-bbaca7dab2aa";
@@ -1818,6 +1818,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/GanHuo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.triplecc.WKCC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2f78d7d8-eba5-4bf6-96d8-0421e83d9318";
@@ -1844,6 +1845,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/GanHuo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.triplecc.WKCC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2f78d7d8-eba5-4bf6-96d8-0421e83d9318";

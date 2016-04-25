@@ -88,7 +88,9 @@ public enum TPCTechnicalType: TPCGanHuoAPI {
         case .AvailableDay:
             pathComponent = "/day/history"
         case .Add2Gank:
+            // 这个是https的
             pathComponent = "/add2gank"
+            return "https://gank.io/api" + pathComponent
         }
         return TPCTechnicalType.TPCGankBaseURLString + pathComponent
     }

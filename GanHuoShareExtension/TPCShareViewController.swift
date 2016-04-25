@@ -124,6 +124,7 @@ extension TPCShareViewController {
     }
     
     private func postGanHuo() {
+        postButton.userInteractionEnabled = false
         let keys = ["url", "desc", "who", "type", "debug"]
         var parameters = [String : AnyObject]()
         for (idx, key) in keys.enumerate() {
@@ -136,6 +137,7 @@ extension TPCShareViewController {
         print(parameters)
         Alamofire.request(.POST, TPCTechnicalType.Add2Gank.path(), parameters: parameters)
                  .response { (request, response, data, error) in
+                    self.postButton.userInteractionEnabled = true
                     print(response, data, request)
                     var message: String
                     var title: String
