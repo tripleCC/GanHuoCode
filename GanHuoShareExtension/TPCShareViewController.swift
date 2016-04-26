@@ -132,21 +132,24 @@ extension TPCShareViewController {
                 parameters[key] = items[idx].content
             }
         }
-        parameters["debug"] = false
+        parameters["debug"] = "false"
         savePublisher(parameters["who"] as? String ?? "")
         print(parameters)
         Alamofire.request(.POST, TPCTechnicalType.Add2Gank.path(), parameters: parameters)
                  .response { (request, response, data, error) in
                     self.postButton.userInteractionEnabled = true
-                    print(response, data, request)
-                    var message: String
-                    var title: String
-                    if error == nil {
-                        title = "上传成功!"
-                        message = "恭喜你成为干货编辑部的一份子!"
-                    } else {
-                        title = "上传失败 = =|"
-                        message = error!.description
+                    print(data.flatMap{try? NSJSONSerialization.JSONObjectWithData($0, options: .AllowFragments)})
+                    var message: String?
+                    var title: String?
+                    if let data = data {
+                        do {
+                            let result = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+                            if let error = result["error"] as? Bool {
+                                title = error ? "上传失败 = =|" : "上传成功!"
+                            }
+                            message = result["msg"] as? String
+                            
+                        } catch {}
                     }
                     let ac = UIAlertController(title: title, message: message, preferredStyle: .Alert)
                     self.presentViewController(ac, animated: true, completion: {
