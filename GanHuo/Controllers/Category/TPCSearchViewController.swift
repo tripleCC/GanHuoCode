@@ -181,7 +181,7 @@ extension TPCSearchViewController: UITableViewDelegate, UITableViewDataSource {
         if showHistories {
             searchBar.text = searchHistories[indexPath.row]
             showHistories = false
-            tableView.reloadData()
+            searchGanHuoAndRefreshByKey(searchHistories[indexPath.row])
         } else {
             searchBar.endEditing(true)
             // 等键盘隐藏后才push，不然会有瑕疵
