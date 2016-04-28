@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iz1-0T-09a">
-                                <rect key="frame" x="150" y="88" width="300" height="244"/>
+                                <rect key="frame" x="150" y="158" width="300" height="244"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4l2-Vz-zOb">
                                         <rect key="frame" x="0.0" y="44" width="300" height="200"/>
@@ -189,7 +189,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="iz1-0T-09a" firstAttribute="centerY" secondItem="wbc-yd-nQP" secondAttribute="centerY" constant="-90" id="Tes-U0-Kzu"/>
+                            <constraint firstItem="iz1-0T-09a" firstAttribute="centerY" secondItem="wbc-yd-nQP" secondAttribute="centerY" constant="-20" id="Tes-U0-Kzu"/>
                             <constraint firstItem="iz1-0T-09a" firstAttribute="centerX" secondItem="wbc-yd-nQP" secondAttribute="centerX" id="hRQ-pi-iQw"/>
                         </constraints>
                     </view>

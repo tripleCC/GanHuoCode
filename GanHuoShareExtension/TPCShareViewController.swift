@@ -155,8 +155,10 @@ extension TPCShareViewController {
                     self.presentViewController(ac, animated: true, completion: {
                         dispatchSeconds(1) {
                             ac.dismissViewControllerAnimated(true, completion: { finished in
-                                self.hideSelf {
-                                    self.extensionContext?.completeRequestReturningItems(nil, completionHandler: nil)
+                                if title == "上传成功!" {
+                                    self.hideSelf {
+                                        self.extensionContext?.completeRequestReturningItems(nil, completionHandler: nil)
+                                    }
                                 }
                             })
                         }
