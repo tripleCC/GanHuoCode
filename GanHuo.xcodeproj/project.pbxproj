@@ -70,6 +70,10 @@
 		D606E1751CBFB3AD005D2AFE /* TPCPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D606E1721CBFB3AD005D2AFE /* TPCPlaceholderTextView.swift */; };
 		D60843E51CC777F9005A1533 /* TPCSearchHistoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60843E41CC777F9005A1533 /* TPCSearchHistoryViewCell.swift */; };
 		D60843E61CC777F9005A1533 /* TPCSearchHistoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60843E41CC777F9005A1533 /* TPCSearchHistoryViewCell.swift */; };
+		D609DAAD1CD22BC1002EB062 /* TPCRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF9C1C82EB7000CCA370 /* TPCRefreshView.swift */; };
+		D609DAAE1CD22BC8002EB062 /* TPCActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C25C01C53A31600E7D6A6 /* TPCActivityIndicator.swift */; };
+		D609DAAF1CD22BCB002EB062 /* TPCActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C25C01C53A31600E7D6A6 /* TPCActivityIndicator.swift */; };
+		D609DAB01CD22BCF002EB062 /* TPCRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D8BF9C1C82EB7000CCA370 /* TPCRefreshView.swift */; };
 		D60B6F371C9427C900531423 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B6F361C9427C900531423 /* UIView+Extension.swift */; };
 		D60CD2AF1CBD153A0015C0A5 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60CD2AE1CBD153A0015C0A5 /* ShareViewController.swift */; };
 		D60CD2B21CBD153A0015C0A5 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D60CD2B01CBD153A0015C0A5 /* MainInterface.storyboard */; };
@@ -1260,6 +1264,7 @@
 				D60418681CC7D59A0028C7D6 /* TPCApplicationTitleView.swift in Sources */,
 				D60418691CC7D59A0028C7D6 /* TPCAboutMe.swift in Sources */,
 				D604186A1CC7D59A0028C7D6 /* UIColor+Extension.swift in Sources */,
+				D609DAB01CD22BCF002EB062 /* TPCRefreshView.swift in Sources */,
 				D604186B1CC7D59A0028C7D6 /* TPCStorageUtil.swift in Sources */,
 				D604186C1CC7D59A0028C7D6 /* TPCShareItem.swift in Sources */,
 				D604186D1CC7D59A0028C7D6 /* TPCConst.swift in Sources */,
@@ -1267,6 +1272,7 @@
 				D604186F1CC7D59A0028C7D6 /* TPCGanHuoAPI.swift in Sources */,
 				D60418701CC7D59A0028C7D6 /* NSDate+Extension.swift in Sources */,
 				D60418711CC7D59A0028C7D6 /* CALayer+Extension.swift in Sources */,
+				D609DAAF1CD22BCB002EB062 /* TPCActivityIndicator.swift in Sources */,
 				D60418721CC7D59A0028C7D6 /* TPCPlaceholderTextView.swift in Sources */,
 				D60418731CC7D59A0028C7D6 /* TPCShareItemTypePickView.swift in Sources */,
 				D60418741CC7D59A0028C7D6 /* TPCShareViewCell.swift in Sources */,
@@ -1287,12 +1293,14 @@
 				D64C8F841CBD42C800DD3B8A /* TPCApplicationTitleView.swift in Sources */,
 				D63E65E51CC2283D00EAF9FC /* TPCAboutMe.swift in Sources */,
 				D63E65E01CC226A000EAF9FC /* UIColor+Extension.swift in Sources */,
+				D609DAAE1CD22BC8002EB062 /* TPCActivityIndicator.swift in Sources */,
 				D63E65E21CC2281900EAF9FC /* TPCStorageUtil.swift in Sources */,
 				D64C8F781CBD3F2F00DD3B8A /* TPCShareItem.swift in Sources */,
 				D64C8FB41CBDDEFF00DD3B8A /* TPCConst.swift in Sources */,
 				D64C8F871CBD451D00DD3B8A /* UIImage+Extension.swift in Sources */,
 				D64C8FB31CBD4CCE00DD3B8A /* TPCGanHuoAPI.swift in Sources */,
 				D614A2FD1CBFE3EB009B607F /* NSDate+Extension.swift in Sources */,
+				D609DAAD1CD22BC1002EB062 /* TPCRefreshView.swift in Sources */,
 				D64C8F861CBD450F00DD3B8A /* CALayer+Extension.swift in Sources */,
 				D606E1751CBFB3AD005D2AFE /* TPCPlaceholderTextView.swift in Sources */,
 				D64C8F7A1CBD3F2F00DD3B8A /* TPCShareItemTypePickView.swift in Sources */,

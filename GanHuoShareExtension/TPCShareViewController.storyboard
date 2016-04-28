@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iz1-0T-09a">
-                                <rect key="frame" x="150" y="158" width="300" height="244"/>
+                                <rect key="frame" x="150" y="88" width="300" height="244"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4l2-Vz-zOb">
                                         <rect key="frame" x="0.0" y="44" width="300" height="200"/>
@@ -140,6 +140,14 @@
                                                     <action selector="post:" destination="j1y-V4-xli" eventType="touchUpInside" id="QhU-d8-mp9"/>
                                                 </connections>
                                             </button>
+                                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qcX-E5-wGW" userLabel="refreshView" customClass="TPCRefreshView" customModule="GanHuo" customModuleProvider="target">
+                                                <rect key="frame" x="130" y="1.5" width="40" height="40"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="DdN-bV-Je8"/>
+                                                    <constraint firstAttribute="width" constant="40" id="Omb-zj-ELW"/>
+                                                </constraints>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4YJ-Fe-dsl" customClass="TPCApplicationTitleView" customModule="GanHuo" customModuleProvider="target">
                                                 <rect key="frame" x="96" y="0.0" width="108" height="43"/>
                                                 <constraints>
@@ -154,15 +162,29 @@
                                             <constraint firstItem="4YJ-Fe-dsl" firstAttribute="centerX" secondItem="zXJ-OO-w55" secondAttribute="centerX" id="2Pa-Zm-bAR"/>
                                             <constraint firstAttribute="bottom" secondItem="5b7-0q-aRO" secondAttribute="bottom" id="4SX-kf-Q5e"/>
                                             <constraint firstAttribute="height" constant="44" id="5X4-JP-BEY"/>
+                                            <constraint firstItem="qcX-E5-wGW" firstAttribute="centerY" secondItem="zXJ-OO-w55" secondAttribute="centerY" id="7c1-VT-xuL"/>
+                                            <constraint firstItem="qcX-E5-wGW" firstAttribute="centerX" secondItem="zXJ-OO-w55" secondAttribute="centerX" id="Bik-z7-HAo"/>
                                             <constraint firstAttribute="trailing" secondItem="5b7-0q-aRO" secondAttribute="trailing" id="I48-8u-ScZ"/>
                                             <constraint firstItem="R8Y-gf-Tlh" firstAttribute="top" secondItem="zXJ-OO-w55" secondAttribute="top" id="Izq-vJ-5KU"/>
                                             <constraint firstAttribute="trailing" secondItem="R8Y-gf-Tlh" secondAttribute="trailing" id="V2j-b7-74k"/>
                                             <constraint firstItem="Bk9-wO-CI3" firstAttribute="top" secondItem="zXJ-OO-w55" secondAttribute="top" id="VxS-iC-d6V"/>
                                             <constraint firstItem="5b7-0q-aRO" firstAttribute="top" secondItem="R8Y-gf-Tlh" secondAttribute="bottom" id="WIW-kW-z0w"/>
+                                            <constraint firstItem="qcX-E5-wGW" firstAttribute="bottom" secondItem="4YJ-Fe-dsl" secondAttribute="bottom" id="Y7l-ff-mlg"/>
+                                            <constraint firstItem="qcX-E5-wGW" firstAttribute="leading" secondItem="4YJ-Fe-dsl" secondAttribute="leading" id="aQH-6Q-Qf4"/>
                                             <constraint firstItem="5b7-0q-aRO" firstAttribute="top" secondItem="4YJ-Fe-dsl" secondAttribute="bottom" id="gS7-KS-CkW"/>
+                                            <constraint firstItem="qcX-E5-wGW" firstAttribute="trailing" secondItem="4YJ-Fe-dsl" secondAttribute="trailing" id="j07-Qb-DHQ"/>
+                                            <constraint firstItem="qcX-E5-wGW" firstAttribute="top" secondItem="4YJ-Fe-dsl" secondAttribute="top" id="mra-0Z-3ku"/>
                                             <constraint firstItem="5b7-0q-aRO" firstAttribute="top" secondItem="Bk9-wO-CI3" secondAttribute="bottom" id="xIq-cs-V4o"/>
                                             <constraint firstItem="5b7-0q-aRO" firstAttribute="leading" secondItem="zXJ-OO-w55" secondAttribute="leading" id="xfQ-UY-5jZ"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Y7l-ff-mlg"/>
+                                                <exclude reference="aQH-6Q-Qf4"/>
+                                                <exclude reference="j07-Qb-DHQ"/>
+                                                <exclude reference="mra-0Z-3ku"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -189,7 +211,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="iz1-0T-09a" firstAttribute="centerY" secondItem="wbc-yd-nQP" secondAttribute="centerY" constant="-20" id="Tes-U0-Kzu"/>
+                            <constraint firstItem="iz1-0T-09a" firstAttribute="centerY" secondItem="wbc-yd-nQP" secondAttribute="centerY" constant="-90" id="Tes-U0-Kzu"/>
                             <constraint firstItem="iz1-0T-09a" firstAttribute="centerX" secondItem="wbc-yd-nQP" secondAttribute="centerX" id="hRQ-pi-iQw"/>
                         </constraints>
                     </view>
@@ -198,7 +220,9 @@
                         <outlet property="containerView" destination="iz1-0T-09a" id="Nwf-kw-t9w"/>
                         <outlet property="pickView" destination="bRM-Hr-xh0" id="IfR-BO-dXL"/>
                         <outlet property="postButton" destination="R8Y-gf-Tlh" id="KXW-1I-1ue"/>
+                        <outlet property="refreshView" destination="qcX-E5-wGW" id="l49-Zz-kNk"/>
                         <outlet property="tableView" destination="4l2-Vz-zOb" id="DDG-el-EBD"/>
+                        <outlet property="titleView" destination="4YJ-Fe-dsl" id="Rp5-yB-i3y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEy-Cv-SGf" userLabel="First Responder" sceneMemberID="firstResponder"/>

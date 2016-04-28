@@ -26,7 +26,12 @@ public class TPCShareViewController: UIViewController {
         }
     }
     @IBOutlet weak var containerView: UIView!
-    
+    @IBOutlet weak var refreshView: TPCRefreshView! {
+        didSet {
+            refreshView.transform = CGAffineTransformMakeScale(0.01, 0.01)
+        }
+    }
+    @IBOutlet weak var titleView: TPCApplicationTitleView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pickView: TPCShareItemTypePickView! {
         didSet {
@@ -123,6 +128,26 @@ extension TPCShareViewController {
         items.appendContentsOf([URLItem, descItem, publisherItem, typeItem])
     }
     
+    private func startUpload() {
+        refreshView.removeAnimation()
+        refreshView.addAnimation()
+        UIView.animateWithDuration(0.5) {
+            self.refreshView.transform = CGAffineTransformIdentity
+            self.titleView.transform = CGAffineTransformMakeScale(0.01, 0.01)
+            self.titleView.alpha = 0
+            self.refreshView.alpha = 1
+        }
+    }
+    
+    private func stopUpload() {
+        UIView.animateWithDuration(0.5) {
+            self.titleView.transform = CGAffineTransformIdentity
+            self.refreshView.transform = CGAffineTransformMakeScale(0.01, 0.01)
+            self.titleView.alpha = 1
+            self.refreshView.alpha = 0
+        }
+    }
+    
     private func postGanHuo() {
         postButton.userInteractionEnabled = false
         let keys = ["url", "desc", "who", "type", "debug"]
@@ -132,11 +157,13 @@ extension TPCShareViewController {
                 parameters[key] = items[idx].content
             }
         }
-        parameters["debug"] = "false"
+        parameters["debug"] = "true"
         savePublisher(parameters["who"] as? String ?? "")
         print(parameters)
+        startUpload()
         Alamofire.request(.POST, TPCTechnicalType.Add2Gank.path(), parameters: parameters)
                  .response { (request, response, data, error) in
+                    self.stopUpload()
                     self.postButton.userInteractionEnabled = true
                     print(data.flatMap{try? NSJSONSerialization.JSONObjectWithData($0, options: .AllowFragments)})
                     var message: String?
