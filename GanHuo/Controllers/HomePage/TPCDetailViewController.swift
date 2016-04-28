@@ -87,7 +87,7 @@ class TPCDetailViewController: TPCViewController {
     
     func prepareForPageDisappear() {
 //        view.alpha = 1
-        headerImageView.alpha = 1
+        headerImageView.alpha = CGFloat(TPCConfiguration.imageAlpha)
         tableView.alpha = 1
         adjustBarToOriginPosition()
     }
