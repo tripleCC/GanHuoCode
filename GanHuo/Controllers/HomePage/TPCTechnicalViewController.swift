@@ -108,6 +108,13 @@ class TPCTechnicalViewController: TPCViewController {
                 vc.actionBeforeDisapear = { [unowned self] vc in
                     vc.view.removeFromSuperview()
                     self.uploadVc = nil
+                    if TPCVenusUtil.venusFlag {
+                        dispatchSeconds(2.0, action: {
+                            doOnceInAppLifeWithKey("TPCUploadTipView.showTipView") {
+                                TPCUploadTipView.showTipView()
+                            }
+                        })
+                    }
                 }
                 UIApplication.sharedApplication().keyWindow?.addSubview(vc.view)
                 vc.view.alpha = 0

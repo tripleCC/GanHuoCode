@@ -72,7 +72,7 @@ class TPCCategoryViewController: TPCViewController {
         editHeaderView.hidden = contentScrollView.hidden
         editView.hidden = editHeaderView.hidden
         if sender.selectedSegmentIndex == 1 {
-            doOnceInAppLifeWithKey(String(TPCCategoryViewController.showFavoriteTip), action: {
+            doOnceInAppLifeWithKey("TPCCategoryViewController.showFavoriteTip", action: {
                 dispatchSeconds(1, action: { 
                     self.showFavoriteTip()
                 })

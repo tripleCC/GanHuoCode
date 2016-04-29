@@ -30,7 +30,7 @@ class TPCSearchViewController: TPCViewController {
         setupNav()
         addSearchBar()
         
-        doOnceInAppLifeWithKey(String(TPCSearchViewController.showSearchTip)) {
+        doOnceInAppLifeWithKey("TPCSearchViewController.showSearchTip") {
             dispatchSeconds(0.5, action: {
                 self.showSearchTip()
             })

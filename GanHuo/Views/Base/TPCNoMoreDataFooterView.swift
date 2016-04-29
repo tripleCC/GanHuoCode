@@ -73,6 +73,11 @@ class TPCNoMoreDataFooterView: UIView {
         }
     }
     
+    func hideSelf(hidden: Bool) {
+        self.hidden = hidden
+        refreshView.hidden = hidden
+    }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         debugPrint("点击了尾部")
     }

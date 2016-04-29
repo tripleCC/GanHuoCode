@@ -5,7 +5,8 @@ PODS:
   - JSPatch (1.0):
     - JSPatch/Core (= 1.0)
   - JSPatch/Core (1.0)
-  - Kingfisher (2.2.2)
+  - Kingfisher (2.3.1)
+  - LTMorphingLabel (0.2.0)
   - MonkeyKing (0.7)
   - PKHUD (3.1.0)
   - SwiftyJSON (2.3.2)
@@ -17,6 +18,7 @@ DEPENDENCIES:
   - FDFullscreenPopGesture
   - JSPatch
   - Kingfisher
+  - LTMorphingLabel
   - MonkeyKing (= 0.7)
   - PKHUD
   - SwiftyJSON
@@ -27,7 +29,8 @@ SPEC CHECKSUMS:
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   JSPatch: c689ea4dde17441f2f4a95d40dfedb8900c20099
-  Kingfisher: 7e8de5b0cf7b5dc8ec559d193029a0859df93ef1
+  Kingfisher: 6d3fbada4829cbc7b89e883e8218c28afeb64e42
+  LTMorphingLabel: 490aa8e079f9247c7f3130f7d4b1be1d66677377
   MonkeyKing: 6b693e38951b1e4850a475b7ee194bd6f75a9f2b
   PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a

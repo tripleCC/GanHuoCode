@@ -89,6 +89,10 @@
 		D611BDC01CC634CD00900D4C /* GanHuoPreprocessor.js in Resources */ = {isa = PBXBuildFile; fileRef = D611BDBE1CC634CD00900D4C /* GanHuoPreprocessor.js */; };
 		D611BDC21CC6404A00900D4C /* TPCSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611BDC11CC6404A00900D4C /* TPCSearchViewController.swift */; };
 		D611BDC31CC6404A00900D4C /* TPCSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D611BDC11CC6404A00900D4C /* TPCSearchViewController.swift */; };
+		D612C4AD1CD243B300162057 /* TPCUploadTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D612C4AC1CD243B300162057 /* TPCUploadTipView.swift */; };
+		D612C4AE1CD243B300162057 /* TPCUploadTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D612C4AC1CD243B300162057 /* TPCUploadTipView.swift */; };
+		D612C4B01CD243D800162057 /* TPCUploadTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D612C4AF1CD243D800162057 /* TPCUploadTipView.xib */; };
+		D612C4B11CD243D800162057 /* TPCUploadTipView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D612C4AF1CD243D800162057 /* TPCUploadTipView.xib */; };
 		D614A2FC1CBFE3B5009B607F /* TPCDispatchUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE71051C2592A300C066DE /* TPCDispatchUtil.swift */; };
 		D614A2FD1CBFE3EB009B607F /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE70EF1C2592A300C066DE /* NSDate+Extension.swift */; };
 		D614A2FE1CBFE3F2009B607F /* NSCalender+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F81C5518920059F372 /* NSCalender+Extension.swift */; };
@@ -403,6 +407,8 @@
 		D611B4D01CB215C000D5A2C7 /* TPCLoadMoreReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCLoadMoreReusableView.xib; sourceTree = "<group>"; };
 		D611BDBE1CC634CD00900D4C /* GanHuoPreprocessor.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = GanHuoPreprocessor.js; sourceTree = "<group>"; };
 		D611BDC11CC6404A00900D4C /* TPCSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCSearchViewController.swift; sourceTree = "<group>"; };
+		D612C4AC1CD243B300162057 /* TPCUploadTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCUploadTipView.swift; sourceTree = "<group>"; };
+		D612C4AF1CD243D800162057 /* TPCUploadTipView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TPCUploadTipView.xib; sourceTree = "<group>"; };
 		D61A92531C8AC82900FD594C /* GanHuoObject+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GanHuoObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D61A92541C8AC82900FD594C /* GanHuoObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GanHuoObject.swift; sourceTree = "<group>"; };
 		D61AFD4A1CB11B150080A9B9 /* TPCCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCCollectionView.swift; sourceTree = "<group>"; };
@@ -734,6 +740,8 @@
 				D6D8BFA51C82EB7000CCA370 /* TPCDetailHeaderView.swift */,
 				D6D8BFA61C82EB7000CCA370 /* TPCDetailViewCell.swift */,
 				D6D8BFA71C82EB7000CCA370 /* TPCTechnicalCell.swift */,
+				D612C4AC1CD243B300162057 /* TPCUploadTipView.swift */,
+				D612C4AF1CD243D800162057 /* TPCUploadTipView.xib */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -1130,6 +1138,7 @@
 				D64C905D1CBDE92A00DD3B8A /* Main.storyboard in Resources */,
 				D60435C21CC66437006A262E /* TPCCategoryEditView.xib in Resources */,
 				D64C905E1CBDE92A00DD3B8A /* TPCUpdateView.xib in Resources */,
+				D612C4B11CD243D800162057 /* TPCUploadTipView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1150,6 +1159,7 @@
 				D6D8BFB41C82EB7000CCA370 /* TPCNoMoreDataFooterView.xib in Resources */,
 				D60435D11CC669FE006A262E /* TPCSearchPeekView.xib in Resources */,
 				D60435B51CC66437006A262E /* TPCCategoryEditViewCell.xib in Resources */,
+				D612C4B01CD243D800162057 /* TPCUploadTipView.xib in Resources */,
 				D6DE71281C2592A300C066DE /* HomePage.storyboard in Resources */,
 				D64C8F7D1CBD3F2F00DD3B8A /* TPCShareViewController.storyboard in Resources */,
 				D64C8F821CBD3F7B00DD3B8A /* GanHuoShareExtension.xcassets in Resources */,
@@ -1327,6 +1337,7 @@
 				D64C8FF11CBDE92A00DD3B8A /* TPCApplicationTitleView.swift in Sources */,
 				D606E1741CBFB3AD005D2AFE /* TPCPlaceholderTextView.swift in Sources */,
 				D64C8FF21CBDE92A00DD3B8A /* TPCCategoryViewController.swift in Sources */,
+				D612C4AE1CD243B300162057 /* TPCUploadTipView.swift in Sources */,
 				D64C8FF31CBDE92A00DD3B8A /* AppDelegate.swift in Sources */,
 				D64C8FF41CBDE92A00DD3B8A /* TPCConst.swift in Sources */,
 				D64C8FF51CBDE92A00DD3B8A /* TPCArchivable.swift in Sources */,
@@ -1432,6 +1443,7 @@
 				D6D8BFC31C82EB7000CCA370 /* TPCApplicationTitleView.swift in Sources */,
 				D606E1731CBFB3AD005D2AFE /* TPCPlaceholderTextView.swift in Sources */,
 				D67CED971C85DE3600A38B0B /* TPCCategoryViewController.swift in Sources */,
+				D612C4AD1CD243B300162057 /* TPCUploadTipView.swift in Sources */,
 				D6DE713F1C2592A300C066DE /* AppDelegate.swift in Sources */,
 				D6DE71431C2592A300C066DE /* TPCConst.swift in Sources */,
 				D667F9F11C53B19D0059F372 /* TPCArchivable.swift in Sources */,

@@ -53,6 +53,7 @@ class TPCTableView: UITableView, TPCRefreshable {
         refreshControl.addSubview(customView)
         
         loadMoreFooterView = TPCNoMoreDataFooterView.noMoreDataFooterView()
+        loadMoreFooterView.hidden = true
         tableFooterView = loadMoreFooterView
     }
     

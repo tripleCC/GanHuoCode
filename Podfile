@@ -8,4 +8,5 @@ pod "PKHUD"
 pod 'MonkeyKing', '0.7'
 pod 'UMengAnalytics-NO-IDFA'
 pod 'FDFullscreenPopGesture'
+pod 'LTMorphingLabel'
 use_frameworks!
