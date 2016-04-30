@@ -47,16 +47,18 @@ class TPCVenusUtil {
                     TPCConfiguration.allRules.removeAtIndex(TPCConfiguration.allRules.indexOf(TPCRuleType.One)!)
                     TPCConfiguration.allCategories = TPCConfiguration.allCategories.filter{ !TPCFilterCategories.contains($0) }
                     TPCConfiguration.loadDataCountOnce = 5
+                    TPCStorageUtil.setObject(nil, forKey: TPCCategoryStoreKey)
+                    TPCStorageUtil.setObject(nil, forKey: TPCAllCategoriesKey, suiteName: TPCAppGroupKey)
                 } else {
                     debugPrint("Open venus model")
                     // Clear github image url cache when get true venusFlag at first time
                     TPCStorageUtil.shareInstance.clearFileCache()
                     KingfisherManager.sharedManager.cache.clearDiskCache()
                     KingfisherManager.sharedManager.cache.clearMemoryCache()
-                    TPCStorageUtil.setObject(nil, forKey: TPCCategoryStoreKey)
+                    // 给SE用，这里代码不是很好
+                    TPCStorageUtil.setObject(TPCConfiguration.allCategories, forKey: TPCAllCategoriesKey, suiteName: TPCAppGroupKey)
+                    TPCStorageUtil.setObject(TPCConfiguration.allCategories, forKey: TPCCategoryStoreKey)
                 }
-                // 给SE用，这里代码不是很好
-                TPCStorageUtil.setObject(TPCConfiguration.allCategories, forKey: TPCAllCategoriesKey, suiteName: TPCAppGroupKey)
             }
             completion(launchConfig: launchConfig)
         }
