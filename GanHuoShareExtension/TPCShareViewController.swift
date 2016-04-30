@@ -157,7 +157,7 @@ extension TPCShareViewController {
                 parameters[key] = items[idx].content
             }
         }
-        parameters["debug"] = "true"
+        parameters["debug"] = "false"
         savePublisher(parameters["who"] as? String ?? "")
         print(parameters)
         startUpload()
