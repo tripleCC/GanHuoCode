@@ -78,7 +78,8 @@ class TPCBroswerViewController: TPCViewController {
         if let urlString = webView.URL?.absoluteString {
             shareText += urlString
         }
-        TPCShareView.showWithTitle(technical?.desc, desc: technical?.desc, mediaURL: webView.URL)
+        let title = technical?.desc ?? ganhuo?.desc
+        TPCShareView.showWithTitle(title, desc: title, mediaURL: webView.URL)
     }
     
     @IBAction func readItemOnClicked(sender: AnyObject) {
