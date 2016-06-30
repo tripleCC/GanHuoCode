@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import MonkeyKing
+import CoreSpotlight
 
 let TPCURLMemoryCacheSize = 1024 * 1024 * 512
 let TPCURLDiskCacheSize = 1024 * 1024 * 1024 
@@ -99,6 +100,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         print(#function, userInfo)
+    }
+    func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+        if userActivity.activityType == CSSearchableItemActionType {
+            // This activity represents an item indexed using Core Spotlight, so restore the context related to the unique identifier.
+            // Note that the unique identifier of the Core Spotlight item is set in the activity’s userInfo property for the key CSSearchableItemActivityIdentifier.
+            let uniqueIdentifier = userActivity.userInfo? [CSSearchableItemActivityIdentifier] as? String
+            
+            // Next, find and open the item specified by uniqueIdentifer.
+            let sb = UIStoryboard(name: "HomePage", bundle: nil)
+            let browserVc = sb.instantiateViewControllerWithIdentifier("BroswerViewController") as! TPCBroswerViewController
+            browserVc.URLString = uniqueIdentifier
+            application.topViewController()?.navigationController?.pushViewController(browserVc, animated: true)
+            dispatchSeconds(1.0, action: {
+                browserVc.refreshWebView()
+            })
+        }
+        return true
+    }
+}
+
+extension UIApplication {
+    func topViewController(base: UIViewController? = UIApplication.sharedApplication().keyWindow?.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topViewController(nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController {
+            if let selected = tab.selectedViewController {
+                return topViewController(selected)
+            }
+        }
+        if let presented = base?.presentedViewController {
+            return topViewController(presented)
+        }
+        return base
     }
 }
 

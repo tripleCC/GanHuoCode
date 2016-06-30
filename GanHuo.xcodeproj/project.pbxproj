@@ -228,6 +228,10 @@
 		D64C905D1CBDE92A00DD3B8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6D8BF4A1C82D26F00CCA370 /* Main.storyboard */; };
 		D64C905E1CBDE92A00DD3B8A /* TPCUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6D8BFA21C82EB7000CCA370 /* TPCUpdateView.xib */; };
 		D6544A1F1C93C4CE0094DB3F /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6544A1E1C93C4CE0094DB3F /* UIScrollView+Extension.swift */; };
+		D655B8FF1D252DD6004182BC /* TPCInAppSearchUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D655B8FE1D252DD6004182BC /* TPCInAppSearchUtil.swift */; };
+		D655B9001D252DD6004182BC /* TPCInAppSearchUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D655B8FE1D252DD6004182BC /* TPCInAppSearchUtil.swift */; };
+		D655B9011D2530D1004182BC /* TPCInAppSearchUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D655B8FE1D252DD6004182BC /* TPCInAppSearchUtil.swift */; };
+		D655B9021D2530D2004182BC /* TPCInAppSearchUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D655B8FE1D252DD6004182BC /* TPCInAppSearchUtil.swift */; };
 		D667F9F11C53B19D0059F372 /* TPCArchivable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F01C53B19D0059F372 /* TPCArchivable.swift */; };
 		D667F9F91C5518920059F372 /* NSCalender+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667F9F81C5518920059F372 /* NSCalender+Extension.swift */; };
 		D66C25BF1C53A13200E7D6A6 /* TPCRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66C25BE1C53A13200E7D6A6 /* TPCRefreshable.swift */; };
@@ -428,6 +432,7 @@
 		D64C90681CBDE92A00DD3B8A /* GanHuo copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GanHuo copy-Info.plist"; path = "/Users/songruiwang/GitHub/GanHuoCode/GanHuo copy-Info.plist"; sourceTree = "<absolute>"; };
 		D64C90701CBE8C3800DD3B8A /* GanHuoShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GanHuoShareExtension.entitlements; sourceTree = "<group>"; };
 		D6544A1E1C93C4CE0094DB3F /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
+		D655B8FE1D252DD6004182BC /* TPCInAppSearchUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCInAppSearchUtil.swift; sourceTree = "<group>"; };
 		D667F9F01C53B19D0059F372 /* TPCArchivable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCArchivable.swift; sourceTree = "<group>"; };
 		D667F9F81C5518920059F372 /* NSCalender+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalender+Extension.swift"; sourceTree = "<group>"; };
 		D66C25BE1C53A13200E7D6A6 /* TPCRefreshable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPCRefreshable.swift; sourceTree = "<group>"; };
@@ -931,6 +936,7 @@
 				D68937D51CA42A1F009C6B31 /* TPCPopUtil.swift */,
 				D64C8FB11CBD4CCE00DD3B8A /* TPCGanHuoAPI.swift */,
 				D61134DA1CC8D42200602566 /* TPCJSPatchManager.swift */,
+				D655B8FE1D252DD6004182BC /* TPCInAppSearchUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1291,6 +1297,7 @@
 				D60418771CC7D59A0028C7D6 /* TPCTechnicalObject.swift in Sources */,
 				D60418781CC7D59A0028C7D6 /* TPCDispatchUtil.swift in Sources */,
 				D60418791CC7D59A0028C7D6 /* ShareViewController.swift in Sources */,
+				D655B9021D2530D2004182BC /* TPCInAppSearchUtil.swift in Sources */,
 				D604187A1CC7D59A0028C7D6 /* TPCShareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1320,6 +1327,7 @@
 				D6928F1F1CC3979100DA4264 /* TPCTechnicalObject.swift in Sources */,
 				D614A2FC1CBFE3B5009B607F /* TPCDispatchUtil.swift in Sources */,
 				D60CD2AF1CBD153A0015C0A5 /* ShareViewController.swift in Sources */,
+				D655B9011D2530D1004182BC /* TPCInAppSearchUtil.swift in Sources */,
 				D64C8F801CBD3F2F00DD3B8A /* TPCShareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1386,6 +1394,7 @@
 				D64C90201CBDE92A00DD3B8A /* TPCImageView.swift in Sources */,
 				D64C90211CBDE92A00DD3B8A /* TPCNavigationController.swift in Sources */,
 				D64C90221CBDE92A00DD3B8A /* TPCGanHuoAPI.swift in Sources */,
+				D655B9001D252DD6004182BC /* TPCInAppSearchUtil.swift in Sources */,
 				D60435C01CC66437006A262E /* TPCCategoryEditView.swift in Sources */,
 				D60435CF1CC6696C006A262E /* TPCSearchPeekView.swift in Sources */,
 				D64C90231CBDE92A00DD3B8A /* TPCSettingSubCell.swift in Sources */,
@@ -1492,6 +1501,7 @@
 				D6D8BFB11C82EB7000CCA370 /* TPCImageView.swift in Sources */,
 				D6D8BF861C82EB6600CCA370 /* TPCNavigationController.swift in Sources */,
 				D64C8FB21CBD4CCE00DD3B8A /* TPCGanHuoAPI.swift in Sources */,
+				D655B8FF1D252DD6004182BC /* TPCInAppSearchUtil.swift in Sources */,
 				D60435BF1CC66437006A262E /* TPCCategoryEditView.swift in Sources */,
 				D60435CE1CC6696C006A262E /* TPCSearchPeekView.swift in Sources */,
 				D6D8BFC71C82EB7000CCA370 /* TPCSettingSubCell.swift in Sources */,

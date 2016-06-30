@@ -28,7 +28,8 @@ public struct TPCTechnicalObject: TPCGanHuo {
         type = dict["type"]?.stringValue ?? ""
         createdAt = dict["createdAt"]?.stringValue ?? ""
         desc = dict["desc"]?.stringValue ?? ""
-        url = dict["url"]?.stringValue ?? "" 
+        url = dict["url"]?.stringValue ?? ""
+        TPCInAppSearchUtil.indexedItemWithType(type, who: who, contentDescription: desc, uniqueIdentifier: url)
     }
     
     public init () {
