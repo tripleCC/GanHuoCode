@@ -112,9 +112,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let browserVc = sb.instantiateViewControllerWithIdentifier("BroswerViewController") as! TPCBroswerViewController
             browserVc.URLString = uniqueIdentifier
             application.topViewController()?.navigationController?.pushViewController(browserVc, animated: true)
-            dispatchSeconds(1.0, action: {
-                browserVc.refreshWebView()
-            })
         }
         return true
     }
