@@ -23,10 +23,13 @@ enum TPCUMEvent: String {
 
 class TPCUMManager {
     class func start() {
-        #if GanHuoDev
-            let v = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String + "_dev"
+        var v = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
+        #if (arch(i386) || arch(x86_64)) && os(iOS)
+            v += "_sim"
         #else
-            let v = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
+            #if GanHuoDev
+                v += "_dev"
+            #endif
         #endif
         MobClick.setAppVersion(v)
         MobClick.setLogEnabled(true)

@@ -71,6 +71,7 @@ public final class GanHuoObject: NSManagedObject ,TPCCoreDataHelper {
         createdAt = dict["createdAt"]?.stringValue ?? ""
         desc = TPCTextParser.shareTextParser.parseOriginString(dict["desc"]?.stringValue ?? "")
         url = dict["url"]?.stringValue ?? ""
+        TPCInAppSearchUtil.indexedItemWithType(type!, who: who!, contentDescription: desc!, uniqueIdentifier: url!)
         calculateCellHeight()
     }
     
