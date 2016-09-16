@@ -20,6 +20,7 @@ DONE:
   - Cache (*** archive)
   - Favorites (***local)
   - CoreData+ ~~icloud~~(***)
+  - ShareExtension
   
   
 <!--App切图：<br>-->
